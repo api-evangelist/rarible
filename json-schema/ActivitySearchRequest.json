@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ActivitySearchRequest",
+  "type": "object",
+  "description": "Complex search request for Activities",
+  "required": [
+    "size",
+    "filter"
+  ],
+  "properties": {
+    "size": {
+      "minimum": 1,
+      "maximum": 1000,
+      "default": 50,
+      "type": "integer",
+      "format": "int32",
+      "description": "Number of entities returned"
+    },
+    "cursor": {
+      "type": "string",
+      "description": "Cursor token to paginate Activity search result"
+    },
+    "filter": {
+      "$ref": "#/components/schemas/ActivitySearchFilter"
+    },
+    "sort": {
+      "$ref": "#/components/schemas/ActivitySearchSort"
+    }
+  }
+}

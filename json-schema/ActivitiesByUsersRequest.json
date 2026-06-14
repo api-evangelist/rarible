@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ActivitiesByUsersRequest",
+  "type": "object",
+  "required": [
+    "types",
+    "users"
+  ],
+  "properties": {
+    "types": {
+      "description": "Activity type",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UserActivityType"
+      }
+    },
+    "users": {
+      "description": "List of the user id",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UnionAddress"
+      }
+    },
+    "bidCurrencies": {
+      "description": "Currency for BID and CANCEL_BID activity types",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CurrencyId"
+      }
+    },
+    "blockchains": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Blockchain"
+      }
+    },
+    "from": {
+      "description": "Lower time border of data",
+      "type": "string",
+      "format": "date-time"
+    },
+    "to": {
+      "description": "Upper time border of data",
+      "type": "string",
+      "format": "date-time"
+    },
+    "continuation": {
+      "description": "Continuation token from the previous response",
+      "type": "string"
+    },
+    "cursor": {
+      "description": "Combined continuation token from the previous response",
+      "type": "string"
+    },
+    "size": {
+      "description": "The number of items to return",
+      "type": "integer"
+    },
+    "sort": {
+      "$ref": "#/components/schemas/ActivitySort"
+    }
+  }
+}

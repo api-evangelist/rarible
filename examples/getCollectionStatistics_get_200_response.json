@@ -1,0 +1,51 @@
+{
+  "operationId": "getCollectionStatistics",
+  "method": "GET",
+  "path": "/v0.1/data/collections/{collection}/statistics",
+  "status": "200",
+  "response": {
+    "listed": 5,
+    "items": 10020,
+    "owners": 6472,
+    "highestSale": [
+      {
+        "currency": "USD",
+        "value": 37.66
+      },
+      {
+        "currency": "ETH",
+        "value": 0.009
+      }
+    ],
+    "floorPrice": [
+      {
+        "currency": "USD",
+        "value": 2635
+      },
+      {
+        "currency": "ETH",
+        "value": 1
+      }
+    ],
+    "marketCap": [
+      {
+        "currency": "USD",
+        "value": 12195397
+      },
+      {
+        "currency": "ETH",
+        "value": 4627
+      }
+    ],
+    "volume": [
+      {
+        "currency": "USD",
+        "value": 37.66
+      },
+      {
+        "currency": "ETH",
+        "value": 0.009
+      }
+    ]
+  }
+}

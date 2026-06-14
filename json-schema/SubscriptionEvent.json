@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SubscriptionEvent",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/FakeSubscriptionEvent"
+    },
+    {
+      "$ref": "#/components/schemas/ItemSubscriptionEvent"
+    },
+    {
+      "$ref": "#/components/schemas/ItemOwnershipSubscriptionEvent"
+    },
+    {
+      "$ref": "#/components/schemas/OwnershipSubscriptionEvent"
+    },
+    {
+      "$ref": "#/components/schemas/OrderSubscriptionEvent"
+    },
+    {
+      "$ref": "#/components/schemas/ActivitySubscriptionEvent"
+    }
+  ]
+}

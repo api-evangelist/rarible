@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SignatureValidationForm",
+  "required": [
+    "signer",
+    "message",
+    "signature"
+  ],
+  "type": "object",
+  "properties": {
+    "signer": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "publicKey": {
+      "type": "string",
+      "description": "The creator's public key"
+    },
+    "message": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string",
+      "description": "Digital signature of the signer"
+    },
+    "algorithm": {
+      "description": "Algorithm used for signature generation (don't specify if default algo is used)",
+      "type": "string"
+    }
+  }
+}

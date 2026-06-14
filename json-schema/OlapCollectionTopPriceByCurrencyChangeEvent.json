@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapCollectionTopPriceByCurrencyChangeEvent",
+  "type": "object",
+  "description": "Sent when there is a new top order for the given currency",
+  "required": [
+    "@type",
+    "currencyId",
+    "updatedAt"
+  ],
+  "properties": {
+    "price": {
+      "type": "number",
+      "format": "bigdecimal",
+      "description": "price of the floor order or null if there is no order"
+    },
+    "currencyId": {
+      "$ref": "#/components/schemas/CurrencyId"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "when the value was updated in the olap database"
+    },
+    "@type": {
+      "type": "string",
+      "enum": [
+        "TOP_PRICE_BY_CURRENCY_CHANGE"
+      ]
+    }
+  }
+}

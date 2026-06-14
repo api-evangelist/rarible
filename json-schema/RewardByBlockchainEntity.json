@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RewardByBlockchainEntity",
+  "type": "object",
+  "properties": {
+    "rewardWallet": {
+      "$ref": "#/components/schemas/UnionAddress",
+      "description": "Wallet address with blockchain prefix",
+      "example": "ETHEREUM:0x1234567890123456789012345678901234567890"
+    },
+    "points": {
+      "description": "Points accumulated by the wallet",
+      "$ref": "#/components/schemas/BigDecimal"
+    },
+    "rank": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Rank position of the wallet",
+      "example": 1
+    },
+    "blockchain": {
+      "$ref": "#/components/schemas/Blockchain"
+    }
+  },
+  "required": [
+    "rewardWallet",
+    "points",
+    "blockchain"
+  ]
+}

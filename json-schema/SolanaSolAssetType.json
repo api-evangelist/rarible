@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SolanaSolAssetType",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "SOLANA_SOL"
+      ]
+    }
+  },
+  "required": [
+    "@type"
+  ]
+}

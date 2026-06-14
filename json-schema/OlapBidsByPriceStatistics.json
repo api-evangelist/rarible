@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapBidsByPriceStatistics",
+  "type": "object",
+  "properties": {
+    "maxVolumeNative": {
+      "type": "number",
+      "format": "bigdecimal"
+    },
+    "prices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OlapBidsByPrice"
+      }
+    },
+    "continuation": {
+      "type": "string",
+      "description": "Continuation token to paginate result"
+    }
+  },
+  "required": [
+    "prices",
+    "maxVolumeNative"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BestAtTimeOrdersResponse",
+  "type": "object",
+  "description": "K best orders at time",
+  "properties": {
+    "orders": {
+      "type": "array",
+      "description": "List of best orders, ordered from best to K-best",
+      "items": {
+        "$ref": "#/components/schemas/Order"
+      }
+    }
+  },
+  "required": [
+    "orders"
+  ]
+}

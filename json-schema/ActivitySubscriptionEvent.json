@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ActivitySubscriptionEvent",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "ACTIVITY"
+      ]
+    },
+    "value": {
+      "$ref": "#/components/schemas/Activity"
+    }
+  },
+  "required": [
+    "@type",
+    "value"
+  ]
+}

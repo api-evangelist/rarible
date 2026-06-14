@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapCollectionStatsFloorChangeData",
+  "type": "object",
+  "required": [
+    "period",
+    "currencyId",
+    "updatedAt"
+  ],
+  "properties": {
+    "period": {
+      "$ref": "#/components/schemas/OlapPeriod"
+    },
+    "currencyId": {
+      "$ref": "#/components/schemas/CurrencyId"
+    },
+    "floorNative": {
+      "type": "number",
+      "format": "bigdecimal",
+      "description": "floor price in native currency for the given period, if period is null it is global floor price"
+    },
+    "floorUsd": {
+      "type": "number",
+      "format": "bigdecimal",
+      "description": "floor price in usd for the given period, if period is null it is global floor price"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "when the value was updated"
+    },
+    "floorHistory": {
+      "description": "historical floor prices for the given period",
+      "$ref": "#/components/schemas/OlapHistoryValuesByTimestamps"
+    }
+  }
+}

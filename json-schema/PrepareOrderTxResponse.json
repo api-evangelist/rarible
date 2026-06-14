@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PrepareOrderTxResponse",
+  "type": "object",
+  "required": [
+    "asset",
+    "transaction",
+    "value"
+  ],
+  "properties": {
+    "transferProxyAddress": {
+      "$ref": "#/components/schemas/ContractAddress"
+    },
+    "asset": {
+      "$ref": "#/components/schemas/Asset"
+    },
+    "transaction": {
+      "$ref": "#/components/schemas/PreparedOrderTx"
+    },
+    "value": {
+      "$ref": "#/components/schemas/BigInteger"
+    }
+  }
+}

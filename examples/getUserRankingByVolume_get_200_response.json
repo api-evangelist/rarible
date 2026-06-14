@@ -1,0 +1,23 @@
+{
+  "operationId": "getUserRankingByVolume",
+  "method": "GET",
+  "path": "/v0.1/data/rankings/{entity}/volume",
+  "status": "200",
+  "response": {
+    "result": [
+      {
+        "id": "ETHEREUM:0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85",
+        "items": 178,
+        "transactions": 11,
+        "volumeUsd": {
+          "currency": "USD",
+          "value": 1000
+        },
+        "volumeNative": {
+          "currency": "ETH",
+          "value": 0.75
+        }
+      }
+    ]
+  }
+}

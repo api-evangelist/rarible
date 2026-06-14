@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ActivitySubscriptionRequest",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "ACTIVITY"
+      ]
+    },
+    "itemId": {
+      "$ref": "#/components/schemas/ItemId"
+    },
+    "collectionId": {
+      "$ref": "#/components/schemas/CollectionId"
+    },
+    "wallet": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "type": {
+      "$ref": "#/components/schemas/ActivityType"
+    }
+  },
+  "required": [
+    "@type"
+  ]
+}

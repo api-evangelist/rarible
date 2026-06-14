@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapCollectionVolumeChangeEvent",
+  "type": "object",
+  "required": [
+    "@type",
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OlapVolumeForPeriodData"
+      }
+    },
+    "@type": {
+      "type": "string",
+      "enum": [
+        "VOLUME_CHANGE"
+      ]
+    }
+  }
+}

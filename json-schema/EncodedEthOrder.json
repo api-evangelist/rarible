@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EncodedEthOrder",
+  "type": "object",
+  "required": [
+    "orderHash",
+    "signHash"
+  ],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "ETH_ORDER_ENCODE"
+      ]
+    },
+    "orderHash": {
+      "type": "string"
+    },
+    "signHash": {
+      "type": "string"
+    },
+    "transferProxy": {
+      "$ref": "#/components/schemas/UnionAddress"
+    }
+  }
+}

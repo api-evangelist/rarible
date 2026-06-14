@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FakeSubscriptionEvent",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "FAKE"
+      ]
+    }
+  },
+  "required": [
+    "@type"
+  ]
+}

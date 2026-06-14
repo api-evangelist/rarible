@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ItemWithOwnership",
+  "type": "object",
+  "properties": {
+    "item": {
+      "$ref": "#/components/schemas/Item"
+    },
+    "ownership": {
+      "$ref": "#/components/schemas/ItemOwnership"
+    }
+  },
+  "required": [
+    "item",
+    "ownership"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EthRaribleV2OrderData",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/EthOrderDataRaribleV2DataV1"
+    },
+    {
+      "$ref": "#/components/schemas/EthOrderDataRaribleV2DataV2"
+    },
+    {
+      "$ref": "#/components/schemas/EthOrderDataRaribleV2DataV3"
+    },
+    {
+      "$ref": "#/components/schemas/EthOrderDataRaribleV2DataV3Sell"
+    },
+    {
+      "$ref": "#/components/schemas/EthOrderDataRaribleV2DataV3Buy"
+    }
+  ]
+}

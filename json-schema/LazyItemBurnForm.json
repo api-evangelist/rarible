@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LazyItemBurnForm",
+  "type": "object",
+  "required": [
+    "id",
+    "creators",
+    "signatures"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "#/components/schemas/ItemId"
+    },
+    "creators": {
+      "type": "array",
+      "description": "Address of the NFT item creators",
+      "items": {
+        "$ref": "#/components/schemas/UnionAddress"
+      }
+    },
+    "signatures": {
+      "type": "array",
+      "description": "Digital signatures",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

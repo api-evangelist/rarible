@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Items",
+  "type": "object",
+  "properties": {
+    "total": {
+      "deprecated": true,
+      "type": "integer",
+      "format": "int64",
+      "description": "Number of items were found by request"
+    },
+    "continuation": {
+      "type": "string",
+      "description": "Continuation token to paginate items search result"
+    },
+    "items": {
+      "type": "array",
+      "description": "List of found items",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/Item"
+      }
+    }
+  },
+  "required": [
+    "items"
+  ]
+}

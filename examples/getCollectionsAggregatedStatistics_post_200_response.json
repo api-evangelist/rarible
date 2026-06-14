@@ -1,0 +1,11 @@
+{
+  "operationId": "getCollectionsAggregatedStatistics",
+  "method": "POST",
+  "path": "/v2.0/data/collections/statistics/aggregated",
+  "status": "200",
+  "response": {
+    "owners": 6472,
+    "highestSaleUsd": 37.66,
+    "volumeUsd": 37.66
+  }
+}

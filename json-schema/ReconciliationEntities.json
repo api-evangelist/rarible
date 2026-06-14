@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ReconciliationEntities",
+  "type": "object",
+  "properties": {
+    "entities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ReconciliationEntity"
+      }
+    },
+    "continuation": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "entities"
+  ]
+}

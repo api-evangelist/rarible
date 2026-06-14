@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TraitEntry",
+  "type": "object",
+  "description": "Combination of Item attribute key/value with it's count",
+  "required": [
+    "value",
+    "count"
+  ],
+  "properties": {
+    "value": {
+      "type": "string"
+    },
+    "count": {
+      "type": "integer",
+      "format": "int64"
+    }
+  }
+}

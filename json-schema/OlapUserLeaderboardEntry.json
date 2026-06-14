@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapUserLeaderboardEntry",
+  "required": [
+    "id",
+    "items",
+    "transactions",
+    "volumeNative",
+    "volumeUsd"
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identifier of user"
+    },
+    "volumeUsd": {
+      "$ref": "#/components/schemas/OlapCurrencyAmount"
+    },
+    "volumeNative": {
+      "$ref": "#/components/schemas/OlapCurrencyAmount"
+    },
+    "items": {
+      "type": "integer",
+      "description": "(non-unique) amount of traded items",
+      "format": "int64"
+    },
+    "transactions": {
+      "type": "integer",
+      "description": "Amount of transactions were made",
+      "format": "int64"
+    }
+  }
+}

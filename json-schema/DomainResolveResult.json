@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DomainResolveResult",
+  "type": "object",
+  "required": [
+    "blockchain",
+    "registrant"
+  ],
+  "properties": {
+    "blockchain": {
+      "$ref": "#/components/schemas/Blockchain"
+    },
+    "registrant": {
+      "type": "string",
+      "description": "Resolved domain value"
+    }
+  }
+}

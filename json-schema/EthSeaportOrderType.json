@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EthSeaportOrderType",
+  "type": "string",
+  "enum": [
+    "FULL_OPEN",
+    "PARTIAL_OPEN",
+    "FULL_RESTRICTED",
+    "PARTIAL_RESTRICTED",
+    "CONTRACT"
+  ]
+}

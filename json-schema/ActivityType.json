@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ActivityType",
+  "type": "string",
+  "enum": [
+    "TRANSFER",
+    "MINT",
+    "BURN",
+    "BID",
+    "LIST",
+    "SELL",
+    "CANCEL_LIST",
+    "CANCEL_BID",
+    "BRIDGE_TO",
+    "BRIDGE_FROM"
+  ]
+}

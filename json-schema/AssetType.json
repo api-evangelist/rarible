@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AssetType",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/NativeCurrencyAssetType"
+    },
+    {
+      "$ref": "#/components/schemas/TokenCurrencyAssetType"
+    },
+    {
+      "$ref": "#/components/schemas/NftAssetType"
+    },
+    {
+      "$ref": "#/components/schemas/NftOfCollectionAssetType"
+    },
+    {
+      "$ref": "#/components/schemas/EthEthereumAssetType"
+    },
+    {
+      "$ref": "#/components/schemas/EthErc20AssetType"
+    },
+    {
+      "$ref": "#/components/schemas/EthErc721AssetType"
+    },
+    {
+      "$ref": "#/components/schemas/EthErc721LazyAssetType"
+    },
+    {
+      "$ref": "#/components/schemas/EthErc1155AssetType"
+    },
+    {
+      "$ref": "#/components/schemas/EthErc1155LazyAssetType"
+    },
+    {
+      "$ref": "#/components/schemas/EthCryptoPunksAssetType"
+    },
+    {
+      "$ref": "#/components/schemas/EthGenerativeArtAssetType"
+    },
+    {
+      "$ref": "#/components/schemas/EthCollectionAssetType"
+    },
+    {
+      "$ref": "#/components/schemas/SolanaNftAssetType"
+    },
+    {
+      "$ref": "#/components/schemas/SolanaFtAssetType"
+    },
+    {
+      "$ref": "#/components/schemas/SolanaSolAssetType"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapCurrencyAmount",
+  "required": [
+    "currency",
+    "value"
+  ],
+  "type": "object",
+  "properties": {
+    "currency": {
+      "$ref": "#/components/schemas/OlapCurrencyType"
+    },
+    "value": {
+      "type": "number",
+      "description": "Amount of currency",
+      "format": "bigdecimal"
+    }
+  }
+}

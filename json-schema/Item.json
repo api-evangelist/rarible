@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Item",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/components/schemas/ItemId"
+    },
+    "blockchain": {
+      "$ref": "#/components/schemas/Blockchain"
+    },
+    "collection": {
+      "$ref": "#/components/schemas/CollectionId"
+    },
+    "contract": {
+      "$ref": "#/components/schemas/ContractAddress"
+    },
+    "tokenId": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "creators": {
+      "type": "array",
+      "description": "Creators of the target item",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/Creator"
+      }
+    },
+    "ownerIfSingle": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "ownerChangeDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lazySupply": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "pending": {
+      "type": "array",
+      "description": "Pending information about the item",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/ItemTransfer"
+      }
+    },
+    "mintedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time of the item minting"
+    },
+    "lastUpdatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Filter condition to return only items that have been updated at this date"
+    },
+    "supply": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "meta": {
+      "$ref": "#/components/schemas/Meta"
+    },
+    "deleted": {
+      "type": "boolean",
+      "description": "Item was deleted or not"
+    },
+    "bestSellOrder": {
+      "$ref": "#/components/schemas/Order"
+    },
+    "bestBidOrder": {
+      "$ref": "#/components/schemas/Order"
+    },
+    "bestBidOrdersByCurrency": {
+      "type": "array",
+      "description": "Contains best bid order for each currency if exists",
+      "items": {
+        "$ref": "#/components/schemas/Order"
+      }
+    },
+    "totalStock": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "sellers": {
+      "type": "integer",
+      "description": "Total count of users selling this item ATM"
+    },
+    "lastSale": {
+      "$ref": "#/components/schemas/ItemLastSale"
+    },
+    "self": {
+      "type": "boolean"
+    },
+    "suspicious": {
+      "type": "boolean"
+    },
+    "itemCollection": {
+      "$ref": "#/components/schemas/ItemCollection"
+    },
+    "features": {
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "NOT_FOR_SALE",
+          "LOCKED"
+        ]
+      }
+    },
+    "rarity": {
+      "$ref": "#/components/schemas/Rarity"
+    },
+    "extra": {
+      "type": "object",
+      "description": "Blockchain-specific information about this NFT item particular to that blockchain's data model",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "version": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "required": [
+    "id",
+    "blockchain",
+    "creators",
+    "lazySupply",
+    "pending",
+    "mintedAt",
+    "lastUpdatedAt",
+    "supply",
+    "deleted",
+    "sellers"
+  ]
+}

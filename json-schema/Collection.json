@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Collection",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/components/schemas/CollectionId"
+    },
+    "parent": {
+      "$ref": "#/components/schemas/CollectionId"
+    },
+    "blockchain": {
+      "$ref": "#/components/schemas/Blockchain"
+    },
+    "structure": {
+      "type": "string",
+      "enum": [
+        "REGULAR",
+        "COMPOSITE",
+        "PART"
+      ],
+      "description": "Collection structure can be described as:\n- REGULAR: a standalone collection that has a corresponding contract address on the blockchain.\n- COMPOSITE: an artificial collection that is composed of one or more regular collections or items.\n- PART: an artificial collection that is a part of a larger regular collection, thus has a parent collection.\n"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CRYPTO_PUNKS",
+        "ERC721",
+        "ERC1155",
+        "SOLANA",
+        "TOKEN_GROUP_2022",
+        "APTOS",
+        "STELLAR"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "ERROR",
+        "CONFIRMED"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "owner": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "features": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string",
+        "enum": [
+          "APPROVE_FOR_ALL",
+          "SET_URI_PREFIX",
+          "BURN",
+          "MINT_WITH_ADDRESS",
+          "SECONDARY_SALE_FEES",
+          "MINT_AND_TRANSFER",
+          "PAUSABLE",
+          "NOT_FOR_SALE"
+        ]
+      }
+    },
+    "minters": {
+      "type": "array",
+      "description": "List of addresses that can mint items in this collection",
+      "items": {
+        "$ref": "#/components/schemas/UnionAddress"
+      }
+    },
+    "meta": {
+      "$ref": "#/components/schemas/CollectionMeta"
+    },
+    "bestBidOrder": {
+      "$ref": "#/components/schemas/Order"
+    },
+    "bestSellOrder": {
+      "$ref": "#/components/schemas/Order"
+    },
+    "bestBidOrdersByCurrency": {
+      "type": "array",
+      "description": "Contains best bid order for each currency if exists",
+      "items": {
+        "$ref": "#/components/schemas/Order"
+      }
+    },
+    "self": {
+      "type": "boolean"
+    },
+    "scam": {
+      "deprecated": true,
+      "description": "Deprecated, use spamScore instead",
+      "type": "boolean",
+      "default": false
+    },
+    "spamScore": {
+      "description": "Spam score of the collection, 0 - not spam, 100 - spam",
+      "type": "integer",
+      "format": "int32"
+    },
+    "hasTraits": {
+      "type": "boolean",
+      "default": true
+    },
+    "shared": {
+      "type": "boolean",
+      "default": false
+    },
+    "extra": {
+      "type": "object",
+      "description": "Blockchain-specific information about this NFT collection particular to that blockchain's data model",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "lastUpdatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of last collection update in Union"
+    },
+    "version": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "required": [
+    "id",
+    "blockchain",
+    "name",
+    "type",
+    "features"
+  ]
+}

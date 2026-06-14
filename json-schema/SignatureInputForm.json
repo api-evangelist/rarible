@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SignatureInputForm",
+  "type": "object",
+  "description": "Form contains required data to generate input message for signing. All fields should be specified in 'native' manner, i.e. without BLOCKCHAIN prefixes",
+  "required": [
+    "blockchain"
+  ],
+  "properties": {
+    "blockchain": {
+      "$ref": "#/components/schemas/Blockchain"
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/OpenSeaFillOrderSignatureInputForm"
+    }
+  ]
+}

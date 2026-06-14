@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EthOrderDataRaribleV2DataV3Buy",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "ETH_RARIBLE_V2_DATA_V3_BUY"
+      ]
+    },
+    "payout": {
+      "$ref": "#/components/schemas/Payout"
+    },
+    "originFeeFirst": {
+      "$ref": "#/components/schemas/Payout"
+    },
+    "originFeeSecond": {
+      "$ref": "#/components/schemas/Payout"
+    },
+    "marketplaceMarker": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "@type"
+  ]
+}

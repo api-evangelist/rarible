@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapCurrencyAmountWithChange",
+  "required": [
+    "currency",
+    "value"
+  ],
+  "type": "object",
+  "properties": {
+    "currency": {
+      "$ref": "#/components/schemas/OlapCurrencyType"
+    },
+    "value": {
+      "type": "number",
+      "description": "Amount of currency",
+      "format": "bigdecimal"
+    },
+    "changePercent": {
+      "type": "number",
+      "description": "Change in percent. Calculated as <current period value> / <previous period value> - 1",
+      "format": "bigdecimal"
+    }
+  }
+}

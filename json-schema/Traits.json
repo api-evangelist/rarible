@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Traits",
+  "type": "object",
+  "properties": {
+    "continuation": {
+      "type": "string",
+      "description": "Continuation token to paginate traits search result"
+    },
+    "traits": {
+      "type": "array",
+      "description": "List of found traits",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/Trait"
+      }
+    }
+  },
+  "required": [
+    "traits"
+  ]
+}

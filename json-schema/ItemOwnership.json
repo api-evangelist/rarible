@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ItemOwnership",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/components/schemas/OwnershipId"
+    },
+    "blockchain": {
+      "$ref": "#/components/schemas/Blockchain"
+    },
+    "collection": {
+      "$ref": "#/components/schemas/CollectionId"
+    },
+    "owner": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "value": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "creators": {
+      "type": "array",
+      "description": "Creators of the target item",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/Creator"
+      }
+    },
+    "lazyValue": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "version": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "required": [
+    "id",
+    "blockchain",
+    "owner",
+    "value",
+    "createdAt",
+    "creators",
+    "lazyValue",
+    "pending"
+  ]
+}

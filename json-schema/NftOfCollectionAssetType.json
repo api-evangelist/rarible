@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NftOfCollectionAssetType",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "NFT_OF_COLLECTION"
+      ]
+    },
+    "collectionId": {
+      "$ref": "#/components/schemas/CollectionId"
+    }
+  },
+  "required": [
+    "@type",
+    "collectionId"
+  ]
+}

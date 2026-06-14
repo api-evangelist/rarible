@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapCollectionLeaderboardEntry",
+  "required": [
+    "id",
+    "itemsBought",
+    "listed",
+    "ownersCount",
+    "totalItemSupply",
+    "volumeNative",
+    "volumeUsd"
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identifier of collection"
+    },
+    "volumeUsd": {
+      "$ref": "#/components/schemas/OlapCurrencyAmountWithChange"
+    },
+    "volumeNative": {
+      "$ref": "#/components/schemas/OlapCurrencyAmount"
+    },
+    "itemsBought": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "floorPrice": {
+      "$ref": "#/components/schemas/OlapCurrencyAmountWithChange"
+    },
+    "listed": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "totalItemSupply": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "ownersCount": {
+      "type": "integer",
+      "format": "int32"
+    }
+  }
+}

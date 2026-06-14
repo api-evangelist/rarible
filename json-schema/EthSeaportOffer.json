@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EthSeaportOffer",
+  "type": "object",
+  "properties": {
+    "itemType": {
+      "$ref": "#/components/schemas/EthSeaportItemType"
+    },
+    "token": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "identifierOrCriteria": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "startAmount": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "endAmount": {
+      "$ref": "#/components/schemas/BigInteger"
+    }
+  },
+  "required": [
+    "itemType",
+    "token",
+    "identifierOrCriteria",
+    "startAmount",
+    "endAmount"
+  ]
+}

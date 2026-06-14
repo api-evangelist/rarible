@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EthLazyItem",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/EthLazyItemErc721"
+    },
+    {
+      "$ref": "#/components/schemas/EthLazyItemErc1155"
+    }
+  ]
+}

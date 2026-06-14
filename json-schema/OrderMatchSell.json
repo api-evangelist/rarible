@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OrderMatchSell",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "SELL"
+      ]
+    },
+    "nft": {
+      "$ref": "#/components/schemas/Asset"
+    },
+    "payment": {
+      "$ref": "#/components/schemas/Asset"
+    },
+    "buyer": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "seller": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "buyerOrderHash": {
+      "type": "string"
+    },
+    "sellerOrderHash": {
+      "type": "string"
+    },
+    "price": {
+      "$ref": "#/components/schemas/BigDecimal"
+    },
+    "priceUsd": {
+      "$ref": "#/components/schemas/BigDecimal"
+    },
+    "amountUsd": {
+      "$ref": "#/components/schemas/BigDecimal"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SELL",
+        "ACCEPT_BID"
+      ]
+    },
+    "sellMarketplaceMarker": {
+      "type": "string"
+    },
+    "buyMarketplaceMarker": {
+      "type": "string"
+    },
+    "raribleBuyerFees": {
+      "$ref": "#/components/schemas/FeesValue"
+    },
+    "raribleSellerFees": {
+      "$ref": "#/components/schemas/FeesValue"
+    }
+  },
+  "required": [
+    "nft",
+    "payment",
+    "price",
+    "type",
+    "buyer",
+    "seller"
+  ]
+}

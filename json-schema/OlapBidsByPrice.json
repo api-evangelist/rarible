@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapBidsByPrice",
+  "type": "object",
+  "properties": {
+    "price": {
+      "type": "number",
+      "format": "bigdecimal"
+    },
+    "bidsCount": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "volumeNative": {
+      "type": "number",
+      "format": "bigdecimal"
+    },
+    "buyersCount": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "buyer": {
+      "$ref": "#/components/schemas/UnionAddress"
+    }
+  },
+  "required": [
+    "price",
+    "bidsCount",
+    "volumeNative",
+    "volumeRatio",
+    "buyersCount"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapAggregatedCollectionStatisticsResponse",
+  "required": [
+    "highestSaleUsd",
+    "owners",
+    "volumeUsd"
+  ],
+  "type": "object",
+  "properties": {
+    "highestSaleUsd": {
+      "description": "Highest worth transaction in all collections",
+      "type": "number",
+      "format": "bigdecimal"
+    },
+    "volumeUsd": {
+      "description": "Total worth of all transactions were made with nfts in collections",
+      "type": "number",
+      "format": "bigdecimal"
+    },
+    "owners": {
+      "type": "integer",
+      "description": "Current amount of unique owners who hold nfts in collections",
+      "format": "int32"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "operationId": "getCollectionRankingByVolume",
+  "method": "GET",
+  "path": "/v0.1/data/rankings/collections/volume",
+  "status": "200",
+  "response": {
+    "continuation": "45325.07_ETHEREUM:0xe8f88d16f24255fcfab25959705d724406d67d9d",
+    "result": [
+      {
+        "id": "ETHEREUM:0xe8f88d16f24255fcfab25959705d724406d67d9d",
+        "volumeUsd": {
+          "currency": "USD",
+          "value": 45325.07,
+          "changePercent": -51.196335
+        },
+        "volumeNative": {
+          "currency": "ETH",
+          "value": 23.95
+        },
+        "itemsBought": 1,
+        "floorPrice": {
+          "currency": "ETH",
+          "value": 24.0,
+          "changePercent": -13.5332
+        },
+        "listed": 33,
+        "totalItemSupply": 250,
+        "ownersCount": 187
+      }
+    ]
+  }
+}

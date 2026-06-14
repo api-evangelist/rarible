@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CollectionEvent",
+  "type": "object",
+  "properties": {
+    "collectionId": {
+      "$ref": "#/components/schemas/CollectionId"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "eventTimeMarks": {
+      "$ref": "#/components/schemas/EventTimeMarks"
+    }
+  },
+  "required": [
+    "eventId",
+    "collectionId"
+  ],
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/CollectionUpdateEvent"
+    }
+  ]
+}

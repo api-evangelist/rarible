@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CurrencyId",
+  "type": "string",
+  "description": "Currency Id, has format `ETHEREUM:${token}` or `ETHEREUM:${token}:${tokenId}`",
+  "example": "ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+}

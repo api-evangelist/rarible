@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EthRaribleOrderForm",
+  "type": "object",
+  "required": [
+    "maker",
+    "make",
+    "take",
+    "signature",
+    "salt",
+    "endedAt"
+  ],
+  "properties": {
+    "maker": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "taker": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "make": {
+      "$ref": "#/components/schemas/EthOrderFormAsset"
+    },
+    "take": {
+      "$ref": "#/components/schemas/EthOrderFormAsset"
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "endedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "salt": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "signature": {
+      "type": "string"
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/EthRaribleV2OrderForm"
+    }
+  ]
+}

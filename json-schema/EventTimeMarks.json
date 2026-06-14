@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EventTimeMarks",
+  "type": "object",
+  "required": [
+    "source",
+    "marks"
+  ],
+  "properties": {
+    "source": {
+      "type": "string",
+      "description": "Describes what was the trigger of the event"
+    },
+    "marks": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/EventTimeMark"
+      }
+    }
+  }
+}

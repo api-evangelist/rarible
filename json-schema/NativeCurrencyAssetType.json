@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NativeCurrencyAssetType",
+  "type": "object",
+  "properties": {
+    "blockchain": {
+      "$ref": "#/components/schemas/Blockchain"
+    },
+    "contract": {
+      "$ref": "#/components/schemas/ContractAddress"
+    },
+    "@type": {
+      "type": "string",
+      "enum": [
+        "CURRENCY_NATIVE"
+      ]
+    }
+  },
+  "required": [
+    "@type",
+    "blockchain"
+  ]
+}

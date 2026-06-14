@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DuplicatedItem",
+  "type": "object",
+  "properties": {
+    "traitGroups": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ItemTraitProperty"
+      }
+    },
+    "count": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Number of duplicated items in the group"
+    },
+    "item": {
+      "$ref": "#/components/schemas/Item"
+    }
+  },
+  "required": [
+    "traitGroups",
+    "count",
+    "item"
+  ]
+}

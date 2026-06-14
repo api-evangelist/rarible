@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "L2WithdrawalActivity",
+  "type": "object",
+  "required": [
+    "@type",
+    "user",
+    "status",
+    "itemId"
+  ],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "L2_WITHDRAWAL"
+      ]
+    },
+    "user": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "status": {
+      "type": "string"
+    },
+    "itemId": {
+      "$ref": "#/components/schemas/ItemId"
+    },
+    "collection": {
+      "$ref": "#/components/schemas/CollectionId"
+    },
+    "value": {
+      "$ref": "#/components/schemas/BigInteger"
+    }
+  }
+}

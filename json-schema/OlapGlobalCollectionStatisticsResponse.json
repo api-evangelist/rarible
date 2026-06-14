@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapGlobalCollectionStatisticsResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/components/schemas/CollectionId"
+    },
+    "listed": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "items": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "owners": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "floor": {
+      "$ref": "#/components/schemas/OlapPriceWithUsd"
+    },
+    "volume": {
+      "description": "Total worth of all transactions with items in this collection",
+      "$ref": "#/components/schemas/OlapPriceWithUsd"
+    }
+  },
+  "required": [
+    "listed",
+    "items",
+    "owners",
+    "volume"
+  ]
+}

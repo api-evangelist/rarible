@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Rarity",
+  "type": "object",
+  "properties": {
+    "score": {
+      "type": "number",
+      "format": "float",
+      "description": "Higher score corresponds to a rarer item"
+    },
+    "rank": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Item with rank 1 is the rarest"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OrderData",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/RawOrderData"
+    },
+    {
+      "$ref": "#/components/schemas/EthOrderDataLegacy"
+    },
+    {
+      "$ref": "#/components/schemas/EthRaribleV2OrderData"
+    },
+    {
+      "$ref": "#/components/schemas/EthOrderOpenSeaV1DataV1"
+    },
+    {
+      "$ref": "#/components/schemas/EthOrderSeaportDataV1"
+    },
+    {
+      "$ref": "#/components/schemas/EthOrderCryptoPunksData"
+    },
+    {
+      "$ref": "#/components/schemas/SolanaAuctionHouseDataV1"
+    }
+  ]
+}

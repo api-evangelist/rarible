@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LazyItem",
+  "type": "object",
+  "required": [
+    "id",
+    "uri",
+    "creators",
+    "royalties",
+    "signatures"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "#/components/schemas/ItemId"
+    },
+    "uri": {
+      "type": "string"
+    },
+    "creators": {
+      "type": "array",
+      "description": "Addresses of the NFT item creators",
+      "items": {
+        "$ref": "#/components/schemas/Creator"
+      }
+    },
+    "royalties": {
+      "type": "array",
+      "description": "List of royalties",
+      "items": {
+        "$ref": "#/components/schemas/Royalty"
+      }
+    },
+    "signatures": {
+      "type": "array",
+      "description": "Digital signatures",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "description": "Type of an Asset",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/EthLazyItem"
+    }
+  ]
+}

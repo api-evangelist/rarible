@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ownerships",
+  "type": "object",
+  "properties": {
+    "total": {
+      "deprecated": true,
+      "type": "integer",
+      "format": "int64",
+      "description": "Number of ownerships were found by request"
+    },
+    "continuation": {
+      "type": "string",
+      "description": "Continuation token to paginate Ownerships search result"
+    },
+    "ownerships": {
+      "type": "array",
+      "default": [],
+      "description": "List of found ownerships",
+      "items": {
+        "$ref": "#/components/schemas/Ownership"
+      }
+    }
+  },
+  "required": [
+    "ownerships"
+  ]
+}

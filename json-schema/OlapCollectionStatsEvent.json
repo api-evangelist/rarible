@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapCollectionStatsEvent",
+  "type": "object",
+  "required": [
+    "collectionId",
+    "eventId",
+    "data"
+  ],
+  "properties": {
+    "eventId": {
+      "type": "string"
+    },
+    "collectionId": {
+      "$ref": "#/components/schemas/CollectionId"
+    },
+    "eventTimeMarks": {
+      "$ref": "#/components/schemas/EventTimeMarks"
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/OlapCollectionStatsVolumeChangeEvent"
+    },
+    {
+      "$ref": "#/components/schemas/OlapCollectionStatsFloorChangeEvent"
+    },
+    {
+      "$ref": "#/components/schemas/OlapCollectionStatsTopOfferChangeEvent"
+    }
+  ]
+}

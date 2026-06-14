@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EthSeaportItemType",
+  "type": "string",
+  "enum": [
+    "NATIVE",
+    "ERC20",
+    "ERC721",
+    "ERC1155",
+    "ERC721_WITH_CRITERIA",
+    "ERC1155_WITH_CRITERIA"
+  ]
+}

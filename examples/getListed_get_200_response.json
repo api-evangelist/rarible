@@ -1,0 +1,19 @@
+{
+  "operationId": "getListed",
+  "method": "GET",
+  "path": "/v0.1/data/collections/{collection}/listed",
+  "status": "200",
+  "response": {
+    "historicalDates": [
+      "2022-05-08",
+      "2022-05-09",
+      "2022-05-10"
+    ],
+    "historicalValues": [
+      524,
+      791,
+      1619
+    ],
+    "currentValue": 1767
+  }
+}

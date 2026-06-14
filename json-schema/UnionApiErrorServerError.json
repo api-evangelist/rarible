@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UnionApiErrorServerError",
+  "required": [
+    "code",
+    "message"
+  ],
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN"
+      ],
+      "default": "UNKNOWN"
+    },
+    "message": {
+      "type": "string",
+      "description": "Error message"
+    }
+  }
+}

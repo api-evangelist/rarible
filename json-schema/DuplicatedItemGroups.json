@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DuplicatedItemGroups",
+  "type": "object",
+  "properties": {
+    "continuation": {
+      "type": "string",
+      "description": "Continuation token to paginate duplicates"
+    },
+    "groups": {
+      "type": "array",
+      "description": "List of duplicated item groups",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/DuplicatedItem"
+      }
+    }
+  },
+  "required": [
+    "groups"
+  ]
+}

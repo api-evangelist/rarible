@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Platform",
+  "type": "string",
+  "enum": [
+    "RARIBLE",
+    "OPEN_SEA",
+    "CRYPTO_PUNKS",
+    "HEN",
+    "OBJKT",
+    "VERSUM",
+    "TEIA",
+    "OTHER",
+    "FXHASH"
+  ]
+}

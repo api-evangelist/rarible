@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapGeneralStatsResponse",
+  "required": [
+    "highestSale",
+    "items",
+    "listed",
+    "owners",
+    "volume"
+  ],
+  "type": "object",
+  "properties": {
+    "highestSale": {
+      "type": "number",
+      "description": "Highest worth transaction in collection",
+      "format": "bigdecimal"
+    },
+    "floorPrice": {
+      "type": "number",
+      "description": "Minimal price of nft in this collection available on rarible",
+      "format": "bigdecimal"
+    },
+    "marketCap": {
+      "type": "number",
+      "description": "Market cap of collection (floor price * total item supply)",
+      "format": "bigdecimal"
+    },
+    "listed": {
+      "type": "integer",
+      "description": "Amount of currently listed items",
+      "format": "int32"
+    },
+    "items": {
+      "type": "integer",
+      "description": "Total item supply of all nfts in the collection",
+      "format": "int32"
+    },
+    "owners": {
+      "type": "integer",
+      "description": "Current amount of unique owners who hold nfts of this collection",
+      "format": "int32"
+    },
+    "volume": {
+      "type": "number",
+      "description": "Total worth of all transactions were made with nfts in this collection",
+      "format": "bigdecimal"
+    }
+  }
+}

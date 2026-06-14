@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SalesChart",
+  "type": "object",
+  "properties": {
+    "cursor": {
+      "type": "string",
+      "description": "Combined continuation token to paginate search result"
+    },
+    "dates": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    "pricesNative": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BigDecimal"
+      }
+    },
+    "itemIds": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ItemId"
+      }
+    }
+  },
+  "required": [
+    "dates",
+    "pricesNative",
+    "itemIds"
+  ]
+}

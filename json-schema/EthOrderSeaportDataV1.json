@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EthOrderSeaportDataV1",
+  "type": "object",
+  "properties": {
+    "protocol": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "orderType": {
+      "$ref": "#/components/schemas/EthSeaportOrderType"
+    },
+    "offer": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EthSeaportOffer"
+      }
+    },
+    "consideration": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EthSeaportConsideration"
+      }
+    },
+    "zone": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "zoneHash": {
+      "type": "string"
+    },
+    "conduitKey": {
+      "type": "string"
+    },
+    "counter": {
+      "deprecated": true,
+      "type": "integer",
+      "format": "int64"
+    },
+    "nonce": {
+      "$ref": "#/components/schemas/BigInteger"
+    }
+  },
+  "required": [
+    "protocol",
+    "orderType",
+    "offer",
+    "consideration",
+    "zone",
+    "zoneHash",
+    "conduitKey"
+  ],
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/EthOrderBasicSeaportDataV1"
+    }
+  ]
+}

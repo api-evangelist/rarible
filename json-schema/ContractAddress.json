@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ContractAddress",
+  "type": "string",
+  "description": "Blockchain contract address in Union format `ETHEREUM:${token}`",
+  "example": "ETHEREUM:0xd07dc4262bcdbf85190c01c996b4c06a461d2430"
+}

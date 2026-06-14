@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Range",
+  "type": "object",
+  "properties": {
+    "from": {
+      "type": "number",
+      "format": "float"
+    },
+    "to": {
+      "type": "number",
+      "format": "float"
+    }
+  }
+}

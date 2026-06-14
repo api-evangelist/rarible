@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CollectionsSearchRequest",
+  "type": "object",
+  "description": "Complex search request for collections",
+  "required": [
+    "size",
+    "filter"
+  ],
+  "properties": {
+    "size": {
+      "minimum": 1,
+      "maximum": 1000,
+      "default": 50,
+      "type": "integer",
+      "format": "int32",
+      "description": "Number of entities returned"
+    },
+    "continuation": {
+      "type": "string",
+      "description": "Continuation token to paginate collections search result"
+    },
+    "filter": {
+      "$ref": "#/components/schemas/CollectionsSearchFilter"
+    }
+  }
+}

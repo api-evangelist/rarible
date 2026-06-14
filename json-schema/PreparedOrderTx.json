@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PreparedOrderTx",
+  "type": "object",
+  "required": [
+    "to",
+    "data"
+  ],
+  "properties": {
+    "to": {
+      "$ref": "#/components/schemas/ContractAddress"
+    },
+    "data": {
+      "type": "string"
+    }
+  }
+}

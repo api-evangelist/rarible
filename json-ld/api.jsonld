@@ -1,0 +1,20 @@
+{
+  "@context": "https://raw.githubusercontent.com/api-evangelist/rarible/main/json-ld/context.jsonld",
+  "@type": "schema:WebAPI",
+  "@id": "https://api.rarible.org/v0.1",
+  "schema:name": "OpenAPI definition",
+  "schema:description": "Rarible multichain NFT marketplace and aggregator API",
+  "schema:version": "v0.1",
+  "schema:url": "https://api.rarible.org/v0.1",
+  "schema:documentation": "https://docs.rarible.org",
+  "schema:license": "https://rarible.org/terms",
+  "schema:provider": {
+    "@type": "schema:Organization",
+    "schema:name": "Rarible",
+    "schema:url": "https://rarible.com"
+  },
+  "schema:offers": {
+    "@type": "schema:Offer",
+    "schema:url": "https://rarible.org/pricing"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BurnActivity",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "BURN"
+      ]
+    },
+    "owner": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "contract": {
+      "$ref": "#/components/schemas/ContractAddress"
+    },
+    "collection": {
+      "$ref": "#/components/schemas/CollectionId"
+    },
+    "tokenId": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "itemId": {
+      "$ref": "#/components/schemas/ItemId"
+    },
+    "value": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "transactionHash": {
+      "type": "string"
+    },
+    "blockchainInfo": {
+      "$ref": "#/components/schemas/ActivityBlockchainInfo"
+    }
+  },
+  "required": [
+    "@type",
+    "owner",
+    "value",
+    "transactionHash"
+  ]
+}

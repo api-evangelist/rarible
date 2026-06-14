@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SubscriptionRequest",
+  "type": "object",
+  "properties": {
+    "action": {
+      "$ref": "#/components/schemas/SubscriptionAction"
+    }
+  },
+  "required": [
+    "action"
+  ],
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/ItemSubscriptionRequest"
+    },
+    {
+      "$ref": "#/components/schemas/OwnershipSubscriptionRequest"
+    },
+    {
+      "$ref": "#/components/schemas/ItemOwnershipSubscriptionRequest"
+    },
+    {
+      "$ref": "#/components/schemas/OrdersSubscriptionRequest"
+    },
+    {
+      "$ref": "#/components/schemas/OrdersByItemSubscriptionRequest"
+    },
+    {
+      "$ref": "#/components/schemas/OrdersByCollectionSubscriptionRequest"
+    },
+    {
+      "$ref": "#/components/schemas/ActivitySubscriptionRequest"
+    }
+  ]
+}

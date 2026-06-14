@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CollectionsSearchFilter",
+  "type": "object",
+  "description": "Filter for collections search query",
+  "properties": {
+    "blockchains": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Blockchain"
+      }
+    },
+    "text": {
+      "type": "string",
+      "example": "Apes"
+    }
+  },
+  "required": [
+    "text"
+  ]
+}

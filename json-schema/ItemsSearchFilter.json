@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ItemsSearchFilter",
+  "type": "object",
+  "description": "Filter for items search query",
+  "properties": {
+    "blockchains": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Blockchain"
+      }
+    },
+    "collections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CollectionId"
+      }
+    },
+    "deleted": {
+      "type": "boolean",
+      "default": false,
+      "example": "false"
+    },
+    "names": {
+      "deprecated": true,
+      "description": "Deprecated. Please, use fullText instead",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": "MutantApeYachtClub"
+      }
+    },
+    "fullText": {
+      "$ref": "#/components/schemas/ItemSearchFullText"
+    },
+    "traits": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ItemTraitProperty"
+      }
+    },
+    "traitRanges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TraitRange"
+      }
+    },
+    "creators": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UnionAddress"
+      }
+    },
+    "owners": {
+      "type": "array",
+      "description": "owner of single item",
+      "items": {
+        "$ref": "#/components/schemas/UnionAddress"
+      }
+    },
+    "mintedAtFrom": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2021-08-25T00:00:00Z"
+    },
+    "mintedAtTo": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2029-12-01T00:00:00Z"
+    },
+    "lastUpdatedAtFrom": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2021-08-25T00:00:00Z"
+    },
+    "lastUpdatedAtTo": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2029-12-01T00:00:00Z"
+    },
+    "sellPriceFrom": {
+      "type": "number",
+      "format": "double",
+      "example": "0"
+    },
+    "sellPriceTo": {
+      "type": "number",
+      "format": "double",
+      "example": "999999"
+    },
+    "sellCurrency": {
+      "type": "string",
+      "example": "ETHEREUM:0x0000000000000000000000000000000000000000"
+    },
+    "sellPlatforms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Platform"
+      }
+    },
+    "rarityRankFrom": {
+      "type": "integer",
+      "format": "int32",
+      "example": "${rarityRankFrom}"
+    },
+    "rarityRankTo": {
+      "type": "integer",
+      "format": "int32",
+      "example": "${rarityRankTo}"
+    },
+    "bidPriceFrom": {
+      "type": "number",
+      "format": "double",
+      "example": "0"
+    },
+    "bidPriceTo": {
+      "type": "number",
+      "format": "double",
+      "example": "999999"
+    },
+    "bidCurrency": {
+      "type": "string",
+      "example": "ETHEREUM:0x0000000000000000000000000000000000000000"
+    },
+    "bidPlatforms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Platform"
+      }
+    },
+    "onSale": {
+      "type": "boolean"
+    }
+  }
+}

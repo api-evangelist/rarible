@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExtendedTraitProperties",
+  "type": "object",
+  "properties": {
+    "continuation": {
+      "type": "string",
+      "description": "Continuation token to paginate result"
+    },
+    "traits": {
+      "type": "array",
+      "description": "List of ExtendedTraitProperty",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/ExtendedTraitProperty"
+      }
+    }
+  },
+  "required": [
+    "traits"
+  ]
+}

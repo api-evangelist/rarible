@@ -1,0 +1,19 @@
+{
+  "operationId": "getGmv",
+  "method": "GET",
+  "path": "/v0.1/data/collections/{collection}/gmv",
+  "status": "200",
+  "response": {
+    "historicalDates": [
+      "2022-05-05",
+      "2022-05-06",
+      "2022-05-07"
+    ],
+    "historicalValues": [
+      10934.527094503102,
+      7876.5886882554005,
+      1164.1458323599143
+    ],
+    "currentValue": 498.19370351666873
+  }
+}

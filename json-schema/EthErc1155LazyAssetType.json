@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EthErc1155LazyAssetType",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "ERC1155_Lazy"
+      ]
+    },
+    "contract": {
+      "$ref": "#/components/schemas/ContractAddress"
+    },
+    "collection": {
+      "$ref": "#/components/schemas/CollectionId"
+    },
+    "tokenId": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "uri": {
+      "type": "string"
+    },
+    "supply": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "creators": {
+      "type": "array",
+      "description": "Creators of the target item",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/Creator"
+      }
+    },
+    "royalties": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/Royalty"
+      }
+    },
+    "signatures": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "@type",
+    "contract",
+    "tokenId",
+    "uri",
+    "creators",
+    "supply",
+    "royalties",
+    "signatures"
+  ]
+}

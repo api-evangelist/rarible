@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OrdersByItemSubscriptionRequest",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "ORDERS_BY_ITEM"
+      ]
+    },
+    "itemId": {
+      "$ref": "#/components/schemas/ItemId"
+    },
+    "platform": {
+      "$ref": "#/components/schemas/Platform"
+    },
+    "orderType": {
+      "$ref": "#/components/schemas/OrderType"
+    }
+  },
+  "required": [
+    "@type",
+    "itemId"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CollectionId",
+  "type": "string",
+  "description": "Collection id",
+  "example": "ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8"
+}

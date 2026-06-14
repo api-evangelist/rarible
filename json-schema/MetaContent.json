@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MetaContent",
+  "type": "object",
+  "properties": {
+    "fileName": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "representation": {
+      "type": "string",
+      "enum": [
+        "PREVIEW",
+        "BIG",
+        "INITIAL",
+        "ORIGINAL",
+        "PORTRAIT"
+      ]
+    },
+    "mimeType": {
+      "type": "string",
+      "example": "image/png"
+    },
+    "size": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "available": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "url",
+    "representation"
+  ],
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/ImageContent"
+    },
+    {
+      "$ref": "#/components/schemas/VideoContent"
+    },
+    {
+      "$ref": "#/components/schemas/AudioContent"
+    },
+    {
+      "$ref": "#/components/schemas/Model3dContent"
+    },
+    {
+      "$ref": "#/components/schemas/HtmlContent"
+    }
+  ]
+}

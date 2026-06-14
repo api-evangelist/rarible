@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Collections",
+  "type": "object",
+  "properties": {
+    "total": {
+      "deprecated": true,
+      "type": "integer",
+      "format": "int64",
+      "description": "Number of ownerships were found by request"
+    },
+    "continuation": {
+      "type": "string",
+      "description": "Continuation token to paginate collections search result"
+    },
+    "collections": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Collection"
+      }
+    }
+  },
+  "required": [
+    "collections"
+  ]
+}

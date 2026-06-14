@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EncodedOrder",
+  "type": "object",
+  "required": [
+    "blockchain"
+  ],
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/EncodedEthOrder"
+    }
+  ],
+  "properties": {
+    "blockchain": {
+      "$ref": "#/components/schemas/Blockchain"
+    }
+  }
+}

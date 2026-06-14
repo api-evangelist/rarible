@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ActivityUserFilter",
+  "type": "object",
+  "properties": {
+    "any": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UnionAddress"
+      }
+    },
+    "from": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UnionAddress"
+      }
+    },
+    "to": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UnionAddress"
+      }
+    }
+  }
+}

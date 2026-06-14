@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OrderBidActivity",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "BID"
+      ]
+    },
+    "orderId": {
+      "$ref": "#/components/schemas/OrderId"
+    },
+    "hash": {
+      "type": "string"
+    },
+    "maker": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "make": {
+      "$ref": "#/components/schemas/Asset"
+    },
+    "take": {
+      "$ref": "#/components/schemas/Asset"
+    },
+    "price": {
+      "$ref": "#/components/schemas/BigDecimal"
+    },
+    "priceUsd": {
+      "$ref": "#/components/schemas/BigDecimal"
+    },
+    "source": {
+      "$ref": "#/components/schemas/OrderActivitySource"
+    },
+    "marketplaceMarker": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "@type",
+    "hash",
+    "maker",
+    "make",
+    "take",
+    "price"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EthOrderBasicSeaportDataV1",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "ETH_BASIC_SEAPORT_DATA_V1"
+      ]
+    }
+  },
+  "required": [
+    "@type"
+  ]
+}

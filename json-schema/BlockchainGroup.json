@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BlockchainGroup",
+  "type": "string",
+  "enum": [
+    "APTOS",
+    "ETHEREUM",
+    "SOLANA",
+    "STELLAR"
+  ]
+}

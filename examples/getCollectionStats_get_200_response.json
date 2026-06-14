@@ -1,0 +1,14 @@
+{
+  "operationId": "getCollectionStats",
+  "method": "GET",
+  "path": "/v0.1/data/collections/{collection}/stats",
+  "status": "200",
+  "response": {
+    "highestSale": 43.71,
+    "floorPrice": 1.45,
+    "marketCap": 14529,
+    "items": 10020,
+    "owners": 6472,
+    "volume": 41913.50477591493
+  }
+}

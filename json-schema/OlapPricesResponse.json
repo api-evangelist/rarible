@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapPricesResponse",
+  "required": [
+    "avgPrices",
+    "dates",
+    "medianPrices",
+    "minPrices",
+    "sumPrices"
+  ],
+  "type": "object",
+  "properties": {
+    "dates": {
+      "type": "array",
+      "description": "Dates of historical statistics",
+      "items": {
+        "type": "string",
+        "description": "Dates of historical statistics"
+      }
+    },
+    "avgPrices": {
+      "type": "array",
+      "description": "Average prices of nfts in this collection for every date",
+      "items": {
+        "type": "number",
+        "description": "Average price of nfts in this collection for specific date",
+        "format": "bigdecimal"
+      }
+    },
+    "medianPrices": {
+      "type": "array",
+      "description": "Median prices of nfts in this collection for every date",
+      "items": {
+        "type": "number",
+        "description": "Median price of nfts in this collection for specific date",
+        "format": "bigdecimal"
+      }
+    },
+    "minPrices": {
+      "type": "array",
+      "description": "Minimum prices of nfts in this collection for every date",
+      "items": {
+        "type": "number",
+        "description": "Minimum price of nfts in this collection for specific date",
+        "format": "bigdecimal"
+      }
+    },
+    "sumPrices": {
+      "type": "array",
+      "description": "Volumes for the collection for every date",
+      "items": {
+        "type": "number",
+        "description": "Collection volume for specific date",
+        "format": "bigdecimal"
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Activity",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/components/schemas/ActivityId"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "cursor": {
+      "type": "string"
+    },
+    "reverted": {
+      "type": "boolean"
+    },
+    "version": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/MintActivity"
+    },
+    {
+      "$ref": "#/components/schemas/BurnActivity"
+    },
+    {
+      "$ref": "#/components/schemas/TransferActivity"
+    },
+    {
+      "$ref": "#/components/schemas/SendToChainActivity"
+    },
+    {
+      "$ref": "#/components/schemas/ReceiveFromChainActivity"
+    },
+    {
+      "$ref": "#/components/schemas/OrderMatchActivity"
+    },
+    {
+      "$ref": "#/components/schemas/OrderBidActivity"
+    },
+    {
+      "$ref": "#/components/schemas/OrderListActivity"
+    },
+    {
+      "$ref": "#/components/schemas/OrderCancelBidActivity"
+    },
+    {
+      "$ref": "#/components/schemas/OrderCancelListActivity"
+    },
+    {
+      "$ref": "#/components/schemas/L2DepositActivity"
+    },
+    {
+      "$ref": "#/components/schemas/L2WithdrawalActivity"
+    }
+  ],
+  "required": [
+    "id",
+    "date"
+  ]
+}

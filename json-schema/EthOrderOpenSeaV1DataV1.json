@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EthOrderOpenSeaV1DataV1",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "enum": [
+        "ETH_OPEN_SEA_V1"
+      ]
+    },
+    "exchange": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "makerRelayerFee": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "takerRelayerFee": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "makerProtocolFee": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "takerProtocolFee": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "feeRecipient": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "feeMethod": {
+      "type": "string",
+      "enum": [
+        "PROTOCOL_FEE",
+        "SPLIT_FEE"
+      ]
+    },
+    "side": {
+      "type": "string",
+      "enum": [
+        "BUY",
+        "SELL"
+      ]
+    },
+    "saleKind": {
+      "type": "string",
+      "enum": [
+        "FIXED_PRICE",
+        "DUTCH_AUCTION"
+      ]
+    },
+    "howToCall": {
+      "type": "string",
+      "enum": [
+        "CALL",
+        "DELEGATE_CALL"
+      ]
+    },
+    "callData": {
+      "type": "string"
+    },
+    "replacementPattern": {
+      "type": "string"
+    },
+    "staticTarget": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "staticExtraData": {
+      "type": "string"
+    },
+    "extra": {
+      "$ref": "#/components/schemas/BigInteger"
+    }
+  },
+  "required": [
+    "@type",
+    "dataType",
+    "exchange",
+    "makerRelayerFee",
+    "takerRelayerFee",
+    "makerProtocolFee",
+    "takerProtocolFee",
+    "feeRecipient",
+    "feeMethod",
+    "side",
+    "saleKind",
+    "howToCall",
+    "callData",
+    "replacementPattern",
+    "staticTarget",
+    "staticExtraData",
+    "extra"
+  ]
+}

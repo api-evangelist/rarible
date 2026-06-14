@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapCollectionStatsTopOfferChangeData",
+  "type": "object",
+  "required": [
+    "currencyId",
+    "updatedAt"
+  ],
+  "properties": {
+    "currencyId": {
+      "$ref": "#/components/schemas/CurrencyId"
+    },
+    "topOfferNative": {
+      "type": "number",
+      "format": "bigdecimal",
+      "description": "top offer price in native currency for the given period, if period is null it is global top offer price"
+    },
+    "topOfferUsd": {
+      "type": "number",
+      "format": "bigdecimal",
+      "description": "top offer price in usd for the given period, if period is null it is global top offer price"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "when the value was updated"
+    }
+  }
+}

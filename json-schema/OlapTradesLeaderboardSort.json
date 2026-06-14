@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapTradesLeaderboardSort",
+  "type": "string",
+  "default": "VOLUME_USD_DESC",
+  "enum": [
+    "VOLUME_USD_ASC",
+    "VOLUME_USD_DESC",
+    "COLLECTION_ASC",
+    "COLLECTION_DESC"
+  ],
+  "description": "Sort order:\n  * `VOLUME_USD_ASC` - sort by usd collection volume, ascending order\n  * `VOLUME_USD_DESC` - sort by usd collection volume, descending order\n  * `COLLECTION_ASC` - sort by collection id, ascending order\n  * `COLLECTION_DESC` - sort by collection id, descending order\n"
+}

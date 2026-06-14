@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExtendedTraitProperty",
+  "type": "object",
+  "description": "Trait property parameters with additional features",
+  "required": [
+    "key",
+    "value",
+    "rarity"
+  ],
+  "properties": {
+    "key": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "rarity": {
+      "type": "number",
+      "format": "bigdecimal",
+      "description": "Rarity percent"
+    }
+  }
+}

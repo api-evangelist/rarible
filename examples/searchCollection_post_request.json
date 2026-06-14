@@ -1,0 +1,14 @@
+{
+  "operationId": "searchCollection",
+  "method": "POST",
+  "path": "/v0.1/collections/search",
+  "requestBody": {
+    "size": 10,
+    "filter": {
+      "blockchains": [
+        "ETHEREUM"
+      ],
+      "text": "Apes"
+    }
+  }
+}

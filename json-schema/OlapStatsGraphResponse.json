@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapStatsGraphResponse",
+  "required": [
+    "historicalDates",
+    "historicalValues"
+  ],
+  "type": "object",
+  "properties": {
+    "historicalDates": {
+      "type": "array",
+      "description": "Dates of historical statistics",
+      "items": {
+        "type": "string",
+        "description": "Dates of historical statistics"
+      }
+    },
+    "historicalValues": {
+      "type": "array",
+      "description": "Values of historical statistics",
+      "items": {
+        "type": "number",
+        "description": "Values of historical statistics",
+        "format": "bigdecimal"
+      }
+    },
+    "currentValue": {
+      "type": "number",
+      "description": "Current value",
+      "format": "bigdecimal"
+    }
+  }
+}

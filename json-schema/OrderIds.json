@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OrderIds",
+  "type": "object",
+  "required": [
+    "ids"
+  ],
+  "properties": {
+    "ids": {
+      "type": "array",
+      "description": "Array of the orders Ids in format 'ETHEREUM:${id}'",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

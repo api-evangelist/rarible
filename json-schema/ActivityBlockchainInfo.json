@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ActivityBlockchainInfo",
+  "type": "object",
+  "deprecated": true,
+  "properties": {
+    "transactionHash": {
+      "type": "string"
+    },
+    "blockHash": {
+      "type": "string"
+    },
+    "blockNumber": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "logIndex": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "transactionHash",
+    "blockHash",
+    "blockNumber",
+    "logIndex"
+  ]
+}

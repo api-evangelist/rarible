@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ItemsSearchSort",
+  "type": "string",
+  "enum": [
+    "RELEVANCE",
+    "LATEST",
+    "RECENTLY_LISTED",
+    "EARLIEST",
+    "HIGHEST_SELL",
+    "LOWEST_SELL",
+    "HIGHEST_BID",
+    "LOWEST_BID",
+    "TRAIT",
+    "NAME_ASC",
+    "NAME_DESC",
+    "OWNER_CHANGE_DATE",
+    "RARITY_ASC",
+    "RARITY_DESC"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Asset",
+  "type": "object",
+  "properties": {
+    "type": {
+      "$ref": "#/components/schemas/AssetType"
+    },
+    "value": {
+      "$ref": "#/components/schemas/BigDecimal"
+    }
+  },
+  "required": [
+    "type",
+    "value"
+  ]
+}

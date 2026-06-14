@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Order",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/components/schemas/OrderId"
+    },
+    "fill": {
+      "$ref": "#/components/schemas/BigDecimal"
+    },
+    "platform": {
+      "$ref": "#/components/schemas/Platform"
+    },
+    "status": {
+      "$ref": "#/components/schemas/OrderStatus"
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "endedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "makeStock": {
+      "$ref": "#/components/schemas/BigDecimal"
+    },
+    "cancelled": {
+      "type": "boolean"
+    },
+    "optionalRoyalties": {
+      "type": "boolean",
+      "description": "True if the execution of this order does not guarantee that the royalties will be paid. In this case, it is up to the buyer to pay the royalties.",
+      "default": false
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "dbUpdatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "makePrice": {
+      "$ref": "#/components/schemas/BigDecimal"
+    },
+    "takePrice": {
+      "$ref": "#/components/schemas/BigDecimal"
+    },
+    "makePriceUsd": {
+      "$ref": "#/components/schemas/BigDecimal"
+    },
+    "takePriceUsd": {
+      "$ref": "#/components/schemas/BigDecimal"
+    },
+    "maker": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "taker": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "make": {
+      "$ref": "#/components/schemas/Asset"
+    },
+    "take": {
+      "$ref": "#/components/schemas/Asset"
+    },
+    "salt": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "feeTakers": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/UnionAddress"
+      }
+    },
+    "data": {
+      "$ref": "#/components/schemas/OrderData"
+    },
+    "version": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "required": [
+    "id",
+    "platform",
+    "status",
+    "fill",
+    "makeStock",
+    "cancelled",
+    "createdAt",
+    "lastUpdatedAt",
+    "type",
+    "maker",
+    "make",
+    "take",
+    "salt",
+    "data"
+  ]
+}

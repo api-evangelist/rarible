@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TraitRange",
+  "type": "object",
+  "description": "Trait value range",
+  "required": [
+    "key",
+    "valueRange"
+  ],
+  "properties": {
+    "key": {
+      "type": "string",
+      "example": "Hat"
+    },
+    "valueRange": {
+      "$ref": "#/components/schemas/Range"
+    }
+  }
+}

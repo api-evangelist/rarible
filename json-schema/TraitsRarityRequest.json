@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TraitsRarityRequest",
+  "type": "object",
+  "description": "Request rarity of the properties in the collection",
+  "required": [
+    "collectionId",
+    "properties"
+  ],
+  "properties": {
+    "collectionId": {
+      "type": "string",
+      "example": "ETHEREUM:0x60e4d786628fea6478f785a6d7e704777c86a7c6"
+    },
+    "properties": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TraitProperty"
+      }
+    }
+  }
+}

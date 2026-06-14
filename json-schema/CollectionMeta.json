@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CollectionMeta",
+  "required": [
+    "name",
+    "content"
+  ],
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the collection"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the collection"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "genres": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "language": {
+      "description": "Language in RFC 1176 format",
+      "type": "string"
+    },
+    "rights": {
+      "type": "string"
+    },
+    "rightsUri": {
+      "type": "string"
+    },
+    "externalUri": {
+      "description": "URI to external page related to the collection",
+      "type": "string"
+    },
+    "originalMetaUri": {
+      "description": "URI to the original meta JSON",
+      "type": "string"
+    },
+    "content": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MetaContent"
+      }
+    },
+    "externalLink": {
+      "type": "string",
+      "description": "External link to the original website for the collection"
+    },
+    "sellerFeeBasisPoints": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Indicates a 1% seller fee"
+    },
+    "feeRecipient": {
+      "$ref": "#/components/schemas/UnionAddress"
+    }
+  }
+}

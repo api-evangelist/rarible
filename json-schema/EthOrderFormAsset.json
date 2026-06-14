@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EthOrderFormAsset",
+  "type": "object",
+  "required": [
+    "assetType",
+    "value"
+  ],
+  "properties": {
+    "assetType": {
+      "$ref": "#/components/schemas/AssetType"
+    },
+    "value": {
+      "$ref": "#/components/schemas/BigInteger"
+    }
+  }
+}

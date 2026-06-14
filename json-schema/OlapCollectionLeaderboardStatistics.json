@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapCollectionLeaderboardStatistics",
+  "type": "object",
+  "required": [
+    "listed",
+    "items",
+    "owners"
+  ],
+  "properties": {
+    "listed": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "items": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "owners": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "floor": {
+      "$ref": "#/components/schemas/OlapPriceWithUsd"
+    },
+    "topOffer": {
+      "$ref": "#/components/schemas/OlapPriceWithUsd"
+    }
+  }
+}

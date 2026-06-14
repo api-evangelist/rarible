@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ItemTraitProperty",
+  "type": "object",
+  "description": "Item trait property",
+  "required": [
+    "key"
+  ],
+  "properties": {
+    "key": {
+      "type": "string",
+      "example": "Hat"
+    },
+    "value": {
+      "type": "string",
+      "example": "Halo"
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

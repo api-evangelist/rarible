@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RewardEntities",
+  "type": "object",
+  "properties": {
+    "entities": {
+      "type": "array",
+      "description": "List of reward entities",
+      "items": {
+        "$ref": "#/components/schemas/RewardEntity"
+      }
+    },
+    "continuation": {
+      "type": "string",
+      "description": "Continuation token to paginate rewards search result"
+    }
+  },
+  "required": [
+    "entities"
+  ]
+}

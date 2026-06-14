@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ownership",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/components/schemas/OwnershipId"
+    },
+    "blockchain": {
+      "$ref": "#/components/schemas/Blockchain"
+    },
+    "itemId": {
+      "$ref": "#/components/schemas/ItemId"
+    },
+    "contract": {
+      "$ref": "#/components/schemas/ContractAddress"
+    },
+    "collection": {
+      "$ref": "#/components/schemas/CollectionId"
+    },
+    "tokenId": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "owner": {
+      "$ref": "#/components/schemas/UnionAddress"
+    },
+    "value": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "source": {
+      "$ref": "#/components/schemas/OwnershipSource"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "creators": {
+      "type": "array",
+      "deprecated": true,
+      "description": "Creators of the target item",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/Creator"
+      }
+    },
+    "lazyValue": {
+      "$ref": "#/components/schemas/BigInteger"
+    },
+    "pending": {
+      "type": "array",
+      "description": "Pending information about the item",
+      "default": [],
+      "items": {
+        "$ref": "#/components/schemas/ItemHistory"
+      }
+    },
+    "bestSellOrder": {
+      "$ref": "#/components/schemas/Order"
+    },
+    "version": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "required": [
+    "id",
+    "blockchain",
+    "owner",
+    "value",
+    "createdAt",
+    "lazyValue",
+    "pending"
+  ]
+}

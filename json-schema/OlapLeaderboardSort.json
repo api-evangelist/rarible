@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OlapLeaderboardSort",
+  "type": "string",
+  "default": "VOLUME",
+  "enum": [
+    "VOLUME",
+    "VOLUME_CHANGE",
+    "FLOOR",
+    "FLOOR_CHANGE",
+    "SALES",
+    "SALES_CHANGE",
+    "LISTED",
+    "OWNERS"
+  ]
+}

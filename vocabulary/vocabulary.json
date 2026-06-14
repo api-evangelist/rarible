@@ -1,0 +1,2093 @@
+{
+  "title": "Rarible API Vocabulary",
+  "description": "Terms, tags, operations, and schema types from the Rarible NFT API",
+  "source": "https://api.rarible.org/v0.1/openapi.yaml",
+  "terms": [
+    {
+      "term": "Search API",
+      "type": "tag",
+      "description": "",
+      "controller": "SearchController"
+    },
+    {
+      "term": "NFT Items",
+      "type": "tag",
+      "description": "",
+      "controller": "ItemController"
+    },
+    {
+      "term": "NFT Ownerships",
+      "type": "tag",
+      "description": "",
+      "controller": "OwnershipController"
+    },
+    {
+      "term": "NFT Sales",
+      "type": "tag",
+      "description": "",
+      "controller": "OrderController"
+    },
+    {
+      "term": "NFT Activities",
+      "type": "tag",
+      "description": "",
+      "controller": "ActivityController"
+    },
+    {
+      "term": "NFT Collections",
+      "type": "tag",
+      "description": "",
+      "controller": "CollectionController"
+    },
+    {
+      "term": "Collection Leader Board",
+      "type": "tag",
+      "description": "",
+      "controller": "CollectionLeaderboardController"
+    },
+    {
+      "term": "Collection Statistics",
+      "type": "tag",
+      "description": "",
+      "controller": "CollectionStatisticsController"
+    },
+    {
+      "term": "Charts",
+      "type": "tag",
+      "description": "",
+      "controller": "ChartController"
+    },
+    {
+      "term": "NFT Data and Historical Statistics",
+      "type": "tag",
+      "description": "",
+      "controller": "DataController"
+    },
+    {
+      "term": "Domain lookup",
+      "type": "tag",
+      "description": "",
+      "controller": "DomainController"
+    },
+    {
+      "term": "Signature operations",
+      "type": "tag",
+      "description": "",
+      "controller": "SignatureController"
+    },
+    {
+      "term": "Encode operations",
+      "type": "tag",
+      "description": "",
+      "controller": "EncodeController"
+    },
+    {
+      "term": "Currencies and rates",
+      "type": "tag",
+      "description": "",
+      "controller": "CurrencyController"
+    },
+    {
+      "term": "User balances",
+      "type": "tag",
+      "description": "",
+      "controller": "BalanceController"
+    },
+    {
+      "term": "Indexer blocks",
+      "type": "tag",
+      "description": "",
+      "controller": "BlockController"
+    },
+    {
+      "term": "Reconciliation",
+      "type": "tag",
+      "description": "",
+      "controller": "ReconciliationController"
+    },
+    {
+      "term": "Points",
+      "type": "tag",
+      "description": "",
+      "controller": "PointsController"
+    },
+    {
+      "term": "Get NFT by Id",
+      "type": "operation",
+      "path": "/v0.1/items/{itemId}",
+      "method": "GET",
+      "operationId": "getItemById",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Get NFT by Ids",
+      "type": "operation",
+      "path": "/v0.1/items/byIds",
+      "method": "POST",
+      "operationId": "getItemByIds",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Get NFT royalties by Id",
+      "type": "operation",
+      "path": "/v0.1/items/{itemId}/royalties",
+      "method": "GET",
+      "operationId": "getItemRoyaltiesById",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Reset NFT metadata",
+      "type": "operation",
+      "path": "/v0.1/items/{itemId}/resetMeta",
+      "method": "DELETE",
+      "operationId": "resetItemMeta",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Get NFT owned by user",
+      "type": "operation",
+      "path": "/v0.1/items/byOwner",
+      "method": "GET",
+      "operationId": "getItemsByOwner",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Get NFT created by user",
+      "type": "operation",
+      "path": "/v0.1/items/byCreator",
+      "method": "GET",
+      "operationId": "getItemsByCreator",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Get NFT from collection",
+      "type": "operation",
+      "path": "/v0.1/items/byCollection",
+      "method": "GET",
+      "operationId": "getItemsByCollection",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Get NFT owned by user - detailed",
+      "type": "operation",
+      "path": "/v0.1/items/byOwnerWithOwnership",
+      "method": "GET",
+      "operationId": "getItemsByOwnerWithOwnership",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Get all NFTs",
+      "type": "operation",
+      "path": "/v0.1/items/all",
+      "method": "GET",
+      "operationId": "getAllItems",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Get NFT collection traits",
+      "type": "operation",
+      "path": "/v0.1/items/traits",
+      "method": "GET",
+      "operationId": "queryTraits",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Search NFT collection traits",
+      "type": "operation",
+      "path": "/v0.1/items/traits/search",
+      "method": "GET",
+      "operationId": "searchTraits",
+      "tags": [
+        "Search API"
+      ]
+    },
+    {
+      "term": "Get NFT traits rarity",
+      "type": "operation",
+      "path": "/v0.1/items/traits/rarity",
+      "method": "POST",
+      "operationId": "queryTraitsWithRarity",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Search NFTs",
+      "type": "operation",
+      "path": "/v0.1/items/search",
+      "method": "POST",
+      "operationId": "searchItems",
+      "tags": [
+        "Search API"
+      ]
+    },
+    {
+      "term": "Search Duplicated NFTs",
+      "type": "operation",
+      "path": "/v0.1/items/search/duplicates",
+      "method": "POST",
+      "operationId": "searchDuplicatedItems",
+      "tags": [
+        "Search API"
+      ]
+    },
+    {
+      "term": "Get Lazy NFT",
+      "type": "operation",
+      "path": "/v0.1/items/lazy/{itemId}",
+      "method": "GET",
+      "operationId": "getLazyItemById",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Mint Lazy NFT",
+      "type": "operation",
+      "path": "/v0.1/items/lazy/mint",
+      "method": "POST",
+      "operationId": "mintLazyItem",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Burn Lazy NFT",
+      "type": "operation",
+      "path": "/v0.1/items/lazy/burn",
+      "method": "POST",
+      "operationId": "burnLazyItem",
+      "tags": [
+        "NFT Items"
+      ]
+    },
+    {
+      "term": "Get NFT Ownership by Id",
+      "type": "operation",
+      "path": "/v0.1/ownerships/{ownershipId}",
+      "method": "GET",
+      "operationId": "getOwnershipById",
+      "tags": [
+        "NFT Ownerships"
+      ]
+    },
+    {
+      "term": "Get NFT Ownerships by Ids",
+      "type": "operation",
+      "path": "/v0.1/ownerships/byIds",
+      "method": "POST",
+      "operationId": "getOwnershipsByIds",
+      "tags": [
+        "NFT Ownerships"
+      ]
+    },
+    {
+      "term": "Get NFT Collection's Ownerships",
+      "type": "operation",
+      "path": "/v0.1/ownerships/byCollection",
+      "method": "GET",
+      "operationId": "getOwnershipsByCollection",
+      "tags": [
+        "NFT Ownerships"
+      ]
+    },
+    {
+      "term": "Get NFTs Ownerships",
+      "type": "operation",
+      "path": "/v0.1/ownerships/byItem",
+      "method": "GET",
+      "operationId": "getOwnershipsByItem",
+      "tags": [
+        "NFT Ownerships"
+      ]
+    },
+    {
+      "term": "Search NFT Ownerships",
+      "type": "operation",
+      "path": "/v0.1/ownerships/search",
+      "method": "POST",
+      "operationId": "searchOwnerships",
+      "tags": [
+        "Search API"
+      ]
+    },
+    {
+      "term": "Get collections owned items by owner",
+      "type": "operation",
+      "path": "/v0.1/ownerships/collections",
+      "method": "GET",
+      "operationId": "getCollectionsWithOwnedItems",
+      "tags": [
+        "NFT Ownerships"
+      ]
+    },
+    {
+      "term": "Get Order",
+      "type": "operation",
+      "path": "/v0.1/orders/{id}",
+      "method": "GET",
+      "operationId": "getOrderById",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Prepare order transaction",
+      "type": "operation",
+      "path": "/v0.1/orders/{id}/prepareTx",
+      "method": "POST",
+      "operationId": "prepareOrderTransaction",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Prepare order cancel transaction",
+      "type": "operation",
+      "path": "/v0.1/orders/{id}/prepareCancelTx",
+      "method": "POST",
+      "operationId": "prepareOrderCancelTransaction",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Report Order",
+      "type": "operation",
+      "path": "/v0.1/orders/{id}/report",
+      "method": "POST",
+      "operationId": "reportOrderById",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Create or update Order",
+      "type": "operation",
+      "path": "/v0.1/orders",
+      "method": "POST",
+      "operationId": "upsertOrder",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get validated Order by Id",
+      "type": "operation",
+      "path": "/v0.1/orders/{id}/validate",
+      "method": "GET",
+      "operationId": "getValidatedOrderById",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get Orders by Ids",
+      "type": "operation",
+      "path": "/v0.1/orders/byIds",
+      "method": "POST",
+      "operationId": "getOrdersByIds",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get all Orders",
+      "type": "operation",
+      "path": "/v0.1/orders/all",
+      "method": "GET",
+      "operationId": "getOrdersAll",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get all Orders (for sync)",
+      "type": "operation",
+      "path": "/v0.1/orders/sync",
+      "method": "GET",
+      "operationId": "getAllSync",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get user's sell Orders",
+      "type": "operation",
+      "path": "/v0.1/orders/sell/byMaker",
+      "method": "GET",
+      "operationId": "getSellOrdersByMaker",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get sell Orders for NFT",
+      "type": "operation",
+      "path": "/v0.1/orders/sell/byItem",
+      "method": "GET",
+      "operationId": "getSellOrdersByItem",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get sell Orders",
+      "type": "operation",
+      "path": "/v0.1/orders/sell",
+      "method": "GET",
+      "operationId": "getSellOrders",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get user's bid Orders",
+      "type": "operation",
+      "path": "/v0.1/orders/bids/byMaker",
+      "method": "GET",
+      "operationId": "getOrderBidsByMaker",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get bid Orders for NFT",
+      "type": "operation",
+      "path": "/v0.1/orders/bids/byItem",
+      "method": "GET",
+      "operationId": "getOrderBidsByItem",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get floor bids for Collection",
+      "type": "operation",
+      "path": "/v0.1/orders/floorBids/byCollection",
+      "method": "GET",
+      "operationId": "getOrderFloorBidsByCollection",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get fee settings",
+      "type": "operation",
+      "path": "/v0.1/orders/settings/fees",
+      "method": "GET",
+      "operationId": "getOrderFees",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get historical best active orders in a collection",
+      "type": "operation",
+      "path": "/v0.1/orders/history/bestActiveAtTime",
+      "method": "GET",
+      "operationId": "getBestActiveOrdersAtTime",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get historical active orders in a collection closest in price to the specified order at the time",
+      "type": "operation",
+      "path": "/v0.1/orders/history/closestActiveAtTime/byOrder",
+      "method": "GET",
+      "operationId": "getClosestActiveOrdersAtTimeByOrder",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get historical active orders in a collection closest to the specified price",
+      "type": "operation",
+      "path": "/v0.1/orders/history/closestActiveAtTime/byPrice",
+      "method": "GET",
+      "operationId": "getClosestActiveOrdersAtTimeByPrice",
+      "tags": [
+        "NFT Sales"
+      ]
+    },
+    {
+      "term": "Get user Activities",
+      "type": "operation",
+      "path": "/v0.1/activities/byUser",
+      "method": "GET",
+      "operationId": "getActivitiesByUser",
+      "tags": [
+        "NFT Activities"
+      ]
+    },
+    {
+      "term": "Get users Activities",
+      "type": "operation",
+      "path": "/v0.1/activities/byUsers",
+      "method": "POST",
+      "operationId": "getActivitiesByUsers",
+      "tags": [
+        "NFT Activities"
+      ]
+    },
+    {
+      "term": "Get NFT Activities",
+      "type": "operation",
+      "path": "/v0.1/activities/byItem",
+      "method": "GET",
+      "operationId": "getActivitiesByItem",
+      "tags": [
+        "NFT Activities"
+      ]
+    },
+    {
+      "term": "Get NFT Collection Activities",
+      "type": "operation",
+      "path": "/v0.1/activities/byCollection",
+      "method": "GET",
+      "operationId": "getActivitiesByCollection",
+      "tags": [
+        "NFT Activities"
+      ]
+    },
+    {
+      "term": "Get all Activities (for sync)",
+      "type": "operation",
+      "path": "/v0.1/activities/sync",
+      "method": "GET",
+      "operationId": "getAllActivitiesSync",
+      "tags": [
+        "NFT Activities"
+      ]
+    },
+    {
+      "term": "Get all Activities",
+      "type": "operation",
+      "path": "/v0.1/activities/all",
+      "method": "GET",
+      "operationId": "getAllActivities",
+      "tags": [
+        "NFT Activities"
+      ]
+    },
+    {
+      "term": "Get sales chart",
+      "type": "operation",
+      "path": "/v0.1/collections/{id}/charts/sales",
+      "method": "GET",
+      "operationId": "getSalesChart",
+      "tags": [
+        "NFT Activities"
+      ]
+    },
+    {
+      "term": "Search Activities",
+      "type": "operation",
+      "path": "/v0.1/activities/search",
+      "method": "POST",
+      "operationId": "searchActivities",
+      "tags": [
+        "Search API"
+      ]
+    },
+    {
+      "term": "Count activities that match the search request",
+      "type": "operation",
+      "path": "/v0.1/activities/search/count",
+      "method": "POST",
+      "operationId": "searchActivitiesCount",
+      "tags": [
+        "Search API"
+      ]
+    },
+    {
+      "term": "Get NFT Collection by Id",
+      "type": "operation",
+      "path": "/v0.1/collections/{collection}",
+      "method": "GET",
+      "operationId": "getCollectionById",
+      "tags": [
+        "NFT Collections"
+      ]
+    },
+    {
+      "term": "Generate TokenId",
+      "type": "operation",
+      "path": "/v0.1/collections/{collection}/generateTokenId",
+      "method": "GET",
+      "operationId": "generateTokenId",
+      "tags": [
+        "NFT Collections"
+      ]
+    },
+    {
+      "term": "Reset Collection metadata",
+      "type": "operation",
+      "path": "/v0.1/collections/{collection}/resetMeta",
+      "method": "DELETE",
+      "operationId": "resetCollectionMeta",
+      "tags": [
+        "NFT Collections"
+      ]
+    },
+    {
+      "term": "Get NFT Collections owned by user",
+      "type": "operation",
+      "path": "/v0.1/collections/byOwner",
+      "method": "GET",
+      "operationId": "getCollectionsByOwner",
+      "tags": [
+        "NFT Collections"
+      ]
+    },
+    {
+      "term": "Get all NFT Collections",
+      "type": "operation",
+      "path": "/v0.1/collections/all",
+      "method": "GET",
+      "operationId": "getAllCollections",
+      "tags": [
+        "NFT Collections"
+      ]
+    },
+    {
+      "term": "Search NFT Collections",
+      "type": "operation",
+      "path": "/v0.1/collections/search",
+      "method": "POST",
+      "operationId": "searchCollection",
+      "tags": [
+        "Search API"
+      ]
+    },
+    {
+      "term": "Get user volume",
+      "type": "operation",
+      "path": "/v0.1/data/rankings/{entity}/volume",
+      "method": "GET",
+      "operationId": "getUserRankingByVolume",
+      "tags": [
+        "NFT Data and Historical Statistics"
+      ]
+    },
+    {
+      "term": "Get NFT Collections volume",
+      "type": "operation",
+      "path": "/v0.1/data/rankings/collections/volume",
+      "method": "GET",
+      "operationId": "getCollectionRankingByVolume",
+      "tags": [
+        "NFT Data and Historical Statistics"
+      ]
+    },
+    {
+      "term": "Get NFT Collections leaderboard",
+      "type": "operation",
+      "path": "/v2.0/data/leaderboard/collections",
+      "method": "GET",
+      "operationId": "getCollectionLeaderboard",
+      "tags": [
+        "Collection Leader Board"
+      ]
+    },
+    {
+      "term": "Get NFT Collections leaderboard for a specific owner addresses",
+      "type": "operation",
+      "path": "/v2.0/data/leaderboard/collections/byOwner",
+      "method": "GET",
+      "operationId": "getCollectionLeaderboardByOwner",
+      "tags": [
+        "Collection Leader Board"
+      ]
+    },
+    {
+      "term": "Get global (period-independent) statistics by collection ID",
+      "type": "operation",
+      "path": "/v2.0/data/collections/{id}/statistics/global",
+      "method": "GET",
+      "operationId": "getGlobalCollectionStatistics",
+      "tags": [
+        "Collection Statistics"
+      ]
+    },
+    {
+      "term": "Get global (period-independent) statistics by collection IDs",
+      "type": "operation",
+      "path": "/v2.0/data/collections/statistics/global/byIds",
+      "method": "POST",
+      "operationId": "getGlobalCollectionStatisticsByIds",
+      "tags": [
+        "Collection Statistics"
+      ]
+    },
+    {
+      "term": "Get NFT Collections aggregated statistics",
+      "type": "operation",
+      "path": "/v2.0/data/collections/statistics/aggregated",
+      "method": "POST",
+      "operationId": "getCollectionsAggregatedStatistics",
+      "tags": [
+        "Collection Statistics"
+      ]
+    },
+    {
+      "term": "Get period-based statistics by collection ID",
+      "type": "operation",
+      "path": "/v2.0/data/collections/{id}/statistics/period",
+      "method": "GET",
+      "operationId": "getPeriodCollectionStatistics",
+      "tags": [
+        "Collection Statistics"
+      ]
+    },
+    {
+      "term": "Get period-based statistics by collection IDs",
+      "type": "operation",
+      "path": "/v2.0/data/collections/statistics/period/byIds",
+      "method": "POST",
+      "operationId": "getPeriodCollectionStatisticsByIds",
+      "tags": [
+        "Collection Statistics"
+      ]
+    },
+    {
+      "term": "Get distribution of the number of owned items by owner",
+      "type": "operation",
+      "path": "/v2.0/data/collections/{id}/owners",
+      "method": "GET",
+      "operationId": "getOwners",
+      "tags": [
+        "Collection Statistics"
+      ]
+    },
+    {
+      "term": "Get distribution of the number of bids by price",
+      "type": "operation",
+      "path": "/v2.0/data/collections/{id}/bidsByPrice",
+      "method": "GET",
+      "operationId": "getBidsByPrice",
+      "tags": [
+        "Collection Statistics"
+      ]
+    },
+    {
+      "term": "Get historical data of floor price for collection for charting purposes",
+      "type": "operation",
+      "path": "/v2.0/data/collections/{id}/charts/floorPrice",
+      "method": "GET",
+      "operationId": "getFloorPriceChart",
+      "tags": [
+        "Charts"
+      ]
+    },
+    {
+      "term": "Get historical data of collection volume (total sales worth) for charting purposes",
+      "type": "operation",
+      "path": "/v2.0/data/collections/{id}/charts/volume",
+      "method": "GET",
+      "operationId": "getVolumeChart",
+      "tags": [
+        "Charts"
+      ]
+    },
+    {
+      "term": "Get NFT Collection tx stats",
+      "type": "operation",
+      "path": "/v0.1/data/collections/{collection}/transactions",
+      "method": "GET",
+      "operationId": "getTransactions",
+      "tags": [
+        "NFT Data and Historical Statistics"
+      ]
+    },
+    {
+      "term": "Get NFT Collection stats",
+      "type": "operation",
+      "path": "/v0.1/data/collections/{collection}/stats",
+      "method": "GET",
+      "operationId": "getCollectionStats",
+      "tags": [
+        "NFT Data and Historical Statistics"
+      ]
+    },
+    {
+      "term": "Get NFT Collection statistics",
+      "type": "operation",
+      "path": "/v0.1/data/collections/{collection}/statistics",
+      "method": "GET",
+      "operationId": "getCollectionStatistics",
+      "tags": [
+        "NFT Data and Historical Statistics"
+      ]
+    },
+    {
+      "term": "Get NFT Collection seller stats",
+      "type": "operation",
+      "path": "/v0.1/data/collections/{collection}/sellers",
+      "method": "GET",
+      "operationId": "getSellers",
+      "tags": [
+        "NFT Data and Historical Statistics"
+      ]
+    },
+    {
+      "term": "Get NFT Collections GVM",
+      "type": "operation",
+      "path": "/v0.1/data/collections/{collection}/gmv",
+      "method": "GET",
+      "operationId": "getGmv",
+      "tags": [
+        "NFT Data and Historical Statistics"
+      ]
+    },
+    {
+      "term": "Get NFT Collection floor price",
+      "type": "operation",
+      "path": "/v0.1/data/collections/{collection}/floorPrice",
+      "method": "GET",
+      "operationId": "getFloorPrice",
+      "tags": [
+        "NFT Data and Historical Statistics"
+      ]
+    },
+    {
+      "term": "Get NFT Collection buyer stats",
+      "type": "operation",
+      "path": "/v0.1/data/collections/{collection}/buyers",
+      "method": "GET",
+      "operationId": "getBuyers",
+      "tags": [
+        "NFT Data and Historical Statistics"
+      ]
+    },
+    {
+      "term": "Get NFT Collection listing stats",
+      "type": "operation",
+      "path": "/v0.1/data/collections/{collection}/listed",
+      "method": "GET",
+      "operationId": "getListed",
+      "tags": [
+        "NFT Data and Historical Statistics"
+      ]
+    },
+    {
+      "term": "Resolve domain",
+      "type": "operation",
+      "path": "/v0.1/domains/{domain}/resolution",
+      "method": "POST",
+      "operationId": "resolve",
+      "tags": [
+        "Domain lookup"
+      ]
+    },
+    {
+      "term": "Check Order's signature",
+      "type": "operation",
+      "path": "/v0.1/signature/validate",
+      "method": "POST",
+      "operationId": "validate",
+      "tags": [
+        "Signature operations"
+      ]
+    },
+    {
+      "term": "Generate signed input",
+      "type": "operation",
+      "path": "/v0.1/signature/input",
+      "method": "POST",
+      "operationId": "getInput",
+      "tags": [
+        "Signature operations"
+      ]
+    },
+    {
+      "term": "Generate order encode data for sign operations",
+      "type": "operation",
+      "path": "/v0.1/encode/order",
+      "method": "POST",
+      "operationId": "encode",
+      "tags": [
+        "Encode operations"
+      ]
+    },
+    {
+      "term": "Get USD rate",
+      "type": "operation",
+      "path": "/v0.1/currencies/{currencyId}/rates/usd",
+      "method": "GET",
+      "operationId": "getUsdRate",
+      "tags": [
+        "Currencies and rates"
+      ]
+    },
+    {
+      "term": "Get supported currencies",
+      "type": "operation",
+      "path": "/v0.1/currencies/all",
+      "method": "GET",
+      "operationId": "getAllCurrencies",
+      "tags": [
+        "Currencies and rates"
+      ]
+    },
+    {
+      "term": "Get balance",
+      "type": "operation",
+      "path": "/v0.1/balances/{currencyId}/{owner}",
+      "method": "GET",
+      "operationId": "getBalance",
+      "tags": [
+        "User balances"
+      ]
+    },
+    {
+      "term": "Get the leaderboard of awarded points across blockchains",
+      "type": "operation",
+      "path": "/v0.1/points/rewards",
+      "method": "GET",
+      "operationId": "getPointsRewards",
+      "tags": [
+        "Points"
+      ]
+    },
+    {
+      "term": "Get awarded points by address",
+      "type": "operation",
+      "path": "/v0.1/points/rewards/{address}",
+      "method": "GET",
+      "operationId": "getPointsRewardsByAddress",
+      "tags": [
+        "Points"
+      ]
+    },
+    {
+      "term": "Sign a message to claim rewards",
+      "type": "operation",
+      "path": "/v0.1/points/claim/signature",
+      "method": "GET",
+      "operationId": "getClaimSignature",
+      "tags": [
+        "Points"
+      ]
+    },
+    {
+      "term": "Get IDs of items updated after a specific datetime.",
+      "type": "operation",
+      "path": "/v0.1/reconciliation/items",
+      "method": "GET",
+      "operationId": "getReconciliationItems",
+      "tags": [
+        "Reconciliation"
+      ]
+    },
+    {
+      "term": "Get IDs of collections updated after a specific datetime.",
+      "type": "operation",
+      "path": "/v0.1/reconciliation/collections",
+      "method": "GET",
+      "operationId": "getReconciliationCollections",
+      "tags": [
+        "Reconciliation"
+      ]
+    },
+    {
+      "term": "Get latest indexed block",
+      "type": "operation",
+      "path": "/v0.1/blocks/latestIndexed",
+      "method": "GET",
+      "operationId": "getLatestIndexedBlock",
+      "tags": [
+        "Indexer blocks"
+      ]
+    },
+    {
+      "term": "Platform",
+      "type": "schema"
+    },
+    {
+      "term": "Blockchain",
+      "type": "schema"
+    },
+    {
+      "term": "BlockchainGroup",
+      "type": "schema"
+    },
+    {
+      "term": "Payout",
+      "type": "schema"
+    },
+    {
+      "term": "OrderFees",
+      "type": "schema"
+    },
+    {
+      "term": "BestAtTimeOrdersResponse",
+      "type": "schema"
+    },
+    {
+      "term": "EventTimeMarks",
+      "type": "schema"
+    },
+    {
+      "term": "EventTimeMark",
+      "type": "schema"
+    },
+    {
+      "term": "DomainResolveResult",
+      "type": "schema"
+    },
+    {
+      "term": "SignatureValidationForm",
+      "type": "schema"
+    },
+    {
+      "term": "SignatureInputForm",
+      "type": "schema"
+    },
+    {
+      "term": "OpenSeaFillOrderSignatureInputForm",
+      "type": "schema"
+    },
+    {
+      "term": "SignatureInput",
+      "type": "schema"
+    },
+    {
+      "term": "EncodedOrder",
+      "type": "schema"
+    },
+    {
+      "term": "EncodedEthOrder",
+      "type": "schema"
+    },
+    {
+      "term": "Balance",
+      "type": "schema"
+    },
+    {
+      "term": "CurrencyId",
+      "type": "schema"
+    },
+    {
+      "term": "CurrencyUsdRate",
+      "type": "schema"
+    },
+    {
+      "term": "Currency",
+      "type": "schema"
+    },
+    {
+      "term": "Currencies",
+      "type": "schema"
+    },
+    {
+      "term": "Meta",
+      "type": "schema"
+    },
+    {
+      "term": "MetaAttribute",
+      "type": "schema"
+    },
+    {
+      "term": "MetaContent",
+      "type": "schema"
+    },
+    {
+      "term": "ImageContent",
+      "type": "schema"
+    },
+    {
+      "term": "VideoContent",
+      "type": "schema"
+    },
+    {
+      "term": "AudioContent",
+      "type": "schema"
+    },
+    {
+      "term": "Model3dContent",
+      "type": "schema"
+    },
+    {
+      "term": "HtmlContent",
+      "type": "schema"
+    },
+    {
+      "term": "ItemId",
+      "type": "schema"
+    },
+    {
+      "term": "ItemIds",
+      "type": "schema"
+    },
+    {
+      "term": "Item",
+      "type": "schema"
+    },
+    {
+      "term": "ItemCollection",
+      "type": "schema"
+    },
+    {
+      "term": "ItemLastSale",
+      "type": "schema"
+    },
+    {
+      "term": "Rarity",
+      "type": "schema"
+    },
+    {
+      "term": "ItemWithOwnership",
+      "type": "schema"
+    },
+    {
+      "term": "Items",
+      "type": "schema"
+    },
+    {
+      "term": "DuplicatedItemGroups",
+      "type": "schema"
+    },
+    {
+      "term": "DuplicatedItem",
+      "type": "schema"
+    },
+    {
+      "term": "ItemsWithOwnership",
+      "type": "schema"
+    },
+    {
+      "term": "LazyItem",
+      "type": "schema"
+    },
+    {
+      "term": "EthLazyItem",
+      "type": "schema"
+    },
+    {
+      "term": "EthLazyItemErc1155",
+      "type": "schema"
+    },
+    {
+      "term": "EthLazyItemErc721",
+      "type": "schema"
+    },
+    {
+      "term": "LazyItemMintForm",
+      "type": "schema"
+    },
+    {
+      "term": "LazyItemBurnForm",
+      "type": "schema"
+    },
+    {
+      "term": "CollectionEvent",
+      "type": "schema"
+    },
+    {
+      "term": "CollectionUpdateEvent",
+      "type": "schema"
+    },
+    {
+      "term": "ItemEvent",
+      "type": "schema"
+    },
+    {
+      "term": "ItemUpdateEvent",
+      "type": "schema"
+    },
+    {
+      "term": "ItemDeleteEvent",
+      "type": "schema"
+    },
+    {
+      "term": "Traits",
+      "type": "schema"
+    },
+    {
+      "term": "Trait",
+      "type": "schema"
+    },
+    {
+      "term": "TraitEntry",
+      "type": "schema"
+    },
+    {
+      "term": "TraitsRarityRequest",
+      "type": "schema"
+    },
+    {
+      "term": "TraitRange",
+      "type": "schema"
+    },
+    {
+      "term": "Range",
+      "type": "schema"
+    },
+    {
+      "term": "ItemTraitProperty",
+      "type": "schema"
+    },
+    {
+      "term": "TraitProperty",
+      "type": "schema"
+    },
+    {
+      "term": "ExtendedTraitProperty",
+      "type": "schema"
+    },
+    {
+      "term": "ExtendedTraitProperties",
+      "type": "schema"
+    },
+    {
+      "term": "OwnershipId",
+      "type": "schema"
+    },
+    {
+      "term": "OwnershipIds",
+      "type": "schema"
+    },
+    {
+      "term": "Ownership",
+      "type": "schema"
+    },
+    {
+      "term": "OwnershipSource",
+      "type": "schema"
+    },
+    {
+      "term": "ItemOwnership",
+      "type": "schema"
+    },
+    {
+      "term": "ItemHistory",
+      "type": "schema"
+    },
+    {
+      "term": "ItemRoyalty",
+      "type": "schema"
+    },
+    {
+      "term": "ItemTransfer",
+      "type": "schema"
+    },
+    {
+      "term": "Royalty",
+      "type": "schema"
+    },
+    {
+      "term": "Royalties",
+      "type": "schema"
+    },
+    {
+      "term": "Creator",
+      "type": "schema"
+    },
+    {
+      "term": "Ownerships",
+      "type": "schema"
+    },
+    {
+      "term": "OwnershipEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OwnershipUpdateEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OwnershipDeleteEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OwnershipSearchRequest",
+      "type": "schema"
+    },
+    {
+      "term": "OwnershipSearchFilter",
+      "type": "schema"
+    },
+    {
+      "term": "OwnershipSearchSort",
+      "type": "schema"
+    },
+    {
+      "term": "CollectionsWithOwnedItems",
+      "type": "schema"
+    },
+    {
+      "term": "CollectionWithOwnedItems",
+      "type": "schema"
+    },
+    {
+      "term": "DuplicatedItemsSearchRequest",
+      "type": "schema"
+    },
+    {
+      "term": "ItemsSearchRequest",
+      "type": "schema"
+    },
+    {
+      "term": "ItemsSearchFilter",
+      "type": "schema"
+    },
+    {
+      "term": "ItemSearchFullText",
+      "type": "schema"
+    },
+    {
+      "term": "ItemsSearchSort",
+      "type": "schema"
+    },
+    {
+      "term": "ActivitySearchRequest",
+      "type": "schema"
+    },
+    {
+      "term": "ActivitySearchFilter",
+      "type": "schema"
+    },
+    {
+      "term": "ActivityUserFilter",
+      "type": "schema"
+    },
+    {
+      "term": "ActivityCurrencyFilter",
+      "type": "schema"
+    },
+    {
+      "term": "ActivitySearchSort",
+      "type": "schema"
+    },
+    {
+      "term": "SortType",
+      "type": "schema"
+    },
+    {
+      "term": "SortOrder",
+      "type": "schema"
+    },
+    {
+      "term": "TraitSort",
+      "type": "schema"
+    },
+    {
+      "term": "OrderId",
+      "type": "schema"
+    },
+    {
+      "term": "OrderIds",
+      "type": "schema"
+    },
+    {
+      "term": "Order",
+      "type": "schema"
+    },
+    {
+      "term": "OrderData",
+      "type": "schema"
+    },
+    {
+      "term": "EthRaribleV2OrderData",
+      "type": "schema"
+    },
+    {
+      "term": "Orders",
+      "type": "schema"
+    },
+    {
+      "term": "OrderEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OrderUpdateEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OrderStatus",
+      "type": "schema"
+    },
+    {
+      "term": "OrderSort",
+      "type": "schema"
+    },
+    {
+      "term": "PrepareOrderTxForm",
+      "type": "schema"
+    },
+    {
+      "term": "PrepareOrderTxResponse",
+      "type": "schema"
+    },
+    {
+      "term": "PreparedOrderTx",
+      "type": "schema"
+    },
+    {
+      "term": "ActivityId",
+      "type": "schema"
+    },
+    {
+      "term": "ActivitySort",
+      "type": "schema"
+    },
+    {
+      "term": "SyncSort",
+      "type": "schema"
+    },
+    {
+      "term": "SyncType",
+      "type": "schema"
+    },
+    {
+      "term": "ActivityType",
+      "type": "schema"
+    },
+    {
+      "term": "UserActivityType",
+      "type": "schema"
+    },
+    {
+      "term": "Activity",
+      "type": "schema"
+    },
+    {
+      "term": "MintActivity",
+      "type": "schema"
+    },
+    {
+      "term": "BurnActivity",
+      "type": "schema"
+    },
+    {
+      "term": "TransferActivity",
+      "type": "schema"
+    },
+    {
+      "term": "SendToChainActivity",
+      "type": "schema"
+    },
+    {
+      "term": "ReceiveFromChainActivity",
+      "type": "schema"
+    },
+    {
+      "term": "OrderActivitySource",
+      "type": "schema"
+    },
+    {
+      "term": "OrderActivityMatchSide",
+      "type": "schema"
+    },
+    {
+      "term": "OrderMatchActivity",
+      "type": "schema"
+    },
+    {
+      "term": "OrderMatchSwap",
+      "type": "schema"
+    },
+    {
+      "term": "FeesValue",
+      "type": "schema"
+    },
+    {
+      "term": "OrderMatchSell",
+      "type": "schema"
+    },
+    {
+      "term": "OrderBidActivity",
+      "type": "schema"
+    },
+    {
+      "term": "OrderListActivity",
+      "type": "schema"
+    },
+    {
+      "term": "OrderCancelBidActivity",
+      "type": "schema"
+    },
+    {
+      "term": "OrderCancelListActivity",
+      "type": "schema"
+    },
+    {
+      "term": "L2DepositActivity",
+      "type": "schema"
+    },
+    {
+      "term": "L2WithdrawalActivity",
+      "type": "schema"
+    },
+    {
+      "term": "SalesChart",
+      "type": "schema"
+    },
+    {
+      "term": "Activities",
+      "type": "schema"
+    },
+    {
+      "term": "ActivitiesByUsersRequest",
+      "type": "schema"
+    },
+    {
+      "term": "CollectionId",
+      "type": "schema"
+    },
+    {
+      "term": "Collection",
+      "type": "schema"
+    },
+    {
+      "term": "Collections",
+      "type": "schema"
+    },
+    {
+      "term": "CollectionMeta",
+      "type": "schema"
+    },
+    {
+      "term": "CollectionsSearchRequest",
+      "type": "schema"
+    },
+    {
+      "term": "CollectionsSearchFilter",
+      "type": "schema"
+    },
+    {
+      "term": "CollectionTokenId",
+      "type": "schema"
+    },
+    {
+      "term": "DefaultCollectionTokenId",
+      "type": "schema"
+    },
+    {
+      "term": "EthCollectionTokenId",
+      "type": "schema"
+    },
+    {
+      "term": "EthCollectionTokenIdSignature",
+      "type": "schema"
+    },
+    {
+      "term": "ActivityBlockchainInfo",
+      "type": "schema"
+    },
+    {
+      "term": "SearchResultCount",
+      "type": "schema"
+    },
+    {
+      "term": "UnionApiErrorEntityNotFound",
+      "type": "schema"
+    },
+    {
+      "term": "UnionApiErrorBadRequest",
+      "type": "schema"
+    },
+    {
+      "term": "UnionApiErrorServerError",
+      "type": "schema"
+    },
+    {
+      "term": "OrderForm",
+      "type": "schema"
+    },
+    {
+      "term": "EthRaribleOrderForm",
+      "type": "schema"
+    },
+    {
+      "term": "RawOrderData",
+      "type": "schema"
+    },
+    {
+      "term": "EthRaribleV2OrderForm",
+      "type": "schema"
+    },
+    {
+      "term": "EthOrderFormAsset",
+      "type": "schema"
+    },
+    {
+      "term": "EthOrderDataLegacy",
+      "type": "schema"
+    },
+    {
+      "term": "EthOrderDataRaribleV2DataV1",
+      "type": "schema"
+    },
+    {
+      "term": "EthOrderDataRaribleV2DataV2",
+      "type": "schema"
+    },
+    {
+      "term": "EthOrderDataRaribleV2DataV3",
+      "type": "schema"
+    },
+    {
+      "term": "EthOrderDataRaribleV2DataV3Sell",
+      "type": "schema"
+    },
+    {
+      "term": "EthOrderDataRaribleV2DataV3Buy",
+      "type": "schema"
+    },
+    {
+      "term": "EthOrderOpenSeaV1DataV1",
+      "type": "schema"
+    },
+    {
+      "term": "EthOrderCryptoPunksData",
+      "type": "schema"
+    },
+    {
+      "term": "EthSeaportOrderType",
+      "type": "schema"
+    },
+    {
+      "term": "EthSeaportItemType",
+      "type": "schema"
+    },
+    {
+      "term": "EthSeaportOffer",
+      "type": "schema"
+    },
+    {
+      "term": "EthSeaportConsideration",
+      "type": "schema"
+    },
+    {
+      "term": "EthOrderSeaportDataV1",
+      "type": "schema"
+    },
+    {
+      "term": "EthOrderBasicSeaportDataV1",
+      "type": "schema"
+    },
+    {
+      "term": "Asset",
+      "type": "schema"
+    },
+    {
+      "term": "AssetType",
+      "type": "schema"
+    },
+    {
+      "term": "NativeCurrencyAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "TokenCurrencyAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "NftAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "NftOfCollectionAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "EthEthereumAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "EthErc20AssetType",
+      "type": "schema"
+    },
+    {
+      "term": "EthErc721AssetType",
+      "type": "schema"
+    },
+    {
+      "term": "EthErc721LazyAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "EthErc1155AssetType",
+      "type": "schema"
+    },
+    {
+      "term": "EthErc1155LazyAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "EthCryptoPunksAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "EthGenerativeArtAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "EthCollectionAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "SolanaNftAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "SolanaFtAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "SolanaSolAssetType",
+      "type": "schema"
+    },
+    {
+      "term": "SolanaAuctionHouseDataV1",
+      "type": "schema"
+    },
+    {
+      "term": "SubscriptionAction",
+      "type": "schema"
+    },
+    {
+      "term": "SubscriptionRequest",
+      "type": "schema"
+    },
+    {
+      "term": "OrdersSubscriptionRequest",
+      "type": "schema"
+    },
+    {
+      "term": "OrdersByCollectionSubscriptionRequest",
+      "type": "schema"
+    },
+    {
+      "term": "OrdersByItemSubscriptionRequest",
+      "type": "schema"
+    },
+    {
+      "term": "ItemSubscriptionRequest",
+      "type": "schema"
+    },
+    {
+      "term": "OwnershipSubscriptionRequest",
+      "type": "schema"
+    },
+    {
+      "term": "ItemOwnershipSubscriptionRequest",
+      "type": "schema"
+    },
+    {
+      "term": "ActivitySubscriptionRequest",
+      "type": "schema"
+    },
+    {
+      "term": "SubscriptionEvent",
+      "type": "schema"
+    },
+    {
+      "term": "FakeSubscriptionEvent",
+      "type": "schema"
+    },
+    {
+      "term": "ItemSubscriptionEvent",
+      "type": "schema"
+    },
+    {
+      "term": "ItemOwnershipSubscriptionEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OrderSubscriptionEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OwnershipSubscriptionEvent",
+      "type": "schema"
+    },
+    {
+      "term": "ActivitySubscriptionEvent",
+      "type": "schema"
+    },
+    {
+      "term": "BigInteger",
+      "type": "schema"
+    },
+    {
+      "term": "BigDecimal",
+      "type": "schema"
+    },
+    {
+      "term": "RawJson",
+      "type": "schema"
+    },
+    {
+      "term": "ContractAddress",
+      "type": "schema"
+    },
+    {
+      "term": "UnionAddress",
+      "type": "schema"
+    },
+    {
+      "term": "SearchEngine",
+      "type": "schema"
+    },
+    {
+      "term": "OrderType",
+      "type": "schema"
+    },
+    {
+      "term": "LatestIndexedBlock",
+      "type": "schema"
+    },
+    {
+      "term": "OlapBlockchain",
+      "type": "schema"
+    },
+    {
+      "term": "OlapPeriod",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCurrencyType",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCurrencyAmount",
+      "type": "schema"
+    },
+    {
+      "term": "OlapPriceWithUsd",
+      "type": "schema"
+    },
+    {
+      "term": "OlapHistoryValuesByTimestamps",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCurrencyAmountWithChange",
+      "type": "schema"
+    },
+    {
+      "term": "OlapIntegerNumberWithChange",
+      "type": "schema"
+    },
+    {
+      "term": "OlapTrendingCollectionEntry",
+      "type": "schema"
+    },
+    {
+      "term": "OlapError",
+      "type": "schema"
+    },
+    {
+      "term": "OlapUserLeaderboardEntry",
+      "type": "schema"
+    },
+    {
+      "term": "OlapUserType",
+      "type": "schema"
+    },
+    {
+      "term": "OlapPlatformSource",
+      "type": "schema"
+    },
+    {
+      "term": "OlapTradesLeaderboardSort",
+      "type": "schema"
+    },
+    {
+      "term": "OlapLeaderboardSort",
+      "type": "schema"
+    },
+    {
+      "term": "OlapLeaderboardSortDirection",
+      "type": "schema"
+    },
+    {
+      "term": "OlapTradesLeaderboardSourceGroup",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionVolumeRankingResponse",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionLeaderboardResponse",
+      "type": "schema"
+    },
+    {
+      "term": "OlapUserVolumeRankingResponse",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionLeaderboardEntry",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionLeaderboardItem",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionLeaderboardStatistics",
+      "type": "schema"
+    },
+    {
+      "term": "OlapLeaderboardPeriod",
+      "type": "schema"
+    },
+    {
+      "term": "OlapStatsGraphResponse",
+      "type": "schema"
+    },
+    {
+      "term": "OlapGeneralStatsResponse",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionStatisticsResponse",
+      "type": "schema"
+    },
+    {
+      "term": "OlapAggregatedCollectionStatisticsResponse",
+      "type": "schema"
+    },
+    {
+      "term": "OlapGlobalCollectionStatisticsResponse",
+      "type": "schema"
+    },
+    {
+      "term": "OlapPeriodCollectionsByIdsStatisticsRequest",
+      "type": "schema"
+    },
+    {
+      "term": "OlapPeriodCollectionStatisticsResponse",
+      "type": "schema"
+    },
+    {
+      "term": "OlapPricesResponse",
+      "type": "schema"
+    },
+    {
+      "term": "OlapOwnerStatistics",
+      "type": "schema"
+    },
+    {
+      "term": "OlapOwnerStatistic",
+      "type": "schema"
+    },
+    {
+      "term": "OlapBidsByPriceSort",
+      "type": "schema"
+    },
+    {
+      "term": "OlapBidsByPriceStatistics",
+      "type": "schema"
+    },
+    {
+      "term": "OlapBidsByPrice",
+      "type": "schema"
+    },
+    {
+      "term": "OlapChartResponse",
+      "type": "schema"
+    },
+    {
+      "term": "OlapVolumeForPeriodData",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionVolumeChangeEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionFloorPriceByCurrencyChangeEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionTopPriceByCurrencyChangeEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionStatsEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionStatsVolumeChangeEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionStatsFloorChangeEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionStatsTopOfferChangeEvent",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionStatsVolumeChangeData",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionStatsFloorChangeData",
+      "type": "schema"
+    },
+    {
+      "term": "OlapCollectionStatsTopOfferChangeData",
+      "type": "schema"
+    },
+    {
+      "term": "ReconciliationEntities",
+      "type": "schema"
+    },
+    {
+      "term": "ReconciliationEntity",
+      "type": "schema"
+    },
+    {
+      "term": "RewardEntity",
+      "type": "schema"
+    },
+    {
+      "term": "RewardEntities",
+      "type": "schema"
+    },
+    {
+      "term": "RewardByBlockchainEntity",
+      "type": "schema"
+    },
+    {
+      "term": "RewardsByBlockchain",
+      "type": "schema"
+    },
+    {
+      "term": "RewardsClaimSignatureResponse",
+      "type": "schema"
+    }
+  ]
+}
