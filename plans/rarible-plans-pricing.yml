@@ -1,0 +1,125 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Rarible
+providerId: rarible
+created: '2026-06-13'
+modified: '2026-06-13'
+tags:
+  - NFT
+  - Marketplace
+  - Multichain
+  - Indexer
+description: >-
+  Commercial pricing plans for the Rarible API as published at
+  https://rarible.org/pricing. Two tiers are publicly documented: a free
+  starter tier (100 requests/month) for building basic NFT applications,
+  and an Enterprise tier with custom pricing for large-volume or unique
+  business models. API keys are issued via the dashboard at
+  api.rarible.org/dashboard and authenticated via the X-API-KEY request
+  header.
+plans:
+  - id: rarible-free
+    name: Free / Starter
+    type: freemium
+    description: >-
+      Free entry tier providing 100 requests per month. Suitable for
+      prototyping, evaluation, and building basic NFT applications. API keys
+      are generated in the Rarible dashboard after account creation via
+      wallet connection and email verification.
+    pricing:
+      currency: USD
+      basePrice: '0.00'
+      basePeriod: month
+    entries:
+      - label: Monthly Request Quota
+        description: 100 API requests per month included on the free plan
+        name: monthly_request_quota
+        type: quota
+        metric: requests_per_month
+        limit: 100
+        timeFrame: month
+        geo: global
+        domains:
+          - https://api.rarible.org
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: API Key
+        description: Single API key for mainnet access
+        name: api_key
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+        geo: global
+        domains:
+          - https://api.rarible.org
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+
+  - id: rarible-enterprise
+    name: Enterprise
+    type: enterprise
+    description: >-
+      Custom enterprise tier for large-volume use cases or unique business
+      models. Pricing and rate limits are negotiated directly with the
+      Rarible sales team. Includes VIP support, SLAs, and premium access
+      features. Contact Rarible via the book-a-demo page or the pricing
+      page to initiate discussions.
+    pricing:
+      currency: USD
+      basePrice: 'custom'
+      basePeriod: month
+      notes: Custom pricing based on volume and feature scope. Contact sales for a quote.
+    entries:
+      - label: Monthly Request Quota
+        description: Custom high-volume request quota negotiated with sales
+        name: monthly_request_quota
+        type: quota
+        metric: requests_per_month
+        limit: null
+        timeFrame: month
+        geo: global
+        domains:
+          - https://api.rarible.org
+        unit: 1
+        price: 'custom'
+        userMultiplied: false
+      - label: VIP Support
+        description: Dedicated technical support and account management
+        name: vip_support
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+      - label: SLA
+        description: Service Level Agreement with uptime guarantees
+        name: sla
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+      - label: Premium Access
+        description: Premium API access with higher throughput and priority routing
+        name: premium_access
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+
+references:
+  - name: Rarible Pricing Page
+    url: https://rarible.org/pricing
+  - name: Rarible Book a Demo
+    url: https://rarible.org/book-a-demo
+  - name: Rarible Dashboard
+    url: https://api.rarible.org/dashboard/login
+  - name: Rarible apis.yml
+    url: https://raw.githubusercontent.com/api-evangelist/rarible/refs/heads/main/apis.yml
+notes:
+  - API keys are issued per environment; mainnet and testnet keys are managed separately in the dashboard.
+  - Authentication uses the X-API-KEY request header on all calls to api.rarible.org/v0.1.
+  - For frontend applications, allowed domains can be configured per key to restrict usage to specific origins.
+  - Billing for paid plans is handled via Stripe integration in the Rarible dashboard.

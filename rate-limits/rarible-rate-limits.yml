@@ -1,0 +1,74 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Rarible
+providerId: rarible
+created: '2026-06-13'
+modified: '2026-06-13'
+tags:
+  - NFT
+  - Marketplace
+  - Multichain
+  - Rate Limiting
+  - Quotas
+  - Throttling
+description: >-
+  Rate limit envelope for the Rarible API (api.rarible.org/v0.1). Limits
+  are scoped per API key issued via the Rarible dashboard. The free tier
+  provides 100 requests per month total; enterprise tiers receive custom
+  higher limits negotiated with the Rarible sales team. Specific per-second
+  rate ceilings for enterprise accounts are not publicly documented.
+headers:
+  limit: X-RateLimit-Limit
+  remaining: X-RateLimit-Remaining
+  reset: X-RateLimit-Reset
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+  - tier: free
+    name: Free / Starter Tier
+    scope: api-key
+    metric: requests_per_month
+    limit: 100
+    burst: null
+    timeFrame: month
+    applies:
+      - https://api.rarible.org/v0.1
+    description: >-
+      The free tier is capped at 100 API requests per calendar month. Once
+      the quota is exhausted, requests will be rejected with HTTP 429 until
+      the next billing cycle resets the counter. Suitable for development
+      and prototyping only.
+
+  - tier: enterprise
+    name: Enterprise Tier
+    scope: api-key
+    metric: requests_per_month
+    limit: null
+    burst: null
+    timeFrame: month
+    applies:
+      - https://api.rarible.org/v0.1
+    description: >-
+      Enterprise-tier accounts receive custom high-volume quotas and rate
+      limits negotiated directly with the Rarible sales team. Contact
+      rarible.org/pricing or rarible.org/book-a-demo for specifics.
+
+recoveryStrategies:
+  - name: Honour Retry-After
+    description: When you receive HTTP 429, wait the number of seconds indicated in the Retry-After response header before retrying.
+  - name: Exponential Backoff
+    description: If no Retry-After header is present, apply exponential backoff starting at 1 second up to a 30-second ceiling.
+  - name: Cache Responses
+    description: Cache collection floor prices, item metadata, and collection statistics responses locally to avoid redundant API calls and preserve monthly quota.
+  - name: Batch Requests
+    description: Use batch endpoints such as getItemsByIds and getOwnershipsByIds to consolidate multiple lookups into a single API call.
+
+notes:
+  - Rate limits are enforced per API key, not per IP address. Multiple clients sharing the same key share the monthly quota.
+  - The free tier 100 requests/month limit is a hard cap; upgrade to an enterprise plan for production workloads.
+  - For the highest reliability, the Rarible platform maintains 99.99% uptime with a dedicated status page at docs.rarible.org/docs/api-status-page.
+  - Specific per-second burst limits for enterprise tiers are negotiated per account and not publicly documented; contact sales for details.

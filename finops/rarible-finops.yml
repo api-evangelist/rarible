@@ -1,0 +1,147 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Rarible
+providerId: rarible
+publisherName: Rarible Inc
+serviceCategory: API
+created: '2026-06-13'
+modified: '2026-06-13'
+tags:
+  - NFT
+  - Marketplace
+  - Multichain
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: >-
+  FinOps Framework alignment for the Rarible API. Maps the primary cost
+  dimensions — free-tier quota consumption, enterprise subscription fees,
+  and optional custom front-end fees (revenue for integrators) — to the
+  FOCUS data model, enabling engineering and finance teams to track
+  cost-per-NFT-query, cost-per-active-user, and net margin on NFT commerce
+  flows built on the Rarible infrastructure.
+principles:
+  - name: Visibility
+    description: Make Rarible API subscription costs and monthly quota consumption visible in real time via dashboard usage metrics and billing statements.
+  - name: Allocation
+    description: Tag API calls by consuming team, application feature, chain, and collection category so costs can be allocated to originating product areas (marketplace, wallet, analytics).
+  - name: Optimization
+    description: Cache metadata and collection statistics aggressively, use batch endpoints (getItemsByIds, getOwnershipsByIds), and debounce floor-price polling to minimise quota spend.
+  - name: Accountability
+    description: Assign budget owners for the Rarible API subscription and track the offsetting revenue generated via custom front-end fees on NFT transactions.
+
+domains:
+  - name: API Subscription
+    description: Fixed monthly fee (enterprise tier) or zero-cost (free tier) for access to the Rarible API. Paid plans are billed via Stripe.
+    costDrivers:
+      - tier_selection
+      - billing_period
+    focusMapping:
+      ChargeCategory: Purchase
+      ChargeClass: Recurring
+      ServiceCategory: API
+      ServiceSubcategory: NFT Indexer
+      PricingCategory: Standard
+      PricingUnit: subscription_month
+
+  - name: API Request Consumption
+    description: Monthly quota units consumed against the tier limit (100/month free; custom enterprise). Tracks utilization against entitlement.
+    costDrivers:
+      - endpoint_mix
+      - query_volume
+      - chain_coverage
+    focusMapping:
+      ChargeCategory: Usage
+      ChargeClass: Consumption
+      ServiceCategory: API
+      ServiceSubcategory: NFT Data
+      PricingCategory: Standard
+      PricingUnit: api_request
+
+  - name: Custom Front-End Fee Revenue
+    description: Integrators can configure custom front-end fees on NFT transactions routed through the Rarible protocol. This is a revenue stream for the integrator, treated as negative cost in the FinOps view.
+    costDrivers:
+      - nft_transaction_volume_usd
+      - custom_fee_basis_points
+    focusMapping:
+      ChargeCategory: Credit
+      ChargeClass: Other
+      ServiceCategory: API
+      ServiceSubcategory: Marketplace
+      PricingCategory: Variable
+      PricingUnit: percent_of_transaction_volume
+
+  - name: On-Chain Gas (Pass-Through)
+    description: NFT minting, listing, and purchase transactions incur on-chain gas costs paid by end users or the integrator depending on the UX design. Tracked as a pass-through cost against the relevant chain.
+    costDrivers:
+      - chain_gas_price
+      - transaction_type (mint, list, buy, cancel)
+      - chain (Ethereum, Polygon, Arbitrum, etc.)
+    focusMapping:
+      ChargeCategory: Usage
+      ChargeClass: Consumption
+      ServiceCategory: Blockchain
+      ServiceSubcategory: Gas
+      PricingCategory: Variable
+      PricingUnit: gas_units
+
+focusFields:
+  required:
+    - BillingPeriodStart
+    - BillingPeriodEnd
+    - ChargeCategory
+    - ChargePeriodStart
+    - ChargePeriodEnd
+    - ProviderName
+    - PublisherName
+    - InvoiceIssuerName
+    - ServiceName
+    - ServiceCategory
+    - BilledCost
+    - EffectiveCost
+    - ListCost
+    - ContractedCost
+    - PricingCategory
+    - PricingUnit
+    - PricingQuantity
+  recommended:
+    - SubAccountId
+    - SubAccountName
+    - ResourceId
+    - ResourceName
+    - ResourceType
+    - Region
+    - Tags
+  raribleSpecific:
+    - x-rarible-chain (blockchain the NFT or activity belongs to: ETHEREUM, POLYGON, ARBITRUM, FLOW, IMMUTABLEX, CHILIZ)
+    - x-rarible-collection-id (collection contract address + chain prefix)
+    - x-rarible-item-id (NFT item identifier)
+    - x-rarible-order-id (order identifier for trade cost attribution)
+    - x-rarible-activity-type (SELL, BID, LIST, TRANSFER, MINT, BURN)
+    - x-rarible-frontend-fee-bps (custom integrator fee basis points, if configured)
+
+unitEconomics:
+  - metric: Cost per NFT Query
+    formula: Monthly API Cost / Total API Requests in Period
+    insight: Measures efficiency of data access; optimize by caching metadata and using batch endpoints.
+  - metric: Cost per Active User
+    formula: Monthly API Cost / Distinct Wallet Addresses Queried in Period
+    insight: Helps size infrastructure cost relative to the active user base of wallets or portfolio views.
+  - metric: Revenue per NFT Transaction
+    formula: Sum(transaction_value_usd * frontend_fee_bps / 10000) / Count of Completed Transactions
+    insight: Tracks integrator revenue from custom front-end fees on Rarible-routed NFT trades.
+  - metric: Net Margin on NFT Commerce
+    formula: (Front-End Fee Revenue - API Subscription Cost - Gas Pass-Through) / Total GMV
+    insight: End-to-end unit economics of an NFT commerce feature built on Rarible.
+
+notes:
+  - Pull activity and order data from the Rarible Activities and Orders APIs to build FOCUS rows for transaction-level cost attribution.
+  - Reconcile monthly quota usage against the dashboard at api.rarible.org/dashboard/login.
+  - Gas costs are denominated in the native token of each chain; convert to USD using the Rarible Currencies API (Get USD rate endpoint) for unified FinOps reporting.
+  - Custom front-end fee configuration is documented at docs.rarible.org/docs/custom-front-end-fee-setup.

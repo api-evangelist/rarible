@@ -1,0 +1,224 @@
+aid: rarible
+url: https://raw.githubusercontent.com/api-evangelist/rarible/refs/heads/main/apis.yml
+name: Rarible
+kind: company
+description: >-
+  Rarible is a multichain NFT marketplace and aggregator providing a unified
+  REST API for searching, trading, and managing NFTs across Ethereum, Polygon,
+  Arbitrum, Flow, IMX, and Chiliz. The platform operates as both a consumer
+  marketplace and a B2B API infrastructure layer powering over 5,000 NFT
+  applications. The Rarible API exposes endpoints for querying NFT items and
+  collections, order books (aggregated from OpenSea, Rarible, and other
+  venues), ownership records, trading activities, floor prices, volume
+  rankings, and OLAP-style analytics. An integrated TypeScript SDK handles
+  wallet connections, NFT minting, listing, bidding, and purchases through
+  a single toolkit. Developers can implement custom front-end fees on
+  transactions, enabling direct monetisation on top of the Rarible
+  infrastructure. The platform indexes over 1 billion NFTs and 91 million
+  trades and maintains 99.99% uptime.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - NFT
+  - Non-Fungible Tokens
+  - Marketplace
+  - Aggregator
+  - Multichain
+  - Ethereum
+  - Polygon
+  - Arbitrum
+  - Flow
+  - Web3
+  - Blockchain
+  - Collections
+  - Order Book
+  - Trading
+  - Indexer
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+x-source: public-apis/public-apis
+x-category: NFT
+x-tier: 1
+x-type: company
+apis:
+  - aid: rarible:nft-api
+    name: Rarible NFT API
+    description: >-
+      Core REST API for querying NFT items and collections across supported
+      blockchains. Provides endpoints to retrieve NFTs by ID, collection,
+      creator, or owner; access royalty information; reset metadata; and
+      query ownership records. Supports multichain item resolution via the
+      unified api.rarible.org base URL with an X-API-KEY header for
+      authentication.
+    humanURL: https://docs.rarible.org/docs/introduction
+    baseURL: https://api.rarible.org/v0.1
+    tags:
+      - NFT
+      - Items
+      - Collections
+      - Ownership
+      - Metadata
+      - Royalties
+    properties:
+      - type: Documentation
+        url: https://docs.rarible.org/docs/introduction
+      - type: OpenAPI
+        url: https://github.com/rarible/union-openapi
+      - type: SignUp
+        url: https://rarible.org/
+      - type: Authentication
+        url: https://docs.rarible.org/docs/authentication
+
+  - aid: rarible:orders-api
+    name: Rarible Orders API
+    description: >-
+      REST API for accessing and interacting with NFT order books aggregated
+      from multiple marketplaces including OpenSea and Rarible. Provides
+      endpoints for getting all orders, retrieving orders by ID, fetching
+      sell and bid orders, preparing order transactions, creating and
+      updating orders, validating orders, and cancelling orders.
+      Enables building NFT trading functionality with aggregated liquidity.
+    humanURL: https://docs.rarible.org/docs/introduction
+    baseURL: https://api.rarible.org/v0.1
+    tags:
+      - Orders
+      - Order Book
+      - Bids
+      - Listings
+      - Trading
+      - Aggregator
+    properties:
+      - type: Documentation
+        url: https://docs.rarible.org/docs/introduction
+      - type: OpenAPI
+        url: https://github.com/rarible/union-openapi
+      - type: SignUp
+        url: https://rarible.org/
+
+  - aid: rarible:activities-api
+    name: Rarible Activities API
+    description: >-
+      REST API for querying historical NFT trading activities and events
+      across supported blockchains. Endpoints support searching activities
+      by collection, item, or user, and a general search with a sync variant
+      for stream processing. Useful for building trading history feeds,
+      analytics dashboards, and provenance tracking tools.
+    humanURL: https://docs.rarible.org/docs/data-analytics
+    baseURL: https://api.rarible.org/v0.1
+    tags:
+      - Activities
+      - Events
+      - History
+      - Provenance
+      - Analytics
+      - Transactions
+    properties:
+      - type: Documentation
+        url: https://docs.rarible.org/docs/data-analytics
+      - type: OpenAPI
+        url: https://github.com/rarible/union-openapi
+      - type: SignUp
+        url: https://rarible.org/
+
+  - aid: rarible:collections-api
+    name: Rarible Collections API
+    description: >-
+      REST API for accessing NFT collection data, statistics, and rankings.
+      Endpoints include get all collections, get by ID or owner, reset
+      metadata, get floor prices, volume rankings, buyer and seller
+      statistics, GMV, listing stats, and transaction statistics. Powers
+      collection discovery pages, analytics tools, and market intelligence
+      dashboards.
+    humanURL: https://docs.rarible.org/docs/introduction
+    baseURL: https://api.rarible.org/v0.1
+    tags:
+      - Collections
+      - Floor Price
+      - Volume
+      - Rankings
+      - Statistics
+      - Analytics
+    properties:
+      - type: Documentation
+        url: https://docs.rarible.org/docs/introduction
+      - type: OpenAPI
+        url: https://github.com/rarible/union-openapi
+      - type: SignUp
+        url: https://rarible.org/
+
+common:
+  - type: Website
+    url: https://rarible.com
+  - type: Website
+    url: https://rarible.org
+  - type: Documentation
+    url: https://docs.rarible.org
+  - type: Portal
+    url: https://api.rarible.org/dashboard/login
+  - type: SignUp
+    url: https://rarible.org/
+  - type: Pricing
+    url: https://rarible.org/pricing
+  - type: GitHubOrganization
+    url: https://github.com/rarible
+  - type: OpenAPI
+    url: https://github.com/rarible/union-openapi
+  - type: SDK
+    title: Rarible Protocol TypeScript SDK
+    url: https://github.com/rarible/sdk
+  - type: SDK
+    title: Rarible Protocol MCP Server (npm)
+    url: https://www.npmjs.com/package/@rarible/protocol-mcp
+  - type: Tools
+    title: Rarible MCP Server
+    url: https://docs.rarible.org/docs/mcp-servers
+  - type: StatusPage
+    url: https://docs.rarible.org/docs/api-status-page
+  - type: Blog
+    url: https://og.rarible.com/blog/
+  - type: Discord
+    url: https://discord.gg/rarible
+  - type: Twitter
+    url: https://x.com/rarible
+  - type: HelpCenter
+    url: https://help.rarible.com/hc/en-us
+  - type: SupportedBlockchains
+    url: https://docs.rarible.org/docs/supported-blockchains
+  - type: SupportedMarketplaces
+    url: https://docs.rarible.org/docs/supported-marketplaces
+  - type: UseCases
+    title: Wallets and Portfolios
+    url: https://docs.rarible.org/docs/wallets-and-portfolios
+  - type: UseCases
+    title: Custom Marketplaces
+    url: https://docs.rarible.org/docs/custom-marketplaces
+  - type: UseCases
+    title: Embedded Commerce
+    url: https://docs.rarible.org/docs/embedded-buying-and-selling
+  - type: UseCases
+    title: Data and Analytics
+    url: https://docs.rarible.org/docs/data-analytics
+  - type: UseCases
+    title: Gaming Integration
+    url: https://docs.rarible.org/docs/gaming
+  - type: UseCases
+    title: Professional Trading
+    url: https://docs.rarible.org/docs/professional-trading
+  - type: Plans
+    url: plans/rarible-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rarible-rate-limits.yml
+  - type: FinOps
+    url: finops/rarible-finops.yml
+integrations:
+  - name: OpenSea
+  - name: Ethereum
+  - name: Polygon
+  - name: Arbitrum
+  - name: IMX (Immutable X)
+  - name: Flow
+  - name: Chiliz
+  - name: Eclipse
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
