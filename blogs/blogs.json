@@ -1,0 +1,11 @@
+{
+  "repo": "rarible",
+  "feeds": [
+    {
+      "source": "https://docs.rarible.org/docs/api-status-page",
+      "error": "HTTPError"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-14T20:42:17Z"
+}
