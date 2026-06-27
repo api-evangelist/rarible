@@ -64,7 +64,7 @@ apis:
         url: https://docs.rarible.org/docs/introduction
       - type: OpenAPI
         url: https://github.com/rarible/union-openapi
-      - type: SignUp
+      - type: Signup
         url: https://rarible.org/
       - type: Authentication
         url: https://docs.rarible.org/docs/authentication
@@ -92,7 +92,7 @@ apis:
         url: https://docs.rarible.org/docs/introduction
       - type: OpenAPI
         url: https://github.com/rarible/union-openapi
-      - type: SignUp
+      - type: Signup
         url: https://rarible.org/
 
   - aid: rarible:activities-api
@@ -117,7 +117,7 @@ apis:
         url: https://docs.rarible.org/docs/data-analytics
       - type: OpenAPI
         url: https://github.com/rarible/union-openapi
-      - type: SignUp
+      - type: Signup
         url: https://rarible.org/
 
   - aid: rarible:collections-api
@@ -143,7 +143,7 @@ apis:
         url: https://docs.rarible.org/docs/introduction
       - type: OpenAPI
         url: https://github.com/rarible/union-openapi
-      - type: SignUp
+      - type: Signup
         url: https://rarible.org/
 
 common:
@@ -155,7 +155,7 @@ common:
     url: https://docs.rarible.org
   - type: Portal
     url: https://api.rarible.org/dashboard/login
-  - type: SignUp
+  - type: Signup
     url: https://rarible.org/
   - type: Pricing
     url: https://rarible.org/pricing
@@ -163,10 +163,10 @@ common:
     url: https://github.com/rarible
   - type: OpenAPI
     url: https://github.com/rarible/union-openapi
-  - type: SDK
+  - type: SDKs
     title: Rarible Protocol TypeScript SDK
     url: https://github.com/rarible/sdk
-  - type: SDK
+  - type: SDKs
     title: Rarible Protocol MCP Server (npm)
     url: https://www.npmjs.com/package/@rarible/protocol-mcp
   - type: Tools
