@@ -147,6 +147,10 @@ apis:
         url: https://rarible.org/
 
 common:
+  - type: DomainSecurity
+    url: security/rarible-domain-security.yml
+  - type: Authentication
+    url: authentication/rarible-authentication.yml
   - type: Website
     url: https://rarible.com
   - type: Website
