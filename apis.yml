@@ -147,6 +147,8 @@ apis:
         url: https://rarible.org/
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/rarible-agentic-access.yml
   - type: DomainSecurity
     url: security/rarible-domain-security.yml
   - type: Authentication
