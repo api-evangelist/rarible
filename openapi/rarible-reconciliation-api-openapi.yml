@@ -1,0 +1,299 @@
+openapi: 3.0.3
+info:
+  title: OpenAPI definition Charts Reconciliation API
+  version: v0.1
+  description: '# Exciting News
+
+
+    Hey there, amazing developers! 👋
+
+
+    We''ve got some fantastic news to share that will make your experience with our product even better. We''re thrilled to announce the implementation of API-Keys, which brings a new level of control and convenience to your development process. So, let''s dive right into the details! ✨
+
+
+    ## API-Keys for Enhanced Functionality 🔑
+
+
+    Starting now, we have introduced API-Keys to streamline your interactions with our methods. You might have noticed a slight change while making requests – now, all you need to do is include the parameter `X-API-KEY` in the Header of your request. Simple as that!
+
+
+    ## Get Your API-Key in a Snap! ⚡️
+
+
+    Securing your API-Key is a breeze. We''ve made the process super user-friendly to ensure you can get started quickly. Just head over to our website and fill out a simple form. Once you''ve done that, your shiny new API-Key will be delivered straight to your email inbox. Easy peasy! 📧
+
+
+    [Get Your API-Key Here](https://api.rarible.org/registration)
+
+    [Configure SDK with API-key](https://github.com/rarible/sdk#api-querying)
+
+
+    ## Unlock the Power of the Rarible Protocol 🔓
+
+
+    As passionate developers, we know you''re always hungry for knowledge and eager to explore new frontiers. That''s why we invite you to discover the incredible world of the Rarible Protocol. By visiting our dedicated protocol page, you''ll gain access to a treasure trove of useful information, tips, and insights that will elevate your development skills to new heights. 🚀
+
+
+    [Explore the Rarible Protocol](https://rarible.org)
+
+
+    So, buckle up and get ready for an enhanced development journey with our API-Keys. We''re excited to see what you''ll create using our revamped system! 💪🚀
+
+
+    Stay curious, keep innovating, and happy coding! ✨
+
+
+    [P.S. Join our Discord Server to stay up to date and ask questions](https://discord.gg/rarifoundation)
+
+    '
+servers:
+- url: https://{environment}.rarible.org
+  description: Production (Mainnet)
+  variables:
+    environment:
+      enum:
+      - api
+      - testnet-api
+      default: api
+security:
+- ApiKeyAuth: []
+tags:
+- name: Reconciliation
+  x-controller: ReconciliationController
+paths:
+  /v0.1/reconciliation/items:
+    get:
+      tags:
+      - Reconciliation
+      summary: Get IDs of items updated after a specific datetime.
+      description: Return short view of items updated after a specific datetime.
+      operationId: getReconciliationItems
+      parameters:
+      - name: blockchain
+        in: query
+        required: true
+        allowEmptyValue: true
+        description: Blockchain name
+        schema:
+          $ref: '#/components/schemas/Blockchain'
+      - name: updatedAfterInclusive
+        in: query
+        required: true
+        allowEmptyValue: true
+        description: Only items with lastUpdatedAt after (inclusive) will be returned
+        schema:
+          type: string
+          format: date-time
+      - name: updatedBeforeExclusive
+        in: query
+        required: true
+        allowEmptyValue: true
+        description: Only items with lastUpdatedAt before (exclusive) will be returned
+        schema:
+          type: string
+          format: date-time
+      - name: continuation
+        in: query
+        required: false
+        description: Paging cursor
+        schema:
+          type: string
+      - name: size
+        in: query
+        required: false
+        description: The maximum number of results to be returned. If not specified, a predefined number is used.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReconciliationEntities'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/reconciliation/collections:
+    get:
+      tags:
+      - Reconciliation
+      summary: Get IDs of collections updated after a specific datetime.
+      description: Return short view of collections updated after a specific datetime.
+      operationId: getReconciliationCollections
+      parameters:
+      - name: blockchain
+        in: query
+        required: true
+        allowEmptyValue: true
+        description: Blockchain name
+        schema:
+          $ref: '#/components/schemas/Blockchain'
+      - name: updatedAfterInclusive
+        in: query
+        required: true
+        allowEmptyValue: true
+        description: Only items with lastUpdatedAt after (inclusive) will be returned
+        schema:
+          type: string
+          format: date-time
+      - name: updatedBeforeExclusive
+        in: query
+        required: true
+        allowEmptyValue: true
+        description: Only items with lastUpdatedAt before (exclusive) will be returned
+        schema:
+          type: string
+          format: date-time
+      - name: continuation
+        in: query
+        required: false
+        description: Paging cursor
+        schema:
+          type: string
+      - name: size
+        in: query
+        required: false
+        description: The maximum number of results to be returned. If not specified, a predefined number is used.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReconciliationEntities'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+components:
+  schemas:
+    ReconciliationEntities:
+      type: object
+      properties:
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReconciliationEntity'
+        continuation:
+          type: string
+      required:
+      - entities
+    UnionApiErrorServerError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - UNKNOWN
+          default: UNKNOWN
+        message:
+          type: string
+          description: Error message
+    ReconciliationEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+          format: int64
+        lastUpdatedAt:
+          type: string
+          format: date-time
+        deleted:
+          type: boolean
+          default: false
+      required:
+      - id
+      - version
+      - lastUpdatedAt
+    UnionApiErrorBadRequest:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - BAD_REQUEST
+          - VALIDATION
+          default: BAD_REQUEST
+        message:
+          type: string
+          description: Error message
+    Blockchain:
+      type: string
+      enum:
+      - APTOS
+      - ETHEREUM
+      - POLYGON
+      - SOLANA
+      - ARBITRUM
+      - CHILIZ
+      - LIGHTLINK
+      - ZKSYNC
+      - BASE
+      - RARI
+      - ZKLINK
+      - QUAI
+      - ECLIPSE
+      - ELECTRONEUM
+      - SAAKURU
+      - OASIS
+      - MATCH
+      - MOONBEAM
+      - ETHERLINK
+      - ZKCANDY
+      - BERACHAIN
+      - ABSTRACT
+      - SHAPE
+      - TELOS
+      - HEDERAEVM
+      - VICTION
+      - SETTLUS
+      - GOAT
+      - HYPEREVM
+      - MEGAETH
+      - MEGAETHTESTNET
+      - MEGAETHTESTNETV2
+      - BASECAMP
+      - CAMP
+      - SOMNIA
+      - ARENAZ
+      - INJECTIVE
+      - INJECTIVETESTNET
+      - APECHAIN
+      - BLOCKCHAINKEK
+      - STELLAR
+      - ZILLIQA
+      - FRAXTAL
+      - XLAYER
+      - MONAD
+      example: ETHEREUM
+  responses:
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnionApiErrorServerError'
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnionApiErrorBadRequest'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      x-default: 11111111-1111-1111-1111-111111111111

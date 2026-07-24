@@ -1,0 +1,2098 @@
+openapi: 3.0.3
+info:
+  title: OpenAPI definition Charts NFT Items API
+  version: v0.1
+  description: '# Exciting News
+
+
+    Hey there, amazing developers! 👋
+
+
+    We''ve got some fantastic news to share that will make your experience with our product even better. We''re thrilled to announce the implementation of API-Keys, which brings a new level of control and convenience to your development process. So, let''s dive right into the details! ✨
+
+
+    ## API-Keys for Enhanced Functionality 🔑
+
+
+    Starting now, we have introduced API-Keys to streamline your interactions with our methods. You might have noticed a slight change while making requests – now, all you need to do is include the parameter `X-API-KEY` in the Header of your request. Simple as that!
+
+
+    ## Get Your API-Key in a Snap! ⚡️
+
+
+    Securing your API-Key is a breeze. We''ve made the process super user-friendly to ensure you can get started quickly. Just head over to our website and fill out a simple form. Once you''ve done that, your shiny new API-Key will be delivered straight to your email inbox. Easy peasy! 📧
+
+
+    [Get Your API-Key Here](https://api.rarible.org/registration)
+
+    [Configure SDK with API-key](https://github.com/rarible/sdk#api-querying)
+
+
+    ## Unlock the Power of the Rarible Protocol 🔓
+
+
+    As passionate developers, we know you''re always hungry for knowledge and eager to explore new frontiers. That''s why we invite you to discover the incredible world of the Rarible Protocol. By visiting our dedicated protocol page, you''ll gain access to a treasure trove of useful information, tips, and insights that will elevate your development skills to new heights. 🚀
+
+
+    [Explore the Rarible Protocol](https://rarible.org)
+
+
+    So, buckle up and get ready for an enhanced development journey with our API-Keys. We''re excited to see what you''ll create using our revamped system! 💪🚀
+
+
+    Stay curious, keep innovating, and happy coding! ✨
+
+
+    [P.S. Join our Discord Server to stay up to date and ask questions](https://discord.gg/rarifoundation)
+
+    '
+servers:
+- url: https://{environment}.rarible.org
+  description: Production (Mainnet)
+  variables:
+    environment:
+      enum:
+      - api
+      - testnet-api
+      default: api
+security:
+- ApiKeyAuth: []
+tags:
+- name: NFT Items
+  x-controller: ItemController
+paths:
+  /v0.1/items/{itemId}:
+    get:
+      tags:
+      - NFT Items
+      summary: Get NFT by Id
+      description: Returns NFT Item by Id
+      operationId: getItemById
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        description: ItemId in format `ETHEREUM:${token}:${tokenId}`
+        schema:
+          $ref: '#/components/schemas/ItemId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '404':
+          $ref: '#/components/responses/EntityNotFound'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/items/byIds:
+    post:
+      tags:
+      - NFT Items
+      summary: Get NFT by Ids
+      description: Returns NFT Items by specified list of Ids
+      operationId: getItemByIds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemIds'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Items'
+        '404':
+          $ref: '#/components/responses/EntityNotFound'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/items/{itemId}/royalties:
+    get:
+      tags:
+      - NFT Items
+      summary: Get NFT royalties by Id
+      description: Returns NFT royalties by Id
+      operationId: getItemRoyaltiesById
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        description: Item Id in format `ETHEREUM:${token}:${tokenId}`
+        schema:
+          $ref: '#/components/schemas/ItemId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Royalties'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/items/{itemId}/resetMeta:
+    delete:
+      tags:
+      - NFT Items
+      summary: Reset NFT metadata
+      description: Reloads NFT metadata from the source. If source not available, old metadata stays.
+      operationId: resetItemMeta
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        description: Item Id in format `ETHEREUM:${token}:${tokenId}`
+        schema:
+          $ref: '#/components/schemas/ItemId'
+      - name: sync
+        in: query
+        required: false
+        description: Request meta for Item if true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/items/byOwner:
+    get:
+      tags:
+      - NFT Items
+      summary: Get NFT owned by user
+      description: Returns list of NFTs belong to specified user and sorted by `last updated` date
+      operationId: getItemsByOwner
+      parameters:
+      - name: blockchains
+        description: Since user's address can be present in several blockchains (for example, ETHEREUM and POLYGON),  you can use this filter to get Orders only for specific blockchains.  Or keep it empty to get Order from all blockchains
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Blockchain'
+      - name: owner
+        in: query
+        required: true
+        description: Address of the item owner
+        schema:
+          $ref: '#/components/schemas/UnionAddress'
+      - name: continuation
+        in: query
+        required: false
+        description: Continuation token from the previous response
+        schema:
+          type: string
+      - name: size
+        in: query
+        required: false
+        description: The number of items to return
+        schema:
+          type: integer
+      - name: searchEngine
+        in: query
+        required: false
+        deprecated: true
+        description: Search engine to use for search
+        schema:
+          $ref: '#/components/schemas/SearchEngine'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Items'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/items/byCreator:
+    get:
+      tags:
+      - NFT Items
+      summary: Get NFT created by user
+      description: Returns list of NFTs created by specified user and sorted by `last updated` date
+      operationId: getItemsByCreator
+      parameters:
+      - name: blockchains
+        description: Since user's address can be present in several blockchains (for example, ETHEREUM and POLYGON),  you can use this filter to get Orders only for specific blockchains.  Or keep it empty to get Order from all blockchains
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Blockchain'
+      - name: creator
+        in: query
+        required: true
+        description: Address of the item creator
+        schema:
+          $ref: '#/components/schemas/UnionAddress'
+      - name: continuation
+        in: query
+        required: false
+        description: Continuation token from the previous response
+        schema:
+          type: string
+      - name: size
+        in: query
+        required: false
+        description: The number of items to return
+        schema:
+          type: integer
+      - name: searchEngine
+        in: query
+        required: false
+        deprecated: true
+        description: Search engine to use for search
+        schema:
+          $ref: '#/components/schemas/SearchEngine'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Items'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/items/byCollection:
+    get:
+      tags:
+      - NFT Items
+      summary: Get NFT from collection
+      description: Returns list of NFTs from specified collection and sorted by `last updated` date
+      operationId: getItemsByCollection
+      parameters:
+      - name: collection
+        in: query
+        required: true
+        description: Address of the collection
+        schema:
+          $ref: '#/components/schemas/ContractAddress'
+      - name: continuation
+        in: query
+        required: false
+        description: Continuation token from the previous response
+        schema:
+          type: string
+      - name: size
+        in: query
+        required: false
+        description: The number of items to return
+        schema:
+          type: integer
+      - name: searchEngine
+        in: query
+        required: false
+        deprecated: true
+        description: Search engine to use for search
+        schema:
+          $ref: '#/components/schemas/SearchEngine'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Items'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/items/byOwnerWithOwnership:
+    get:
+      tags:
+      - NFT Items
+      summary: Get NFT owned by user - detailed
+      description: Returns list of NFTs belong to specified user and sorted by `last updated` date of ownership
+      operationId: getItemsByOwnerWithOwnership
+      parameters:
+      - name: owner
+        in: query
+        required: true
+        description: Address of the owner
+        schema:
+          $ref: '#/components/schemas/UnionAddress'
+      - name: continuation
+        in: query
+        required: false
+        description: Continuation token from the previous response
+        schema:
+          type: string
+      - name: size
+        in: query
+        required: false
+        description: The number of items to return
+        schema:
+          type: integer
+      - name: searchEngine
+        in: query
+        required: false
+        deprecated: true
+        description: Search engine to use for search
+        schema:
+          $ref: '#/components/schemas/SearchEngine'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsWithOwnership'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/items/all:
+    get:
+      deprecated: true
+      tags:
+      - NFT Items
+      summary: Get all NFTs
+      description: Returns all NFT Items in accordance with specified filters and sorted by `last updated` date
+      operationId: getAllItems
+      parameters:
+      - name: blockchains
+        in: query
+        required: false
+        description: Names of the blockchain networks. If no one specified, NFTs from all blockchains will be returned
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Blockchain'
+      - name: continuation
+        in: query
+        required: false
+        description: Continuation token from the previous response
+        schema:
+          type: string
+      - name: size
+        in: query
+        required: false
+        description: The number of items to return
+        schema:
+          type: integer
+      - name: showDeleted
+        in: query
+        required: false
+        description: Include deleted items
+        schema:
+          type: boolean
+      - name: lastUpdatedFrom
+        in: query
+        required: false
+        description: Filter condition to return only items that have been updated after this date (timestamp)
+        schema:
+          type: integer
+          format: int64
+      - name: lastUpdatedTo
+        in: query
+        required: false
+        description: Filter condition to return only items that have been updated before this date (timestamp)
+        schema:
+          type: integer
+          format: int64
+      - name: searchEngine
+        in: query
+        required: false
+        deprecated: true
+        description: Search engine to use for search
+        schema:
+          $ref: '#/components/schemas/SearchEngine'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Items'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/items/traits:
+    get:
+      tags:
+      - NFT Items
+      summary: Get NFT collection traits
+      description: Returns aggregation of existing traits for specified collections with counter for each trait type/value.
+      operationId: queryTraits
+      parameters:
+      - name: keys
+        description: Trait keys for strict filtering (if not specified - all traits will be returned)
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            example: Hat
+      - name: collectionIds
+        description: Collections identifiers to which traits belong
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            example: ETHEREUM:0x60e4d786628fea6478f785a6d7e704777c86a7c6
+      - name: owners
+        description: Return traits only for items owned by user
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            example: ${filterOwners}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Traits'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/items/traits/rarity:
+    post:
+      tags:
+      - NFT Items
+      summary: Get NFT traits rarity
+      description: Returns the rarity of the trait
+      operationId: queryTraitsWithRarity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TraitsRarityRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtendedTraitProperties'
+  /v0.1/items/lazy/{itemId}:
+    get:
+      tags:
+      - NFT Items
+      summary: Get Lazy NFT
+      description: Returns Lazy NFT Item by Id
+      operationId: getLazyItemById
+      deprecated: true
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        description: Item Id in format `ETHEREUM:${token}:${tokenId}`
+        schema:
+          $ref: '#/components/schemas/ItemId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LazyItem'
+        '404':
+          $ref: '#/components/responses/EntityNotFound'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/items/lazy/mint:
+    post:
+      tags:
+      - NFT Items
+      summary: Mint Lazy NFT
+      description: Create Lazy NFT (supported only for some blockchains)
+      operationId: mintLazyItem
+      deprecated: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LazyItemMintForm'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/EntityNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /v0.1/items/lazy/burn:
+    post:
+      tags:
+      - NFT Items
+      summary: Burn Lazy NFT
+      description: Deletes Lazy NFT (supported only for some blockchains)
+      operationId: burnLazyItem
+      deprecated: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LazyItemBurnForm'
+        required: true
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/EntityNotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+components:
+  schemas:
+    EthErc1155LazyAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ERC1155_Lazy
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          $ref: '#/components/schemas/BigInteger'
+        uri:
+          type: string
+        supply:
+          $ref: '#/components/schemas/BigInteger'
+        creators:
+          type: array
+          description: Creators of the target item
+          default: []
+          items:
+            $ref: '#/components/schemas/Creator'
+        royalties:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Royalty'
+        signatures:
+          type: array
+          default: []
+          items:
+            type: string
+      required:
+      - '@type'
+      - contract
+      - tokenId
+      - uri
+      - creators
+      - supply
+      - royalties
+      - signatures
+    ItemIds:
+      type: object
+      required:
+      - ids
+      properties:
+        ids:
+          type: array
+          description: List of the item id
+          items:
+            $ref: '#/components/schemas/ItemId'
+    Trait:
+      title: Trait
+      type: object
+      description: Combination of Item attribute key with list of values
+      required:
+      - key
+      - values
+      properties:
+        key:
+          $ref: '#/components/schemas/TraitEntry'
+        values:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/TraitEntry'
+    EthOrderBasicSeaportDataV1:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_BASIC_SEAPORT_DATA_V1
+      required:
+      - '@type'
+    UnionApiErrorServerError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - UNKNOWN
+          default: UNKNOWN
+        message:
+          type: string
+          description: Error message
+    ItemCollection:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/CollectionId'
+        name:
+          type: string
+        bestBidOrder:
+          $ref: '#/components/schemas/Order'
+        bestSellOrder:
+          $ref: '#/components/schemas/Order'
+      required:
+      - id
+      - name
+    Traits:
+      type: object
+      properties:
+        continuation:
+          type: string
+          description: Continuation token to paginate traits search result
+        traits:
+          type: array
+          description: List of found traits
+          default: []
+          items:
+            $ref: '#/components/schemas/Trait'
+      required:
+      - traits
+    SolanaSolAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - SOLANA_SOL
+      required:
+      - '@type'
+    AssetType:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/NativeCurrencyAssetType'
+      - $ref: '#/components/schemas/TokenCurrencyAssetType'
+      - $ref: '#/components/schemas/NftAssetType'
+      - $ref: '#/components/schemas/NftOfCollectionAssetType'
+      - $ref: '#/components/schemas/EthEthereumAssetType'
+      - $ref: '#/components/schemas/EthErc20AssetType'
+      - $ref: '#/components/schemas/EthErc721AssetType'
+      - $ref: '#/components/schemas/EthErc721LazyAssetType'
+      - $ref: '#/components/schemas/EthErc1155AssetType'
+      - $ref: '#/components/schemas/EthErc1155LazyAssetType'
+      - $ref: '#/components/schemas/EthCryptoPunksAssetType'
+      - $ref: '#/components/schemas/EthGenerativeArtAssetType'
+      - $ref: '#/components/schemas/EthCollectionAssetType'
+      - $ref: '#/components/schemas/SolanaNftAssetType'
+      - $ref: '#/components/schemas/SolanaFtAssetType'
+      - $ref: '#/components/schemas/SolanaSolAssetType'
+    Meta:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the NFT item
+        description:
+          type: string
+          description: Description of the NFT item
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        tags:
+          type: array
+          items:
+            type: string
+        genres:
+          type: array
+          items:
+            type: string
+        language:
+          description: Language in RFC 1176 format
+          type: string
+        rights:
+          type: string
+        rightsUri:
+          type: string
+        externalUri:
+          description: URI to external page related to the Item
+          type: string
+        originalMetaUri:
+          description: URI to the original meta JSON
+          type: string
+        attributes:
+          type: array
+          description: Attributes of the NFT item
+          items:
+            $ref: '#/components/schemas/MetaAttribute'
+        content:
+          type: array
+          description: NFT content information
+          items:
+            $ref: '#/components/schemas/MetaContent'
+        extraContent:
+          type: array
+          description: NFT additional content information
+          items:
+            $ref: '#/components/schemas/MetaContent'
+      required:
+      - name
+      - attributes
+      - content
+    Payout:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/UnionAddress'
+        value:
+          type: integer
+      required:
+      - account
+      - value
+    BigDecimal:
+      type: string
+      example: 123456.789
+    OrderData:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/RawOrderData'
+      - $ref: '#/components/schemas/EthOrderDataLegacy'
+      - $ref: '#/components/schemas/EthRaribleV2OrderData'
+      - $ref: '#/components/schemas/EthOrderOpenSeaV1DataV1'
+      - $ref: '#/components/schemas/EthOrderSeaportDataV1'
+      - $ref: '#/components/schemas/EthOrderCryptoPunksData'
+      - $ref: '#/components/schemas/SolanaAuctionHouseDataV1'
+    EthErc20AssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ERC20
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+      required:
+      - '@type'
+      - contract
+    MetaAttribute:
+      required:
+      - key
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+        type:
+          type: string
+        format:
+          type: string
+    EthLazyItemErc1155:
+      type: object
+      required:
+      - '@type'
+      - supply
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_ERC1155
+        supply:
+          $ref: '#/components/schemas/BigInteger'
+    Items:
+      type: object
+      properties:
+        total:
+          deprecated: true
+          type: integer
+          format: int64
+          description: Number of items were found by request
+        continuation:
+          type: string
+          description: Continuation token to paginate items search result
+        items:
+          type: array
+          description: List of found items
+          default: []
+          items:
+            $ref: '#/components/schemas/Item'
+      required:
+      - items
+    EthOrderDataRaribleV2DataV3:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_RARIBLE_V2_3
+        payouts:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Payout'
+        originFees:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Payout'
+        isMakeFill:
+          type: boolean
+          description: If true, the 'fill' part of the order applies to the 'make' side, otherwise to the 'take' side
+      required:
+      - '@type'
+      - payouts
+      - originFees
+      - isMakeFill
+    ItemOwnership:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/OwnershipId'
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        owner:
+          $ref: '#/components/schemas/UnionAddress'
+        value:
+          $ref: '#/components/schemas/BigInteger'
+        createdAt:
+          type: string
+          format: date-time
+        creators:
+          type: array
+          description: Creators of the target item
+          default: []
+          items:
+            $ref: '#/components/schemas/Creator'
+        lazyValue:
+          $ref: '#/components/schemas/BigInteger'
+        version:
+          type: integer
+          format: int64
+      required:
+      - id
+      - blockchain
+      - owner
+      - value
+      - createdAt
+      - creators
+      - lazyValue
+      - pending
+    NftAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - NFT
+        collectionId:
+          $ref: '#/components/schemas/CollectionId'
+        itemId:
+          $ref: '#/components/schemas/ItemId'
+        standard:
+          type: string
+          enum:
+          - SINGLE
+          - MULTIPLE
+      required:
+      - '@type'
+      - itemId
+      - collectionId
+    LazyItemMintForm:
+      type: object
+      required:
+      - item
+      properties:
+        item:
+          $ref: '#/components/schemas/LazyItem'
+    SolanaNftAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - SOLANA_NFT
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        itemId:
+          $ref: '#/components/schemas/ItemId'
+      required:
+      - '@type'
+      - itemId
+    TokenCurrencyAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - CURRENCY_TOKEN
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+      required:
+      - '@type'
+      - contract
+    EthEthereumAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+      required:
+      - '@type'
+    Asset:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/AssetType'
+        value:
+          $ref: '#/components/schemas/BigDecimal'
+      required:
+      - type
+      - value
+    ImageContent:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - IMAGE
+        width:
+          type: integer
+        height:
+          type: integer
+    ItemWithOwnership:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/Item'
+        ownership:
+          $ref: '#/components/schemas/ItemOwnership'
+      required:
+      - item
+      - ownership
+    EthOrderDataRaribleV2DataV1:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_RARIBLE_V2
+        payouts:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Payout'
+        originFees:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Payout'
+      required:
+      - '@type'
+      - payouts
+      - originFees
+    EthSeaportConsideration:
+      type: object
+      properties:
+        itemType:
+          $ref: '#/components/schemas/EthSeaportItemType'
+        token:
+          $ref: '#/components/schemas/UnionAddress'
+        identifierOrCriteria:
+          $ref: '#/components/schemas/BigInteger'
+        startAmount:
+          $ref: '#/components/schemas/BigInteger'
+        endAmount:
+          $ref: '#/components/schemas/BigInteger'
+        recipient:
+          $ref: '#/components/schemas/UnionAddress'
+      required:
+      - itemType
+      - token
+      - identifierOrCriteria
+      - startAmount
+      - endAmount
+      - recipient
+    AudioContent:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - AUDIO
+    Order:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/OrderId'
+        fill:
+          $ref: '#/components/schemas/BigDecimal'
+        platform:
+          $ref: '#/components/schemas/Platform'
+        status:
+          $ref: '#/components/schemas/OrderStatus'
+        startedAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+        makeStock:
+          $ref: '#/components/schemas/BigDecimal'
+        cancelled:
+          type: boolean
+        optionalRoyalties:
+          type: boolean
+          description: True if the execution of this order does not guarantee that the royalties will be paid. In this case, it is up to the buyer to pay the royalties.
+          default: false
+        createdAt:
+          type: string
+          format: date-time
+        lastUpdatedAt:
+          type: string
+          format: date-time
+        dbUpdatedAt:
+          type: string
+          format: date-time
+        makePrice:
+          $ref: '#/components/schemas/BigDecimal'
+        takePrice:
+          $ref: '#/components/schemas/BigDecimal'
+        makePriceUsd:
+          $ref: '#/components/schemas/BigDecimal'
+        takePriceUsd:
+          $ref: '#/components/schemas/BigDecimal'
+        maker:
+          $ref: '#/components/schemas/UnionAddress'
+        taker:
+          $ref: '#/components/schemas/UnionAddress'
+        make:
+          $ref: '#/components/schemas/Asset'
+        take:
+          $ref: '#/components/schemas/Asset'
+        salt:
+          type: string
+        signature:
+          type: string
+        feeTakers:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/UnionAddress'
+        data:
+          $ref: '#/components/schemas/OrderData'
+        version:
+          type: integer
+          format: int64
+      required:
+      - id
+      - platform
+      - status
+      - fill
+      - makeStock
+      - cancelled
+      - createdAt
+      - lastUpdatedAt
+      - type
+      - maker
+      - make
+      - take
+      - salt
+      - data
+    UnionApiErrorEntityNotFound:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - NOT_FOUND
+          default: NOT_FOUND
+        message:
+          type: string
+          description: Error message
+    EthCollectionAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - COLLECTION
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+      required:
+      - '@type'
+      - contract
+    Creator:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/UnionAddress'
+        value:
+          type: integer
+      required:
+      - account
+      - value
+    EthCryptoPunksAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - CRYPTO_PUNKS
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          type: integer
+      required:
+      - '@type'
+      - contract
+      - tokenId
+    EthRaribleV2OrderData:
+      oneOf:
+      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV1'
+      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV2'
+      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV3'
+      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV3Sell'
+      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV3Buy'
+    EthOrderDataRaribleV2DataV3Sell:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_RARIBLE_V2_DATA_V3_SELL
+        payout:
+          $ref: '#/components/schemas/Payout'
+        originFeeFirst:
+          $ref: '#/components/schemas/Payout'
+        originFeeSecond:
+          $ref: '#/components/schemas/Payout'
+        maxFeesBasePoint:
+          type: integer
+        marketplaceMarker:
+          type: string
+      required:
+      - '@type'
+      - maxFeesBasePoint
+    ItemTransfer:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - TRANSFER
+        from:
+          $ref: '#/components/schemas/UnionAddress'
+      required:
+      - '@type'
+      - owner
+      - value
+      - from
+    VideoContent:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - VIDEO
+        width:
+          type: integer
+        height:
+          type: integer
+    TraitEntry:
+      title: TraitEntry
+      type: object
+      description: Combination of Item attribute key/value with it's count
+      required:
+      - value
+      - count
+      properties:
+        value:
+          type: string
+        count:
+          type: integer
+          format: int64
+    RawOrderData:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - RAW
+        data:
+          $ref: '#/components/schemas/RawJson'
+      required:
+      - '@type'
+    EthLazyItem:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/EthLazyItemErc721'
+      - $ref: '#/components/schemas/EthLazyItemErc1155'
+    EthOrderDataRaribleV2DataV2:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_RARIBLE_V2_2
+        payouts:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Payout'
+        originFees:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Payout'
+        isMakeFill:
+          type: boolean
+          description: If true, the 'fill' part of the order applies to the 'make' side, otherwise to the 'take' side
+      required:
+      - '@type'
+      - payouts
+      - originFees
+      - isMakeFill
+    EthLazyItemErc721:
+      type: object
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_ERC721
+    OwnershipId:
+      type: string
+      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410:0x4765273c477c2dc484da4f1984639e943adccfeb
+    Rarity:
+      type: object
+      properties:
+        score:
+          type: number
+          format: float
+          description: Higher score corresponds to a rarer item
+        rank:
+          type: integer
+          format: int64
+          description: Item with rank 1 is the rarest
+    Royalty:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/UnionAddress'
+        value:
+          type: integer
+      required:
+      - account
+      - value
+    Item:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ItemId'
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        tokenId:
+          $ref: '#/components/schemas/BigInteger'
+        creators:
+          type: array
+          description: Creators of the target item
+          default: []
+          items:
+            $ref: '#/components/schemas/Creator'
+        ownerIfSingle:
+          $ref: '#/components/schemas/UnionAddress'
+        ownerChangeDate:
+          type: string
+          format: date-time
+        lazySupply:
+          $ref: '#/components/schemas/BigInteger'
+        pending:
+          type: array
+          description: Pending information about the item
+          default: []
+          items:
+            $ref: '#/components/schemas/ItemTransfer'
+        mintedAt:
+          type: string
+          format: date-time
+          description: Date and time of the item minting
+        lastUpdatedAt:
+          type: string
+          format: date-time
+          description: Filter condition to return only items that have been updated at this date
+        supply:
+          $ref: '#/components/schemas/BigInteger'
+        meta:
+          $ref: '#/components/schemas/Meta'
+        deleted:
+          type: boolean
+          description: Item was deleted or not
+        bestSellOrder:
+          $ref: '#/components/schemas/Order'
+        bestBidOrder:
+          $ref: '#/components/schemas/Order'
+        bestBidOrdersByCurrency:
+          type: array
+          description: Contains best bid order for each currency if exists
+          items:
+            $ref: '#/components/schemas/Order'
+        totalStock:
+          $ref: '#/components/schemas/BigInteger'
+        sellers:
+          type: integer
+          description: Total count of users selling this item ATM
+        lastSale:
+          $ref: '#/components/schemas/ItemLastSale'
+        self:
+          type: boolean
+        suspicious:
+          type: boolean
+        itemCollection:
+          $ref: '#/components/schemas/ItemCollection'
+        features:
+          type: array
+          default: []
+          uniqueItems: true
+          items:
+            type: string
+            enum:
+            - NOT_FOR_SALE
+            - LOCKED
+        rarity:
+          $ref: '#/components/schemas/Rarity'
+        extra:
+          type: object
+          description: Blockchain-specific information about this NFT item particular to that blockchain's data model
+          additionalProperties:
+            type: string
+        version:
+          type: integer
+          format: int64
+      required:
+      - id
+      - blockchain
+      - creators
+      - lazySupply
+      - pending
+      - mintedAt
+      - lastUpdatedAt
+      - supply
+      - deleted
+      - sellers
+    OrderId:
+      type: string
+      example: ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143
+    CollectionId:
+      type: string
+      description: Collection id
+      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8
+    LazyItem:
+      type: object
+      required:
+      - id
+      - uri
+      - creators
+      - royalties
+      - signatures
+      properties:
+        id:
+          $ref: '#/components/schemas/ItemId'
+        uri:
+          type: string
+        creators:
+          type: array
+          description: Addresses of the NFT item creators
+          items:
+            $ref: '#/components/schemas/Creator'
+        royalties:
+          type: array
+          description: List of royalties
+          items:
+            $ref: '#/components/schemas/Royalty'
+        signatures:
+          type: array
+          description: Digital signatures
+          items:
+            type: string
+      description: Type of an Asset
+      oneOf:
+      - $ref: '#/components/schemas/EthLazyItem'
+    TraitProperty:
+      title: TraitProperty
+      type: object
+      description: Item trait property
+      required:
+      - key
+      - value
+      properties:
+        key:
+          type: string
+          example: Hat
+        value:
+          type: string
+          example: Halo
+    ItemId:
+      type: string
+      description: Item Id, has format `ETHEREUM:${token}:${tokenId}`
+      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410
+    MetaContent:
+      type: object
+      properties:
+        fileName:
+          type: string
+        url:
+          type: string
+        representation:
+          type: string
+          enum:
+          - PREVIEW
+          - BIG
+          - INITIAL
+          - ORIGINAL
+          - PORTRAIT
+        mimeType:
+          type: string
+          example: image/png
+        size:
+          type: integer
+          format: int64
+        available:
+          type: boolean
+      required:
+      - url
+      - representation
+      oneOf:
+      - $ref: '#/components/schemas/ImageContent'
+      - $ref: '#/components/schemas/VideoContent'
+      - $ref: '#/components/schemas/AudioContent'
+      - $ref: '#/components/schemas/Model3dContent'
+      - $ref: '#/components/schemas/HtmlContent'
+    EthErc721AssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ERC721
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          $ref: '#/components/schemas/BigInteger'
+      required:
+      - '@type'
+      - contract
+      - tokenId
+    SearchEngine:
+      type: string
+      enum:
+      - LEGACY
+      - V1
+    EthOrderDataLegacy:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_RARIBLE_V1
+        fee:
+          $ref: '#/components/schemas/BigInteger'
+      required:
+      - fee
+      - '@type'
+    ItemsWithOwnership:
+      type: object
+      properties:
+        total:
+          deprecated: true
+          type: integer
+          format: int64
+          description: Number of items were found by request
+        continuation:
+          type: string
+          description: Continuation token to paginate items search result
+        items:
+          type: array
+          description: List of found items
+          default: []
+          items:
+            $ref: '#/components/schemas/ItemWithOwnership'
+      required:
+      - items
+    OrderStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - FILLED
+      - INACTIVE
+      - CANCELLED
+    EthOrderDataRaribleV2DataV3Buy:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_RARIBLE_V2_DATA_V3_BUY
+        payout:
+          $ref: '#/components/schemas/Payout'
+        originFeeFirst:
+          $ref: '#/components/schemas/Payout'
+        originFeeSecond:
+          $ref: '#/components/schemas/Payout'
+        marketplaceMarker:
+          type: string
+      required:
+      - '@type'
+    EthSeaportItemType:
+      type: string
+      enum:
+      - NATIVE
+      - ERC20
+      - ERC721
+      - ERC1155
+      - ERC721_WITH_CRITERIA
+      - ERC1155_WITH_CRITERIA
+    ContractAddress:
+      type: string
+      description: Blockchain contract address in Union format `ETHEREUM:${token}`
+      example: ETHEREUM:0xd07dc4262bcdbf85190c01c996b4c06a461d2430
+    Platform:
+      type: string
+      enum:
+      - RARIBLE
+      - OPEN_SEA
+      - CRYPTO_PUNKS
+      - HEN
+      - OBJKT
+      - VERSUM
+      - TEIA
+      - OTHER
+      - FXHASH
+    NativeCurrencyAssetType:
+      type: object
+      properties:
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        '@type':
+          type: string
+          enum:
+          - CURRENCY_NATIVE
+      required:
+      - '@type'
+      - blockchain
+    EthSeaportOffer:
+      type: object
+      properties:
+        itemType:
+          $ref: '#/components/schemas/EthSeaportItemType'
+        token:
+          $ref: '#/components/schemas/UnionAddress'
+        identifierOrCriteria:
+          $ref: '#/components/schemas/BigInteger'
+        startAmount:
+          $ref: '#/components/schemas/BigInteger'
+        endAmount:
+          $ref: '#/components/schemas/BigInteger'
+      required:
+      - itemType
+      - token
+      - identifierOrCriteria
+      - startAmount
+      - endAmount
+    NftOfCollectionAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - NFT_OF_COLLECTION
+        collectionId:
+          $ref: '#/components/schemas/CollectionId'
+      required:
+      - '@type'
+      - collectionId
+    ExtendedTraitProperties:
+      type: object
+      properties:
+        continuation:
+          type: string
+          description: Continuation token to paginate result
+        traits:
+          type: array
+          description: List of ExtendedTraitProperty
+          default: []
+          items:
+            $ref: '#/components/schemas/ExtendedTraitProperty'
+      required:
+      - traits
+    Model3dContent:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - MODEL_3D
+    LazyItemBurnForm:
+      type: object
+      required:
+      - id
+      - creators
+      - signatures
+      properties:
+        id:
+          $ref: '#/components/schemas/ItemId'
+        creators:
+          type: array
+          description: Address of the NFT item creators
+          items:
+            $ref: '#/components/schemas/UnionAddress'
+        signatures:
+          type: array
+          description: Digital signatures
+          items:
+            type: string
+    BigInteger:
+      type: string
+      example: 123456
+    EthOrderOpenSeaV1DataV1:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_OPEN_SEA_V1
+        exchange:
+          $ref: '#/components/schemas/UnionAddress'
+        makerRelayerFee:
+          $ref: '#/components/schemas/BigInteger'
+        takerRelayerFee:
+          $ref: '#/components/schemas/BigInteger'
+        makerProtocolFee:
+          $ref: '#/components/schemas/BigInteger'
+        takerProtocolFee:
+          $ref: '#/components/schemas/BigInteger'
+        feeRecipient:
+          $ref: '#/components/schemas/UnionAddress'
+        feeMethod:
+          type: string
+          enum:
+          - PROTOCOL_FEE
+          - SPLIT_FEE
+        side:
+          type: string
+          enum:
+          - BUY
+          - SELL
+        saleKind:
+          type: string
+          enum:
+          - FIXED_PRICE
+          - DUTCH_AUCTION
+        howToCall:
+          type: string
+          enum:
+          - CALL
+          - DELEGATE_CALL
+        callData:
+          type: string
+        replacementPattern:
+          type: string
+        staticTarget:
+          $ref: '#/components/schemas/UnionAddress'
+        staticExtraData:
+          type: string
+        extra:
+          $ref: '#/components/schemas/BigInteger'
+      required:
+      - '@type'
+      - dataType
+      - exchange
+      - makerRelayerFee
+      - takerRelayerFee
+      - makerProtocolFee
+      - takerProtocolFee
+      - feeRecipient
+      - feeMethod
+      - side
+      - saleKind
+      - howToCall
+      - callData
+      - replacementPattern
+      - staticTarget
+      - staticExtraData
+      - extra
+    EthErc721LazyAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ERC721_Lazy
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          $ref: '#/components/schemas/BigInteger'
+        uri:
+          type: string
+        creators:
+          type: array
+          description: Creators of the target item
+          default: []
+          items:
+            $ref: '#/components/schemas/Creator'
+        royalties:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Royalty'
+        signatures:
+          type: array
+          default: []
+          items:
+            type: string
+      required:
+      - '@type'
+      - contract
+      - tokenId
+      - uri
+      - creators
+      - royalties
+      - signatures
+    EthErc1155AssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ERC1155
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          $ref: '#/components/schemas/BigInteger'
+      required:
+      - '@type'
+      - contract
+      - tokenId
+    UnionApiErrorBadRequest:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - BAD_REQUEST
+          - VALIDATION
+          default: BAD_REQUEST
+        message:
+          type: string
+          description: Error message
+    RawJson:
+      type: object
+    Blockchain:
+      type: string
+      enum:
+      - APTOS
+      - ETHEREUM
+      - POLYGON
+      - SOLANA
+      - ARBITRUM
+      - CHILIZ
+      - LIGHTLINK
+      - ZKSYNC
+      - BASE
+      - RARI
+      - ZKLINK
+      - QUAI
+      - ECLIPSE
+      - ELECTRONEUM
+      - SAAKURU
+      - OASIS
+      - MATCH
+      - MOONBEAM
+      - ETHERLINK
+      - ZKCANDY
+      - BERACHAIN
+      - ABSTRACT
+      - SHAPE
+      - TELOS
+      - HEDERAEVM
+      - VICTION
+      - SETTLUS
+      - GOAT
+      - HYPEREVM
+      - MEGAETH
+      - MEGAETHTESTNET
+      - MEGAETHTESTNETV2
+      - BASECAMP
+      - CAMP
+      - SOMNIA
+      - ARENAZ
+      - INJECTIVE
+      - INJECTIVETESTNET
+      - APECHAIN
+      - BLOCKCHAINKEK
+      - STELLAR
+      - ZILLIQA
+      - FRAXTAL
+      - XLAYER
+      - MONAD
+      example: ETHEREUM
+    EthOrderCryptoPunksData:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_CRYPTO_PUNKS
+        stub:
+          type: string
+          default: STUB
+      required:
+      - '@type'
+    EthOrderSeaportDataV1:
+      type: object
+      properties:
+        protocol:
+          $ref: '#/components/schemas/UnionAddress'
+        orderType:
+          $ref: '#/components/schemas/EthSeaportOrderType'
+        offer:
+          type: array
+          items:
+            $ref: '#/components/schemas/EthSeaportOffer'
+        consideration:
+          type: array
+          items:
+            $ref: '#/components/schemas/EthSeaportConsideration'
+        zone:
+          $ref: '#/components/schemas/UnionAddress'
+        zoneHash:
+          type: string
+        conduitKey:
+          type: string
+        counter:
+          deprecated: true
+          type: integer
+          format: int64
+        nonce:
+          $ref: '#/components/schemas/BigInteger'
+      required:
+      - protocol
+      - orderType
+      - offer
+      - consideration
+      - zone
+      - zoneHash
+      - conduitKey
+      oneOf:
+      - $ref: '#/components/schemas/EthOrderBasicSeaportDataV1'
+    EthSeaportOrderType:
+      type: string
+      enum:
+      - FULL_OPEN
+      - PARTIAL_OPEN
+      - FULL_RESTRICTED
+      - PARTIAL_RESTRICTED
+      - CONTRACT
+    TraitsRarityRequest:
+      title: TraitsRarityRequest
+      type: object
+      description: Request rarity of the properties in the collection
+      required:
+      - collectionId
+      - properties
+      properties:
+        collectionId:
+          type: string
+          example: ETHEREUM:0x60e4d786628fea6478f785a6d7e704777c86a7c6
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/TraitProperty'
+    HtmlContent:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - HTML
+    ExtendedTraitProperty:
+      title: ExtendedTraitProperty
+      type: object
+      description: Trait property parameters with additional features
+      required:
+      - key
+      - value
+      - rarity
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+        rarity:
+          type: number
+          format: bigdecimal
+          description: Rarity percent
+    EthGenerativeArtAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - GEN_ART
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+      required:
+      - '@type'
+      - contract
+    SolanaAuctionHouseDataV1:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - SOLANA_AUCTION_HOUSE_V1
+        fee:
+          type: integer
+        requiresSignOff:
+          type: boolean
+        auctionHouse:
+          $ref: '#/components/schemas/ContractAddress'
+      required:
+      - '@type'
+    Royalties:
+      type: object
+      properties:
+        royalties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Royalty'
+      required:
+      - royalties
+    UnionAddress:
+      type: string
+      description: Blockchain address in Union format `${blockchainGroup}:${token}`
+      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
+    SolanaFtAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - SOLANA_FT
+        address:
+          $ref: '#/components/schemas/ContractAddress'
+      required:
+      - '@type'
+      - address
+    ItemLastSale:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        seller:
+          $ref: '#/components/schemas/UnionAddress'
+        buyer:
+          $ref: '#/components/schemas/UnionAddress'
+        value:
+          $ref: '#/components/schemas/BigDecimal'
+        currency:
+          $ref: '#/components/schemas/AssetType'
+        price:
+          $ref: '#/components/schemas/BigDecimal'
+      required:
+      - date
+      - from
+      - to
+      - value
+      - currency
+      - price
+  responses:
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnionApiErrorServerError'
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnionApiErrorBadRequest'
+    EntityNotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnionApiErrorEntityNotFound'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      x-default: 11111111-1111-1111-1111-111111111111

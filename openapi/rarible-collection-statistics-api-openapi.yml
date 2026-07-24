@@ -1,0 +1,565 @@
+openapi: 3.0.3
+info:
+  title: OpenAPI definition Charts Collection Statistics API
+  version: v0.1
+  description: '# Exciting News
+
+
+    Hey there, amazing developers! 👋
+
+
+    We''ve got some fantastic news to share that will make your experience with our product even better. We''re thrilled to announce the implementation of API-Keys, which brings a new level of control and convenience to your development process. So, let''s dive right into the details! ✨
+
+
+    ## API-Keys for Enhanced Functionality 🔑
+
+
+    Starting now, we have introduced API-Keys to streamline your interactions with our methods. You might have noticed a slight change while making requests – now, all you need to do is include the parameter `X-API-KEY` in the Header of your request. Simple as that!
+
+
+    ## Get Your API-Key in a Snap! ⚡️
+
+
+    Securing your API-Key is a breeze. We''ve made the process super user-friendly to ensure you can get started quickly. Just head over to our website and fill out a simple form. Once you''ve done that, your shiny new API-Key will be delivered straight to your email inbox. Easy peasy! 📧
+
+
+    [Get Your API-Key Here](https://api.rarible.org/registration)
+
+    [Configure SDK with API-key](https://github.com/rarible/sdk#api-querying)
+
+
+    ## Unlock the Power of the Rarible Protocol 🔓
+
+
+    As passionate developers, we know you''re always hungry for knowledge and eager to explore new frontiers. That''s why we invite you to discover the incredible world of the Rarible Protocol. By visiting our dedicated protocol page, you''ll gain access to a treasure trove of useful information, tips, and insights that will elevate your development skills to new heights. 🚀
+
+
+    [Explore the Rarible Protocol](https://rarible.org)
+
+
+    So, buckle up and get ready for an enhanced development journey with our API-Keys. We''re excited to see what you''ll create using our revamped system! 💪🚀
+
+
+    Stay curious, keep innovating, and happy coding! ✨
+
+
+    [P.S. Join our Discord Server to stay up to date and ask questions](https://discord.gg/rarifoundation)
+
+    '
+servers:
+- url: https://{environment}.rarible.org
+  description: Production (Mainnet)
+  variables:
+    environment:
+      enum:
+      - api
+      - testnet-api
+      default: api
+security:
+- ApiKeyAuth: []
+tags:
+- name: Collection Statistics
+  x-controller: CollectionStatisticsController
+paths:
+  /v2.0/data/collections/{id}/statistics/global:
+    get:
+      tags:
+      - Collection Statistics
+      summary: Get global (period-independent) statistics by collection ID
+      description: Global collection statistics by ID
+      operationId: getGlobalCollectionStatistics
+      parameters:
+      - name: id
+        in: path
+        description: Collection ID
+        required: true
+        schema:
+          $ref: '#/components/schemas/CollectionId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapGlobalCollectionStatisticsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+  /v2.0/data/collections/statistics/global/byIds:
+    post:
+      tags:
+      - Collection Statistics
+      summary: Get global (period-independent) statistics by collection IDs
+      description: Global collection statistics by IDs
+      operationId: getGlobalCollectionStatisticsByIds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 100
+              items:
+                $ref: '#/components/schemas/CollectionId'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OlapGlobalCollectionStatisticsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+  /v2.0/data/collections/statistics/aggregated:
+    post:
+      tags:
+      - Collection Statistics
+      summary: Get NFT Collections aggregated statistics
+      description: Get aggregated statistics for collections list
+      operationId: getCollectionsAggregatedStatistics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 100
+              items:
+                $ref: '#/components/schemas/CollectionId'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapAggregatedCollectionStatisticsResponse'
+              example:
+                owners: 6472
+                highestSaleUsd: 37.66
+                volumeUsd: 37.66
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+  /v2.0/data/collections/{id}/statistics/period:
+    get:
+      tags:
+      - Collection Statistics
+      summary: Get period-based statistics by collection ID
+      description: Period-based collection statistics by ID
+      operationId: getPeriodCollectionStatistics
+      parameters:
+      - name: id
+        in: path
+        description: Collection ID
+        required: true
+        schema:
+          $ref: '#/components/schemas/CollectionId'
+      - name: period
+        in: query
+        description: Time period for aggregation
+        required: true
+        schema:
+          $ref: '#/components/schemas/OlapPeriod'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapPeriodCollectionStatisticsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+  /v2.0/data/collections/statistics/period/byIds:
+    post:
+      tags:
+      - Collection Statistics
+      summary: Get period-based statistics by collection IDs
+      description: Period-based collection statistics by IDs
+      operationId: getPeriodCollectionStatisticsByIds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OlapPeriodCollectionsByIdsStatisticsRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OlapPeriodCollectionStatisticsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+  /v2.0/data/collections/{id}/owners:
+    get:
+      tags:
+      - Collection Statistics
+      summary: Get distribution of the number of owned items by owner
+      description: Returns list of owners of items in the collection along with the number of owned items
+      operationId: getOwners
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Collection ID
+        schema:
+          $ref: '#/components/schemas/CollectionId'
+      - name: continuation
+        in: query
+        required: false
+        description: Continuation token from the previous response
+        schema:
+          type: string
+      - name: size
+        in: query
+        required: false
+        description: The number of results to return
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapOwnerStatistics'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+  /v2.0/data/collections/{id}/bidsByPrice:
+    get:
+      tags:
+      - Collection Statistics
+      summary: Get distribution of the number of bids by price
+      description: Returns list of bid prices with number of bids and bidders
+      operationId: getBidsByPrice
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Collection ID
+        schema:
+          $ref: '#/components/schemas/CollectionId'
+      - name: continuation
+        in: query
+        required: false
+        description: Continuation token from the previous response
+        schema:
+          type: string
+      - name: size
+        in: query
+        required: false
+        description: The number of results to return
+        schema:
+          type: integer
+      - name: sort
+        in: query
+        required: false
+        description: Result sorting
+        schema:
+          $ref: '#/components/schemas/OlapBidsByPriceSort'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapBidsByPriceStatistics'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OlapError'
+components:
+  schemas:
+    OlapBidsByPriceStatistics:
+      type: object
+      properties:
+        maxVolumeNative:
+          type: number
+          format: bigdecimal
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/OlapBidsByPrice'
+        continuation:
+          type: string
+          description: Continuation token to paginate result
+      required:
+      - prices
+      - maxVolumeNative
+    OlapBidsByPrice:
+      type: object
+      properties:
+        price:
+          type: number
+          format: bigdecimal
+        bidsCount:
+          type: integer
+          format: int64
+        volumeNative:
+          type: number
+          format: bigdecimal
+        buyersCount:
+          type: integer
+          format: int64
+        buyer:
+          $ref: '#/components/schemas/UnionAddress'
+      required:
+      - price
+      - bidsCount
+      - volumeNative
+      - volumeRatio
+      - buyersCount
+    OlapBidsByPriceSort:
+      type: string
+      default: PRICE
+      enum:
+      - PRICE
+      - VOLUME_NATIVE
+    OlapAggregatedCollectionStatisticsResponse:
+      required:
+      - highestSaleUsd
+      - owners
+      - volumeUsd
+      type: object
+      properties:
+        highestSaleUsd:
+          description: Highest worth transaction in all collections
+          type: number
+          format: bigdecimal
+        volumeUsd:
+          description: Total worth of all transactions were made with nfts in collections
+          type: number
+          format: bigdecimal
+        owners:
+          type: integer
+          description: Current amount of unique owners who hold nfts in collections
+          format: int32
+    UnionAddress:
+      type: string
+      description: Blockchain address in Union format `${blockchainGroup}:${token}`
+      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
+    OlapPriceWithUsd:
+      required:
+      - currency
+      - value
+      type: object
+      properties:
+        currency:
+          type: string
+        value:
+          type: number
+          description: Amount of currency
+          format: bigdecimal
+        valueUsd:
+          type: number
+          description: Amount in USD
+          format: bigdecimal
+    OlapPeriod:
+      type: string
+      enum:
+      - MIN5
+      - MIN30
+      - H1
+      - H6
+      - D1
+      - D7
+      - D30
+      - D180
+      - D365
+      - ALL
+      description: "Period:\n  * `MIN5` - Last 5 minutes\n  * `MIN30` - Last 30 minutes\n  * `H1` - Last 1 hour\n  * `H6` - Last 6 hours\n  * `D1` - Last 1 day\n  * `D7` - Last 7 days\n  * `D30` - Last 30 days\n  * `D180` - Last 180 days (roughly 6 months)\n  * `D365` - Last 365 days (roughly 1 year)\n  * `ALL` - For all time\n"
+    OlapPeriodCollectionStatisticsResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/CollectionId'
+        period:
+          $ref: '#/components/schemas/OlapPeriod'
+        volume:
+          description: Period (e.g., 1-day) worth of all transactions with items in this collection
+          $ref: '#/components/schemas/OlapPriceWithUsd'
+        floorChangePercent:
+          description: Change in floor price in percent during the period.
+          type: number
+          format: bigdecimal
+      required:
+      - period
+      - volume
+    OlapOwnerStatistics:
+      type: object
+      properties:
+        owners:
+          type: array
+          items:
+            $ref: '#/components/schemas/OlapOwnerStatistic'
+        continuation:
+          type: string
+          description: Continuation token to paginate result
+      required:
+      - owners
+    OlapError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          description: Code
+          enum:
+          - INVALID_INPUT
+          - NOT_FOUND
+          - UNKNOWN
+        message:
+          type: string
+          description: Message
+    OlapPeriodCollectionsByIdsStatisticsRequest:
+      type: object
+      properties:
+        collectionIds:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            type: string
+        period:
+          $ref: '#/components/schemas/OlapPeriod'
+      required:
+      - collectionIds
+      - period
+    CollectionId:
+      type: string
+      description: Collection id
+      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8
+    OlapOwnerStatistic:
+      type: object
+      properties:
+        owner:
+          $ref: '#/components/schemas/UnionAddress'
+        ownedItems:
+          type: integer
+          format: int64
+      required:
+      - owner
+      - ownedItems
+    OlapGlobalCollectionStatisticsResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/CollectionId'
+        listed:
+          type: integer
+          format: int64
+        items:
+          type: integer
+          format: int64
+        owners:
+          type: integer
+          format: int64
+        floor:
+          $ref: '#/components/schemas/OlapPriceWithUsd'
+        volume:
+          description: Total worth of all transactions with items in this collection
+          $ref: '#/components/schemas/OlapPriceWithUsd'
+      required:
+      - listed
+      - items
+      - owners
+      - volume
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      x-default: 11111111-1111-1111-1111-111111111111
