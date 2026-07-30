@@ -16,7 +16,20 @@ description: >-
   transactions, enabling direct monetisation on top of the Rarible
   infrastructure. The platform indexes over 1 billion NFTs and 91 million
   trades and maintains 99.99% uptime.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/rarible.png
 tags:
   - NFT
   - Non-Fungible Tokens
@@ -41,111 +54,333 @@ x-category: NFT
 x-tier: 1
 x-type: company
 apis:
-  - aid: rarible:nft-api
-    name: Rarible NFT API
-    description: >-
-      Core REST API for querying NFT items and collections across supported
-      blockchains. Provides endpoints to retrieve NFTs by ID, collection,
-      creator, or owner; access royalty information; reset metadata; and
-      query ownership records. Supports multichain item resolution via the
-      unified api.rarible.org base URL with an X-API-KEY header for
-      authentication.
-    humanURL: https://docs.rarible.org/docs/introduction
-    baseURL: https://api.rarible.org/v0.1
-    tags:
-      - NFT
-      - Items
-      - Collections
-      - Ownership
-      - Metadata
-      - Royalties
-    properties:
-      - type: Documentation
-        url: https://docs.rarible.org/docs/introduction
-      - type: OpenAPI
-        url: https://github.com/rarible/union-openapi
-      - type: Signup
-        url: https://rarible.org/
-      - type: Authentication
-        url: https://docs.rarible.org/docs/authentication
-
-  - aid: rarible:orders-api
-    name: Rarible Orders API
-    description: >-
-      REST API for accessing and interacting with NFT order books aggregated
-      from multiple marketplaces including OpenSea and Rarible. Provides
-      endpoints for getting all orders, retrieving orders by ID, fetching
-      sell and bid orders, preparing order transactions, creating and
-      updating orders, validating orders, and cancelling orders.
-      Enables building NFT trading functionality with aggregated liquidity.
-    humanURL: https://docs.rarible.org/docs/introduction
-    baseURL: https://api.rarible.org/v0.1
-    tags:
-      - Orders
-      - Order Book
-      - Bids
-      - Listings
-      - Trading
-      - Aggregator
-    properties:
-      - type: Documentation
-        url: https://docs.rarible.org/docs/introduction
-      - type: OpenAPI
-        url: https://github.com/rarible/union-openapi
-      - type: Signup
-        url: https://rarible.org/
-
-  - aid: rarible:activities-api
-    name: Rarible Activities API
-    description: >-
-      REST API for querying historical NFT trading activities and events
-      across supported blockchains. Endpoints support searching activities
-      by collection, item, or user, and a general search with a sync variant
-      for stream processing. Useful for building trading history feeds,
-      analytics dashboards, and provenance tracking tools.
-    humanURL: https://docs.rarible.org/docs/data-analytics
-    baseURL: https://api.rarible.org/v0.1
-    tags:
-      - Activities
-      - Events
-      - History
-      - Provenance
-      - Analytics
-      - Transactions
-    properties:
-      - type: Documentation
-        url: https://docs.rarible.org/docs/data-analytics
-      - type: OpenAPI
-        url: https://github.com/rarible/union-openapi
-      - type: Signup
-        url: https://rarible.org/
-
-  - aid: rarible:collections-api
-    name: Rarible Collections API
-    description: >-
-      REST API for accessing NFT collection data, statistics, and rankings.
-      Endpoints include get all collections, get by ID or owner, reset
-      metadata, get floor prices, volume rankings, buyer and seller
-      statistics, GMV, listing stats, and transaction statistics. Powers
-      collection discovery pages, analytics tools, and market intelligence
-      dashboards.
-    humanURL: https://docs.rarible.org/docs/introduction
-    baseURL: https://api.rarible.org/v0.1
-    tags:
-      - Collections
-      - Floor Price
-      - Volume
-      - Rankings
-      - Statistics
-      - Analytics
-    properties:
-      - type: Documentation
-        url: https://docs.rarible.org/docs/introduction
-      - type: OpenAPI
-        url: https://github.com/rarible/union-openapi
-      - type: Signup
-        url: https://rarible.org/
-
+- aid: rarible:rarible-charts-api
+  name: Rarible Charts API
+  description: The Charts API from Rarible — 2 operation(s) for charts.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - Charts
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-charts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-collection-leader-board-api
+  name: Rarible Collection Leader Board API
+  description: >-
+    The Collection Leader Board API from Rarible — 2 operation(s) for collection leader board.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - Collection Leader Board
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-collection-leader-board-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-collection-statistics-api
+  name: Rarible Collection Statistics API
+  description: The Collection Statistics API from Rarible — 7 operation(s) for collection statistics.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - Collection Statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-collection-statistics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-currencies-and-rates-api
+  name: Rarible Currencies and rates API
+  description: The Currencies and rates API from Rarible — 2 operation(s) for currencies and rates.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - Currencies and rates
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-currencies-and-rates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-domain-lookup-api
+  name: Rarible Domain lookup API
+  description: The Domain lookup API from Rarible — 1 operation(s) for domain lookup.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - Domain lookup
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-domain-lookup-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-encode-operations-api
+  name: Rarible Encode operations API
+  description: The Encode operations API from Rarible — 1 operation(s) for encode operations.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - Encode operations
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-encode-operations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-indexer-blocks-api
+  name: Rarible Indexer blocks API
+  description: The Indexer blocks API from Rarible — 1 operation(s) for indexer blocks.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - Indexer blocks
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-indexer-blocks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-nft-activities-api
+  name: Rarible NFT Activities API
+  description: The NFT Activities API from Rarible — 7 operation(s) for nft activities.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - NFT Activities
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-nft-activities-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-nft-collections-api
+  name: Rarible NFT Collections API
+  description: The NFT Collections API from Rarible — 6 operation(s) for nft collections.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - NFT Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-nft-collections-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-nft-data-and-historical-statistics-api
+  name: Rarible NFT Data and Historical Statistics API
+  description: >-
+    The NFT Data and Historical Statistics API from Rarible — 10 operation(s) for nft data and historical
+    statistics.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - NFT Data and Historical Statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-nft-data-and-historical-statistics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-nft-items-api
+  name: Rarible NFT Items API
+  description: The NFT Items API from Rarible — 14 operation(s) for nft items.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - NFT Items
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-nft-items-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-nft-ownerships-api
+  name: Rarible NFT Ownerships API
+  description: The NFT Ownerships API from Rarible — 5 operation(s) for nft ownerships.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - NFT Ownerships
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-nft-ownerships-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-nft-sales-api
+  name: Rarible NFT Sales API
+  description: The NFT Sales API from Rarible — 19 operation(s) for nft sales.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - NFT Sales
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-nft-sales-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-points-api
+  name: Rarible Points API
+  description: The Points API from Rarible — 3 operation(s) for points.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - Points
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-points-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-reconciliation-api
+  name: Rarible Reconciliation API
+  description: The Reconciliation API from Rarible — 2 operation(s) for reconciliation.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - Reconciliation
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-reconciliation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-search-api-api
+  name: Rarible Search API API
+  description: The Search API API from Rarible — 7 operation(s) for search api.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - Search API
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-search-api-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-signature-operations-api
+  name: Rarible Signature operations API
+  description: The Signature operations API from Rarible — 2 operation(s) for signature operations.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - Signature operations
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-signature-operations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
+- aid: rarible:rarible-user-balances-api
+  name: Rarible User balances API
+  description: The User balances API from Rarible — 1 operation(s) for user balances.
+  humanURL: https://docs.rarible.org/docs/introduction
+  baseURL: https://api.rarible.org/v0.1
+  tags:
+  - User balances
+  properties:
+  - type: OpenAPI
+    url: openapi/rarible-user-balances-api-openapi.yml
+  - type: Documentation
+    url: https://docs.rarible.org/docs/introduction
+  - type: Signup
+    url: https://rarible.org/
+  - type: Authentication
+    url: https://docs.rarible.org/docs/authentication
+  - type: Documentation
+    url: https://docs.rarible.org/docs/data-analytics
 common:
   - type: AgenticAccess
     url: agentic-access/rarible-agentic-access.yml
