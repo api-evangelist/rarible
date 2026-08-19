@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts Encode operations API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Encode operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate order encode data for sign operations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/encode/order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate order encode data for sign operations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

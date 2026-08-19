@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts Reconciliation API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reconciliation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get IDs of items updated after a specific datetime.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/reconciliation/items",
+            "params": [
+              {
+                "name": "blockchain",
+                "value": "",
+                "type": "query",
+                "description": "Blockchain name"
+              },
+              {
+                "name": "updatedAfterInclusive",
+                "value": "",
+                "type": "query",
+                "description": "Only items with lastUpdatedAt after (inclusive) will be returned"
+              },
+              {
+                "name": "updatedBeforeExclusive",
+                "value": "",
+                "type": "query",
+                "description": "Only items with lastUpdatedAt before (exclusive) will be returned"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Paging cursor"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to be returned. If not specified, a predefined number is used."
+              }
+            ]
+          },
+          "docs": "Return short view of items updated after a specific datetime."
+        },
+        {
+          "info": {
+            "name": "Get IDs of collections updated after a specific datetime.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/reconciliation/collections",
+            "params": [
+              {
+                "name": "blockchain",
+                "value": "",
+                "type": "query",
+                "description": "Blockchain name"
+              },
+              {
+                "name": "updatedAfterInclusive",
+                "value": "",
+                "type": "query",
+                "description": "Only items with lastUpdatedAt after (inclusive) will be returned"
+              },
+              {
+                "name": "updatedBeforeExclusive",
+                "value": "",
+                "type": "query",
+                "description": "Only items with lastUpdatedAt before (exclusive) will be returned"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Paging cursor"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to be returned. If not specified, a predefined number is used."
+              }
+            ]
+          },
+          "docs": "Return short view of collections updated after a specific datetime."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts Search API API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search NFT collection traits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/items/traits/search",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "filter"
+              },
+              {
+                "name": "collectionIds",
+                "value": "",
+                "type": "query",
+                "description": "Collections identifiers to which traits belong"
+              },
+              {
+                "name": "owners",
+                "value": "",
+                "type": "query",
+                "description": "Return traits only for items owned by user"
+              }
+            ]
+          },
+          "docs": "Returns aggregation of existing traits for specified collections with counter for each trait type/value.\\  This is full-text-search, where you can specify filter for trait keys not precisely\\  (for example, results `back` filter include `Background` trait)"
+        },
+        {
+          "info": {
+            "name": "Search NFTs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/items/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Advanced search returns NFTs satisfying provided filter"
+        },
+        {
+          "info": {
+            "name": "Search Duplicated NFTs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/items/search/duplicates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Advanced search returns NFTs satisfying provided filter and with duplicated traits"
+        },
+        {
+          "info": {
+            "name": "Search NFT Ownerships",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/ownerships/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Advanced search returns NFT Ownerships satisfying provided filter"
+        },
+        {
+          "info": {
+            "name": "Search Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/activities/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Advanced search returns Activities satisfying provided filter"
+        },
+        {
+          "info": {
+            "name": "Count activities that match the search request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/activities/search/count",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Advanced search returns the count of Activities satisfying provided filter"
+        },
+        {
+          "info": {
+            "name": "Search NFT Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/collections/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Advanced search returns NFT Collections satisfying provided filter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1625 @@
+{
+  "item": [
+    {
+      "id": "06054ddd-8503-4a32-bdfb-4e86916c1ee6",
+      "name": "NFT Collections",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7743a515-77cf-47cc-a456-537fe031e3af",
+          "name": "Get NFT Collection by Id",
+          "request": {
+            "name": "Get NFT Collection by Id",
+            "description": {
+              "content": "Returns NFT Collection by Id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "collections",
+                ":collection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collection",
+                  "description": "(Required) Address of the collection"
+                },
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dae6ce85-85e2-4147-8556-a9cb43df3478",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) Address of the collection"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n  \"blockchain\": \"ETHEREUM\",\n  \"name\": \"string\",\n  \"type\": \"ERC1155\",\n  \"features\": [],\n  \"parent\": \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n  \"structure\": \"COMPOSITE\",\n  \"status\": \"CONFIRMED\",\n  \"symbol\": \"string\",\n  \"owner\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n  \"minters\": [\n    \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n    \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n  ],\n  \"meta\": {\n    \"name\": \"string\",\n    \"content\": [],\n    \"description\": \"string\",\n    \"createdAt\": \"1982-10-05T10:52:50.223Z\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"genres\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\",\n    \"rights\": \"string\",\n    \"rightsUri\": \"string\",\n    \"externalUri\": \"string\",\n    \"originalMetaUri\": \"string\",\n    \"externalLink\": \"string\",\n    \"sellerFeeBasisPoints\": 6857,\n    \"feeRecipient\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n  },\n  \"bestBidOrder\": {\n    \"id\": \"ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143\",\n    \"platform\": \"TEIA\",\n    \"status\": \"INACTIVE\",\n    \"fill\": \"string\",\n    \"makeStock\": \"string\",\n    \"cancelled\": true,\n    \"createdAt\": \"2025-01-16T13:20:52.948Z\",\n    \"lastUpdatedAt\": \"1948-05-06T20:57:31.311Z\",\n    \"maker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n    \"make\": {\n      \"type\": {\n        \"@type\": \"CURRENCY_NATIVE\",\n        \"blockchain\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"contract\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"value\": \"string\"\n    },\n    \"take\": {\n      \"type\": {\n        \"@type\": \"CURRENCY_NATIVE\",\n        \"blockchain\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"contract\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"value\": \"string\"\n    },\n    \"salt\": \"string\",\n    \"data\": {\n      \"@type\": \"RAW\",\n      \"data\": {}\n    },\n    \"startedAt\": \"2010-11-23T18:39:44.153Z\",\n    \"endedAt\": \"1971-09-17T22:10:46.757Z\",\n    \"optionalRoyalties\": false,\n    \"dbUpdatedAt\": \"1956-05-12T13:35:43.352Z\",\n    \"makePrice\": \"string\",\n    \"takePrice\": \"string\",\n    \"makePriceUsd\": \"string\",\n    \"takePriceUsd\": \"string\",\n    \"taker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n    \"signature\": \"string\",\n    \"version\": 3306\n  },\n  \"bestSellOrder\": {\n    \"id\": \"ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143\",\n    \"platform\": \"OTHER\",\n    \"status\": \"ACTIVE\",\n    \"fill\": \"string\",\n    \"makeStock\": \"string\",\n    \"cancelled\": false,\n    \"createdAt\": \"2009-06-07T13:36:18.705Z\",\n    \"lastUpdatedAt\": \"1957-01-05T03:53:59.378Z\",\n    \"maker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n    \"make\": {\n      \"type\": {\n        \"@type\": \"CURRENCY_NATIVE\",\n        \"blockchain\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"contract\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"value\": \"string\"\n    },\n    \"take\": {\n      \"type\": {\n        \"@type\": \"CURRENCY_NATIVE\",\n        \"blockchain\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"contract\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"value\": \"string\"\n    },\n    \"salt\": \"string\",\n    \"data\": {\n      \"@type\": \"RAW\",\n      \"data\": {}\n    },\n    \"startedAt\": \"1972-12-02T17:51:52.989Z\",\n    \"endedAt\": \"1957-05-04T20:50:51.273Z\",\n    \"optionalRoyalties\": false,\n    \"dbUpdatedAt\": \"1984-01-16T22:36:25.080Z\",\n    \"makePrice\": \"string\",\n    \"takePrice\": \"string\",\n    \"makePriceUsd\": \"string\",\n    \"takePriceUsd\": \"string\",\n    \"taker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n    \"signature\": \"string\",\n    \"version\": 6792\n  },\n  \"bestBidOrdersByCurrency\": [\n    {\n      \"id\": \"ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143\",\n      \"platform\": \"OPEN_SEA\",\n      \"status\": \"INACTIVE\",\n      \"fill\": \"string\",\n      \"makeStock\": \"string\",\n      \"cancelled\": true,\n      \"createdAt\": \"2010-06-27T02:01:50.510Z\",\n      \"lastUpdatedAt\": \"2017-11-27T00:29:47.778Z\",\n      \"maker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"make\": {\n        \"type\": {\n          \"@type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"blockchain\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"contract\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"value\": \"string\"\n      },\n      \"take\": {\n        \"type\": {\n          \"@type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"blockchain\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"contract\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"value\": \"string\"\n      },\n      \"salt\": \"string\",\n      \"data\": {\n        \"@type\": \"RAW\",\n        \"data\": {}\n      },\n      \"startedAt\": \"2013-11-28T22:40:51.147Z\",\n      \"endedAt\": \"1998-02-18T15:50:24.559Z\",\n      \"optionalRoyalties\": false,\n      \"dbUpdatedAt\": \"1959-08-10T23:32:13.411Z\",\n      \"makePrice\": \"string\",\n      \"takePrice\": \"string\",\n      \"makePriceUsd\": \"string\",\n      \"takePriceUsd\": \"string\",\n      \"taker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"signature\": \"string\",\n      \"version\": 7441\n    },\n    {\n      \"id\": \"ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143\",\n      \"platform\": \"RARIBLE\",\n      \"status\": \"CANCELLED\",\n      \"fill\": \"string\",\n      \"makeStock\": \"string\",\n      \"cancelled\": true,\n      \"createdAt\": \"2023-07-23T08:46:40.108Z\",\n      \"lastUpdatedAt\": \"1984-12-03T23:36:32.861Z\",\n      \"maker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"make\": {\n        \"type\": {\n          \"@type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"blockchain\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"contract\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"value\": \"string\"\n      },\n      \"take\": {\n        \"type\": {\n          \"@type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"blockchain\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"contract\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"value\": \"string\"\n      },\n      \"salt\": \"string\",\n      \"data\": {\n        \"@type\": \"RAW\",\n        \"data\": {}\n      },\n      \"startedAt\": \"1989-07-31T17:00:58.829Z\",\n      \"endedAt\": \"1976-01-16T16:24:17.948Z\",\n      \"optionalRoyalties\": false,\n      \"dbUpdatedAt\": \"1990-12-13T20:22:40.092Z\",\n      \"makePrice\": \"string\",\n      \"takePrice\": \"string\",\n      \"makePriceUsd\": \"string\",\n      \"takePriceUsd\": \"string\",\n      \"taker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"signature\": \"string\",\n      \"version\": 4864\n    }\n  ],\n  \"self\": false,\n  \"scam\": false,\n  \"spamScore\": 8433,\n  \"hasTraits\": true,\n  \"shared\": false,\n  \"extra\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"lastUpdatedAt\": \"1947-05-11T17:36:58.253Z\",\n  \"version\": 2376\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c65d837e-3756-4629-9219-f3b3b8d415f2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) Address of the collection"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88b1c84d-a4ee-4520-a60b-19b961150420",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) Address of the collection"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"NOT_FOUND\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e875a49a-8b8a-47ae-b204-dc6d3f6bf85b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) Address of the collection"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbb8ce3d-57f9-405e-9549-12ecd70ed750",
+          "name": "Generate TokenId",
+          "request": {
+            "name": "Generate TokenId",
+            "description": {
+              "content": "Returns next available TokenId for specified minter",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "collections",
+                ":collection",
+                "generateTokenId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "minter",
+                  "value": "<string>",
+                  "description": "(Required) Minter address"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collection",
+                  "description": "(Required) Address of the NFT collection"
+                },
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b15ef072-2eba-4946-ad47-817e0442ae1f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection",
+                    "generateTokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "minter",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) Address of the NFT collection"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@type\": \"DEFAULT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a89873f4-4e15-48df-abd1-8a411fbf7d7d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection",
+                    "generateTokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "minter",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) Address of the NFT collection"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2156370-badd-4845-b4da-5c8b2138be5b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection",
+                    "generateTokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "minter",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) Address of the NFT collection"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94a7ca6b-bc87-4197-8d4f-bb718f97d52b",
+          "name": "Reset NFT metadata",
+          "request": {
+            "name": "Reset NFT metadata",
+            "description": {
+              "content": "Reloads metadata for all NFTs in the Collection (see 'Reset NFT metadata' API)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "collections",
+                ":collection",
+                "refreshMeta"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collection",
+                  "description": "(Required) Address of the collection"
+                },
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6e88412-4cfe-4679-a2a6-a93120327c14",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection",
+                    "refreshMeta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) Address of the collection"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8940c25c-9e4b-4a8b-a869-b5fe10922da2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection",
+                    "refreshMeta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) Address of the collection"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39a7fa72-6aa5-4354-8ee2-4a47116ef5d5",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection",
+                    "refreshMeta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) Address of the collection"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a2d2e0e-7213-4e31-b50e-e1502549cf8f",
+          "name": "Reset Collection metadata",
+          "request": {
+            "name": "Reset Collection metadata",
+            "description": {
+              "content": "Reloads metadata for Collection (NOT for collection's NFTs)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "collections",
+                ":collection",
+                "resetMeta"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collection",
+                  "description": "(Required) "
+                },
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91ba1358-7696-4aea-8e89-16dbdf41c0ac",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection",
+                    "resetMeta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "64334964-2ff2-47ea-ba94-377ade7c2a72",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection",
+                    "resetMeta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79da6f15-c692-4c98-8279-e33dbc549247",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    ":collection",
+                    "resetMeta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6d30bdb-8427-478f-8634-e19c5773594d",
+          "name": "Get NFT Collections owned by user",
+          "request": {
+            "name": "Get NFT Collections owned by user",
+            "description": {
+              "content": "Returns list of NFT Collections belong to specified user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "collections",
+                "byOwner"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "blockchains",
+                  "value": "<string>",
+                  "description": "Since user's address can be present in several blockchains (for example, ETHEREUM and POLYGON),  you can use this filter to get Orders only for specific blockchains.  Or keep it empty to get Order from all blockchains"
+                },
+                {
+                  "disabled": false,
+                  "key": "blockchains",
+                  "value": "<string>",
+                  "description": "Since user's address can be present in several blockchains (for example, ETHEREUM and POLYGON),  you can use this filter to get Orders only for specific blockchains.  Or keep it empty to get Order from all blockchains"
+                },
+                {
+                  "disabled": false,
+                  "key": "owner",
+                  "value": "<string>",
+                  "description": "(Required) Owner of searching collections"
+                },
+                {
+                  "disabled": false,
+                  "key": "continuation",
+                  "value": "<string>",
+                  "description": "Continuation token from the previous response"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7aa92f23-2477-4af9-88c5-74e390cb5c33",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    "byOwner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "owner",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collections\": [],\n  \"total\": 7418,\n  \"continuation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d6f37d1-cedd-42bb-9fbc-4fdefeda109c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    "byOwner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "owner",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af20c796-ed9e-4db5-9c71-b0dcbc22e770",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    "byOwner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "owner",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "608197fe-e567-4e9c-ac6b-6c644afe63f8",
+          "name": "Get all NFT Collections",
+          "request": {
+            "name": "Get all NFT Collections",
+            "description": {
+              "content": "Returns all NFT Collections in accordance with specified filters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "collections",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "blockchains",
+                  "value": "<string>",
+                  "description": "Names of the blockchain networks. If no one specified, data from all blockchains will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "blockchains",
+                  "value": "<string>",
+                  "description": "Names of the blockchain networks. If no one specified, data from all blockchains will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "continuation",
+                  "value": "<string>",
+                  "description": "Continuation token from the previous response"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1e4618b-f5d0-4d51-b1a0-b788dc8c5ef2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collections\": [],\n  \"total\": 2314,\n  \"continuation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac9c3022-ec5b-464d-9944-b61d81b9b985",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62fa5e37-757e-4c59-bb9c-c2b09b3858eb",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of api,testnet-api)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "environment"
+    },
+    {
+      "type": "string",
+      "value": "https://{{environment}}.rarible.org",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fad6287b-69e8-4007-9e92-8c0f0869bc40",
+    "name": "OpenAPI definition Charts NFT Collections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Exciting News\n\nHey there, amazing developers! 👋\n\nWe've got some fantastic news to share that will make your experience with our product even better. We're thrilled to announce the implementation of API-Keys, which brings a new level of control and convenience to your development process. So, let's dive right into the details! ✨\n\n## API-Keys for Enhanced Functionality 🔑\n\nStarting now, we have introduced API-Keys to streamline your interactions with our methods. You might have noticed a slight change while making requests – now, all you need to do is include the parameter `X-API-KEY` in the Header of your request. Simple as that!\n\n## Get Your API-Key in a Snap! ⚡️\n\nSecuring your API-Key is a breeze. We've made the process super user-friendly to ensure you can get started quickly. Just head over to our website and fill out a simple form. Once you've done that, your shiny new API-Key will be delivered straight to your email inbox. Easy peasy! 📧\n\n[Get Your API-Key Here](https://api.rarible.org/registration)\n[Configure SDK with API-key](https://github.com/rarible/sdk#api-querying)\n\n## Unlock the Power of the Rarible Protocol 🔓\n\nAs passionate developers, we know you're always hungry for knowledge and eager to explore new frontiers. That's why we invite you to discover the incredible world of the Rarible Protocol. By visiting our dedicated protocol page, you'll gain access to a treasure trove of useful information, tips, and insights that will elevate your development skills to new heights. 🚀\n\n[Explore the Rarible Protocol](https://rarible.org)\n\nSo, buckle up and get ready for an enhanced development journey with our API-Keys. We're excited to see what you'll create using our revamped system! 💪🚀\n\nStay curious, keep innovating, and happy coding! ✨\n\n[P.S. Join our Discord Server to stay up to date and ask questions](https://discord.gg/rarifoundation)\n",
+      "type": "text/plain"
+    }
+  }
+}

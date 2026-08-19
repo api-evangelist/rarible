@@ -1,0 +1,342 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts NFT Data and Historical Statistics API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NFT Data and Historical Statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/data/rankings/:entity/volume",
+            "params": [
+              {
+                "name": "entity",
+                "value": "",
+                "type": "path",
+                "description": "Type of users in leaderboard"
+              },
+              {
+                "name": "blockchain",
+                "value": "",
+                "type": "query",
+                "description": "Blockchain"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Source"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Time period of leaderboard. Default: D7"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit of records in leaderboard"
+              }
+            ]
+          },
+          "docs": "Users (top buyers/sellers) leaderboard. Calculated as traded worth for the period."
+        },
+        {
+          "info": {
+            "name": "Get NFT Collections volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/data/rankings/collections/volume",
+            "params": [
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Group of platform used for volume calculation and collection ranging."
+              },
+              {
+                "name": "blockchain",
+                "value": "",
+                "type": "query",
+                "description": "Blockchain"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Collection ids"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Time period for aggregation"
+              },
+              {
+                "name": "minFloorPriceNative",
+                "value": "",
+                "type": "query",
+                "description": "Show collections which floor price (native currency) more or equal than specified value"
+              },
+              {
+                "name": "maxFloorPriceNative",
+                "value": "",
+                "type": "query",
+                "description": "Show collections which floor price (native currency) less or equal than specified value"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Collections sorting"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit of records in leaderboard"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Page reference. Taken from previous response"
+              }
+            ]
+          },
+          "docs": "Collections leaderboard by trade activity"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collection tx stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/data/collections/:collection/transactions",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of collection"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Filters of statistics"
+              }
+            ]
+          },
+          "docs": "Get historical statistics about Collection transactions"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collection stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/data/collections/:collection/stats",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of collection"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of statistics"
+              }
+            ]
+          },
+          "docs": "Get general statistics about Collection"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collection statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/data/collections/:collection/statistics",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of collection"
+              }
+            ]
+          },
+          "docs": "Get statistics about a collection"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collection seller stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/data/collections/:collection/sellers",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of collection"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Filters of statistics"
+              }
+            ]
+          },
+          "docs": "Get historical statistics about Collection sellers"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collections GVM",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/data/collections/:collection/gmv",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of collection"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of statistics"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Time period of statistics. Default: D1"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Filters of statistics"
+              }
+            ]
+          },
+          "docs": "Get historical statistics about Collection gross merchandise value"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collection floor price",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/data/collections/:collection/floorPrice",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of collection"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of statistics"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Filters of statistics"
+              }
+            ]
+          },
+          "docs": "Get historical statistics about Collection's NFT floor price"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collection buyer stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/data/collections/:collection/buyers",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of collection"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Filters of statistics"
+              }
+            ]
+          },
+          "docs": "Get historical statistics about Collection buyers"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collection listing stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/data/collections/:collection/listed",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of collection"
+              }
+            ]
+          },
+          "docs": "Get historical statistics of collection listed count"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

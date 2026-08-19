@@ -1,0 +1,1410 @@
+{
+  "item": [
+    {
+      "id": "9b1408ec-8a65-44f9-a5e4-e99f10e3d5ba",
+      "name": "NFT Ownerships",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5b3e3cf5-f333-4946-beb3-dd1621811a40",
+          "name": "Get NFT Ownership by Id",
+          "request": {
+            "name": "Get NFT Ownership by Id",
+            "description": {
+              "content": "Returns Ownership by Id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "ownerships",
+                ":ownershipId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ownershipId",
+                  "description": "(Required) Ownership Id in format: 'ETHEREUM:${token}:${tokenId}:${owner}'"
+                },
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6221ba38-3fe1-404f-823d-2b6f5ae63a1a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    ":ownershipId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ownershipId",
+                      "description": "(Required) Ownership Id in format: 'ETHEREUM:${token}:${tokenId}:${owner}'"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n  \"blockchain\": \"ETHEREUM\",\n  \"owner\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n  \"value\": \"string\",\n  \"createdAt\": \"2020-03-24T19:58:34.728Z\",\n  \"lazyValue\": \"string\",\n  \"pending\": [],\n  \"itemId\": \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\",\n  \"contract\": \"ETHEREUM:0xd07dc4262bcdbf85190c01c996b4c06a461d2430\",\n  \"collection\": \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n  \"tokenId\": \"string\",\n  \"source\": \"TRANSFER\",\n  \"lastUpdatedAt\": \"1973-05-08T00:02:39.101Z\",\n  \"bestSellOrder\": {\n    \"id\": \"ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143\",\n    \"platform\": \"HEN\",\n    \"status\": \"CANCELLED\",\n    \"fill\": \"string\",\n    \"makeStock\": \"string\",\n    \"cancelled\": false,\n    \"createdAt\": \"1978-08-19T02:16:05.342Z\",\n    \"lastUpdatedAt\": \"1987-02-26T05:37:20.102Z\",\n    \"maker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n    \"make\": {\n      \"type\": {\n        \"@type\": \"CURRENCY_NATIVE\",\n        \"blockchain\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"contract\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"value\": \"string\"\n    },\n    \"take\": {\n      \"type\": {\n        \"@type\": \"CURRENCY_NATIVE\",\n        \"blockchain\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"contract\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"value\": \"string\"\n    },\n    \"salt\": \"string\",\n    \"data\": {\n      \"@type\": \"RAW\",\n      \"data\": {}\n    },\n    \"startedAt\": \"1967-08-01T09:55:36.446Z\",\n    \"endedAt\": \"1974-09-13T17:14:15.624Z\",\n    \"optionalRoyalties\": false,\n    \"dbUpdatedAt\": \"1975-04-19T14:24:35.417Z\",\n    \"makePrice\": \"string\",\n    \"takePrice\": \"string\",\n    \"makePriceUsd\": \"string\",\n    \"takePriceUsd\": \"string\",\n    \"taker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n    \"signature\": \"string\",\n    \"version\": 8939\n  },\n  \"version\": 2705\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95303472-f636-44f7-8bd7-603189dc509a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    ":ownershipId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ownershipId",
+                      "description": "(Required) Ownership Id in format: 'ETHEREUM:${token}:${tokenId}:${owner}'"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "351b5b30-0f65-423c-86c0-3ef3bc5e76b0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    ":ownershipId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ownershipId",
+                      "description": "(Required) Ownership Id in format: 'ETHEREUM:${token}:${tokenId}:${owner}'"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"NOT_FOUND\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4dae89f-dc17-4dbc-8db7-8065c9c28924",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    ":ownershipId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ownershipId",
+                      "description": "(Required) Ownership Id in format: 'ETHEREUM:${token}:${tokenId}:${owner}'"
+                    },
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71a37864-fb99-4610-8f9e-14bd832852db",
+          "name": "Get NFT Ownerships by Ids",
+          "request": {
+            "name": "Get NFT Ownerships by Ids",
+            "description": {
+              "content": "Returns Ownerships by specified list of Ids",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "ownerships",
+                "byIds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c466592f-8354-47f8-b5d7-1559ec97de04",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "byIds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerships\": [],\n  \"total\": 4387,\n  \"continuation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7659b9b0-e5fd-4b3c-ae1a-8d70fd7cde59",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "byIds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43cf84a1-ab32-437e-bd0c-84d2832ce0d2",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "byIds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7459f3d0-b14a-4e7f-a54c-9ed46bd04e08",
+          "name": "Get NFT Collection's Ownerships",
+          "request": {
+            "name": "Get NFT Collection's Ownerships",
+            "description": {
+              "content": "Returns list of NFTs Ownerships from specified collection and sorted by `last updated` date",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "ownerships",
+                "byCollection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "collection",
+                  "value": "<string>",
+                  "description": "(Required) Address of the collection"
+                },
+                {
+                  "disabled": false,
+                  "key": "continuation",
+                  "value": "<string>",
+                  "description": "Continuation token from the previous response"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "032ed7c1-397d-4bbd-8972-c055b5b8ffa1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "byCollection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collection",
+                      "value": "ETHEREUM:0xd07dc4262bcdbf85190c01c996b4c06a461d2430"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerships\": [],\n  \"total\": 626,\n  \"continuation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbacb5e7-4b57-470f-bd69-6d64c743e9f5",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "byCollection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collection",
+                      "value": "ETHEREUM:0xd07dc4262bcdbf85190c01c996b4c06a461d2430"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd8ca4a3-ec3c-4e5a-b7a6-3c4543e472d9",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "byCollection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collection",
+                      "value": "ETHEREUM:0xd07dc4262bcdbf85190c01c996b4c06a461d2430"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1a2096d-96b8-44d0-9d5d-0dcda0927f7b",
+          "name": "Get NFTs Ownerships",
+          "request": {
+            "name": "Get NFTs Ownerships",
+            "description": {
+              "content": "Returns list of NFTs Ownerships for specified NFT and sorted by `last updated` date",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "ownerships",
+                "byItem"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "itemId",
+                  "value": "<string>",
+                  "description": "(Required) Item Id, has format `ETHEREUM:${token}:${tokenId}`"
+                },
+                {
+                  "disabled": false,
+                  "key": "continuation",
+                  "value": "<string>",
+                  "description": "Continuation token from the previous response"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d0fdd3ac-be27-4b13-b9e0-fd861afb64c9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "byItem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "itemId",
+                      "value": "ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerships\": [],\n  \"total\": 2032,\n  \"continuation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2be82ac-9492-42ff-bbd5-141a8f256a10",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "byItem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "itemId",
+                      "value": "ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13d82949-161a-4ee4-9a89-105561fdf016",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "byItem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "itemId",
+                      "value": "ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d431e35-f0b3-45f6-8a7c-d6a90066b86a",
+          "name": "Get collections owned items by owner",
+          "request": {
+            "name": "Get collections owned items by owner",
+            "description": {
+              "content": "Returns list of collection with owned items by specified owner",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "ownerships",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "owners",
+                  "value": "<string>",
+                  "description": "(Required) Addresses of the owner"
+                },
+                {
+                  "disabled": false,
+                  "key": "owners",
+                  "value": "<string>",
+                  "description": "(Required) Addresses of the owner"
+                },
+                {
+                  "disabled": false,
+                  "key": "blockchains",
+                  "value": "<string>",
+                  "description": "Since user's address can be present in several blockchains (for example, ETHEREUM and POLYGON),  you can use this filter to get Orders only for specific blockchains.  Or keep it empty to get Order from all blockchains"
+                },
+                {
+                  "disabled": false,
+                  "key": "blockchains",
+                  "value": "<string>",
+                  "description": "Since user's address can be present in several blockchains (for example, ETHEREUM and POLYGON),  you can use this filter to get Orders only for specific blockchains.  Or keep it empty to get Order from all blockchains"
+                },
+                {
+                  "disabled": false,
+                  "key": "continuation",
+                  "value": "<string>",
+                  "description": "Continuation token from the previous response"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "The number of items to return"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce017984-4799-4ebf-933e-39970ef247f9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "owners",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "owners",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collections\": [\n    {\n      \"collection\": {\n        \"id\": \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n        \"blockchain\": \"ETHEREUM\",\n        \"name\": \"string\",\n        \"type\": \"ERC1155\",\n        \"parent\": \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n        \"structure\": \"COMPOSITE\",\n        \"status\": \"PENDING\",\n        \"symbol\": \"string\",\n        \"owner\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n        \"minters\": [\n          \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n          \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n        ],\n        \"meta\": {\n          \"name\": \"string\",\n          \"content\": [],\n          \"description\": \"string\",\n          \"createdAt\": \"1983-07-10T01:22:29.459Z\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ],\n          \"genres\": [\n            \"string\",\n            \"string\"\n          ],\n          \"language\": \"string\",\n          \"rights\": \"string\",\n          \"rightsUri\": \"string\",\n          \"externalUri\": \"string\",\n          \"originalMetaUri\": \"string\",\n          \"externalLink\": \"string\",\n          \"sellerFeeBasisPoints\": 3247,\n          \"feeRecipient\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n        },\n        \"bestBidOrder\": {\n          \"id\": \"ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143\",\n          \"platform\": \"HEN\",\n          \"status\": \"ACTIVE\",\n          \"fill\": \"string\",\n          \"makeStock\": \"string\",\n          \"cancelled\": true,\n          \"createdAt\": \"2023-05-14T07:03:59.148Z\",\n          \"lastUpdatedAt\": \"1960-01-12T23:27:12.497Z\",\n          \"maker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n          \"make\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"take\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"salt\": \"string\",\n          \"data\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"startedAt\": \"1997-02-08T17:53:02.445Z\",\n          \"endedAt\": \"2003-02-26T18:07:38.490Z\",\n          \"optionalRoyalties\": false,\n          \"dbUpdatedAt\": \"1960-07-25T03:29:12.259Z\",\n          \"makePrice\": \"string\",\n          \"takePrice\": \"string\",\n          \"makePriceUsd\": \"string\",\n          \"takePriceUsd\": \"string\",\n          \"taker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n          \"signature\": \"string\",\n          \"version\": 3377\n        },\n        \"bestSellOrder\": {\n          \"id\": \"ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143\",\n          \"platform\": \"TEIA\",\n          \"status\": \"CANCELLED\",\n          \"fill\": \"string\",\n          \"makeStock\": \"string\",\n          \"cancelled\": true,\n          \"createdAt\": \"1980-06-20T01:46:24.994Z\",\n          \"lastUpdatedAt\": \"1995-08-07T23:43:09.401Z\",\n          \"maker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n          \"make\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"take\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"salt\": \"string\",\n          \"data\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"startedAt\": \"1955-01-05T20:13:31.032Z\",\n          \"endedAt\": \"1984-09-19T19:13:09.056Z\",\n          \"optionalRoyalties\": false,\n          \"dbUpdatedAt\": \"2000-02-21T12:35:11.398Z\",\n          \"makePrice\": \"string\",\n          \"takePrice\": \"string\",\n          \"makePriceUsd\": \"string\",\n          \"takePriceUsd\": \"string\",\n          \"taker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n          \"signature\": \"string\",\n          \"version\": 3037\n        },\n        \"bestBidOrdersByCurrency\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"platform\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"makeStock\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"cancelled\": false,\n            \"createdAt\": \"2008-11-29T02:06:22.662Z\",\n            \"lastUpdatedAt\": \"2023-11-16T06:14:36.638Z\",\n            \"maker\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"make\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"take\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"salt\": \"string\",\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"startedAt\": \"1960-11-13T02:33:29.312Z\",\n            \"endedAt\": \"1963-11-08T11:33:24.498Z\",\n            \"optionalRoyalties\": false,\n            \"dbUpdatedAt\": \"2000-02-12T05:10:21.484Z\",\n            \"makePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"takePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"makePriceUsd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"takePriceUsd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"taker\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"signature\": \"string\",\n            \"version\": 3972\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"platform\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"makeStock\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"cancelled\": false,\n            \"createdAt\": \"1987-09-24T13:51:10.360Z\",\n            \"lastUpdatedAt\": \"1949-05-12T13:24:43.010Z\",\n            \"maker\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"make\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"take\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"salt\": \"string\",\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"startedAt\": \"1972-08-04T10:13:17.636Z\",\n            \"endedAt\": \"1951-05-31T12:53:07.278Z\",\n            \"optionalRoyalties\": false,\n            \"dbUpdatedAt\": \"2004-04-07T01:34:15.853Z\",\n            \"makePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"takePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"makePriceUsd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"takePriceUsd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"taker\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"signature\": \"string\",\n            \"version\": 8399\n          }\n        ],\n        \"self\": false,\n        \"scam\": false,\n        \"spamScore\": 9469,\n        \"hasTraits\": true,\n        \"shared\": false,\n        \"extra\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"lastUpdatedAt\": \"2026-04-10T15:39:16.592Z\",\n        \"version\": 2547\n      },\n      \"ownedItems\": 9990\n    },\n    {\n      \"collection\": {\n        \"id\": \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n        \"blockchain\": \"ETHEREUM\",\n        \"name\": \"string\",\n        \"type\": \"ERC1155\",\n        \"parent\": \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n        \"structure\": \"PART\",\n        \"status\": \"PENDING\",\n        \"symbol\": \"string\",\n        \"owner\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n        \"minters\": [\n          \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n          \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n        ],\n        \"meta\": {\n          \"name\": \"string\",\n          \"content\": [],\n          \"description\": \"string\",\n          \"createdAt\": \"2005-09-27T21:53:19.606Z\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ],\n          \"genres\": [\n            \"string\",\n            \"string\"\n          ],\n          \"language\": \"string\",\n          \"rights\": \"string\",\n          \"rightsUri\": \"string\",\n          \"externalUri\": \"string\",\n          \"originalMetaUri\": \"string\",\n          \"externalLink\": \"string\",\n          \"sellerFeeBasisPoints\": 652,\n          \"feeRecipient\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n        },\n        \"bestBidOrder\": {\n          \"id\": \"ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143\",\n          \"platform\": \"RARIBLE\",\n          \"status\": \"INACTIVE\",\n          \"fill\": \"string\",\n          \"makeStock\": \"string\",\n          \"cancelled\": false,\n          \"createdAt\": \"1983-05-20T04:31:29.199Z\",\n          \"lastUpdatedAt\": \"1960-01-08T17:31:25.805Z\",\n          \"maker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n          \"make\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"take\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"salt\": \"string\",\n          \"data\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"startedAt\": \"1989-06-30T15:22:53.686Z\",\n          \"endedAt\": \"1983-10-09T23:03:33.784Z\",\n          \"optionalRoyalties\": false,\n          \"dbUpdatedAt\": \"1979-10-03T05:19:17.266Z\",\n          \"makePrice\": \"string\",\n          \"takePrice\": \"string\",\n          \"makePriceUsd\": \"string\",\n          \"takePriceUsd\": \"string\",\n          \"taker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n          \"signature\": \"string\",\n          \"version\": 1061\n        },\n        \"bestSellOrder\": {\n          \"id\": \"ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143\",\n          \"platform\": \"HEN\",\n          \"status\": \"INACTIVE\",\n          \"fill\": \"string\",\n          \"makeStock\": \"string\",\n          \"cancelled\": true,\n          \"createdAt\": \"1990-01-07T02:45:12.662Z\",\n          \"lastUpdatedAt\": \"2014-07-21T14:25:19.402Z\",\n          \"maker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n          \"make\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"take\": {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"salt\": \"string\",\n          \"data\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"startedAt\": \"1975-07-28T20:35:13.300Z\",\n          \"endedAt\": \"2011-10-10T17:16:32.966Z\",\n          \"optionalRoyalties\": false,\n          \"dbUpdatedAt\": \"1970-01-05T19:53:32.932Z\",\n          \"makePrice\": \"string\",\n          \"takePrice\": \"string\",\n          \"makePriceUsd\": \"string\",\n          \"takePriceUsd\": \"string\",\n          \"taker\": \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n          \"signature\": \"string\",\n          \"version\": 5136\n        },\n        \"bestBidOrdersByCurrency\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"platform\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"makeStock\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"cancelled\": false,\n            \"createdAt\": \"1991-03-25T16:53:41.078Z\",\n            \"lastUpdatedAt\": \"1980-03-10T21:13:43.765Z\",\n            \"maker\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"make\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"take\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"salt\": \"string\",\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"startedAt\": \"2004-04-17T02:12:23.024Z\",\n            \"endedAt\": \"1987-03-25T07:37:26.233Z\",\n            \"optionalRoyalties\": false,\n            \"dbUpdatedAt\": \"2000-05-17T20:32:50.332Z\",\n            \"makePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"takePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"makePriceUsd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"takePriceUsd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"taker\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"signature\": \"string\",\n            \"version\": 2312\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"platform\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fill\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"makeStock\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"cancelled\": true,\n            \"createdAt\": \"1968-05-11T07:36:40.251Z\",\n            \"lastUpdatedAt\": \"1968-08-28T15:09:52.588Z\",\n            \"maker\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"make\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"take\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"salt\": \"string\",\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"startedAt\": \"1950-07-24T12:09:06.826Z\",\n            \"endedAt\": \"2019-03-24T23:59:13.022Z\",\n            \"optionalRoyalties\": false,\n            \"dbUpdatedAt\": \"2013-12-10T14:12:58.265Z\",\n            \"makePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"takePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"makePriceUsd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"takePriceUsd\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"taker\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"signature\": \"string\",\n            \"version\": 983\n          }\n        ],\n        \"self\": true,\n        \"scam\": false,\n        \"spamScore\": 8944,\n        \"hasTraits\": true,\n        \"shared\": false,\n        \"extra\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"lastUpdatedAt\": \"2007-04-06T20:56:39.932Z\",\n        \"version\": 608\n      },\n      \"ownedItems\": 8108\n    }\n  ],\n  \"continuation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fa207e0-bf04-40ff-9b53-954fd16e15ec",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "owners",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "owners",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "254a9409-2dfc-47f8-a56f-ab5c7e4b27dc",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "owners",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "owners",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "ETHEREUM"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of api,testnet-api)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "environment"
+    },
+    {
+      "type": "string",
+      "value": "https://{{environment}}.rarible.org",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "42920940-22c7-41c8-978f-80379c370511",
+    "name": "OpenAPI definition Charts NFT Ownerships API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Exciting News\n\nHey there, amazing developers! 👋\n\nWe've got some fantastic news to share that will make your experience with our product even better. We're thrilled to announce the implementation of API-Keys, which brings a new level of control and convenience to your development process. So, let's dive right into the details! ✨\n\n## API-Keys for Enhanced Functionality 🔑\n\nStarting now, we have introduced API-Keys to streamline your interactions with our methods. You might have noticed a slight change while making requests – now, all you need to do is include the parameter `X-API-KEY` in the Header of your request. Simple as that!\n\n## Get Your API-Key in a Snap! ⚡️\n\nSecuring your API-Key is a breeze. We've made the process super user-friendly to ensure you can get started quickly. Just head over to our website and fill out a simple form. Once you've done that, your shiny new API-Key will be delivered straight to your email inbox. Easy peasy! 📧\n\n[Get Your API-Key Here](https://api.rarible.org/registration)\n[Configure SDK with API-key](https://github.com/rarible/sdk#api-querying)\n\n## Unlock the Power of the Rarible Protocol 🔓\n\nAs passionate developers, we know you're always hungry for knowledge and eager to explore new frontiers. That's why we invite you to discover the incredible world of the Rarible Protocol. By visiting our dedicated protocol page, you'll gain access to a treasure trove of useful information, tips, and insights that will elevate your development skills to new heights. 🚀\n\n[Explore the Rarible Protocol](https://rarible.org)\n\nSo, buckle up and get ready for an enhanced development journey with our API-Keys. We're excited to see what you'll create using our revamped system! 💪🚀\n\nStay curious, keep innovating, and happy coding! ✨\n\n[P.S. Join our Discord Server to stay up to date and ask questions](https://discord.gg/rarifoundation)\n",
+      "type": "text/plain"
+    }
+  }
+}

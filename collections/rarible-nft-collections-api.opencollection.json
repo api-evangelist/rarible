@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts NFT Collections API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NFT Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get NFT Collection by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/collections/:collection",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path",
+                "description": "Address of the collection"
+              }
+            ]
+          },
+          "docs": "Returns NFT Collection by Id"
+        },
+        {
+          "info": {
+            "name": "Generate TokenId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/collections/:collection/generateTokenId",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path",
+                "description": "Address of the NFT collection"
+              },
+              {
+                "name": "minter",
+                "value": "",
+                "type": "query",
+                "description": "Minter address"
+              }
+            ]
+          },
+          "docs": "Returns next available TokenId for specified minter"
+        },
+        {
+          "info": {
+            "name": "Reset NFT metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{environment}.rarible.org/v0.1/collections/:collection/refreshMeta",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path",
+                "description": "Address of the collection"
+              }
+            ]
+          },
+          "docs": "Reloads metadata for all NFTs in the Collection (see 'Reset NFT metadata' API)"
+        },
+        {
+          "info": {
+            "name": "Reset Collection metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{environment}.rarible.org/v0.1/collections/:collection/resetMeta",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reloads metadata for Collection (NOT for collection's NFTs)"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collections owned by user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/collections/byOwner",
+            "params": [
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Since user's address can be present in several blockchains (for example, ETHEREUM and POLYGON),  you can use this filter to get Orders only for specific blockchains.  Or keep it empty to get Order from all blockchains"
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner of searching collections"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              }
+            ]
+          },
+          "docs": "Returns list of NFT Collections belong to specified user"
+        },
+        {
+          "info": {
+            "name": "Get all NFT Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/collections/all",
+            "params": [
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Names of the blockchain networks. If no one specified, data from all blockchains will be returned"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              }
+            ]
+          },
+          "docs": "Returns all NFT Collections in accordance with specified filters"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

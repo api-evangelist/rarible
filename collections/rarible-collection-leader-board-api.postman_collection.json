@@ -1,0 +1,766 @@
+{
+  "item": [
+    {
+      "id": "ba36a1ff-cf03-42de-802a-49a2004ba202",
+      "name": "Collection Leader Board",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c495baf7-7431-4822-932b-8de1fed3ab45",
+          "name": "Get NFT Collections leaderboard",
+          "request": {
+            "name": "Get NFT Collections leaderboard",
+            "description": {
+              "content": "Collections leaderboard",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2.0",
+                "data",
+                "leaderboard",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "blockchains",
+                  "value": "<string>",
+                  "description": "Blockchain networks"
+                },
+                {
+                  "disabled": false,
+                  "key": "blockchains",
+                  "value": "<string>",
+                  "description": "Blockchain networks"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "Time period for aggregation"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "VOLUME",
+                  "description": "Collections sorting"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "DESC",
+                  "description": "Collections sorting direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Limit of records in leaderboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset reference"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a8a196c-f6c4-4077-9999-23300fdecbd8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2.0",
+                    "data",
+                    "leaderboard",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockchains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "VOLUME"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"continuation\": \"string\",\n  \"result\": [\n    {\n      \"id\": \"string\",\n      \"sales\": 6915,\n      \"volume\": {\n        \"currency\": \"string\",\n        \"value\": 5842.686394544543,\n        \"valueUsd\": 4113.479773306851\n      },\n      \"floorHistory\": {\n        \"timestamps\": [\n          6090,\n          9545\n        ],\n        \"values\": [\n          8121.145466979945,\n          357.79684266660894\n        ]\n      },\n      \"globalStats\": {\n        \"listed\": 7930,\n        \"items\": 3525,\n        \"owners\": 9531,\n        \"floor\": {\n          \"currency\": \"string\",\n          \"value\": 6459.534548883481,\n          \"valueUsd\": 3606.362290177222\n        },\n        \"topOffer\": {\n          \"currency\": \"string\",\n          \"value\": 3020.6893323731033,\n          \"valueUsd\": 9597.96560430431\n        }\n      },\n      \"floorChangePercent\": 1290.8055663535733\n    },\n    {\n      \"id\": \"string\",\n      \"sales\": 4817,\n      \"volume\": {\n        \"currency\": \"string\",\n        \"value\": 9143.972783918249,\n        \"valueUsd\": 4198.087913854455\n      },\n      \"floorHistory\": {\n        \"timestamps\": [\n          4489,\n          650\n        ],\n        \"values\": [\n          3158.2441899461187,\n          9147.796728691555\n        ]\n      },\n      \"globalStats\": {\n        \"listed\": 2749,\n        \"items\": 2873,\n        \"owners\": 1351,\n        \"floor\": {\n          \"currency\": \"string\",\n          \"value\": 3008.9813499341376,\n          \"valueUsd\": 6499.915414182842\n        },\n        \"topOffer\": {\n          \"currency\": \"string\",\n          \"value\": 9213.110256825757,\n          \"valueUsd\": 4025.089165299107\n        }\n      },\n      \"floorChangePercent\": 2200.670798771892\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0136966c-a560-4ff0-a34c-be52905b9759",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2.0",
+                    "data",
+                    "leaderboard",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockchains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "VOLUME"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"NOT_FOUND\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "593ae69b-44a8-41a8-8ad2-be65716947ba",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2.0",
+                    "data",
+                    "leaderboard",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "blockchains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "VOLUME"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"NOT_FOUND\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9f26384-2e65-4264-8aa0-7b2c7b6affbb",
+          "name": "Get NFT Collections leaderboard for a specific owner addresses",
+          "request": {
+            "name": "Get NFT Collections leaderboard for a specific owner addresses",
+            "description": {
+              "content": "User collections leaderboard",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2.0",
+                "data",
+                "leaderboard",
+                "collections",
+                "byOwner"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "owners",
+                  "value": "<string>",
+                  "description": "(Required) Addresses of the owner"
+                },
+                {
+                  "disabled": false,
+                  "key": "owners",
+                  "value": "<string>",
+                  "description": "(Required) Addresses of the owner"
+                },
+                {
+                  "disabled": false,
+                  "key": "blockchains",
+                  "value": "<string>",
+                  "description": "Blockchain networks"
+                },
+                {
+                  "disabled": false,
+                  "key": "blockchains",
+                  "value": "<string>",
+                  "description": "Blockchain networks"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "Time period for aggregation"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "VOLUME",
+                  "description": "Collections sorting"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "DESC",
+                  "description": "Collections sorting direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Limit of records in leaderboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "continuation",
+                  "value": "<string>",
+                  "description": "Continuation token from the previous response"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2517071-dc92-48cd-9cee-07487a8adb87",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2.0",
+                    "data",
+                    "leaderboard",
+                    "collections",
+                    "byOwner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "owners",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "owners",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "VOLUME"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"continuation\": \"string\",\n  \"result\": [\n    {\n      \"id\": \"string\",\n      \"sales\": 4205,\n      \"volume\": {\n        \"currency\": \"string\",\n        \"value\": 4509.359601133279,\n        \"valueUsd\": 2873.523716138574\n      },\n      \"floorHistory\": {\n        \"timestamps\": [\n          4209,\n          7738\n        ],\n        \"values\": [\n          440.5661872232314,\n          773.1599986753213\n        ]\n      },\n      \"globalStats\": {\n        \"listed\": 5618,\n        \"items\": 3142,\n        \"owners\": 5058,\n        \"floor\": {\n          \"currency\": \"string\",\n          \"value\": 8931.571222796874,\n          \"valueUsd\": 7284.791247604071\n        },\n        \"topOffer\": {\n          \"currency\": \"string\",\n          \"value\": 2298.335102360657,\n          \"valueUsd\": 3031.441673085966\n        }\n      },\n      \"floorChangePercent\": 5062.7234015919175\n    },\n    {\n      \"id\": \"string\",\n      \"sales\": 3702,\n      \"volume\": {\n        \"currency\": \"string\",\n        \"value\": 8896.84780049904,\n        \"valueUsd\": 4336.693880900137\n      },\n      \"floorHistory\": {\n        \"timestamps\": [\n          1903,\n          2221\n        ],\n        \"values\": [\n          4974.976262859045,\n          9134.574602948962\n        ]\n      },\n      \"globalStats\": {\n        \"listed\": 2032,\n        \"items\": 3040,\n        \"owners\": 1937,\n        \"floor\": {\n          \"currency\": \"string\",\n          \"value\": 2218.412766250889,\n          \"valueUsd\": 8920.97057855535\n        },\n        \"topOffer\": {\n          \"currency\": \"string\",\n          \"value\": 3155.9388464774606,\n          \"valueUsd\": 425.7451317778216\n        }\n      },\n      \"floorChangePercent\": 4957.525024499248\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03a1fcbc-cd68-4e86-80fd-1580c6567e8e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2.0",
+                    "data",
+                    "leaderboard",
+                    "collections",
+                    "byOwner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "owners",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "owners",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "VOLUME"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"NOT_FOUND\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f9347d9-be76-4f05-abc2-b9e5f53f6664",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2.0",
+                    "data",
+                    "leaderboard",
+                    "collections",
+                    "byOwner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "owners",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "owners",
+                      "value": "ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blockchains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "VOLUME"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "continuation",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"NOT_FOUND\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of api,testnet-api)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "environment"
+    },
+    {
+      "type": "string",
+      "value": "https://{{environment}}.rarible.org",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8e72546b-9794-47e3-9e5d-4cc7fe2a3bd4",
+    "name": "OpenAPI definition Charts Collection Leader Board API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Exciting News\n\nHey there, amazing developers! 👋\n\nWe've got some fantastic news to share that will make your experience with our product even better. We're thrilled to announce the implementation of API-Keys, which brings a new level of control and convenience to your development process. So, let's dive right into the details! ✨\n\n## API-Keys for Enhanced Functionality 🔑\n\nStarting now, we have introduced API-Keys to streamline your interactions with our methods. You might have noticed a slight change while making requests – now, all you need to do is include the parameter `X-API-KEY` in the Header of your request. Simple as that!\n\n## Get Your API-Key in a Snap! ⚡️\n\nSecuring your API-Key is a breeze. We've made the process super user-friendly to ensure you can get started quickly. Just head over to our website and fill out a simple form. Once you've done that, your shiny new API-Key will be delivered straight to your email inbox. Easy peasy! 📧\n\n[Get Your API-Key Here](https://api.rarible.org/registration)\n[Configure SDK with API-key](https://github.com/rarible/sdk#api-querying)\n\n## Unlock the Power of the Rarible Protocol 🔓\n\nAs passionate developers, we know you're always hungry for knowledge and eager to explore new frontiers. That's why we invite you to discover the incredible world of the Rarible Protocol. By visiting our dedicated protocol page, you'll gain access to a treasure trove of useful information, tips, and insights that will elevate your development skills to new heights. 🚀\n\n[Explore the Rarible Protocol](https://rarible.org)\n\nSo, buckle up and get ready for an enhanced development journey with our API-Keys. We're excited to see what you'll create using our revamped system! 💪🚀\n\nStay curious, keep innovating, and happy coding! ✨\n\n[P.S. Join our Discord Server to stay up to date and ask questions](https://discord.gg/rarifoundation)\n",
+      "type": "text/plain"
+    }
+  }
+}

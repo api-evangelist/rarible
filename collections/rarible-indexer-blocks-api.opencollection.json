@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts Indexer blocks API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Indexer blocks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get latest indexed block",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/blocks/latestIndexed",
+            "params": [
+              {
+                "name": "blockchain",
+                "value": "ETHEREUM",
+                "type": "query",
+                "description": "Blockchain name"
+              }
+            ]
+          },
+          "docs": "Get latest indexed block for blockchain"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Charts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get historical data of floor price for collection for charting purposes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v2.0/data/collections/:id/charts/floorPrice",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Collection ID"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Time period for aggregation"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of data points to return"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "Optionally, the date-time of the last point of the graph. Defaults to current time."
+              }
+            ]
+          },
+          "docs": "Returns list of historical floor prices aggregated at even intervals in the specified time period - last day, last month etc.  Each points represents the aggregated value of the interval after it.  The last point represents the current floor price."
+        },
+        {
+          "info": {
+            "name": "Get historical data of collection volume (total sales worth) for charting purposes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v2.0/data/collections/:id/charts/volume",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Collection ID"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Time period for aggregation"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of data points to return"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "Optionally, the date-time of the last point of the graph. Defaults to current time."
+              }
+            ]
+          },
+          "docs": "Given a time period and the desired number of points, returns points which represent total worth of collection sales in the interval after that point.  The last point always has no value."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,414 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts NFT Items API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NFT Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get NFT by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/items/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "ItemId in format `ETHEREUM:${token}:${tokenId}`"
+              }
+            ]
+          },
+          "docs": "Returns NFT Item by Id"
+        },
+        {
+          "info": {
+            "name": "Get NFT by Ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/items/byIds",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns NFT Items by specified list of Ids"
+        },
+        {
+          "info": {
+            "name": "Get NFT royalties by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/items/:itemId/royalties",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Item Id in format `ETHEREUM:${token}:${tokenId}`"
+              }
+            ]
+          },
+          "docs": "Returns NFT royalties by Id"
+        },
+        {
+          "info": {
+            "name": "Reset NFT metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{environment}.rarible.org/v0.1/items/:itemId/resetMeta",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Item Id in format `ETHEREUM:${token}:${tokenId}`"
+              },
+              {
+                "name": "sync",
+                "value": "",
+                "type": "query",
+                "description": "Request meta for Item if true"
+              }
+            ]
+          },
+          "docs": "Reloads NFT metadata from the source. If source not available, old metadata stays."
+        },
+        {
+          "info": {
+            "name": "Get NFT owned by user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/items/byOwner",
+            "params": [
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Since user's address can be present in several blockchains (for example, ETHEREUM and POLYGON),  you can use this filter to get Orders only for specific blockchains.  Or keep it empty to get Order from all blockchains"
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Address of the item owner"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "searchEngine",
+                "value": "",
+                "type": "query",
+                "description": "Search engine to use for search"
+              }
+            ]
+          },
+          "docs": "Returns list of NFTs belong to specified user and sorted by `last updated` date"
+        },
+        {
+          "info": {
+            "name": "Get NFT created by user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/items/byCreator",
+            "params": [
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Since user's address can be present in several blockchains (for example, ETHEREUM and POLYGON),  you can use this filter to get Orders only for specific blockchains.  Or keep it empty to get Order from all blockchains"
+              },
+              {
+                "name": "creator",
+                "value": "",
+                "type": "query",
+                "description": "Address of the item creator"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "searchEngine",
+                "value": "",
+                "type": "query",
+                "description": "Search engine to use for search"
+              }
+            ]
+          },
+          "docs": "Returns list of NFTs created by specified user and sorted by `last updated` date"
+        },
+        {
+          "info": {
+            "name": "Get NFT from collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/items/byCollection",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "query",
+                "description": "Address of the collection"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "searchEngine",
+                "value": "",
+                "type": "query",
+                "description": "Search engine to use for search"
+              }
+            ]
+          },
+          "docs": "Returns list of NFTs from specified collection and sorted by `last updated` date"
+        },
+        {
+          "info": {
+            "name": "Get NFT owned by user - detailed",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/items/byOwnerWithOwnership",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Address of the owner"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "searchEngine",
+                "value": "",
+                "type": "query",
+                "description": "Search engine to use for search"
+              }
+            ]
+          },
+          "docs": "Returns list of NFTs belong to specified user and sorted by `last updated` date of ownership"
+        },
+        {
+          "info": {
+            "name": "Get all NFTs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/items/all",
+            "params": [
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Names of the blockchain networks. If no one specified, NFTs from all blockchains will be returned"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "showDeleted",
+                "value": "",
+                "type": "query",
+                "description": "Include deleted items"
+              },
+              {
+                "name": "lastUpdatedFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter condition to return only items that have been updated after this date (timestamp)"
+              },
+              {
+                "name": "lastUpdatedTo",
+                "value": "",
+                "type": "query",
+                "description": "Filter condition to return only items that have been updated before this date (timestamp)"
+              },
+              {
+                "name": "searchEngine",
+                "value": "",
+                "type": "query",
+                "description": "Search engine to use for search"
+              }
+            ]
+          },
+          "docs": "Returns all NFT Items in accordance with specified filters and sorted by `last updated` date"
+        },
+        {
+          "info": {
+            "name": "Get NFT collection traits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/items/traits",
+            "params": [
+              {
+                "name": "keys",
+                "value": "",
+                "type": "query",
+                "description": "Trait keys for strict filtering (if not specified - all traits will be returned)"
+              },
+              {
+                "name": "collectionIds",
+                "value": "",
+                "type": "query",
+                "description": "Collections identifiers to which traits belong"
+              },
+              {
+                "name": "owners",
+                "value": "",
+                "type": "query",
+                "description": "Return traits only for items owned by user"
+              }
+            ]
+          },
+          "docs": "Returns aggregation of existing traits for specified collections with counter for each trait type/value."
+        },
+        {
+          "info": {
+            "name": "Get NFT traits rarity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/items/traits/rarity",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the rarity of the trait"
+        },
+        {
+          "info": {
+            "name": "Get Lazy NFT",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/items/lazy/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Item Id in format `ETHEREUM:${token}:${tokenId}`"
+              }
+            ]
+          },
+          "docs": "Returns Lazy NFT Item by Id"
+        },
+        {
+          "info": {
+            "name": "Mint Lazy NFT",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/items/lazy/mint",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Lazy NFT (supported only for some blockchains)"
+        },
+        {
+          "info": {
+            "name": "Burn Lazy NFT",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/items/lazy/burn",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes Lazy NFT (supported only for some blockchains)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

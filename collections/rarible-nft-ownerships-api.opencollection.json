@@ -1,0 +1,159 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts NFT Ownerships API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NFT Ownerships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get NFT Ownership by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/ownerships/:ownershipId",
+            "params": [
+              {
+                "name": "ownershipId",
+                "value": "",
+                "type": "path",
+                "description": "Ownership Id in format: 'ETHEREUM:${token}:${tokenId}:${owner}'"
+              }
+            ]
+          },
+          "docs": "Returns Ownership by Id"
+        },
+        {
+          "info": {
+            "name": "Get NFT Ownerships by Ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/ownerships/byIds",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns Ownerships by specified list of Ids"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collection's Ownerships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/ownerships/byCollection",
+            "params": [
+              {
+                "name": "collection",
+                "value": "",
+                "type": "query",
+                "description": "Address of the collection"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              }
+            ]
+          },
+          "docs": "Returns list of NFTs Ownerships from specified collection and sorted by `last updated` date"
+        },
+        {
+          "info": {
+            "name": "Get NFTs Ownerships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/ownerships/byItem",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "query",
+                "description": "Item Id, has format `ETHEREUM:${token}:${tokenId}`"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              }
+            ]
+          },
+          "docs": "Returns list of NFTs Ownerships for specified NFT and sorted by `last updated` date"
+        },
+        {
+          "info": {
+            "name": "Get collections owned items by owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/ownerships/collections",
+            "params": [
+              {
+                "name": "owners",
+                "value": "",
+                "type": "query",
+                "description": "Addresses of the owner"
+              },
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Since user's address can be present in several blockchains (for example, ETHEREUM and POLYGON),  you can use this filter to get Orders only for specific blockchains.  Or keep it empty to get Order from all blockchains"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              }
+            ]
+          },
+          "docs": "Returns list of collection with owned items by specified owner"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

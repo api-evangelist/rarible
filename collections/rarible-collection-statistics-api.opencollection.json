@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts Collection Statistics API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collection Statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get global (period-independent) statistics by collection ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v2.0/data/collections/:id/statistics/global",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Collection ID"
+              }
+            ]
+          },
+          "docs": "Global collection statistics by ID"
+        },
+        {
+          "info": {
+            "name": "Get global (period-independent) statistics by collection IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v2.0/data/collections/statistics/global/byIds",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Global collection statistics by IDs"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collections aggregated statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v2.0/data/collections/statistics/aggregated",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get aggregated statistics for collections list"
+        },
+        {
+          "info": {
+            "name": "Get period-based statistics by collection ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v2.0/data/collections/:id/statistics/period",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Collection ID"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Time period for aggregation"
+              }
+            ]
+          },
+          "docs": "Period-based collection statistics by ID"
+        },
+        {
+          "info": {
+            "name": "Get period-based statistics by collection IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v2.0/data/collections/statistics/period/byIds",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Period-based collection statistics by IDs"
+        },
+        {
+          "info": {
+            "name": "Get distribution of the number of owned items by owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v2.0/data/collections/:id/owners",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Collection ID"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of results to return"
+              }
+            ]
+          },
+          "docs": "Returns list of owners of items in the collection along with the number of owned items"
+        },
+        {
+          "info": {
+            "name": "Get distribution of the number of bids by price",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v2.0/data/collections/:id/bidsByPrice",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Collection ID"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of results to return"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Result sorting"
+              }
+            ]
+          },
+          "docs": "Returns list of bid prices with number of bids and bidders"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

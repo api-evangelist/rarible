@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts Domain lookup API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Domain lookup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Resolve domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/domains/:domain/resolution",
+            "params": [
+              {
+                "name": "domain",
+                "value": "nick.eth",
+                "type": "path",
+                "description": "Name of a domain to resolve"
+              }
+            ]
+          },
+          "docs": "Resolves domain's blockchain address by its name (for example, from ENS domains collection)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

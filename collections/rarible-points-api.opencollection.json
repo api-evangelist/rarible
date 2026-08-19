@@ -1,0 +1,107 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts Points API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Points",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the leaderboard of awarded points across blockchains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/points/rewards",
+            "params": [
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (default: 50)"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor (point number and address to continue from)"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of wallets with awarded points and rankings"
+        },
+        {
+          "info": {
+            "name": "Get awarded points by address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/points/rewards/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "Wallet address"
+              }
+            ]
+          },
+          "docs": "Returns reward information grouped by blockchain for a specific wallet address"
+        },
+        {
+          "info": {
+            "name": "Sign a message to claim rewards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/points/claim/signature",
+            "params": [
+              {
+                "name": "blockchain",
+                "value": "",
+                "type": "query",
+                "description": "Blockchain"
+              },
+              {
+                "name": "signer",
+                "value": "",
+                "type": "query",
+                "description": "Address of the user who is claiming the reward"
+              },
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "Number of the epoch in which the user is claiming the reward"
+              },
+              {
+                "name": "points",
+                "value": "",
+                "type": "query",
+                "description": "The number of points to claim"
+              }
+            ]
+          },
+          "docs": "A user uses this resource to sign a request to use their points collected through Points Program to claim the rewards (RARI)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

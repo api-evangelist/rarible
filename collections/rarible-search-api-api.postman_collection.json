@@ -1,0 +1,1786 @@
+{
+  "item": [
+    {
+      "id": "6b37921a-7808-416c-8673-4881d542a188",
+      "name": "Search API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c0ed3e1-600e-47f3-9e18-94e4f9a21ff7",
+          "name": "Search NFT collection traits",
+          "request": {
+            "name": "Search NFT collection traits",
+            "description": {
+              "content": "Returns aggregation of existing traits for specified collections with counter for each trait type/value.\\  This is full-text-search, where you can specify filter for trait keys not precisely\\  (for example, results `back` filter include `Background` trait)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "items",
+                "traits",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "(Required) filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "collectionIds",
+                  "value": "<string>",
+                  "description": "(Required) Collections identifiers to which traits belong"
+                },
+                {
+                  "disabled": false,
+                  "key": "collectionIds",
+                  "value": "<string>",
+                  "description": "(Required) Collections identifiers to which traits belong"
+                },
+                {
+                  "disabled": false,
+                  "key": "owners",
+                  "value": "<string>",
+                  "description": "Return traits only for items owned by user"
+                },
+                {
+                  "disabled": false,
+                  "key": "owners",
+                  "value": "<string>",
+                  "description": "Return traits only for items owned by user"
+                }
+              ],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "048f5303-e457-4f8b-b732-1818d3b0087b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "items",
+                    "traits",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "Hat"
+                    },
+                    {
+                      "key": "collectionIds",
+                      "value": "ETHEREUM:0x60e4d786628fea6478f785a6d7e704777c86a7c6"
+                    },
+                    {
+                      "key": "collectionIds",
+                      "value": "ETHEREUM:0x60e4d786628fea6478f785a6d7e704777c86a7c6"
+                    },
+                    {
+                      "key": "owners",
+                      "value": "${filterOwners}"
+                    },
+                    {
+                      "key": "owners",
+                      "value": "${filterOwners}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"traits\": [],\n  \"continuation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24ce2d41-cb01-44da-98e2-535b262c912e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "items",
+                    "traits",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "Hat"
+                    },
+                    {
+                      "key": "collectionIds",
+                      "value": "ETHEREUM:0x60e4d786628fea6478f785a6d7e704777c86a7c6"
+                    },
+                    {
+                      "key": "collectionIds",
+                      "value": "ETHEREUM:0x60e4d786628fea6478f785a6d7e704777c86a7c6"
+                    },
+                    {
+                      "key": "owners",
+                      "value": "${filterOwners}"
+                    },
+                    {
+                      "key": "owners",
+                      "value": "${filterOwners}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4910e791-6259-4e53-84b6-315037ab0bfe",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "items",
+                    "traits",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "Hat"
+                    },
+                    {
+                      "key": "collectionIds",
+                      "value": "ETHEREUM:0x60e4d786628fea6478f785a6d7e704777c86a7c6"
+                    },
+                    {
+                      "key": "collectionIds",
+                      "value": "ETHEREUM:0x60e4d786628fea6478f785a6d7e704777c86a7c6"
+                    },
+                    {
+                      "key": "owners",
+                      "value": "${filterOwners}"
+                    },
+                    {
+                      "key": "owners",
+                      "value": "${filterOwners}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d24f6fea-a8b0-4985-b28c-64d32b3311e2",
+          "name": "Search NFTs",
+          "request": {
+            "name": "Search NFTs",
+            "description": {
+              "content": "Advanced search returns NFTs satisfying provided filter",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "items",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"size\": 50,\n  \"filter\": {\n    \"blockchains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"collections\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"deleted\": false,\n    \"names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"fullText\": {\n      \"text\": \"<string>\",\n      \"fields\": [\n        \"NAME\"\n      ]\n    },\n    \"traits\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"traitRanges\": [\n      {\n        \"key\": \"<string>\",\n        \"valueRange\": {\n          \"from\": \"<float>\",\n          \"to\": \"<float>\"\n        }\n      },\n      {\n        \"key\": \"<string>\",\n        \"valueRange\": {\n          \"from\": \"<float>\",\n          \"to\": \"<float>\"\n        }\n      }\n    ],\n    \"creators\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"owners\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mintedAtFrom\": \"<dateTime>\",\n    \"mintedAtTo\": \"<dateTime>\",\n    \"lastUpdatedAtFrom\": \"<dateTime>\",\n    \"lastUpdatedAtTo\": \"<dateTime>\",\n    \"sellPriceFrom\": \"<double>\",\n    \"sellPriceTo\": \"<double>\",\n    \"sellCurrency\": \"<string>\",\n    \"sellPlatforms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"rarityRankFrom\": \"<integer>\",\n    \"rarityRankTo\": \"<integer>\",\n    \"bidPriceFrom\": \"<double>\",\n    \"bidPriceTo\": \"<double>\",\n    \"bidCurrency\": \"<string>\",\n    \"bidPlatforms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onSale\": \"<boolean>\"\n  },\n  \"continuation\": \"<string>\",\n  \"traitSort\": {\n    \"key\": \"<string>\",\n    \"order\": \"ASC\",\n    \"type\": \"TEXT\"\n  },\n  \"sort\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b2bdc83-1fb6-4a85-9c35-4d08d56d2c72",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "items",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 10,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\"\n    ],\n    \"deleted\": false,\n    \"sellPriceFrom\": 0,\n    \"sellPriceTo\": 100,\n    \"sellCurrency\": \"ETHEREUM:0x0000000000000000000000000000000000000000\",\n    \"lastUpdatedAtFrom\": \"2022-12-01T00:00:00Z\",\n    \"lastUpdatedAtTo\": \"2029-12-01T00:00:00Z\"\n  },\n  \"sort\": \"EARLIEST\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [],\n  \"total\": 500,\n  \"continuation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75cfc6bd-e386-4760-9b29-a7627be8ca02",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "items",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 10,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\"\n    ],\n    \"deleted\": false,\n    \"sellPriceFrom\": 0,\n    \"sellPriceTo\": 100,\n    \"sellCurrency\": \"ETHEREUM:0x0000000000000000000000000000000000000000\",\n    \"lastUpdatedAtFrom\": \"2022-12-01T00:00:00Z\",\n    \"lastUpdatedAtTo\": \"2029-12-01T00:00:00Z\"\n  },\n  \"sort\": \"EARLIEST\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d394be53-6833-48f3-bcba-b77675decc29",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "items",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 10,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\"\n    ],\n    \"deleted\": false,\n    \"sellPriceFrom\": 0,\n    \"sellPriceTo\": 100,\n    \"sellCurrency\": \"ETHEREUM:0x0000000000000000000000000000000000000000\",\n    \"lastUpdatedAtFrom\": \"2022-12-01T00:00:00Z\",\n    \"lastUpdatedAtTo\": \"2029-12-01T00:00:00Z\"\n  },\n  \"sort\": \"EARLIEST\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7eff703-8195-47cd-96eb-622691c1ebc6",
+          "name": "Search Duplicated NFTs",
+          "request": {
+            "name": "Search Duplicated NFTs",
+            "description": {
+              "content": "Advanced search returns NFTs satisfying provided filter and with duplicated traits",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "items",
+                "search",
+                "duplicates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"size\": 50,\n  \"filter\": {\n    \"blockchains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"collections\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"deleted\": false,\n    \"names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"fullText\": {\n      \"text\": \"<string>\",\n      \"fields\": [\n        \"NAME\"\n      ]\n    },\n    \"traits\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"traitRanges\": [\n      {\n        \"key\": \"<string>\",\n        \"valueRange\": {\n          \"from\": \"<float>\",\n          \"to\": \"<float>\"\n        }\n      },\n      {\n        \"key\": \"<string>\",\n        \"valueRange\": {\n          \"from\": \"<float>\",\n          \"to\": \"<float>\"\n        }\n      }\n    ],\n    \"creators\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"owners\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mintedAtFrom\": \"<dateTime>\",\n    \"mintedAtTo\": \"<dateTime>\",\n    \"lastUpdatedAtFrom\": \"<dateTime>\",\n    \"lastUpdatedAtTo\": \"<dateTime>\",\n    \"sellPriceFrom\": \"<double>\",\n    \"sellPriceTo\": \"<double>\",\n    \"sellCurrency\": \"<string>\",\n    \"sellPlatforms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"rarityRankFrom\": \"<integer>\",\n    \"rarityRankTo\": \"<integer>\",\n    \"bidPriceFrom\": \"<double>\",\n    \"bidPriceTo\": \"<double>\",\n    \"bidCurrency\": \"<string>\",\n    \"bidPlatforms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"onSale\": \"<boolean>\"\n  },\n  \"traits\": [\n    \"<string>\"\n  ],\n  \"continuation\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b4894063-06ca-4531-a41f-356978a367f8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "items",
+                    "search",
+                    "duplicates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 10,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\"\n    ],\n    \"deleted\": false,\n    \"sellPriceFrom\": 0,\n    \"sellPriceTo\": 100,\n    \"sellCurrency\": \"ETHEREUM:0x0000000000000000000000000000000000000000\",\n    \"lastUpdatedAtFrom\": \"2022-12-01T00:00:00Z\",\n    \"lastUpdatedAtTo\": \"2029-12-01T00:00:00Z\"\n  },\n  \"traits\": [\n    \"series\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"groups\": [],\n  \"continuation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9709d782-2128-4b07-932b-21cccf0b815d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "items",
+                    "search",
+                    "duplicates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 10,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\"\n    ],\n    \"deleted\": false,\n    \"sellPriceFrom\": 0,\n    \"sellPriceTo\": 100,\n    \"sellCurrency\": \"ETHEREUM:0x0000000000000000000000000000000000000000\",\n    \"lastUpdatedAtFrom\": \"2022-12-01T00:00:00Z\",\n    \"lastUpdatedAtTo\": \"2029-12-01T00:00:00Z\"\n  },\n  \"traits\": [\n    \"series\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce026120-c811-41b3-b0b0-1f25643b6755",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "items",
+                    "search",
+                    "duplicates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 10,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\"\n    ],\n    \"deleted\": false,\n    \"sellPriceFrom\": 0,\n    \"sellPriceTo\": 100,\n    \"sellCurrency\": \"ETHEREUM:0x0000000000000000000000000000000000000000\",\n    \"lastUpdatedAtFrom\": \"2022-12-01T00:00:00Z\",\n    \"lastUpdatedAtTo\": \"2029-12-01T00:00:00Z\"\n  },\n  \"traits\": [\n    \"series\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad0771bf-1b60-4cf7-a622-6c053b23d030",
+          "name": "Search NFT Ownerships",
+          "request": {
+            "name": "Search NFT Ownerships",
+            "description": {
+              "content": "Advanced search returns NFT Ownerships satisfying provided filter",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "ownerships",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"size\": 50,\n  \"filter\": {\n    \"blockchains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"owners\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"collections\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"items\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"beforeDate\": \"<dateTime>\",\n    \"afterDate\": \"<dateTime>\",\n    \"sellPriceFrom\": \"<double>\",\n    \"sellPriceTo\": \"<double>\",\n    \"sellCurrency\": \"<string>\",\n    \"sellPlatforms\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"continuation\": \"<string>\",\n  \"sort\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7e12000-2495-4a3f-8f94-5564c21eded4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 10,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\"\n    ],\n    \"deleted\": false,\n    \"sellPriceFrom\": 0,\n    \"sellPriceTo\": 100,\n    \"sellCurrency\": \"ETHEREUM:0x0000000000000000000000000000000000000000\",\n    \"lastUpdatedAtFrom\": \"2022-12-01T00:00:00Z\",\n    \"lastUpdatedAtTo\": \"2029-12-01T00:00:00Z\"\n  },\n  \"sort\": \"EARLIEST\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerships\": [],\n  \"total\": 8816,\n  \"continuation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6bd7ee1-78e4-4557-9ef7-83ea2ce97b92",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 10,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\"\n    ],\n    \"deleted\": false,\n    \"sellPriceFrom\": 0,\n    \"sellPriceTo\": 100,\n    \"sellCurrency\": \"ETHEREUM:0x0000000000000000000000000000000000000000\",\n    \"lastUpdatedAtFrom\": \"2022-12-01T00:00:00Z\",\n    \"lastUpdatedAtTo\": \"2029-12-01T00:00:00Z\"\n  },\n  \"sort\": \"EARLIEST\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acb85996-ac1a-4dbe-9ef4-8f5350ff60df",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "ownerships",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 10,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\"\n    ],\n    \"deleted\": false,\n    \"sellPriceFrom\": 0,\n    \"sellPriceTo\": 100,\n    \"sellCurrency\": \"ETHEREUM:0x0000000000000000000000000000000000000000\",\n    \"lastUpdatedAtFrom\": \"2022-12-01T00:00:00Z\",\n    \"lastUpdatedAtTo\": \"2029-12-01T00:00:00Z\"\n  },\n  \"sort\": \"EARLIEST\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3cd8c18-0e58-42f3-837d-da6881357973",
+          "name": "Search Activities",
+          "request": {
+            "name": "Search Activities",
+            "description": {
+              "content": "Advanced search returns Activities satisfying provided filter",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "activities",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"size\": 50,\n  \"filter\": {\n    \"blockchains\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"collections\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"items\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"users\": {\n      \"any\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"from\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"to\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"currencies\": {\n      \"bid\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"from\": \"<dateTime>\",\n    \"to\": \"<dateTime>\",\n    \"fromBlockInclusive\": \"<long>\",\n    \"toBlockExclusive\": \"<long>\",\n    \"sources\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"hasRaribleFees\": \"<boolean>\"\n  },\n  \"cursor\": \"<string>\",\n  \"sort\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "db9efb46-b1cc-436f-b45e-6d378ab5d6fc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "activities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 50,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\",\n      \"ETHEREUM\"\n    ],\n    \"types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"collections\": [\n      \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n      \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\"\n    ],\n    \"items\": [\n      \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\",\n      \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\"\n    ],\n    \"users\": {\n      \"any\": [\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n      ],\n      \"from\": [\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n      ],\n      \"to\": [\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n      ]\n    },\n    \"currencies\": {\n      \"bid\": [\n        \"ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n        \"ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\"\n      ]\n    },\n    \"from\": \"<dateTime>\",\n    \"to\": \"<dateTime>\",\n    \"fromBlockInclusive\": \"<long>\",\n    \"toBlockExclusive\": \"<long>\",\n    \"sources\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"hasRaribleFees\": \"<boolean>\"\n  },\n  \"cursor\": \"<string>\",\n  \"sort\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activities\": [],\n  \"continuation\": \"string\",\n  \"cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37be5b55-c9f7-48df-a9d2-7fa7f7968414",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "activities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 50,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\",\n      \"ETHEREUM\"\n    ],\n    \"types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"collections\": [\n      \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n      \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\"\n    ],\n    \"items\": [\n      \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\",\n      \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\"\n    ],\n    \"users\": {\n      \"any\": [\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n      ],\n      \"from\": [\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n      ],\n      \"to\": [\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n      ]\n    },\n    \"currencies\": {\n      \"bid\": [\n        \"ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n        \"ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\"\n      ]\n    },\n    \"from\": \"<dateTime>\",\n    \"to\": \"<dateTime>\",\n    \"fromBlockInclusive\": \"<long>\",\n    \"toBlockExclusive\": \"<long>\",\n    \"sources\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"hasRaribleFees\": \"<boolean>\"\n  },\n  \"cursor\": \"<string>\",\n  \"sort\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "074f0784-7b48-4e70-8af6-c18ea8c38877",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "activities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 50,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\",\n      \"ETHEREUM\"\n    ],\n    \"types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"collections\": [\n      \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n      \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\"\n    ],\n    \"items\": [\n      \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\",\n      \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\"\n    ],\n    \"users\": {\n      \"any\": [\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n      ],\n      \"from\": [\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n      ],\n      \"to\": [\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n        \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n      ]\n    },\n    \"currencies\": {\n      \"bid\": [\n        \"ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n        \"ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\"\n      ]\n    },\n    \"from\": \"<dateTime>\",\n    \"to\": \"<dateTime>\",\n    \"fromBlockInclusive\": \"<long>\",\n    \"toBlockExclusive\": \"<long>\",\n    \"sources\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"hasRaribleFees\": \"<boolean>\"\n  },\n  \"cursor\": \"<string>\",\n  \"sort\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cdf9017d-732d-4c35-8458-cfce5f18155f",
+          "name": "Count activities that match the search request",
+          "request": {
+            "name": "Count activities that match the search request",
+            "description": {
+              "content": "Advanced search returns the count of Activities satisfying provided filter",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "activities",
+                "search",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"blockchains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"collections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"items\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"users\": {\n    \"any\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"from\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"to\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"currencies\": {\n    \"bid\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"from\": \"<dateTime>\",\n  \"to\": \"<dateTime>\",\n  \"fromBlockInclusive\": \"<long>\",\n  \"toBlockExclusive\": \"<long>\",\n  \"sources\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hasRaribleFees\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "037c0d75-0f2a-4173-bda7-f0a43160722a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "activities",
+                    "search",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"blockchains\": [\n    \"ETHEREUM\",\n    \"ETHEREUM\"\n  ],\n  \"types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"collections\": [\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\"\n  ],\n  \"items\": [\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\",\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\"\n  ],\n  \"users\": {\n    \"any\": [\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n    ],\n    \"from\": [\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n    ],\n    \"to\": [\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n    ]\n  },\n  \"currencies\": {\n    \"bid\": [\n      \"ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n      \"ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\"\n    ]\n  },\n  \"from\": \"<dateTime>\",\n  \"to\": \"<dateTime>\",\n  \"fromBlockInclusive\": \"<long>\",\n  \"toBlockExclusive\": \"<long>\",\n  \"sources\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hasRaribleFees\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 7874\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a05aa8e4-669d-4435-870b-433f5a66c6ca",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "activities",
+                    "search",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"blockchains\": [\n    \"ETHEREUM\",\n    \"ETHEREUM\"\n  ],\n  \"types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"collections\": [\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\"\n  ],\n  \"items\": [\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\",\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\"\n  ],\n  \"users\": {\n    \"any\": [\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n    ],\n    \"from\": [\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n    ],\n    \"to\": [\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n    ]\n  },\n  \"currencies\": {\n    \"bid\": [\n      \"ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n      \"ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\"\n    ]\n  },\n  \"from\": \"<dateTime>\",\n  \"to\": \"<dateTime>\",\n  \"fromBlockInclusive\": \"<long>\",\n  \"toBlockExclusive\": \"<long>\",\n  \"sources\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hasRaribleFees\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e91de993-56b9-4dc2-83e8-8b8b481d0c2b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "activities",
+                    "search",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"blockchains\": [\n    \"ETHEREUM\",\n    \"ETHEREUM\"\n  ],\n  \"types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"collections\": [\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\",\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8\"\n  ],\n  \"items\": [\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\",\n    \"ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410\"\n  ],\n  \"users\": {\n    \"any\": [\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n    ],\n    \"from\": [\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n    ],\n    \"to\": [\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\",\n      \"ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb\"\n    ]\n  },\n  \"currencies\": {\n    \"bid\": [\n      \"ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n      \"ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\"\n    ]\n  },\n  \"from\": \"<dateTime>\",\n  \"to\": \"<dateTime>\",\n  \"fromBlockInclusive\": \"<long>\",\n  \"toBlockExclusive\": \"<long>\",\n  \"sources\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hasRaribleFees\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe7c2002-e4ee-4a01-8040-ff7aab2ee243",
+          "name": "Search NFT Collections",
+          "request": {
+            "name": "Search NFT Collections",
+            "description": {
+              "content": "Advanced search returns NFT Collections satisfying provided filter",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0.1",
+                "collections",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": " (This can only be one of api,testnet-api)",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"size\": 50,\n  \"filter\": {\n    \"text\": \"<string>\",\n    \"blockchains\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"continuation\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f51956dc-420e-43c7-9ef4-456a1e385175",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 10,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\"\n    ],\n    \"text\": \"Apes\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collections\": [],\n  \"total\": 5722,\n  \"continuation\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c58a52c4-a6df-44d1-bce7-877fdea10296",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 10,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\"\n    ],\n    \"text\": \"Apes\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"BAD_REQUEST\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5cc1a61-19b3-4928-8d22-7a03c5d79b6a",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0.1",
+                    "collections",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": " (This can only be one of api,testnet-api)",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": 10,\n  \"filter\": {\n    \"blockchains\": [\n      \"ETHEREUM\"\n    ],\n    \"text\": \"Apes\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNKNOWN\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": " (This can only be one of api,testnet-api)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "api",
+      "key": "environment"
+    },
+    {
+      "type": "string",
+      "value": "https://{{environment}}.rarible.org",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5ade02e4-9234-43a8-93d0-f15b7e358e42",
+    "name": "OpenAPI definition Charts Search API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Exciting News\n\nHey there, amazing developers! 👋\n\nWe've got some fantastic news to share that will make your experience with our product even better. We're thrilled to announce the implementation of API-Keys, which brings a new level of control and convenience to your development process. So, let's dive right into the details! ✨\n\n## API-Keys for Enhanced Functionality 🔑\n\nStarting now, we have introduced API-Keys to streamline your interactions with our methods. You might have noticed a slight change while making requests – now, all you need to do is include the parameter `X-API-KEY` in the Header of your request. Simple as that!\n\n## Get Your API-Key in a Snap! ⚡️\n\nSecuring your API-Key is a breeze. We've made the process super user-friendly to ensure you can get started quickly. Just head over to our website and fill out a simple form. Once you've done that, your shiny new API-Key will be delivered straight to your email inbox. Easy peasy! 📧\n\n[Get Your API-Key Here](https://api.rarible.org/registration)\n[Configure SDK with API-key](https://github.com/rarible/sdk#api-querying)\n\n## Unlock the Power of the Rarible Protocol 🔓\n\nAs passionate developers, we know you're always hungry for knowledge and eager to explore new frontiers. That's why we invite you to discover the incredible world of the Rarible Protocol. By visiting our dedicated protocol page, you'll gain access to a treasure trove of useful information, tips, and insights that will elevate your development skills to new heights. 🚀\n\n[Explore the Rarible Protocol](https://rarible.org)\n\nSo, buckle up and get ready for an enhanced development journey with our API-Keys. We're excited to see what you'll create using our revamped system! 💪🚀\n\nStay curious, keep innovating, and happy coding! ✨\n\n[P.S. Join our Discord Server to stay up to date and ask questions](https://discord.gg/rarifoundation)\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts Currencies and rates API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Currencies and rates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get USD rate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/currencies/:currencyId/rates/usd",
+            "params": [
+              {
+                "name": "currencyId",
+                "value": "",
+                "type": "path",
+                "description": "Currency Id, has format `ETHEREUM:${token}` or `ETHEREUM:${token}:${tokenId}`"
+              },
+              {
+                "name": "at",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Date and time for getting currency USD rate (if not specified, returns actual rate)"
+              }
+            ]
+          },
+          "docs": "Get currency USD rate by currency blockchain's address"
+        },
+        {
+          "info": {
+            "name": "Get supported currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/currencies/all"
+          },
+          "docs": "List of currencies, supported by Protocol"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

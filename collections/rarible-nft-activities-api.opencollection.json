@@ -1,0 +1,364 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts NFT Activities API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NFT Activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/activities/byUser",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Activity type"
+              },
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Addresses of the users"
+              },
+              {
+                "name": "bidCurrencies",
+                "value": "",
+                "type": "query",
+                "description": "Currency for BID and CANCEL_BID activity types"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Lower time border of data"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Upper time border of data"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Combined continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting by data update time"
+              }
+            ]
+          },
+          "docs": "Returns user's Activities (like transfers, mints, sells etc) sorted by date. This API is deprecated in favor of `Search Activities`"
+        },
+        {
+          "info": {
+            "name": "Get users Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/activities/byUsers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns users Activities (like transfers, mints, sells etc) sorted by date. This API is deprecated in favor of `Search Activities`"
+        },
+        {
+          "info": {
+            "name": "Get NFT Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/activities/byItem",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Activity type"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "query",
+                "description": "Item Id, has format `ETHEREUM:${token}:${tokenId}`"
+              },
+              {
+                "name": "bidCurrencies",
+                "value": "",
+                "type": "query",
+                "description": "Currency for BID and CANCEL_BID activity types"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Combined continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting by data update time"
+              }
+            ]
+          },
+          "docs": "Returns Activities related to specified NFT and sorted by date. This API is deprecated in favor of `Search Activities`"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collection Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/activities/byCollection",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Activity type"
+              },
+              {
+                "name": "collection",
+                "value": "",
+                "type": "query",
+                "description": "Address of the collection"
+              },
+              {
+                "name": "bidCurrencies",
+                "value": "",
+                "type": "query",
+                "description": "Currency for BID and CANCEL_BID activity types"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Combined continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting by data update time"
+              }
+            ]
+          },
+          "docs": "Returns Activities related to NFTs from specified Collection and sorted by date. This API is deprecated in favor of `Search Activities`"
+        },
+        {
+          "info": {
+            "name": "Get all Activities (for sync)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/activities/sync",
+            "params": [
+              {
+                "name": "blockchain",
+                "value": "",
+                "type": "query",
+                "description": "Type of the blockchain network"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting by data base update time"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filtering by activity type"
+              }
+            ]
+          },
+          "docs": "Returns all Activities in accordance with specified filters and sorted by `db updated` date. During internal updates (like migrations) Activities can be updated for technical reasons. In such case, `date` field won't be changed. If you want to store Activities in your own storage and keep it synced, use this method."
+        },
+        {
+          "info": {
+            "name": "Get all Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/activities/all",
+            "params": [
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Names of the blockchain networks. If no one specified, data from all blockchains will be returned"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Activity type"
+              },
+              {
+                "name": "bidCurrencies",
+                "value": "",
+                "type": "query",
+                "description": "Currency for BID and CANCEL_BID activity types"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Combined continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sorting by data update time"
+              }
+            ]
+          },
+          "docs": "Returns all Activities in accordance with specified filters and sorted by date. This API is deprecated in favor of `Search Activities`"
+        },
+        {
+          "info": {
+            "name": "Get sales chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/collections/:id/charts/sales",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Collection ID"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Time period from"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Time period to"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of data points to return"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Cursor from previous response"
+              }
+            ]
+          },
+          "docs": "Returns list of sales by collection"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

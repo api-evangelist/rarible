@@ -1,0 +1,755 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts NFT Sales API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NFT Sales",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order Id, has format 'ETHEREUM:${id}'"
+              }
+            ]
+          },
+          "docs": "Returns Order by Id"
+        },
+        {
+          "info": {
+            "name": "Prepare order transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/orders/:id/prepareTx",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order Id, has format 'ETHEREUM:${id}'"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Prepare all required data to match given order on the blockchain"
+        },
+        {
+          "info": {
+            "name": "Prepare order cancel transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/orders/:id/prepareCancelTx",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order Id, has format 'ETHEREUM:${id}'"
+              }
+            ]
+          },
+          "docs": "Prepare all required data to cancel given order on the blockchain"
+        },
+        {
+          "info": {
+            "name": "Report Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/orders/:id/report",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order Id, has format 'ETHEREUM:${id}'"
+              }
+            ]
+          },
+          "docs": "Report Error Order"
+        },
+        {
+          "info": {
+            "name": "Create or update Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update off-chain Order (supported only for some blockchains)"
+        },
+        {
+          "info": {
+            "name": "Get validated Order by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/:id/validate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order Id, has format 'ETHEREUM:${id}'"
+              }
+            ]
+          },
+          "docs": "Validates and returns order by Id. IMPORTANT - validation is time-consuming operation!"
+        },
+        {
+          "info": {
+            "name": "Get Orders by Ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{environment}.rarible.org/v0.1/orders/byIds",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns Orders by specified list of Ids"
+        },
+        {
+          "info": {
+            "name": "Get all Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/all",
+            "params": [
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Type of the blockchain network"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of orders to return"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Order sort"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Order status"
+              },
+              {
+                "name": "searchEngine",
+                "value": "",
+                "type": "query",
+                "description": "Search engine to use for search"
+              }
+            ]
+          },
+          "docs": "Returns all Orders in accordance with specified filters and sorted by `last updated` date"
+        },
+        {
+          "info": {
+            "name": "Get all Orders (for sync)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/sync",
+            "params": [
+              {
+                "name": "blockchain",
+                "value": "",
+                "type": "query",
+                "description": "Type of the blockchain network"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of orders to return"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Order sort"
+              }
+            ]
+          },
+          "docs": "Returns all sales & transfers in accordance with specified filters and sorted by `db updated` date. During internal updates (like migrations) Orders can be updated for technical reasons. In such case, `last update` date won't be changed. If you want to store Orders in your own storage and keep it synced, use this method."
+        },
+        {
+          "info": {
+            "name": "Get user's sell Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/sell/byMaker",
+            "params": [
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Since user's address can be present in several blockchains (for example, ETHEREUM and POLYGON),  you can use this filter to get Orders only for specific blockchains.  Or keep it empty to get Order from all blockchains"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "The platform where the order was created"
+              },
+              {
+                "name": "maker",
+                "value": "",
+                "type": "query",
+                "description": "The maker of the order"
+              },
+              {
+                "name": "collection",
+                "value": "",
+                "type": "query",
+                "description": "The nft collection of order"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Order status"
+              },
+              {
+                "name": "searchEngine",
+                "value": "",
+                "type": "query",
+                "description": "Search engine to use for search"
+              }
+            ]
+          },
+          "docs": "Returns sell NFT Sales created by specified user and sorted by `last update` date"
+        },
+        {
+          "info": {
+            "name": "Get sell Orders for NFT",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/sell/byItem",
+            "params": [
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "The platform where the order was created"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "query",
+                "description": "Item Id, has format `ETHEREUM:${token}:${tokenId}`"
+              },
+              {
+                "name": "maker",
+                "value": "",
+                "type": "query",
+                "description": "The maker of the bid"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Order status"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "searchEngine",
+                "value": "",
+                "type": "query",
+                "description": "Search engine to use for search"
+              }
+            ]
+          },
+          "docs": "Returns sell sales & transfer created for specified NFT and sorted by price in USD (cheapest first)"
+        },
+        {
+          "info": {
+            "name": "Get sell Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/sell",
+            "params": [
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Names of the blockchain networks. If no one specified, data from all blockchains will be returned"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "The platform where the order was created"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "searchEngine",
+                "value": "",
+                "type": "query",
+                "description": "Search engine to use for search"
+              }
+            ]
+          },
+          "docs": "Returns sell Orders satisfying specified filters and sorted by `last update` date"
+        },
+        {
+          "info": {
+            "name": "Get user's bid Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/bids/byMaker",
+            "params": [
+              {
+                "name": "maker",
+                "value": "",
+                "type": "query",
+                "description": "Since user's address can be present in several blockchains (for example, ETHEREUM and POLYGON),  you can use this filter to get Orders only for specific blockchains.  Or keep it empty to get Order from all blockchains"
+              },
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Names of the blockchain networks. If no one specified, data from all blockchains will be returned"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "The platform where the order was created"
+              },
+              {
+                "name": "collection",
+                "value": "",
+                "type": "query",
+                "description": "The nft collection of order"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Order status"
+              },
+              {
+                "name": "currencies",
+                "value": "",
+                "type": "query",
+                "description": "Currencies for bids"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Lower time border of data (timestamp)"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Upper time border of data (timestamp)"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "searchEngine",
+                "value": "",
+                "type": "query",
+                "description": "Search engine to use for search"
+              }
+            ]
+          },
+          "docs": "Returns bid Orders created by specified user and sorted by `last update` date"
+        },
+        {
+          "info": {
+            "name": "Get bid Orders for NFT",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/bids/byItem",
+            "params": [
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "The platform where the order was created"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "query",
+                "description": "Item Id, has format `ETHEREUM:${token}:${tokenId}`"
+              },
+              {
+                "name": "maker",
+                "value": "",
+                "type": "query",
+                "description": "The maker of the bid"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Order status"
+              },
+              {
+                "name": "currencies",
+                "value": "",
+                "type": "query",
+                "description": "Currencies for bids"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Lower time border of data (timestamp)"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Upper time border of data (timestamp)"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              },
+              {
+                "name": "searchEngine",
+                "value": "",
+                "type": "query",
+                "description": "Search engine to use for search"
+              }
+            ]
+          },
+          "docs": "Returns bid Orders created for specified NFT and sorted by price in USD (expensive first)"
+        },
+        {
+          "info": {
+            "name": "Get floor bids for Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/floorBids/byCollection",
+            "params": [
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "The platform where the order was created"
+              },
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "query",
+                "description": "Collection Id, has format `ETHEREUM:${token}`"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Order status"
+              },
+              {
+                "name": "currencies",
+                "value": "",
+                "type": "query",
+                "description": "Currencies for bids"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Lower time border of data (timestamp)"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Upper time border of data (timestamp)"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return"
+              }
+            ]
+          },
+          "docs": "Returns floor bids created for specified NFT Collection and sorted by price in USD (expensive first)"
+        },
+        {
+          "info": {
+            "name": "Get fee settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/settings/fees",
+            "params": [
+              {
+                "name": "blockchain",
+                "value": "",
+                "type": "query",
+                "description": "Type of the blockchain network"
+              }
+            ]
+          },
+          "docs": "Returns Protocol fee settings for Orders"
+        },
+        {
+          "info": {
+            "name": "Get historical best active orders in a collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/history/bestActiveAtTime",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type of orders. Only the orders of this type will be searched"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "Platform where the order was created"
+              },
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "query",
+                "description": "Collection in which to look for best orders"
+              },
+              {
+                "name": "time",
+                "value": "",
+                "type": "query",
+                "description": "Point in time at which to return best orders"
+              },
+              {
+                "name": "topK",
+                "value": "",
+                "type": "query",
+                "description": "How many best orders to return. If not specified, some default amount is returned"
+              }
+            ]
+          },
+          "docs": "Return K best active orders in a collection as they were at the specified point in time.  For Sell orders, the best are the cheapest ones; and for Buy orders, the best are the most expensive ones.  The orders are sorted in the order of goodness, with best order always the first."
+        },
+        {
+          "info": {
+            "name": "Get historical active orders in a collection closest in price to the specified order at the time",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/history/closestActiveAtTime/byOrder",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "query",
+                "description": "The reference order used to find orders with prices closest to its price. Must belong to the specified collection"
+              },
+              {
+                "name": "time",
+                "value": "",
+                "type": "query",
+                "description": "Point in time at which to return closest orders"
+              },
+              {
+                "name": "topK",
+                "value": "",
+                "type": "query",
+                "description": "How many closest orders to return. If not specified, some default amount is returned"
+              }
+            ]
+          },
+          "docs": "Return K orders in a collection that were active at the specified point in time, which are the closest in price to the specified order.  Ties are broken first by price: for Sell orders, the best are the cheapest ones; and for Buy orders, the best are the most expensive ones.  Then ties are broken by creation date, the earlier, the better.  The specified order is not included in the returned K results."
+        },
+        {
+          "info": {
+            "name": "Get historical active orders in a collection closest to the specified price",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v0.1/orders/history/closestActiveAtTime/byPrice",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type of orders. Only the orders of this type will be searched"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "Platform where the order was created"
+              },
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "query",
+                "description": "Collection in which to look for closest orders"
+              },
+              {
+                "name": "time",
+                "value": "",
+                "type": "query",
+                "description": "Point in time at which to return closest orders"
+              },
+              {
+                "name": "topK",
+                "value": "",
+                "type": "query",
+                "description": "How many closest orders to return. If not specified, some default amount is returned"
+              },
+              {
+                "name": "priceUsd",
+                "value": "",
+                "type": "query",
+                "description": "The reference price used to find closest orders, in USD"
+              }
+            ]
+          },
+          "docs": "Return K closest orders in a collection that were active at the specified point in time.  Ties are broken first by price: for Sell orders, the best are the cheapest ones; and for Buy orders, the best are the most expensive ones.  Then ties are broken by creation date, the earlier, the better."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAPI definition Charts Collection Leader Board API",
+    "version": "v0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collection Leader Board",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get NFT Collections leaderboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v2.0/data/leaderboard/collections",
+            "params": [
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Blockchain networks"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Time period for aggregation"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Collections sorting"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Collections sorting direction"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit of records in leaderboard"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset reference"
+              }
+            ]
+          },
+          "docs": "Collections leaderboard"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collections leaderboard for a specific owner addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{environment}.rarible.org/v2.0/data/leaderboard/collections/byOwner",
+            "params": [
+              {
+                "name": "owners",
+                "value": "",
+                "type": "query",
+                "description": "Addresses of the owner"
+              },
+              {
+                "name": "blockchains",
+                "value": "",
+                "type": "query",
+                "description": "Blockchain networks"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Time period for aggregation"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Collections sorting"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Collections sorting direction"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit of records in leaderboard"
+              },
+              {
+                "name": "continuation",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token from the previous response"
+              }
+            ]
+          },
+          "docs": "User collections leaderboard"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
