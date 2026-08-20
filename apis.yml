@@ -35,6 +35,22 @@ tags:
   - Non-Fungible Tokens
   - Marketplace
   - Aggregator
+  - Multi-Chain
+  - Ethereum
+  - Polygon
+  - Arbitrum
+  - Flow
+  - Web3
+  - Blockchain
+  - Collection
+  - Order Book
+  - Trading
+  - Indexer
+tags_raw:
+  - NFT
+  - Non-Fungible Tokens
+  - Marketplace
+  - Aggregator
   - Multichain
   - Ethereum
   - Polygon
@@ -133,6 +149,8 @@ apis:
   humanURL: https://docs.rarible.org/docs/introduction
   baseURL: https://api.rarible.org/v0.1
   tags:
+  - Domain Lookup
+  tags_raw:
   - Domain lookup
   properties:
   - type: OpenAPI
