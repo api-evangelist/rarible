@@ -16,6 +16,18 @@ description: >-
   transactions, enabling direct monetisation on top of the Rarible
   infrastructure. The platform indexes over 1 billion NFTs and 91 million
   trades and maintains 99.99% uptime.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
