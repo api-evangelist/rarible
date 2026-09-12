@@ -2,20 +2,18 @@
   "repo": "rarible",
   "feeds": [
     {
+      "source": "https://docs.rarible.org/docs/api-status-page",
+      "error": "HTTPError"
+    },
+    {
       "source": "https://og.rarible.com/blog/rss/",
       "feed_url": "https://og.rarible.com/blog/rss/",
       "title": "",
       "saved": 0,
-      "method": "feed",
-      "nature": "undetermined",
-      "nature_basis": null
-    },
-    {
-      "source": "https://docs.rarible.org/docs/api-status-page",
-      "error": "HTTPError"
+      "method": "feed"
     }
   ],
-  "fetched": "2026-08-30T22:33:40Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "post_count": 20,
   "agent_pulled": "2026-07-04",
   "feed_nature": "undetermined",
