@@ -1,24 +1,7 @@
 {
   "provider": "rarible",
   "sources": [
-    "rarible-charts-api-openapi.yml",
-    "rarible-collection-leader-board-api-openapi.yml",
-    "rarible-collection-statistics-api-openapi.yml",
-    "rarible-currencies-and-rates-api-openapi.yml",
-    "rarible-domain-lookup-api-openapi.yml",
-    "rarible-encode-operations-api-openapi.yml",
-    "rarible-indexer-blocks-api-openapi.yml",
-    "rarible-nft-activities-api-openapi.yml",
-    "rarible-nft-collections-api-openapi.yml",
-    "rarible-nft-data-and-historical-statistics-api-openapi.yml",
-    "rarible-nft-items-api-openapi.yml",
-    "rarible-nft-ownerships-api-openapi.yml",
-    "rarible-nft-sales-api-openapi.yml",
-    "rarible-points-api-openapi.yml",
-    "rarible-reconciliation-api-openapi.yml",
-    "rarible-search-api-api-openapi.yml",
-    "rarible-signature-operations-api-openapi.yml",
-    "rarible-user-balances-api-openapi.yml"
+    "_original/openapi.yaml"
   ],
   "outputs": [
     "rarible-charts-api-openapi.yml",
@@ -43,6 +26,29 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "rarible-charts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-collection-leader-board-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-collection-statistics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-currencies-and-rates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-domain-lookup-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-encode-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-indexer-blocks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-nft-activities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-nft-collections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-nft-data-and-historical-statistics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-nft-items-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-nft-ownerships-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-nft-sales-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-points-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-reconciliation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-search-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-signature-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rarible-user-balances-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

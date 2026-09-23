@@ -1,51 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OpenAPI definition Charts Reconciliation API
+  title: OpenAPI definition Reconciliation API
   version: v0.1
   description: '# Exciting News
 
 
-    Hey there, amazing developers! 👋
-
-
-    We''ve got some fantastic news to share that will make your experience with our product even better. We''re thrilled to announce the implementation of API-Keys, which brings a new level of control and convenience to your development process. So, let''s dive right into the details! ✨
-
-
-    ## API-Keys for Enhanced Functionality 🔑
-
-
-    Starting now, we have introduced API-Keys to streamline your interactions with our methods. You might have noticed a slight change while making requests – now, all you need to do is include the parameter `X-API-KEY` in the Header of your request. Simple as that!
-
-
-    ## Get Your API-Key in a Snap! ⚡️
-
-
-    Securing your API-Key is a breeze. We''ve made the process super user-friendly to ensure you can get started quickly. Just head over to our website and fill out a simple form. Once you''ve done that, your shiny new API-Key will be delivered straight to your email inbox. Easy peasy! 📧
-
-
-    [Get Your API-Key Here](https://api.rarible.org/registration)
-
-    [Configure SDK with API-key](https://github.com/rarible/sdk#api-querying)
-
-
-    ## Unlock the Power of the Rarible Protocol 🔓
-
-
-    As passionate developers, we know you''re always hungry for knowledge and eager to explore new frontiers. That''s why we invite you to discover the incredible world of the Rarible Protocol. By visiting our dedicated protocol page, you''ll gain access to a treasure trove of useful information, tips, and insights that will elevate your development skills to new heights. 🚀
-
-
-    [Explore the Rarible Protocol](https://rarible.org)
-
-
-    So, buckle up and get ready for an enhanced development journey with our API-Keys. We''re excited to see what you''ll create using our revamped system! 💪🚀
-
-
-    Stay curious, keep innovating, and happy coding! ✨
-
-
-    [P.S. Join our Discord Server to stay up to date and ask questions](https://discord.gg/rarifoundation)
-
-    '
+    Hey there, amazing developers!'
 servers:
 - url: https://{environment}.rarible.org
   description: Production (Mainnet)
@@ -65,7 +25,7 @@ paths:
     get:
       tags:
       - Reconciliation
-      summary: Get IDs of items updated after a specific datetime.
+      summary: Get IDs of items updated after a specific datetime
       description: Return short view of items updated after a specific datetime.
       operationId: getReconciliationItems
       parameters:
@@ -119,7 +79,7 @@ paths:
     get:
       tags:
       - Reconciliation
-      summary: Get IDs of collections updated after a specific datetime.
+      summary: Get IDs of collections updated after a specific datetime
       description: Return short view of collections updated after a specific datetime.
       operationId: getReconciliationCollections
       parameters:
@@ -171,64 +131,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    ReconciliationEntities:
-      type: object
-      properties:
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReconciliationEntity'
-        continuation:
-          type: string
-      required:
-      - entities
-    UnionApiErrorServerError:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - UNKNOWN
-          default: UNKNOWN
-        message:
-          type: string
-          description: Error message
-    ReconciliationEntity:
-      type: object
-      properties:
-        id:
-          type: string
-        version:
-          type: integer
-          format: int64
-        lastUpdatedAt:
-          type: string
-          format: date-time
-        deleted:
-          type: boolean
-          default: false
-      required:
-      - id
-      - version
-      - lastUpdatedAt
-    UnionApiErrorBadRequest:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - BAD_REQUEST
-          - VALIDATION
-          default: BAD_REQUEST
-        message:
-          type: string
-          description: Error message
     Blockchain:
       type: string
       enum:
@@ -278,6 +180,64 @@ components:
       - XLAYER
       - MONAD
       example: ETHEREUM
+    UnionApiErrorServerError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - UNKNOWN
+          default: UNKNOWN
+        message:
+          type: string
+          description: Error message
+    ReconciliationEntities:
+      type: object
+      properties:
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReconciliationEntity'
+        continuation:
+          type: string
+      required:
+      - entities
+    ReconciliationEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        version:
+          type: integer
+          format: int64
+        lastUpdatedAt:
+          type: string
+          format: date-time
+        deleted:
+          type: boolean
+          default: false
+      required:
+      - id
+      - version
+      - lastUpdatedAt
+    UnionApiErrorBadRequest:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - BAD_REQUEST
+          - VALIDATION
+          default: BAD_REQUEST
+        message:
+          type: string
+          description: Error message
   responses:
     ServerError:
       description: Internal Server Error
