@@ -321,6 +321,58 @@ paths:
                 $ref: '#/components/schemas/OlapError'
 components:
   schemas:
+    CollectionId:
+      type: string
+      description: Collection id
+      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8
+    OlapOwnerStatistic:
+      type: object
+      properties:
+        owner:
+          $ref: '#/components/schemas/UnionAddress'
+        ownedItems:
+          type: integer
+          format: int64
+      required:
+      - owner
+      - ownedItems
+    OlapBidsByPriceSort:
+      type: string
+      default: PRICE
+      enum:
+      - PRICE
+      - VOLUME_NATIVE
+    OlapPeriodCollectionStatisticsResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/CollectionId'
+        period:
+          $ref: '#/components/schemas/OlapPeriod'
+        volume:
+          description: Period (e.g., 1-day) worth of all transactions with items in this collection
+          $ref: '#/components/schemas/OlapPriceWithUsd'
+        floorChangePercent:
+          description: Change in floor price in percent during the period.
+          type: number
+          format: bigdecimal
+      required:
+      - period
+      - volume
+    OlapPeriod:
+      type: string
+      enum:
+      - MIN5
+      - MIN30
+      - H1
+      - H6
+      - D1
+      - D7
+      - D30
+      - D180
+      - D365
+      - ALL
+      description: "Period:\n  * `MIN5` - Last 5 minutes\n  * `MIN30` - Last 30 minutes\n  * `H1` - Last 1 hour\n  * `H6` - Last 6 hours\n  * `D1` - Last 1 day\n  * `D7` - Last 7 days\n  * `D30` - Last 30 days\n  * `D180` - Last 180 days (roughly 6 months)\n  * `D365` - Last 365 days (roughly 1 year)\n  * `ALL` - For all time\n"
     OlapOwnerStatistics:
       type: object
       properties:
@@ -333,6 +385,78 @@ components:
           description: Continuation token to paginate result
       required:
       - owners
+    OlapPeriodCollectionsByIdsStatisticsRequest:
+      type: object
+      properties:
+        collectionIds:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            type: string
+        period:
+          $ref: '#/components/schemas/OlapPeriod'
+      required:
+      - collectionIds
+      - period
+    OlapPriceWithUsd:
+      required:
+      - currency
+      - value
+      type: object
+      properties:
+        currency:
+          type: string
+        value:
+          type: number
+          description: Amount of currency
+          format: bigdecimal
+        valueUsd:
+          type: number
+          description: Amount in USD
+          format: bigdecimal
+    OlapAggregatedCollectionStatisticsResponse:
+      required:
+      - highestSaleUsd
+      - owners
+      - volumeUsd
+      type: object
+      properties:
+        highestSaleUsd:
+          description: Highest worth transaction in all collections
+          type: number
+          format: bigdecimal
+        volumeUsd:
+          description: Total worth of all transactions were made with nfts in collections
+          type: number
+          format: bigdecimal
+        owners:
+          type: integer
+          description: Current amount of unique owners who hold nfts in collections
+          format: int32
+    OlapBidsByPrice:
+      type: object
+      properties:
+        price:
+          type: number
+          format: bigdecimal
+        bidsCount:
+          type: integer
+          format: int64
+        volumeNative:
+          type: number
+          format: bigdecimal
+        buyersCount:
+          type: integer
+          format: int64
+        buyer:
+          $ref: '#/components/schemas/UnionAddress'
+      required:
+      - price
+      - bidsCount
+      - volumeNative
+      - volumeRatio
+      - buyersCount
     OlapGlobalCollectionStatisticsResponse:
       type: object
       properties:
@@ -357,31 +481,10 @@ components:
       - items
       - owners
       - volume
-    OlapBidsByPriceSort:
+    UnionAddress:
       type: string
-      default: PRICE
-      enum:
-      - PRICE
-      - VOLUME_NATIVE
-    OlapAggregatedCollectionStatisticsResponse:
-      required:
-      - highestSaleUsd
-      - owners
-      - volumeUsd
-      type: object
-      properties:
-        highestSaleUsd:
-          description: Highest worth transaction in all collections
-          type: number
-          format: bigdecimal
-        volumeUsd:
-          description: Total worth of all transactions were made with nfts in collections
-          type: number
-          format: bigdecimal
-        owners:
-          type: integer
-          description: Current amount of unique owners who hold nfts in collections
-          format: int32
+      description: Blockchain address in Union format `${blockchainGroup}:${token}`
+      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
     OlapError:
       required:
       - code
@@ -398,109 +501,6 @@ components:
         message:
           type: string
           description: Message
-    OlapPeriodCollectionsByIdsStatisticsRequest:
-      type: object
-      properties:
-        collectionIds:
-          type: array
-          minItems: 1
-          maxItems: 100
-          items:
-            type: string
-        period:
-          $ref: '#/components/schemas/OlapPeriod'
-      required:
-      - collectionIds
-      - period
-    OlapBidsByPrice:
-      type: object
-      properties:
-        price:
-          type: number
-          format: bigdecimal
-        bidsCount:
-          type: integer
-          format: int64
-        volumeNative:
-          type: number
-          format: bigdecimal
-        buyersCount:
-          type: integer
-          format: int64
-        buyer:
-          $ref: '#/components/schemas/UnionAddress'
-      required:
-      - price
-      - bidsCount
-      - volumeNative
-      - volumeRatio
-      - buyersCount
-    OlapPriceWithUsd:
-      required:
-      - currency
-      - value
-      type: object
-      properties:
-        currency:
-          type: string
-        value:
-          type: number
-          description: Amount of currency
-          format: bigdecimal
-        valueUsd:
-          type: number
-          description: Amount in USD
-          format: bigdecimal
-    OlapPeriodCollectionStatisticsResponse:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/CollectionId'
-        period:
-          $ref: '#/components/schemas/OlapPeriod'
-        volume:
-          description: Period (e.g., 1-day) worth of all transactions with items in this collection
-          $ref: '#/components/schemas/OlapPriceWithUsd'
-        floorChangePercent:
-          description: Change in floor price in percent during the period.
-          type: number
-          format: bigdecimal
-      required:
-      - period
-      - volume
-    OlapOwnerStatistic:
-      type: object
-      properties:
-        owner:
-          $ref: '#/components/schemas/UnionAddress'
-        ownedItems:
-          type: integer
-          format: int64
-      required:
-      - owner
-      - ownedItems
-    UnionAddress:
-      type: string
-      description: Blockchain address in Union format `${blockchainGroup}:${token}`
-      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
-    OlapPeriod:
-      type: string
-      enum:
-      - MIN5
-      - MIN30
-      - H1
-      - H6
-      - D1
-      - D7
-      - D30
-      - D180
-      - D365
-      - ALL
-      description: "Period:\n  * `MIN5` - Last 5 minutes\n  * `MIN30` - Last 30 minutes\n  * `H1` - Last 1 hour\n  * `H6` - Last 6 hours\n  * `D1` - Last 1 day\n  * `D7` - Last 7 days\n  * `D30` - Last 30 days\n  * `D180` - Last 180 days (roughly 6 months)\n  * `D365` - Last 365 days (roughly 1 year)\n  * `ALL` - For all time\n"
-    CollectionId:
-      type: string
-      description: Collection id
-      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8
     OlapBidsByPriceStatistics:
       type: object
       properties:

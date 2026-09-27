@@ -74,23 +74,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    BigDecimal:
-      type: string
-      example: 123456.789
-    UnionApiErrorServerError:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - UNKNOWN
-          default: UNKNOWN
-        message:
-          type: string
-          description: Error message
     CurrencyUsdRate:
       type: object
       required:
@@ -115,19 +98,6 @@ components:
           type: string
           format: date-time
           description: Date and time of currency USD rate
-    CurrencyId:
-      type: string
-      description: Currency Id, has format `ETHEREUM:${token}` or `ETHEREUM:${token}:${tokenId}`
-      example: ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
-    Currencies:
-      type: object
-      required:
-      - currencies
-      properties:
-        currencies:
-          type: array
-          items:
-            $ref: '#/components/schemas/Currency'
     UnionApiErrorBadRequest:
       required:
       - code
@@ -140,6 +110,24 @@ components:
           - BAD_REQUEST
           - VALIDATION
           default: BAD_REQUEST
+        message:
+          type: string
+          description: Error message
+    CurrencyId:
+      type: string
+      description: Currency Id, has format `ETHEREUM:${token}` or `ETHEREUM:${token}:${tokenId}`
+      example: ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+    UnionApiErrorServerError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - UNKNOWN
+          default: UNKNOWN
         message:
           type: string
           description: Error message
@@ -165,19 +153,31 @@ components:
       - currencyId
       - symbol
       - decimals
+    Currencies:
+      type: object
+      required:
+      - currencies
+      properties:
+        currencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Currency'
+    BigDecimal:
+      type: string
+      example: 123456.789
   responses:
-    ServerError:
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnionApiErrorServerError'
     BadRequest:
       description: Bad Request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/UnionApiErrorBadRequest'
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnionApiErrorServerError'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

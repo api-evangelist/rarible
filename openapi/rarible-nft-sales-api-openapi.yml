@@ -941,60 +941,32 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    BigInteger:
-      type: string
-      example: 123456
-    UnionApiErrorEntityNotFound:
-      required:
-      - code
-      - message
+    EthCollectionAssetType:
       type: object
       properties:
-        code:
+        '@type':
           type: string
           enum:
-          - NOT_FOUND
-          default: NOT_FOUND
-        message:
+          - COLLECTION
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+      required:
+      - '@type'
+      - contract
+    EthRaribleV2OrderForm:
+      type: object
+      required:
+      - type
+      - data
+      properties:
+        '@type':
           type: string
-          description: Error message
-    ContractAddress:
-      type: string
-      description: Blockchain contract address in Union format `ETHEREUM:${token}`
-      example: ETHEREUM:0xd07dc4262bcdbf85190c01c996b4c06a461d2430
-    BestAtTimeOrdersResponse:
-      type: object
-      description: K best orders at time
-      properties:
-        orders:
-          type: array
-          description: List of best orders, ordered from best to K-best
-          items:
-            $ref: '#/components/schemas/Order'
-      required:
-      - orders
-    EthSeaportConsideration:
-      type: object
-      properties:
-        itemType:
-          $ref: '#/components/schemas/EthSeaportItemType'
-        token:
-          $ref: '#/components/schemas/UnionAddress'
-        identifierOrCriteria:
-          $ref: '#/components/schemas/BigInteger'
-        startAmount:
-          $ref: '#/components/schemas/BigInteger'
-        endAmount:
-          $ref: '#/components/schemas/BigInteger'
-        recipient:
-          $ref: '#/components/schemas/UnionAddress'
-      required:
-      - itemType
-      - token
-      - identifierOrCriteria
-      - startAmount
-      - endAmount
-      - recipient
+          enum:
+          - RARIBLE_V2
+        data:
+          $ref: '#/components/schemas/EthRaribleV2OrderData'
     EthSeaportOffer:
       type: object
       properties:
@@ -1014,98 +986,51 @@ components:
       - identifierOrCriteria
       - startAmount
       - endAmount
-    EthRaribleV2OrderForm:
-      type: object
-      required:
-      - type
-      - data
-      properties:
-        '@type':
-          type: string
-          enum:
-          - RARIBLE_V2
-        data:
-          $ref: '#/components/schemas/EthRaribleV2OrderData'
-    AssetType:
-      type: object
-      oneOf:
-      - $ref: '#/components/schemas/NativeCurrencyAssetType'
-      - $ref: '#/components/schemas/TokenCurrencyAssetType'
-      - $ref: '#/components/schemas/NftAssetType'
-      - $ref: '#/components/schemas/NftOfCollectionAssetType'
-      - $ref: '#/components/schemas/EthEthereumAssetType'
-      - $ref: '#/components/schemas/EthErc20AssetType'
-      - $ref: '#/components/schemas/EthErc721AssetType'
-      - $ref: '#/components/schemas/EthErc721LazyAssetType'
-      - $ref: '#/components/schemas/EthErc1155AssetType'
-      - $ref: '#/components/schemas/EthErc1155LazyAssetType'
-      - $ref: '#/components/schemas/EthCryptoPunksAssetType'
-      - $ref: '#/components/schemas/EthGenerativeArtAssetType'
-      - $ref: '#/components/schemas/EthCollectionAssetType'
-      - $ref: '#/components/schemas/SolanaNftAssetType'
-      - $ref: '#/components/schemas/SolanaFtAssetType'
-      - $ref: '#/components/schemas/SolanaSolAssetType'
-    NftOfCollectionAssetType:
+    EthCryptoPunksAssetType:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - NFT_OF_COLLECTION
-        collectionId:
+          - CRYPTO_PUNKS
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
           $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          type: integer
       required:
       - '@type'
-      - collectionId
-    PrepareOrderTxForm:
-      type: object
-      required:
-      - maker
-      - amount
-      - payouts
-      - originFees
-      properties:
-        maker:
-          $ref: '#/components/schemas/UnionAddress'
-        taker:
-          $ref: '#/components/schemas/UnionAddress'
-        amount:
-          $ref: '#/components/schemas/BigInteger'
-        payouts:
-          type: array
-          description: Value of the payouts for the order
-          items:
-            $ref: '#/components/schemas/Payout'
-        originFees:
-          type: array
-          description: Value of the origin fees for the order
-          items:
-            $ref: '#/components/schemas/Payout'
-    EthOrderDataRaribleV2DataV2:
+      - contract
+      - tokenId
+    EthErc20AssetType:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - ETH_RARIBLE_V2_2
-        payouts:
-          type: array
-          default: []
-          items:
-            $ref: '#/components/schemas/Payout'
-        originFees:
-          type: array
-          default: []
-          items:
-            $ref: '#/components/schemas/Payout'
-        isMakeFill:
-          type: boolean
-          description: If true, the 'fill' part of the order applies to the 'make' side, otherwise to the 'take' side
+          - ERC20
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
       required:
       - '@type'
-      - payouts
-      - originFees
-      - isMakeFill
+      - contract
+    OrderFees:
+      type: object
+      description: Base fees
+      required:
+      - fees
+      properties:
+        fees:
+          type: object
+          additionalProperties:
+            type: integer
+            description: Basic points from 0 to 10000
+    SyncSort:
+      type: string
+      enum:
+      - DB_UPDATE_ASC
+      - DB_UPDATE_DESC
     EthSeaportOrderType:
       type: string
       enum:
@@ -1114,6 +1039,86 @@ components:
       - FULL_RESTRICTED
       - PARTIAL_RESTRICTED
       - CONTRACT
+    NftAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - NFT
+        collectionId:
+          $ref: '#/components/schemas/CollectionId'
+        itemId:
+          $ref: '#/components/schemas/ItemId'
+        standard:
+          type: string
+          enum:
+          - SINGLE
+          - MULTIPLE
+      required:
+      - '@type'
+      - itemId
+      - collectionId
+    ItemId:
+      type: string
+      description: Item Id, has format `ETHEREUM:${token}:${tokenId}`
+      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410
+    OrderData:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/RawOrderData'
+      - $ref: '#/components/schemas/EthOrderDataLegacy'
+      - $ref: '#/components/schemas/EthRaribleV2OrderData'
+      - $ref: '#/components/schemas/EthOrderOpenSeaV1DataV1'
+      - $ref: '#/components/schemas/EthOrderSeaportDataV1'
+      - $ref: '#/components/schemas/EthOrderCryptoPunksData'
+      - $ref: '#/components/schemas/SolanaAuctionHouseDataV1'
+    Asset:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/AssetType'
+        value:
+          $ref: '#/components/schemas/BigDecimal'
+      required:
+      - type
+      - value
+    EthRaribleV2OrderData:
+      oneOf:
+      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV1'
+      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV2'
+      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV3'
+      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV3Sell'
+      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV3Buy'
+    EthErc721AssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ERC721
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          $ref: '#/components/schemas/BigInteger'
+      required:
+      - '@type'
+      - contract
+      - tokenId
+    EthOrderDataLegacy:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_RARIBLE_V1
+        fee:
+          $ref: '#/components/schemas/BigInteger'
+      required:
+      - fee
+      - '@type'
     EthOrderDataRaribleV2DataV3:
       type: object
       properties:
@@ -1139,168 +1144,6 @@ components:
       - payouts
       - originFees
       - isMakeFill
-    UnionApiErrorBadRequest:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - BAD_REQUEST
-          - VALIDATION
-          default: BAD_REQUEST
-        message:
-          type: string
-          description: Error message
-    EthOrderDataLegacy:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - ETH_RARIBLE_V1
-        fee:
-          $ref: '#/components/schemas/BigInteger'
-      required:
-      - fee
-      - '@type'
-    EthOrderDataRaribleV2DataV1:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - ETH_RARIBLE_V2
-        payouts:
-          type: array
-          default: []
-          items:
-            $ref: '#/components/schemas/Payout'
-        originFees:
-          type: array
-          default: []
-          items:
-            $ref: '#/components/schemas/Payout'
-      required:
-      - '@type'
-      - payouts
-      - originFees
-    TokenCurrencyAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - CURRENCY_TOKEN
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-      required:
-      - '@type'
-      - contract
-    PreparedOrderTx:
-      type: object
-      required:
-      - to
-      - data
-      properties:
-        to:
-          $ref: '#/components/schemas/ContractAddress'
-        data:
-          type: string
-    EthOrderSeaportDataV1:
-      type: object
-      properties:
-        protocol:
-          $ref: '#/components/schemas/UnionAddress'
-        orderType:
-          $ref: '#/components/schemas/EthSeaportOrderType'
-        offer:
-          type: array
-          items:
-            $ref: '#/components/schemas/EthSeaportOffer'
-        consideration:
-          type: array
-          items:
-            $ref: '#/components/schemas/EthSeaportConsideration'
-        zone:
-          $ref: '#/components/schemas/UnionAddress'
-        zoneHash:
-          type: string
-        conduitKey:
-          type: string
-        counter:
-          deprecated: true
-          type: integer
-          format: int64
-        nonce:
-          $ref: '#/components/schemas/BigInteger'
-      required:
-      - protocol
-      - orderType
-      - offer
-      - consideration
-      - zone
-      - zoneHash
-      - conduitKey
-      oneOf:
-      - $ref: '#/components/schemas/EthOrderBasicSeaportDataV1'
-    SolanaFtAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - SOLANA_FT
-        address:
-          $ref: '#/components/schemas/ContractAddress'
-      required:
-      - '@type'
-      - address
-    Platform:
-      type: string
-      enum:
-      - RARIBLE
-      - OPEN_SEA
-      - CRYPTO_PUNKS
-      - HEN
-      - OBJKT
-      - VERSUM
-      - TEIA
-      - OTHER
-      - FXHASH
-    SyncSort:
-      type: string
-      enum:
-      - DB_UPDATE_ASC
-      - DB_UPDATE_DESC
-    UnionApiErrorServerError:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - UNKNOWN
-          default: UNKNOWN
-        message:
-          type: string
-          description: Error message
-    EthOrderCryptoPunksData:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - ETH_CRYPTO_PUNKS
-        stub:
-          type: string
-          default: STUB
-      required:
-      - '@type'
     EthErc721LazyAssetType:
       type: object
       properties:
@@ -1340,13 +1183,416 @@ components:
       - creators
       - royalties
       - signatures
-    EthErc721AssetType:
+    EthOrderDataRaribleV2DataV2:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - ERC721
+          - ETH_RARIBLE_V2_2
+        payouts:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Payout'
+        originFees:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Payout'
+        isMakeFill:
+          type: boolean
+          description: If true, the 'fill' part of the order applies to the 'make' side, otherwise to the 'take' side
+      required:
+      - '@type'
+      - payouts
+      - originFees
+      - isMakeFill
+    TokenCurrencyAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - CURRENCY_TOKEN
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+      required:
+      - '@type'
+      - contract
+    CollectionId:
+      type: string
+      description: Collection id
+      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8
+    EthSeaportItemType:
+      type: string
+      enum:
+      - NATIVE
+      - ERC20
+      - ERC721
+      - ERC1155
+      - ERC721_WITH_CRITERIA
+      - ERC1155_WITH_CRITERIA
+    RawJson:
+      type: object
+    UnionApiErrorServerError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - UNKNOWN
+          default: UNKNOWN
+        message:
+          type: string
+          description: Error message
+    EthSeaportConsideration:
+      type: object
+      properties:
+        itemType:
+          $ref: '#/components/schemas/EthSeaportItemType'
+        token:
+          $ref: '#/components/schemas/UnionAddress'
+        identifierOrCriteria:
+          $ref: '#/components/schemas/BigInteger'
+        startAmount:
+          $ref: '#/components/schemas/BigInteger'
+        endAmount:
+          $ref: '#/components/schemas/BigInteger'
+        recipient:
+          $ref: '#/components/schemas/UnionAddress'
+      required:
+      - itemType
+      - token
+      - identifierOrCriteria
+      - startAmount
+      - endAmount
+      - recipient
+    PrepareOrderTxForm:
+      type: object
+      required:
+      - maker
+      - amount
+      - payouts
+      - originFees
+      properties:
+        maker:
+          $ref: '#/components/schemas/UnionAddress'
+        taker:
+          $ref: '#/components/schemas/UnionAddress'
+        amount:
+          $ref: '#/components/schemas/BigInteger'
+        payouts:
+          type: array
+          description: Value of the payouts for the order
+          items:
+            $ref: '#/components/schemas/Payout'
+        originFees:
+          type: array
+          description: Value of the origin fees for the order
+          items:
+            $ref: '#/components/schemas/Payout'
+    OrderType:
+      type: string
+      enum:
+      - BID
+      - SELL
+    OrderSort:
+      type: string
+      enum:
+      - LAST_UPDATE_ASC
+      - LAST_UPDATE_DESC
+    EthOrderBasicSeaportDataV1:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_BASIC_SEAPORT_DATA_V1
+      required:
+      - '@type'
+    NftOfCollectionAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - NFT_OF_COLLECTION
+        collectionId:
+          $ref: '#/components/schemas/CollectionId'
+      required:
+      - '@type'
+      - collectionId
+    SolanaSolAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - SOLANA_SOL
+      required:
+      - '@type'
+    BestAtTimeOrdersResponse:
+      type: object
+      description: K best orders at time
+      properties:
+        orders:
+          type: array
+          description: List of best orders, ordered from best to K-best
+          items:
+            $ref: '#/components/schemas/Order'
+      required:
+      - orders
+    EthOrderOpenSeaV1DataV1:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_OPEN_SEA_V1
+        exchange:
+          $ref: '#/components/schemas/UnionAddress'
+        makerRelayerFee:
+          $ref: '#/components/schemas/BigInteger'
+        takerRelayerFee:
+          $ref: '#/components/schemas/BigInteger'
+        makerProtocolFee:
+          $ref: '#/components/schemas/BigInteger'
+        takerProtocolFee:
+          $ref: '#/components/schemas/BigInteger'
+        feeRecipient:
+          $ref: '#/components/schemas/UnionAddress'
+        feeMethod:
+          type: string
+          enum:
+          - PROTOCOL_FEE
+          - SPLIT_FEE
+        side:
+          type: string
+          enum:
+          - BUY
+          - SELL
+        saleKind:
+          type: string
+          enum:
+          - FIXED_PRICE
+          - DUTCH_AUCTION
+        howToCall:
+          type: string
+          enum:
+          - CALL
+          - DELEGATE_CALL
+        callData:
+          type: string
+        replacementPattern:
+          type: string
+        staticTarget:
+          $ref: '#/components/schemas/UnionAddress'
+        staticExtraData:
+          type: string
+        extra:
+          $ref: '#/components/schemas/BigInteger'
+      required:
+      - '@type'
+      - dataType
+      - exchange
+      - makerRelayerFee
+      - takerRelayerFee
+      - makerProtocolFee
+      - takerProtocolFee
+      - feeRecipient
+      - feeMethod
+      - side
+      - saleKind
+      - howToCall
+      - callData
+      - replacementPattern
+      - staticTarget
+      - staticExtraData
+      - extra
+    BigDecimal:
+      type: string
+      example: 123456.789
+    NativeCurrencyAssetType:
+      type: object
+      properties:
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        '@type':
+          type: string
+          enum:
+          - CURRENCY_NATIVE
+      required:
+      - '@type'
+      - blockchain
+    EthOrderFormAsset:
+      type: object
+      required:
+      - assetType
+      - value
+      properties:
+        assetType:
+          $ref: '#/components/schemas/AssetType'
+        value:
+          $ref: '#/components/schemas/BigInteger'
+    PrepareOrderTxResponse:
+      type: object
+      required:
+      - asset
+      - transaction
+      - value
+      properties:
+        transferProxyAddress:
+          $ref: '#/components/schemas/ContractAddress'
+        asset:
+          $ref: '#/components/schemas/Asset'
+        transaction:
+          $ref: '#/components/schemas/PreparedOrderTx'
+        value:
+          $ref: '#/components/schemas/BigInteger'
+    Creator:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/UnionAddress'
+        value:
+          type: integer
+      required:
+      - account
+      - value
+    AssetType:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/NativeCurrencyAssetType'
+      - $ref: '#/components/schemas/TokenCurrencyAssetType'
+      - $ref: '#/components/schemas/NftAssetType'
+      - $ref: '#/components/schemas/NftOfCollectionAssetType'
+      - $ref: '#/components/schemas/EthEthereumAssetType'
+      - $ref: '#/components/schemas/EthErc20AssetType'
+      - $ref: '#/components/schemas/EthErc721AssetType'
+      - $ref: '#/components/schemas/EthErc721LazyAssetType'
+      - $ref: '#/components/schemas/EthErc1155AssetType'
+      - $ref: '#/components/schemas/EthErc1155LazyAssetType'
+      - $ref: '#/components/schemas/EthCryptoPunksAssetType'
+      - $ref: '#/components/schemas/EthGenerativeArtAssetType'
+      - $ref: '#/components/schemas/EthCollectionAssetType'
+      - $ref: '#/components/schemas/SolanaNftAssetType'
+      - $ref: '#/components/schemas/SolanaFtAssetType'
+      - $ref: '#/components/schemas/SolanaSolAssetType'
+    Royalty:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/UnionAddress'
+        value:
+          type: integer
+      required:
+      - account
+      - value
+    EthRaribleOrderForm:
+      type: object
+      required:
+      - maker
+      - make
+      - take
+      - signature
+      - salt
+      - endedAt
+      properties:
+        maker:
+          $ref: '#/components/schemas/UnionAddress'
+        taker:
+          $ref: '#/components/schemas/UnionAddress'
+        make:
+          $ref: '#/components/schemas/EthOrderFormAsset'
+        take:
+          $ref: '#/components/schemas/EthOrderFormAsset'
+        startedAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+        salt:
+          $ref: '#/components/schemas/BigInteger'
+        signature:
+          type: string
+      oneOf:
+      - $ref: '#/components/schemas/EthRaribleV2OrderForm'
+    ContractAddress:
+      type: string
+      description: Blockchain contract address in Union format `ETHEREUM:${token}`
+      example: ETHEREUM:0xd07dc4262bcdbf85190c01c996b4c06a461d2430
+    UnionApiErrorBadRequest:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - BAD_REQUEST
+          - VALIDATION
+          default: BAD_REQUEST
+        message:
+          type: string
+          description: Error message
+    Platform:
+      type: string
+      enum:
+      - RARIBLE
+      - OPEN_SEA
+      - CRYPTO_PUNKS
+      - HEN
+      - OBJKT
+      - VERSUM
+      - TEIA
+      - OTHER
+      - FXHASH
+    OrderIds:
+      type: object
+      required:
+      - ids
+      properties:
+        ids:
+          type: array
+          description: Array of the orders Ids in format 'ETHEREUM:${id}'
+          items:
+            type: string
+    EthOrderDataRaribleV2DataV1:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_RARIBLE_V2
+        payouts:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Payout'
+        originFees:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Payout'
+      required:
+      - '@type'
+      - payouts
+      - originFees
+    EthErc1155AssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ERC1155
         contract:
           $ref: '#/components/schemas/ContractAddress'
         collection:
@@ -1361,126 +1607,10 @@ components:
       type: string
       description: Currency Id, has format `ETHEREUM:${token}` or `ETHEREUM:${token}:${tokenId}`
       example: ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
-    Creator:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/UnionAddress'
-        value:
-          type: integer
-      required:
-      - account
-      - value
     UnionAddress:
       type: string
       description: Blockchain address in Union format `${blockchainGroup}:${token}`
       example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
-    OrderData:
-      type: object
-      oneOf:
-      - $ref: '#/components/schemas/RawOrderData'
-      - $ref: '#/components/schemas/EthOrderDataLegacy'
-      - $ref: '#/components/schemas/EthRaribleV2OrderData'
-      - $ref: '#/components/schemas/EthOrderOpenSeaV1DataV1'
-      - $ref: '#/components/schemas/EthOrderSeaportDataV1'
-      - $ref: '#/components/schemas/EthOrderCryptoPunksData'
-      - $ref: '#/components/schemas/SolanaAuctionHouseDataV1'
-    SolanaAuctionHouseDataV1:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - SOLANA_AUCTION_HOUSE_V1
-        fee:
-          type: integer
-        requiresSignOff:
-          type: boolean
-        auctionHouse:
-          $ref: '#/components/schemas/ContractAddress'
-      required:
-      - '@type'
-    OrderType:
-      type: string
-      enum:
-      - BID
-      - SELL
-    Royalty:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/UnionAddress'
-        value:
-          type: integer
-      required:
-      - account
-      - value
-    OrderFees:
-      type: object
-      description: Base fees
-      required:
-      - fees
-      properties:
-        fees:
-          type: object
-          additionalProperties:
-            type: integer
-            description: Basic points from 0 to 10000
-    OrderForm:
-      type: object
-      required:
-      - blockchain
-      properties:
-        blockchain:
-          $ref: '#/components/schemas/Blockchain'
-      oneOf:
-      - $ref: '#/components/schemas/EthRaribleOrderForm'
-    ItemId:
-      type: string
-      description: Item Id, has format `ETHEREUM:${token}:${tokenId}`
-      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410
-    EthErc1155LazyAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - ERC1155_Lazy
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-        tokenId:
-          $ref: '#/components/schemas/BigInteger'
-        uri:
-          type: string
-        supply:
-          $ref: '#/components/schemas/BigInteger'
-        creators:
-          type: array
-          description: Creators of the target item
-          default: []
-          items:
-            $ref: '#/components/schemas/Creator'
-        royalties:
-          type: array
-          default: []
-          items:
-            $ref: '#/components/schemas/Royalty'
-        signatures:
-          type: array
-          default: []
-          items:
-            type: string
-      required:
-      - '@type'
-      - contract
-      - tokenId
-      - uri
-      - creators
-      - supply
-      - royalties
-      - signatures
     Blockchain:
       type: string
       enum:
@@ -1530,163 +1660,152 @@ components:
       - XLAYER
       - MONAD
       example: ETHEREUM
-    EthRaribleOrderForm:
+    Orders:
       type: object
-      required:
-      - maker
-      - make
-      - take
-      - signature
-      - salt
-      - endedAt
       properties:
-        maker:
-          $ref: '#/components/schemas/UnionAddress'
-        taker:
-          $ref: '#/components/schemas/UnionAddress'
-        make:
-          $ref: '#/components/schemas/EthOrderFormAsset'
-        take:
-          $ref: '#/components/schemas/EthOrderFormAsset'
-        startedAt:
+        continuation:
           type: string
-          format: date-time
-        endedAt:
-          type: string
-          format: date-time
-        salt:
-          $ref: '#/components/schemas/BigInteger'
-        signature:
-          type: string
-      oneOf:
-      - $ref: '#/components/schemas/EthRaribleV2OrderForm'
-    EthEthereumAssetType:
+          description: Continuation token to paginate orders search result
+        orders:
+          type: array
+          description: List of found orders
+          default: []
+          items:
+            $ref: '#/components/schemas/Order'
+      required:
+      - orders
+    SolanaNftAssetType:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - ETH
-        blockchain:
-          $ref: '#/components/schemas/Blockchain'
+          - SOLANA_NFT
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        itemId:
+          $ref: '#/components/schemas/ItemId'
       required:
       - '@type'
-    OrderStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - FILLED
-      - INACTIVE
-      - CANCELLED
-    Payout:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/UnionAddress'
-        value:
-          type: integer
-      required:
-      - account
-      - value
-    EthErc1155AssetType:
+      - itemId
+    SolanaFtAssetType:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - ERC1155
+          - SOLANA_FT
+        address:
+          $ref: '#/components/schemas/ContractAddress'
+      required:
+      - '@type'
+      - address
+    PreparedOrderTx:
+      type: object
+      required:
+      - to
+      - data
+      properties:
+        to:
+          $ref: '#/components/schemas/ContractAddress'
+        data:
+          type: string
+    EthErc1155LazyAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ERC1155_Lazy
         contract:
           $ref: '#/components/schemas/ContractAddress'
         collection:
           $ref: '#/components/schemas/CollectionId'
         tokenId:
           $ref: '#/components/schemas/BigInteger'
+        uri:
+          type: string
+        supply:
+          $ref: '#/components/schemas/BigInteger'
+        creators:
+          type: array
+          description: Creators of the target item
+          default: []
+          items:
+            $ref: '#/components/schemas/Creator'
+        royalties:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Royalty'
+        signatures:
+          type: array
+          default: []
+          items:
+            type: string
       required:
       - '@type'
       - contract
       - tokenId
-    EthSeaportItemType:
-      type: string
-      enum:
-      - NATIVE
-      - ERC20
-      - ERC721
-      - ERC1155
-      - ERC721_WITH_CRITERIA
-      - ERC1155_WITH_CRITERIA
-    OrderId:
-      type: string
-      example: ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143
-    EthErc20AssetType:
+      - uri
+      - creators
+      - supply
+      - royalties
+      - signatures
+    EthOrderCryptoPunksData:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - ERC20
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
+          - ETH_CRYPTO_PUNKS
+        stub:
+          type: string
+          default: STUB
       required:
       - '@type'
-      - contract
-    EthOrderDataRaribleV2DataV3Sell:
+    EthOrderSeaportDataV1:
       type: object
       properties:
-        '@type':
-          type: string
-          enum:
-          - ETH_RARIBLE_V2_DATA_V3_SELL
-        payout:
-          $ref: '#/components/schemas/Payout'
-        originFeeFirst:
-          $ref: '#/components/schemas/Payout'
-        originFeeSecond:
-          $ref: '#/components/schemas/Payout'
-        maxFeesBasePoint:
-          type: integer
-        marketplaceMarker:
-          type: string
-      required:
-      - '@type'
-      - maxFeesBasePoint
-    NativeCurrencyAssetType:
-      type: object
-      properties:
-        blockchain:
-          $ref: '#/components/schemas/Blockchain'
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        '@type':
-          type: string
-          enum:
-          - CURRENCY_NATIVE
-      required:
-      - '@type'
-      - blockchain
-    EthGenerativeArtAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - GEN_ART
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-      required:
-      - '@type'
-      - contract
-    OrderIds:
-      type: object
-      required:
-      - ids
-      properties:
-        ids:
+        protocol:
+          $ref: '#/components/schemas/UnionAddress'
+        orderType:
+          $ref: '#/components/schemas/EthSeaportOrderType'
+        offer:
           type: array
-          description: Array of the orders Ids in format 'ETHEREUM:${id}'
           items:
-            type: string
+            $ref: '#/components/schemas/EthSeaportOffer'
+        consideration:
+          type: array
+          items:
+            $ref: '#/components/schemas/EthSeaportConsideration'
+        zone:
+          $ref: '#/components/schemas/UnionAddress'
+        zoneHash:
+          type: string
+        conduitKey:
+          type: string
+        counter:
+          deprecated: true
+          type: integer
+          format: int64
+        nonce:
+          $ref: '#/components/schemas/BigInteger'
+      required:
+      - protocol
+      - orderType
+      - offer
+      - consideration
+      - zone
+      - zoneHash
+      - conduitKey
+      oneOf:
+      - $ref: '#/components/schemas/EthOrderBasicSeaportDataV1'
+    BigInteger:
+      type: string
+      example: 123456
     EthOrderDataRaribleV2DataV3Buy:
       type: object
       properties:
@@ -1704,6 +1823,21 @@ components:
           type: string
       required:
       - '@type'
+    SolanaAuctionHouseDataV1:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - SOLANA_AUCTION_HOUSE_V1
+        fee:
+          type: integer
+        requiresSignOff:
+          type: boolean
+        auctionHouse:
+          $ref: '#/components/schemas/ContractAddress'
+      required:
+      - '@type'
     RawOrderData:
       type: object
       properties:
@@ -1715,68 +1849,34 @@ components:
           $ref: '#/components/schemas/RawJson'
       required:
       - '@type'
+    OrderId:
+      type: string
+      example: ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143
+    OrderForm:
+      type: object
+      required:
+      - blockchain
+      properties:
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+      oneOf:
+      - $ref: '#/components/schemas/EthRaribleOrderForm'
+    EthEthereumAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+      required:
+      - '@type'
     SearchEngine:
       type: string
       enum:
       - LEGACY
       - V1
-    Orders:
-      type: object
-      properties:
-        continuation:
-          type: string
-          description: Continuation token to paginate orders search result
-        orders:
-          type: array
-          description: List of found orders
-          default: []
-          items:
-            $ref: '#/components/schemas/Order'
-      required:
-      - orders
-    SolanaSolAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - SOLANA_SOL
-      required:
-      - '@type'
-    NftAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - NFT
-        collectionId:
-          $ref: '#/components/schemas/CollectionId'
-        itemId:
-          $ref: '#/components/schemas/ItemId'
-        standard:
-          type: string
-          enum:
-          - SINGLE
-          - MULTIPLE
-      required:
-      - '@type'
-      - itemId
-      - collectionId
-    EthCollectionAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - COLLECTION
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-      required:
-      - '@type'
-      - contract
     Order:
       type: object
       properties:
@@ -1856,171 +1956,71 @@ components:
       - take
       - salt
       - data
-    PrepareOrderTxResponse:
-      type: object
+    UnionApiErrorEntityNotFound:
       required:
-      - asset
-      - transaction
-      - value
+      - code
+      - message
+      type: object
       properties:
-        transferProxyAddress:
-          $ref: '#/components/schemas/ContractAddress'
-        asset:
-          $ref: '#/components/schemas/Asset'
-        transaction:
-          $ref: '#/components/schemas/PreparedOrderTx'
+        code:
+          type: string
+          enum:
+          - NOT_FOUND
+          default: NOT_FOUND
+        message:
+          type: string
+          description: Error message
+    Payout:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/UnionAddress'
         value:
-          $ref: '#/components/schemas/BigInteger'
-    BigDecimal:
-      type: string
-      example: 123456.789
-    RawJson:
-      type: object
-    EthOrderOpenSeaV1DataV1:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - ETH_OPEN_SEA_V1
-        exchange:
-          $ref: '#/components/schemas/UnionAddress'
-        makerRelayerFee:
-          $ref: '#/components/schemas/BigInteger'
-        takerRelayerFee:
-          $ref: '#/components/schemas/BigInteger'
-        makerProtocolFee:
-          $ref: '#/components/schemas/BigInteger'
-        takerProtocolFee:
-          $ref: '#/components/schemas/BigInteger'
-        feeRecipient:
-          $ref: '#/components/schemas/UnionAddress'
-        feeMethod:
-          type: string
-          enum:
-          - PROTOCOL_FEE
-          - SPLIT_FEE
-        side:
-          type: string
-          enum:
-          - BUY
-          - SELL
-        saleKind:
-          type: string
-          enum:
-          - FIXED_PRICE
-          - DUTCH_AUCTION
-        howToCall:
-          type: string
-          enum:
-          - CALL
-          - DELEGATE_CALL
-        callData:
-          type: string
-        replacementPattern:
-          type: string
-        staticTarget:
-          $ref: '#/components/schemas/UnionAddress'
-        staticExtraData:
-          type: string
-        extra:
-          $ref: '#/components/schemas/BigInteger'
-      required:
-      - '@type'
-      - dataType
-      - exchange
-      - makerRelayerFee
-      - takerRelayerFee
-      - makerProtocolFee
-      - takerProtocolFee
-      - feeRecipient
-      - feeMethod
-      - side
-      - saleKind
-      - howToCall
-      - callData
-      - replacementPattern
-      - staticTarget
-      - staticExtraData
-      - extra
-    SolanaNftAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - SOLANA_NFT
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-        itemId:
-          $ref: '#/components/schemas/ItemId'
-      required:
-      - '@type'
-      - itemId
-    EthRaribleV2OrderData:
-      oneOf:
-      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV1'
-      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV2'
-      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV3'
-      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV3Sell'
-      - $ref: '#/components/schemas/EthOrderDataRaribleV2DataV3Buy'
-    EthCryptoPunksAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - CRYPTO_PUNKS
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-        tokenId:
           type: integer
+      required:
+      - account
+      - value
+    EthOrderDataRaribleV2DataV3Sell:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ETH_RARIBLE_V2_DATA_V3_SELL
+        payout:
+          $ref: '#/components/schemas/Payout'
+        originFeeFirst:
+          $ref: '#/components/schemas/Payout'
+        originFeeSecond:
+          $ref: '#/components/schemas/Payout'
+        maxFeesBasePoint:
+          type: integer
+        marketplaceMarker:
+          type: string
+      required:
+      - '@type'
+      - maxFeesBasePoint
+    OrderStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - FILLED
+      - INACTIVE
+      - CANCELLED
+    EthGenerativeArtAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - GEN_ART
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
       required:
       - '@type'
       - contract
-      - tokenId
-    EthOrderBasicSeaportDataV1:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - ETH_BASIC_SEAPORT_DATA_V1
-      required:
-      - '@type'
-    EthOrderFormAsset:
-      type: object
-      required:
-      - assetType
-      - value
-      properties:
-        assetType:
-          $ref: '#/components/schemas/AssetType'
-        value:
-          $ref: '#/components/schemas/BigInteger'
-    CollectionId:
-      type: string
-      description: Collection id
-      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8
-    OrderSort:
-      type: string
-      enum:
-      - LAST_UPDATE_ASC
-      - LAST_UPDATE_DESC
-    Asset:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/AssetType'
-        value:
-          $ref: '#/components/schemas/BigDecimal'
-      required:
-      - type
-      - value
   responses:
     ServerError:
       description: Internal Server Error

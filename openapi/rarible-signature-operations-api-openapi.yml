@@ -71,19 +71,35 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    OpenSeaFillOrderSignatureInputForm:
-      type: object
+    UnionApiErrorBadRequest:
       required:
-      - orderId
+      - code
+      - message
+      type: object
       properties:
-        '@type':
+        code:
           type: string
           enum:
-          - OPEN_SEA_ORDER_FILL
-        signature:
-          description: SeaPort order hash in 'native' format
-          example: '0xf3104d38a35c59d2612a6128c9e2bbfabf16f26b2db393801cc20398f10079f2'
+          - BAD_REQUEST
+          - VALIDATION
+          default: BAD_REQUEST
+        message:
           type: string
+          description: Error message
+    UnionApiErrorServerError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - UNKNOWN
+          default: UNKNOWN
+        message:
+          type: string
+          description: Error message
     SignatureInputForm:
       type: object
       description: Form contains required data to generate input message for signing. All fields should be specified in 'native' manner, i.e. without BLOCKCHAIN prefixes
@@ -94,6 +110,37 @@ components:
           $ref: '#/components/schemas/Blockchain'
       oneOf:
       - $ref: '#/components/schemas/OpenSeaFillOrderSignatureInputForm'
+    SignatureValidationForm:
+      required:
+      - signer
+      - message
+      - signature
+      type: object
+      properties:
+        signer:
+          $ref: '#/components/schemas/UnionAddress'
+        publicKey:
+          type: string
+          description: The creator's public key
+        message:
+          type: string
+        signature:
+          type: string
+          description: Digital signature of the signer
+        algorithm:
+          description: Algorithm used for signature generation (don't specify if default algo is used)
+          type: string
+    SignatureInput:
+      type: object
+      required:
+      - input
+      properties:
+        input:
+          type: string
+    UnionAddress:
+      type: string
+      description: Blockchain address in Union format `${blockchainGroup}:${token}`
+      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
     Blockchain:
       type: string
       enum:
@@ -143,79 +190,32 @@ components:
       - XLAYER
       - MONAD
       example: ETHEREUM
-    SignatureInput:
+    OpenSeaFillOrderSignatureInputForm:
       type: object
       required:
-      - input
+      - orderId
       properties:
-        input:
-          type: string
-    UnionApiErrorServerError:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
+        '@type':
           type: string
           enum:
-          - UNKNOWN
-          default: UNKNOWN
-        message:
-          type: string
-          description: Error message
-    UnionAddress:
-      type: string
-      description: Blockchain address in Union format `${blockchainGroup}:${token}`
-      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
-    SignatureValidationForm:
-      required:
-      - signer
-      - message
-      - signature
-      type: object
-      properties:
-        signer:
-          $ref: '#/components/schemas/UnionAddress'
-        publicKey:
-          type: string
-          description: The creator's public key
-        message:
-          type: string
+          - OPEN_SEA_ORDER_FILL
         signature:
+          description: SeaPort order hash in 'native' format
+          example: '0xf3104d38a35c59d2612a6128c9e2bbfabf16f26b2db393801cc20398f10079f2'
           type: string
-          description: Digital signature of the signer
-        algorithm:
-          description: Algorithm used for signature generation (don't specify if default algo is used)
-          type: string
-    UnionApiErrorBadRequest:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - BAD_REQUEST
-          - VALIDATION
-          default: BAD_REQUEST
-        message:
-          type: string
-          description: Error message
   responses:
-    ServerError:
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnionApiErrorServerError'
     BadRequest:
       description: Bad Request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/UnionApiErrorBadRequest'
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnionApiErrorServerError'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
