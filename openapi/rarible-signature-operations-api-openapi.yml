@@ -71,21 +71,13 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    UnionApiErrorBadRequest:
-      required:
-      - code
-      - message
+    SignatureInput:
       type: object
+      required:
+      - input
       properties:
-        code:
+        input:
           type: string
-          enum:
-          - BAD_REQUEST
-          - VALIDATION
-          default: BAD_REQUEST
-        message:
-          type: string
-          description: Error message
     UnionApiErrorServerError:
       required:
       - code
@@ -100,47 +92,19 @@ components:
         message:
           type: string
           description: Error message
-    SignatureInputForm:
+    OpenSeaFillOrderSignatureInputForm:
       type: object
-      description: Form contains required data to generate input message for signing. All fields should be specified in 'native' manner, i.e. without BLOCKCHAIN prefixes
       required:
-      - blockchain
+      - orderId
       properties:
-        blockchain:
-          $ref: '#/components/schemas/Blockchain'
-      oneOf:
-      - $ref: '#/components/schemas/OpenSeaFillOrderSignatureInputForm'
-    SignatureValidationForm:
-      required:
-      - signer
-      - message
-      - signature
-      type: object
-      properties:
-        signer:
-          $ref: '#/components/schemas/UnionAddress'
-        publicKey:
+        '@type':
           type: string
-          description: The creator's public key
-        message:
-          type: string
+          enum:
+          - OPEN_SEA_ORDER_FILL
         signature:
+          description: SeaPort order hash in 'native' format
+          example: '0xf3104d38a35c59d2612a6128c9e2bbfabf16f26b2db393801cc20398f10079f2'
           type: string
-          description: Digital signature of the signer
-        algorithm:
-          description: Algorithm used for signature generation (don't specify if default algo is used)
-          type: string
-    SignatureInput:
-      type: object
-      required:
-      - input
-      properties:
-        input:
-          type: string
-    UnionAddress:
-      type: string
-      description: Blockchain address in Union format `${blockchainGroup}:${token}`
-      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
     Blockchain:
       type: string
       enum:
@@ -190,19 +154,55 @@ components:
       - XLAYER
       - MONAD
       example: ETHEREUM
-    OpenSeaFillOrderSignatureInputForm:
-      type: object
+    UnionAddress:
+      type: string
+      description: Blockchain address in Union format `${blockchainGroup}:${token}`
+      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
+    SignatureValidationForm:
       required:
-      - orderId
+      - signer
+      - message
+      - signature
+      type: object
       properties:
-        '@type':
+        signer:
+          $ref: '#/components/schemas/UnionAddress'
+        publicKey:
+          type: string
+          description: The creator's public key
+        message:
+          type: string
+        signature:
+          type: string
+          description: Digital signature of the signer
+        algorithm:
+          description: Algorithm used for signature generation (don't specify if default algo is used)
+          type: string
+    UnionApiErrorBadRequest:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
           type: string
           enum:
-          - OPEN_SEA_ORDER_FILL
-        signature:
-          description: SeaPort order hash in 'native' format
-          example: '0xf3104d38a35c59d2612a6128c9e2bbfabf16f26b2db393801cc20398f10079f2'
+          - BAD_REQUEST
+          - VALIDATION
+          default: BAD_REQUEST
+        message:
           type: string
+          description: Error message
+    SignatureInputForm:
+      type: object
+      description: Form contains required data to generate input message for signing. All fields should be specified in 'native' manner, i.e. without BLOCKCHAIN prefixes
+      required:
+      - blockchain
+      properties:
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+      oneOf:
+      - $ref: '#/components/schemas/OpenSeaFillOrderSignatureInputForm'
   responses:
     BadRequest:
       description: Bad Request

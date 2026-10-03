@@ -128,10 +128,7 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    BigInteger:
-      type: string
-      example: 123456
-    RewardByBlockchainEntity:
+    RewardEntity:
       type: object
       properties:
         rewardWallet:
@@ -146,27 +143,29 @@ components:
           format: int64
           description: Rank position of the wallet
           example: 1
-        blockchain:
-          $ref: '#/components/schemas/Blockchain'
       required:
       - rewardWallet
       - points
-      - blockchain
-    UnionApiErrorBadRequest:
-      required:
-      - code
-      - message
+    RewardsClaimSignatureResponse:
       type: object
       properties:
-        code:
+        signature:
           type: string
-          enum:
-          - BAD_REQUEST
-          - VALIDATION
-          default: BAD_REQUEST
-        message:
+      required:
+      - signature
+    RewardEntities:
+      type: object
+      properties:
+        entities:
+          type: array
+          description: List of reward entities
+          items:
+            $ref: '#/components/schemas/RewardEntity'
+        continuation:
           type: string
-          description: Error message
+          description: Continuation token to paginate rewards search result
+      required:
+      - entities
     UnionApiErrorServerError:
       required:
       - code
@@ -181,44 +180,6 @@ components:
         message:
           type: string
           description: Error message
-    RewardEntities:
-      type: object
-      properties:
-        entities:
-          type: array
-          description: List of reward entities
-          items:
-            $ref: '#/components/schemas/RewardEntity'
-        continuation:
-          type: string
-          description: Continuation token to paginate rewards search result
-      required:
-      - entities
-    RewardsClaimSignatureResponse:
-      type: object
-      properties:
-        signature:
-          type: string
-      required:
-      - signature
-    UnionApiErrorEntityNotFound:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - NOT_FOUND
-          default: NOT_FOUND
-        message:
-          type: string
-          description: Error message
-    UnionAddress:
-      type: string
-      description: Blockchain address in Union format `${blockchainGroup}:${token}`
-      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
     Blockchain:
       type: string
       enum:
@@ -268,7 +229,7 @@ components:
       - XLAYER
       - MONAD
       example: ETHEREUM
-    RewardEntity:
+    RewardByBlockchainEntity:
       type: object
       properties:
         rewardWallet:
@@ -283,9 +244,48 @@ components:
           format: int64
           description: Rank position of the wallet
           example: 1
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
       required:
       - rewardWallet
       - points
+      - blockchain
+    UnionAddress:
+      type: string
+      description: Blockchain address in Union format `${blockchainGroup}:${token}`
+      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
+    BigInteger:
+      type: string
+      example: 123456
+    UnionApiErrorBadRequest:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - BAD_REQUEST
+          - VALIDATION
+          default: BAD_REQUEST
+        message:
+          type: string
+          description: Error message
+    UnionApiErrorEntityNotFound:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - NOT_FOUND
+          default: NOT_FOUND
+        message:
+          type: string
+          description: Error message
     RewardsByBlockchain:
       type: object
       description: List of rewards by blockchain for a specific address
@@ -311,18 +311,18 @@ components:
       type: string
       example: 123456.789
   responses:
-    BadRequest:
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnionApiErrorBadRequest'
     EntityNotFound:
       description: Not Found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/UnionApiErrorEntityNotFound'
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnionApiErrorBadRequest'
     ServerError:
       description: Internal Server Error
       content:

@@ -321,10 +321,45 @@ paths:
                 $ref: '#/components/schemas/OlapError'
 components:
   schemas:
-    CollectionId:
-      type: string
-      description: Collection id
-      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8
+    OlapBidsByPrice:
+      type: object
+      properties:
+        price:
+          type: number
+          format: bigdecimal
+        bidsCount:
+          type: integer
+          format: int64
+        volumeNative:
+          type: number
+          format: bigdecimal
+        buyersCount:
+          type: integer
+          format: int64
+        buyer:
+          $ref: '#/components/schemas/UnionAddress'
+      required:
+      - price
+      - bidsCount
+      - volumeNative
+      - volumeRatio
+      - buyersCount
+    OlapBidsByPriceStatistics:
+      type: object
+      properties:
+        maxVolumeNative:
+          type: number
+          format: bigdecimal
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/OlapBidsByPrice'
+        continuation:
+          type: string
+          description: Continuation token to paginate result
+      required:
+      - prices
+      - maxVolumeNative
     OlapOwnerStatistic:
       type: object
       properties:
@@ -336,12 +371,10 @@ components:
       required:
       - owner
       - ownedItems
-    OlapBidsByPriceSort:
+    CollectionId:
       type: string
-      default: PRICE
-      enum:
-      - PRICE
-      - VOLUME_NATIVE
+      description: Collection id
+      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8
     OlapPeriodCollectionStatisticsResponse:
       type: object
       properties:
@@ -359,6 +392,85 @@ components:
       required:
       - period
       - volume
+    OlapGlobalCollectionStatisticsResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/CollectionId'
+        listed:
+          type: integer
+          format: int64
+        items:
+          type: integer
+          format: int64
+        owners:
+          type: integer
+          format: int64
+        floor:
+          $ref: '#/components/schemas/OlapPriceWithUsd'
+        volume:
+          description: Total worth of all transactions with items in this collection
+          $ref: '#/components/schemas/OlapPriceWithUsd'
+      required:
+      - listed
+      - items
+      - owners
+      - volume
+    UnionAddress:
+      type: string
+      description: Blockchain address in Union format `${blockchainGroup}:${token}`
+      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
+    OlapAggregatedCollectionStatisticsResponse:
+      required:
+      - highestSaleUsd
+      - owners
+      - volumeUsd
+      type: object
+      properties:
+        highestSaleUsd:
+          description: Highest worth transaction in all collections
+          type: number
+          format: bigdecimal
+        volumeUsd:
+          description: Total worth of all transactions were made with nfts in collections
+          type: number
+          format: bigdecimal
+        owners:
+          type: integer
+          description: Current amount of unique owners who hold nfts in collections
+          format: int32
+    OlapPriceWithUsd:
+      required:
+      - currency
+      - value
+      type: object
+      properties:
+        currency:
+          type: string
+        value:
+          type: number
+          description: Amount of currency
+          format: bigdecimal
+        valueUsd:
+          type: number
+          description: Amount in USD
+          format: bigdecimal
+    OlapError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          description: Code
+          enum:
+          - INVALID_INPUT
+          - NOT_FOUND
+          - UNKNOWN
+        message:
+          type: string
+          description: Message
     OlapPeriod:
       type: string
       enum:
@@ -399,124 +511,12 @@ components:
       required:
       - collectionIds
       - period
-    OlapPriceWithUsd:
-      required:
-      - currency
-      - value
-      type: object
-      properties:
-        currency:
-          type: string
-        value:
-          type: number
-          description: Amount of currency
-          format: bigdecimal
-        valueUsd:
-          type: number
-          description: Amount in USD
-          format: bigdecimal
-    OlapAggregatedCollectionStatisticsResponse:
-      required:
-      - highestSaleUsd
-      - owners
-      - volumeUsd
-      type: object
-      properties:
-        highestSaleUsd:
-          description: Highest worth transaction in all collections
-          type: number
-          format: bigdecimal
-        volumeUsd:
-          description: Total worth of all transactions were made with nfts in collections
-          type: number
-          format: bigdecimal
-        owners:
-          type: integer
-          description: Current amount of unique owners who hold nfts in collections
-          format: int32
-    OlapBidsByPrice:
-      type: object
-      properties:
-        price:
-          type: number
-          format: bigdecimal
-        bidsCount:
-          type: integer
-          format: int64
-        volumeNative:
-          type: number
-          format: bigdecimal
-        buyersCount:
-          type: integer
-          format: int64
-        buyer:
-          $ref: '#/components/schemas/UnionAddress'
-      required:
-      - price
-      - bidsCount
-      - volumeNative
-      - volumeRatio
-      - buyersCount
-    OlapGlobalCollectionStatisticsResponse:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/CollectionId'
-        listed:
-          type: integer
-          format: int64
-        items:
-          type: integer
-          format: int64
-        owners:
-          type: integer
-          format: int64
-        floor:
-          $ref: '#/components/schemas/OlapPriceWithUsd'
-        volume:
-          description: Total worth of all transactions with items in this collection
-          $ref: '#/components/schemas/OlapPriceWithUsd'
-      required:
-      - listed
-      - items
-      - owners
-      - volume
-    UnionAddress:
+    OlapBidsByPriceSort:
       type: string
-      description: Blockchain address in Union format `${blockchainGroup}:${token}`
-      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
-    OlapError:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          description: Code
-          enum:
-          - INVALID_INPUT
-          - NOT_FOUND
-          - UNKNOWN
-        message:
-          type: string
-          description: Message
-    OlapBidsByPriceStatistics:
-      type: object
-      properties:
-        maxVolumeNative:
-          type: number
-          format: bigdecimal
-        prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/OlapBidsByPrice'
-        continuation:
-          type: string
-          description: Continuation token to paginate result
-      required:
-      - prices
-      - maxVolumeNative
+      default: PRICE
+      enum:
+      - PRICE
+      - VOLUME_NATIVE
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

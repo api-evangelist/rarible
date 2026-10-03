@@ -74,6 +74,51 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
+    UnionApiErrorServerError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - UNKNOWN
+          default: UNKNOWN
+        message:
+          type: string
+          description: Error message
+    Currencies:
+      type: object
+      required:
+      - currencies
+      properties:
+        currencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Currency'
+    Currency:
+      type: object
+      properties:
+        currencyId:
+          $ref: '#/components/schemas/CurrencyId'
+        symbol:
+          type: string
+        abbreviation:
+          type: string
+        alias:
+          type: string
+          description: Alias to real coin, 'usd' means 1:1 to USD
+        rate:
+          $ref: '#/components/schemas/BigDecimal'
+        decimals:
+          type: integer
+          format: int32
+          description: Number of decimals
+      required:
+      - currencyId
+      - symbol
+      - decimals
     CurrencyUsdRate:
       type: object
       required:
@@ -113,58 +158,13 @@ components:
         message:
           type: string
           description: Error message
+    BigDecimal:
+      type: string
+      example: 123456.789
     CurrencyId:
       type: string
       description: Currency Id, has format `ETHEREUM:${token}` or `ETHEREUM:${token}:${tokenId}`
       example: ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
-    UnionApiErrorServerError:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - UNKNOWN
-          default: UNKNOWN
-        message:
-          type: string
-          description: Error message
-    Currency:
-      type: object
-      properties:
-        currencyId:
-          $ref: '#/components/schemas/CurrencyId'
-        symbol:
-          type: string
-        abbreviation:
-          type: string
-        alias:
-          type: string
-          description: Alias to real coin, 'usd' means 1:1 to USD
-        rate:
-          $ref: '#/components/schemas/BigDecimal'
-        decimals:
-          type: integer
-          format: int32
-          description: Number of decimals
-      required:
-      - currencyId
-      - symbol
-      - decimals
-    Currencies:
-      type: object
-      required:
-      - currencies
-      properties:
-        currencies:
-          type: array
-          items:
-            $ref: '#/components/schemas/Currency'
-    BigDecimal:
-      type: string
-      example: 123456.789
   responses:
     BadRequest:
       description: Bad Request

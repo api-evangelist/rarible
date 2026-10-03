@@ -51,32 +51,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    LatestIndexedBlock:
-      type: object
-      required:
-      - blockchain
-      - blockNumber
-      properties:
-        blockchain:
-          $ref: '#/components/schemas/Blockchain'
-        blockNumber:
-          type: integer
-          format: int64
-    UnionApiErrorBadRequest:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - BAD_REQUEST
-          - VALIDATION
-          default: BAD_REQUEST
-        message:
-          type: string
-          description: Error message
     UnionApiErrorServerError:
       required:
       - code
@@ -88,20 +62,6 @@ components:
           enum:
           - UNKNOWN
           default: UNKNOWN
-        message:
-          type: string
-          description: Error message
-    UnionApiErrorEntityNotFound:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - NOT_FOUND
-          default: NOT_FOUND
         message:
           type: string
           description: Error message
@@ -154,19 +114,59 @@ components:
       - XLAYER
       - MONAD
       example: ETHEREUM
+    LatestIndexedBlock:
+      type: object
+      required:
+      - blockchain
+      - blockNumber
+      properties:
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+        blockNumber:
+          type: integer
+          format: int64
+    UnionApiErrorBadRequest:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - BAD_REQUEST
+          - VALIDATION
+          default: BAD_REQUEST
+        message:
+          type: string
+          description: Error message
+    UnionApiErrorEntityNotFound:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - NOT_FOUND
+          default: NOT_FOUND
+        message:
+          type: string
+          description: Error message
   responses:
-    BadRequest:
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnionApiErrorBadRequest'
     EntityNotFound:
       description: Not Found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/UnionApiErrorEntityNotFound'
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnionApiErrorBadRequest'
     ServerError:
       description: Internal Server Error
       content:

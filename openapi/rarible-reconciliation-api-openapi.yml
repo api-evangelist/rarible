@@ -131,21 +131,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    UnionApiErrorBadRequest:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - BAD_REQUEST
-          - VALIDATION
-          default: BAD_REQUEST
-        message:
-          type: string
-          description: Error message
     UnionApiErrorServerError:
       required:
       - code
@@ -209,17 +194,21 @@ components:
       - XLAYER
       - MONAD
       example: ETHEREUM
-    ReconciliationEntities:
+    UnionApiErrorBadRequest:
+      required:
+      - code
+      - message
       type: object
       properties:
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReconciliationEntity'
-        continuation:
+        code:
           type: string
-      required:
-      - entities
+          enum:
+          - BAD_REQUEST
+          - VALIDATION
+          default: BAD_REQUEST
+        message:
+          type: string
+          description: Error message
     ReconciliationEntity:
       type: object
       properties:
@@ -238,6 +227,17 @@ components:
       - id
       - version
       - lastUpdatedAt
+    ReconciliationEntities:
+      type: object
+      properties:
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReconciliationEntity'
+        continuation:
+          type: string
+      required:
+      - entities
   responses:
     BadRequest:
       description: Bad Request
