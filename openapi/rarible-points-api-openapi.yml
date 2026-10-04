@@ -128,58 +128,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    RewardEntity:
-      type: object
-      properties:
-        rewardWallet:
-          $ref: '#/components/schemas/UnionAddress'
-          description: Wallet address with blockchain prefix
-          example: ETHEREUM:0x1234567890123456789012345678901234567890
-        points:
-          description: Points accumulated by the wallet
-          $ref: '#/components/schemas/BigDecimal'
-        rank:
-          type: integer
-          format: int64
-          description: Rank position of the wallet
-          example: 1
-      required:
-      - rewardWallet
-      - points
-    RewardsClaimSignatureResponse:
-      type: object
-      properties:
-        signature:
-          type: string
-      required:
-      - signature
-    RewardEntities:
-      type: object
-      properties:
-        entities:
-          type: array
-          description: List of reward entities
-          items:
-            $ref: '#/components/schemas/RewardEntity'
-        continuation:
-          type: string
-          description: Continuation token to paginate rewards search result
-      required:
-      - entities
-    UnionApiErrorServerError:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - UNKNOWN
-          default: UNKNOWN
-        message:
-          type: string
-          description: Error message
     Blockchain:
       type: string
       enum:
@@ -229,6 +177,34 @@ components:
       - XLAYER
       - MONAD
       example: ETHEREUM
+    UnionApiErrorBadRequest:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - BAD_REQUEST
+          - VALIDATION
+          default: BAD_REQUEST
+        message:
+          type: string
+          description: Error message
+    RewardEntities:
+      type: object
+      properties:
+        entities:
+          type: array
+          description: List of reward entities
+          items:
+            $ref: '#/components/schemas/RewardEntity'
+        continuation:
+          type: string
+          description: Continuation token to paginate rewards search result
+      required:
+      - entities
     RewardByBlockchainEntity:
       type: object
       properties:
@@ -250,6 +226,48 @@ components:
       - rewardWallet
       - points
       - blockchain
+    RewardsClaimSignatureResponse:
+      type: object
+      properties:
+        signature:
+          type: string
+      required:
+      - signature
+    RewardEntity:
+      type: object
+      properties:
+        rewardWallet:
+          $ref: '#/components/schemas/UnionAddress'
+          description: Wallet address with blockchain prefix
+          example: ETHEREUM:0x1234567890123456789012345678901234567890
+        points:
+          description: Points accumulated by the wallet
+          $ref: '#/components/schemas/BigDecimal'
+        rank:
+          type: integer
+          format: int64
+          description: Rank position of the wallet
+          example: 1
+      required:
+      - rewardWallet
+      - points
+    BigDecimal:
+      type: string
+      example: 123456.789
+    UnionApiErrorServerError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - UNKNOWN
+          default: UNKNOWN
+        message:
+          type: string
+          description: Error message
     UnionAddress:
       type: string
       description: Blockchain address in Union format `${blockchainGroup}:${token}`
@@ -257,35 +275,6 @@ components:
     BigInteger:
       type: string
       example: 123456
-    UnionApiErrorBadRequest:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - BAD_REQUEST
-          - VALIDATION
-          default: BAD_REQUEST
-        message:
-          type: string
-          description: Error message
-    UnionApiErrorEntityNotFound:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - NOT_FOUND
-          default: NOT_FOUND
-        message:
-          type: string
-          description: Error message
     RewardsByBlockchain:
       type: object
       description: List of rewards by blockchain for a specific address
@@ -307,9 +296,20 @@ components:
           points: '300'
           rank: 15
           blockchain: POLYGON
-    BigDecimal:
-      type: string
-      example: 123456.789
+    UnionApiErrorEntityNotFound:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - NOT_FOUND
+          default: NOT_FOUND
+        message:
+          type: string
+          description: Error message
   responses:
     EntityNotFound:
       description: Not Found

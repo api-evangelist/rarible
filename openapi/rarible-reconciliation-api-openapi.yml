@@ -131,20 +131,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    UnionApiErrorServerError:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - UNKNOWN
-          default: UNKNOWN
-        message:
-          type: string
-          description: Error message
     Blockchain:
       type: string
       enum:
@@ -209,6 +195,31 @@ components:
         message:
           type: string
           description: Error message
+    UnionApiErrorServerError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - UNKNOWN
+          default: UNKNOWN
+        message:
+          type: string
+          description: Error message
+    ReconciliationEntities:
+      type: object
+      properties:
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReconciliationEntity'
+        continuation:
+          type: string
+      required:
+      - entities
     ReconciliationEntity:
       type: object
       properties:
@@ -227,17 +238,6 @@ components:
       - id
       - version
       - lastUpdatedAt
-    ReconciliationEntities:
-      type: object
-      properties:
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReconciliationEntity'
-        continuation:
-          type: string
-      required:
-      - entities
   responses:
     BadRequest:
       description: Bad Request

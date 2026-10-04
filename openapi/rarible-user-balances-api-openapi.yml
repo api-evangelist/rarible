@@ -55,6 +55,21 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
+    UnionApiErrorBadRequest:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - BAD_REQUEST
+          - VALIDATION
+          default: BAD_REQUEST
+        message:
+          type: string
+          description: Error message
     Balance:
       type: object
       required:
@@ -71,6 +86,10 @@ components:
           $ref: '#/components/schemas/BigInteger'
         decimal:
           $ref: '#/components/schemas/BigDecimal'
+    CurrencyId:
+      type: string
+      description: Currency Id, has format `ETHEREUM:${token}` or `ETHEREUM:${token}:${tokenId}`
+      example: ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
     UnionApiErrorServerError:
       required:
       - code
@@ -85,28 +104,16 @@ components:
         message:
           type: string
           description: Error message
-    BigInteger:
+    BigDecimal:
       type: string
-      example: 123456
+      example: 123456.789
     UnionAddress:
       type: string
       description: Blockchain address in Union format `${blockchainGroup}:${token}`
       example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
-    UnionApiErrorBadRequest:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - BAD_REQUEST
-          - VALIDATION
-          default: BAD_REQUEST
-        message:
-          type: string
-          description: Error message
+    BigInteger:
+      type: string
+      example: 123456
     UnionApiErrorEntityNotFound:
       required:
       - code
@@ -121,26 +128,19 @@ components:
         message:
           type: string
           description: Error message
-    BigDecimal:
-      type: string
-      example: 123456.789
-    CurrencyId:
-      type: string
-      description: Currency Id, has format `ETHEREUM:${token}` or `ETHEREUM:${token}:${tokenId}`
-      example: ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
   responses:
-    BadRequest:
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnionApiErrorBadRequest'
     EntityNotFound:
       description: Not Found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/UnionApiErrorEntityNotFound'
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnionApiErrorBadRequest'
     ServerError:
       description: Internal Server Error
       content:

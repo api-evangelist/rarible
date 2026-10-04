@@ -51,20 +51,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    UnionApiErrorServerError:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - UNKNOWN
-          default: UNKNOWN
-        message:
-          type: string
-          description: Error message
     Blockchain:
       type: string
       enum:
@@ -114,17 +100,6 @@ components:
       - XLAYER
       - MONAD
       example: ETHEREUM
-    LatestIndexedBlock:
-      type: object
-      required:
-      - blockchain
-      - blockNumber
-      properties:
-        blockchain:
-          $ref: '#/components/schemas/Blockchain'
-        blockNumber:
-          type: integer
-          format: int64
     UnionApiErrorBadRequest:
       required:
       - code
@@ -140,6 +115,31 @@ components:
         message:
           type: string
           description: Error message
+    UnionApiErrorServerError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - UNKNOWN
+          default: UNKNOWN
+        message:
+          type: string
+          description: Error message
+    LatestIndexedBlock:
+      type: object
+      required:
+      - blockchain
+      - blockNumber
+      properties:
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+        blockNumber:
+          type: integer
+          format: int64
     UnionApiErrorEntityNotFound:
       required:
       - code

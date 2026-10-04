@@ -51,31 +51,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    DomainResolveResult:
-      type: object
-      required:
-      - blockchain
-      - registrant
-      properties:
-        blockchain:
-          $ref: '#/components/schemas/Blockchain'
-        registrant:
-          type: string
-          description: Resolved domain value
-    UnionApiErrorServerError:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          enum:
-          - UNKNOWN
-          default: UNKNOWN
-        message:
-          type: string
-          description: Error message
     Blockchain:
       type: string
       enum:
@@ -140,6 +115,31 @@ components:
         message:
           type: string
           description: Error message
+    UnionApiErrorServerError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+          - UNKNOWN
+          default: UNKNOWN
+        message:
+          type: string
+          description: Error message
+    DomainResolveResult:
+      type: object
+      required:
+      - blockchain
+      - registrant
+      properties:
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+        registrant:
+          type: string
+          description: Resolved domain value
     UnionApiErrorEntityNotFound:
       required:
       - code

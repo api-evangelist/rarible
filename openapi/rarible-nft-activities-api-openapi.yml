@@ -440,6 +440,113 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
+    SendToChainActivity:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - SEND_TO_CHAIN
+        owner:
+          $ref: '#/components/schemas/UnionAddress'
+        to:
+          type: string
+        chainId:
+          $ref: '#/components/schemas/BigInteger'
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        itemId:
+          $ref: '#/components/schemas/ItemId'
+        value:
+          $ref: '#/components/schemas/BigInteger'
+        transactionHash:
+          type: string
+        blockchainInfo:
+          $ref: '#/components/schemas/ActivityBlockchainInfo'
+      required:
+      - '@type'
+      - to
+      - itemId
+      - owner
+      - value
+      - transactionHash
+      - chainId
+    Activities:
+      type: object
+      properties:
+        continuation:
+          type: string
+          description: Continuation token to paginate activities search result
+        cursor:
+          type: string
+          description: Combined continuation token to paginate activities search result
+        activities:
+          type: array
+          default: []
+          description: List of found activities
+          items:
+            $ref: '#/components/schemas/Activity'
+      required:
+      - activities
+    Activity:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ActivityId'
+        date:
+          type: string
+          format: date-time
+        lastUpdatedAt:
+          type: string
+          format: date-time
+        cursor:
+          type: string
+        reverted:
+          type: boolean
+        version:
+          type: integer
+          format: int64
+      oneOf:
+      - $ref: '#/components/schemas/MintActivity'
+      - $ref: '#/components/schemas/BurnActivity'
+      - $ref: '#/components/schemas/TransferActivity'
+      - $ref: '#/components/schemas/SendToChainActivity'
+      - $ref: '#/components/schemas/ReceiveFromChainActivity'
+      - $ref: '#/components/schemas/OrderMatchActivity'
+      - $ref: '#/components/schemas/OrderBidActivity'
+      - $ref: '#/components/schemas/OrderListActivity'
+      - $ref: '#/components/schemas/OrderCancelBidActivity'
+      - $ref: '#/components/schemas/OrderCancelListActivity'
+      - $ref: '#/components/schemas/L2DepositActivity'
+      - $ref: '#/components/schemas/L2WithdrawalActivity'
+      required:
+      - id
+      - date
+    OrderId:
+      type: string
+      example: ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143
+    NftAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - NFT
+        collectionId:
+          $ref: '#/components/schemas/CollectionId'
+        itemId:
+          $ref: '#/components/schemas/ItemId'
+        standard:
+          type: string
+          enum:
+          - SINGLE
+          - MULTIPLE
+      required:
+      - '@type'
+      - itemId
+      - collectionId
     OrderMatchSwap:
       type: object
       required:
@@ -468,93 +575,88 @@ components:
         message:
           type: string
           description: Error message
-    UserActivityType:
+    CurrencyId:
       type: string
-      enum:
-      - TRANSFER_FROM
-      - TRANSFER_TO
-      - MINT
-      - BURN
-      - MAKE_BID
-      - GET_BID
-      - LIST
-      - BUY
-      - SELL
-      - CANCEL_LIST
-      - CANCEL_BID
-      - BRIDGE_TO
-      - BRIDGE_FROM
-    EthErc721LazyAssetType:
+      description: Currency Id, has format `ETHEREUM:${token}` or `ETHEREUM:${token}:${tokenId}`
+      example: ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+    BigDecimal:
+      type: string
+      example: 123456.789
+    EthEthereumAssetType:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - ERC721_Lazy
+          - ETH
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+      required:
+      - '@type'
+    ItemId:
+      type: string
+      description: Item Id, has format `ETHEREUM:${token}:${tokenId}`
+      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410
+    SyncSort:
+      type: string
+      enum:
+      - DB_UPDATE_ASC
+      - DB_UPDATE_DESC
+    TransferActivity:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - TRANSFER
+        from:
+          $ref: '#/components/schemas/UnionAddress'
+        owner:
+          $ref: '#/components/schemas/UnionAddress'
         contract:
           $ref: '#/components/schemas/ContractAddress'
         collection:
           $ref: '#/components/schemas/CollectionId'
         tokenId:
           $ref: '#/components/schemas/BigInteger'
-        uri:
+        itemId:
+          $ref: '#/components/schemas/ItemId'
+        value:
+          $ref: '#/components/schemas/BigInteger'
+        purchase:
+          type: boolean
+        transactionHash:
           type: string
-        creators:
-          type: array
-          description: Creators of the target item
-          default: []
-          items:
-            $ref: '#/components/schemas/Creator'
-        royalties:
-          type: array
-          default: []
-          items:
-            $ref: '#/components/schemas/Royalty'
-        signatures:
-          type: array
-          default: []
-          items:
-            type: string
+        blockchainInfo:
+          $ref: '#/components/schemas/ActivityBlockchainInfo'
       required:
       - '@type'
-      - contract
-      - tokenId
-      - uri
-      - creators
-      - royalties
-      - signatures
-    Asset:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/AssetType'
-        value:
-          $ref: '#/components/schemas/BigDecimal'
-      required:
-      - type
+      - from
+      - owner
       - value
-    BigInteger:
+      - transactionHash
+    ContractAddress:
       type: string
-      example: 123456
-    AssetType:
+      description: Blockchain contract address in Union format `ETHEREUM:${token}`
+      example: ETHEREUM:0xd07dc4262bcdbf85190c01c996b4c06a461d2430
+    ActivityBlockchainInfo:
       type: object
-      oneOf:
-      - $ref: '#/components/schemas/NativeCurrencyAssetType'
-      - $ref: '#/components/schemas/TokenCurrencyAssetType'
-      - $ref: '#/components/schemas/NftAssetType'
-      - $ref: '#/components/schemas/NftOfCollectionAssetType'
-      - $ref: '#/components/schemas/EthEthereumAssetType'
-      - $ref: '#/components/schemas/EthErc20AssetType'
-      - $ref: '#/components/schemas/EthErc721AssetType'
-      - $ref: '#/components/schemas/EthErc721LazyAssetType'
-      - $ref: '#/components/schemas/EthErc1155AssetType'
-      - $ref: '#/components/schemas/EthErc1155LazyAssetType'
-      - $ref: '#/components/schemas/EthCryptoPunksAssetType'
-      - $ref: '#/components/schemas/EthGenerativeArtAssetType'
-      - $ref: '#/components/schemas/EthCollectionAssetType'
-      - $ref: '#/components/schemas/SolanaNftAssetType'
-      - $ref: '#/components/schemas/SolanaFtAssetType'
-      - $ref: '#/components/schemas/SolanaSolAssetType'
+      deprecated: true
+      properties:
+        transactionHash:
+          type: string
+        blockHash:
+          type: string
+        blockNumber:
+          type: integer
+          format: int64
+        logIndex:
+          type: integer
+      required:
+      - transactionHash
+      - blockHash
+      - blockNumber
+      - logIndex
     Blockchain:
       type: string
       enum:
@@ -604,6 +706,263 @@ components:
       - XLAYER
       - MONAD
       example: ETHEREUM
+    SolanaFtAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - SOLANA_FT
+        address:
+          $ref: '#/components/schemas/ContractAddress'
+      required:
+      - '@type'
+      - address
+    AssetType:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/NativeCurrencyAssetType'
+      - $ref: '#/components/schemas/TokenCurrencyAssetType'
+      - $ref: '#/components/schemas/NftAssetType'
+      - $ref: '#/components/schemas/NftOfCollectionAssetType'
+      - $ref: '#/components/schemas/EthEthereumAssetType'
+      - $ref: '#/components/schemas/EthErc20AssetType'
+      - $ref: '#/components/schemas/EthErc721AssetType'
+      - $ref: '#/components/schemas/EthErc721LazyAssetType'
+      - $ref: '#/components/schemas/EthErc1155AssetType'
+      - $ref: '#/components/schemas/EthErc1155LazyAssetType'
+      - $ref: '#/components/schemas/EthCryptoPunksAssetType'
+      - $ref: '#/components/schemas/EthGenerativeArtAssetType'
+      - $ref: '#/components/schemas/EthCollectionAssetType'
+      - $ref: '#/components/schemas/SolanaNftAssetType'
+      - $ref: '#/components/schemas/SolanaFtAssetType'
+      - $ref: '#/components/schemas/SolanaSolAssetType'
+    Asset:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/AssetType'
+        value:
+          $ref: '#/components/schemas/BigDecimal'
+      required:
+      - type
+      - value
+    UserActivityType:
+      type: string
+      enum:
+      - TRANSFER_FROM
+      - TRANSFER_TO
+      - MINT
+      - BURN
+      - MAKE_BID
+      - GET_BID
+      - LIST
+      - BUY
+      - SELL
+      - CANCEL_LIST
+      - CANCEL_BID
+      - BRIDGE_TO
+      - BRIDGE_FROM
+    Royalty:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/UnionAddress'
+        value:
+          type: integer
+      required:
+      - account
+      - value
+    SolanaSolAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - SOLANA_SOL
+      required:
+      - '@type'
+    OrderActivityMatchSide:
+      type: object
+      properties:
+        maker:
+          $ref: '#/components/schemas/UnionAddress'
+        hash:
+          type: string
+        asset:
+          $ref: '#/components/schemas/Asset'
+      required:
+      - maker
+      - asset
+    NftOfCollectionAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - NFT_OF_COLLECTION
+        collectionId:
+          $ref: '#/components/schemas/CollectionId'
+      required:
+      - '@type'
+      - collectionId
+    CollectionId:
+      type: string
+      description: Collection id
+      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8
+    BigInteger:
+      type: string
+      example: 123456
+    OrderListActivity:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - LIST
+        orderId:
+          $ref: '#/components/schemas/OrderId'
+        hash:
+          type: string
+        maker:
+          $ref: '#/components/schemas/UnionAddress'
+        make:
+          $ref: '#/components/schemas/Asset'
+        take:
+          $ref: '#/components/schemas/Asset'
+        price:
+          $ref: '#/components/schemas/BigDecimal'
+        priceUsd:
+          $ref: '#/components/schemas/BigDecimal'
+        source:
+          $ref: '#/components/schemas/OrderActivitySource'
+      required:
+      - '@type'
+      - hash
+      - maker
+      - make
+      - take
+      - price
+    SolanaNftAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - SOLANA_NFT
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        itemId:
+          $ref: '#/components/schemas/ItemId'
+      required:
+      - '@type'
+      - itemId
+    NativeCurrencyAssetType:
+      type: object
+      properties:
+        blockchain:
+          $ref: '#/components/schemas/Blockchain'
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        '@type':
+          type: string
+          enum:
+          - CURRENCY_NATIVE
+      required:
+      - '@type'
+      - blockchain
+    EthCollectionAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - COLLECTION
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+      required:
+      - '@type'
+      - contract
+    UnionAddress:
+      type: string
+      description: Blockchain address in Union format `${blockchainGroup}:${token}`
+      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
+    SyncType:
+      type: string
+      enum:
+      - ORDER
+      - NFT
+    Creator:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/UnionAddress'
+        value:
+          type: integer
+      required:
+      - account
+      - value
+    EthErc721AssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ERC721
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          $ref: '#/components/schemas/BigInteger'
+      required:
+      - '@type'
+      - contract
+      - tokenId
+    ActivitySort:
+      description: Sorting by data update time
+      type: string
+      enum:
+      - LATEST_FIRST
+      - EARLIEST_FIRST
+    MintActivity:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - MINT
+        owner:
+          $ref: '#/components/schemas/UnionAddress'
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          $ref: '#/components/schemas/BigInteger'
+        itemId:
+          $ref: '#/components/schemas/ItemId'
+        value:
+          $ref: '#/components/schemas/BigInteger'
+        mintPrice:
+          $ref: '#/components/schemas/BigDecimal'
+        mintPayment:
+          $ref: '#/components/schemas/Asset'
+        mintPriceUsd:
+          $ref: '#/components/schemas/BigDecimal'
+        transactionHash:
+          type: string
+        blockchainInfo:
+          $ref: '#/components/schemas/ActivityBlockchainInfo'
+      required:
+      - '@type'
+      - owner
+      - value
+      - transactionHash
     ActivityType:
       type: string
       enum:
@@ -617,27 +976,124 @@ components:
       - CANCEL_BID
       - BRIDGE_TO
       - BRIDGE_FROM
-    NftOfCollectionAssetType:
+    EthErc1155AssetType:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - NFT_OF_COLLECTION
-        collectionId:
+          - ERC1155
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
           $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          $ref: '#/components/schemas/BigInteger'
       required:
       - '@type'
-      - collectionId
-    SolanaSolAssetType:
+      - contract
+      - tokenId
+    OrderCancelBidActivity:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - SOLANA_SOL
+          - CANCEL_BID
+        orderId:
+          $ref: '#/components/schemas/OrderId'
+        hash:
+          type: string
+        maker:
+          $ref: '#/components/schemas/UnionAddress'
+        make:
+          $ref: '#/components/schemas/AssetType'
+        take:
+          $ref: '#/components/schemas/AssetType'
+        source:
+          $ref: '#/components/schemas/OrderActivitySource'
+        transactionHash:
+          type: string
+        blockchainInfo:
+          $ref: '#/components/schemas/ActivityBlockchainInfo'
       required:
       - '@type'
+      - hash
+      - maker
+      - make
+      - take
+      - transactionHash
+    EthErc721LazyAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ERC721_Lazy
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          $ref: '#/components/schemas/BigInteger'
+        uri:
+          type: string
+        creators:
+          type: array
+          description: Creators of the target item
+          default: []
+          items:
+            $ref: '#/components/schemas/Creator'
+        royalties:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Royalty'
+        signatures:
+          type: array
+          default: []
+          items:
+            type: string
+      required:
+      - '@type'
+      - contract
+      - tokenId
+      - uri
+      - creators
+      - royalties
+      - signatures
+    OrderMatchActivity:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - MATCH
+        orderId:
+          $ref: '#/components/schemas/OrderId'
+        source:
+          $ref: '#/components/schemas/OrderActivitySource'
+        transactionHash:
+          type: string
+        blockchainInfo:
+          $ref: '#/components/schemas/ActivityBlockchainInfo'
+      required:
+      - source
+      - transactionHash
+      oneOf:
+      - $ref: '#/components/schemas/OrderMatchSwap'
+      - $ref: '#/components/schemas/OrderMatchSell'
+    FeesValue:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          $ref: '#/components/schemas/BigDecimal'
+          description: Fee amount in payment currency
+        valueUsd:
+          $ref: '#/components/schemas/BigDecimal'
+          description: Fee amount in USD
     UnionApiErrorBadRequest:
       required:
       - code
@@ -653,73 +1109,19 @@ components:
         message:
           type: string
           description: Error message
-    ActivityBlockchainInfo:
-      type: object
-      deprecated: true
-      properties:
-        transactionHash:
-          type: string
-        blockHash:
-          type: string
-        blockNumber:
-          type: integer
-          format: int64
-        logIndex:
-          type: integer
-      required:
-      - transactionHash
-      - blockHash
-      - blockNumber
-      - logIndex
-    TokenCurrencyAssetType:
+    EthErc20AssetType:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - CURRENCY_TOKEN
+          - ERC20
         contract:
           $ref: '#/components/schemas/ContractAddress'
       required:
       - '@type'
       - contract
-    SendToChainActivity:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - SEND_TO_CHAIN
-        owner:
-          $ref: '#/components/schemas/UnionAddress'
-        to:
-          type: string
-        chainId:
-          $ref: '#/components/schemas/BigInteger'
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-        itemId:
-          $ref: '#/components/schemas/ItemId'
-        value:
-          $ref: '#/components/schemas/BigInteger'
-        transactionHash:
-          type: string
-        blockchainInfo:
-          $ref: '#/components/schemas/ActivityBlockchainInfo'
-      required:
-      - '@type'
-      - to
-      - itemId
-      - owner
-      - value
-      - transactionHash
-      - chainId
-    OrderId:
-      type: string
-      example: ETHEREUM:0x19f487016770542dc6137b06499a4f7b42c9580f12d85d6347964b03b7682143
-    L2DepositActivity:
+    L2WithdrawalActivity:
       type: object
       required:
       - '@type'
@@ -730,7 +1132,7 @@ components:
         '@type':
           type: string
           enum:
-          - L2_DEPOSIT
+          - L2_WITHDRAWAL
         user:
           $ref: '#/components/schemas/UnionAddress'
         status:
@@ -741,42 +1143,95 @@ components:
           $ref: '#/components/schemas/CollectionId'
         value:
           $ref: '#/components/schemas/BigInteger'
-    ReceiveFromChainActivity:
+    OrderCancelListActivity:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - RECEIVE_FROM_CHAIN
-        owner:
-          $ref: '#/components/schemas/UnionAddress'
-        from:
+          - CANCEL_LIST
+        orderId:
+          $ref: '#/components/schemas/OrderId'
+        hash:
           type: string
-        chainId:
-          $ref: '#/components/schemas/BigInteger'
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-        itemId:
-          $ref: '#/components/schemas/ItemId'
-        value:
-          $ref: '#/components/schemas/BigInteger'
+        maker:
+          $ref: '#/components/schemas/UnionAddress'
+        make:
+          $ref: '#/components/schemas/AssetType'
+        take:
+          $ref: '#/components/schemas/AssetType'
+        source:
+          $ref: '#/components/schemas/OrderActivitySource'
         transactionHash:
           type: string
         blockchainInfo:
           $ref: '#/components/schemas/ActivityBlockchainInfo'
       required:
       - '@type'
-      - from
-      - itemId
-      - owner
-      - value
+      - hash
+      - maker
+      - make
+      - take
       - transactionHash
-      - chainId
-    ActivityId:
-      type: string
-      example: ETHEREUM:${id}
+    EthCryptoPunksAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - CRYPTO_PUNKS
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          type: integer
+      required:
+      - '@type'
+      - contract
+      - tokenId
+    EthErc1155LazyAssetType:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - ERC1155_Lazy
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        tokenId:
+          $ref: '#/components/schemas/BigInteger'
+        uri:
+          type: string
+        supply:
+          $ref: '#/components/schemas/BigInteger'
+        creators:
+          type: array
+          description: Creators of the target item
+          default: []
+          items:
+            $ref: '#/components/schemas/Creator'
+        royalties:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Royalty'
+        signatures:
+          type: array
+          default: []
+          items:
+            type: string
+      required:
+      - '@type'
+      - contract
+      - tokenId
+      - uri
+      - creators
+      - supply
+      - royalties
+      - signatures
     OrderMatchSell:
       type: object
       properties:
@@ -822,57 +1277,53 @@ components:
       - type
       - buyer
       - seller
-    BurnActivity:
+    SalesChart:
       type: object
       properties:
-        '@type':
+        cursor:
           type: string
-          enum:
-          - BURN
-        owner:
-          $ref: '#/components/schemas/UnionAddress'
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-        tokenId:
-          $ref: '#/components/schemas/BigInteger'
-        itemId:
-          $ref: '#/components/schemas/ItemId'
-        value:
-          $ref: '#/components/schemas/BigInteger'
-        transactionHash:
-          type: string
-        blockchainInfo:
-          $ref: '#/components/schemas/ActivityBlockchainInfo'
+          description: Combined continuation token to paginate search result
+        dates:
+          type: array
+          items:
+            type: string
+            format: date-time
+        pricesNative:
+          type: array
+          items:
+            $ref: '#/components/schemas/BigDecimal'
+        itemIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemId'
       required:
-      - '@type'
-      - owner
-      - value
-      - transactionHash
-    TransferActivity:
+      - dates
+      - pricesNative
+      - itemIds
+    ActivityId:
+      type: string
+      example: ETHEREUM:${id}
+    ReceiveFromChainActivity:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - TRANSFER
-        from:
-          $ref: '#/components/schemas/UnionAddress'
+          - RECEIVE_FROM_CHAIN
         owner:
           $ref: '#/components/schemas/UnionAddress'
+        from:
+          type: string
+        chainId:
+          $ref: '#/components/schemas/BigInteger'
         contract:
           $ref: '#/components/schemas/ContractAddress'
         collection:
           $ref: '#/components/schemas/CollectionId'
-        tokenId:
-          $ref: '#/components/schemas/BigInteger'
         itemId:
           $ref: '#/components/schemas/ItemId'
         value:
           $ref: '#/components/schemas/BigInteger'
-        purchase:
-          type: boolean
         transactionHash:
           type: string
         blockchainInfo:
@@ -880,26 +1331,47 @@ components:
       required:
       - '@type'
       - from
+      - itemId
       - owner
       - value
       - transactionHash
-    OrderActivityMatchSide:
+      - chainId
+    EthGenerativeArtAssetType:
       type: object
       properties:
-        maker:
-          $ref: '#/components/schemas/UnionAddress'
-        hash:
+        '@type':
           type: string
-        asset:
-          $ref: '#/components/schemas/Asset'
+          enum:
+          - GEN_ART
+        contract:
+          $ref: '#/components/schemas/ContractAddress'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
       required:
-      - maker
-      - asset
-    SyncSort:
-      type: string
-      enum:
-      - DB_UPDATE_ASC
-      - DB_UPDATE_DESC
+      - '@type'
+      - contract
+    L2DepositActivity:
+      type: object
+      required:
+      - '@type'
+      - user
+      - status
+      - itemId
+      properties:
+        '@type':
+          type: string
+          enum:
+          - L2_DEPOSIT
+        user:
+          $ref: '#/components/schemas/UnionAddress'
+        status:
+          type: string
+        itemId:
+          $ref: '#/components/schemas/ItemId'
+        collection:
+          $ref: '#/components/schemas/CollectionId'
+        value:
+          $ref: '#/components/schemas/BigInteger'
     OrderBidActivity:
       type: object
       properties:
@@ -932,113 +1404,13 @@ components:
       - make
       - take
       - price
-    EthErc1155AssetType:
+    BurnActivity:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - ERC1155
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-        tokenId:
-          $ref: '#/components/schemas/BigInteger'
-      required:
-      - '@type'
-      - contract
-      - tokenId
-    ContractAddress:
-      type: string
-      description: Blockchain contract address in Union format `ETHEREUM:${token}`
-      example: ETHEREUM:0xd07dc4262bcdbf85190c01c996b4c06a461d2430
-    SolanaNftAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - SOLANA_NFT
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-        itemId:
-          $ref: '#/components/schemas/ItemId'
-      required:
-      - '@type'
-      - itemId
-    Activity:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/ActivityId'
-        date:
-          type: string
-          format: date-time
-        lastUpdatedAt:
-          type: string
-          format: date-time
-        cursor:
-          type: string
-        reverted:
-          type: boolean
-        version:
-          type: integer
-          format: int64
-      oneOf:
-      - $ref: '#/components/schemas/MintActivity'
-      - $ref: '#/components/schemas/BurnActivity'
-      - $ref: '#/components/schemas/TransferActivity'
-      - $ref: '#/components/schemas/SendToChainActivity'
-      - $ref: '#/components/schemas/ReceiveFromChainActivity'
-      - $ref: '#/components/schemas/OrderMatchActivity'
-      - $ref: '#/components/schemas/OrderBidActivity'
-      - $ref: '#/components/schemas/OrderListActivity'
-      - $ref: '#/components/schemas/OrderCancelBidActivity'
-      - $ref: '#/components/schemas/OrderCancelListActivity'
-      - $ref: '#/components/schemas/L2DepositActivity'
-      - $ref: '#/components/schemas/L2WithdrawalActivity'
-      required:
-      - id
-      - date
-    Activities:
-      type: object
-      properties:
-        continuation:
-          type: string
-          description: Continuation token to paginate activities search result
-        cursor:
-          type: string
-          description: Combined continuation token to paginate activities search result
-        activities:
-          type: array
-          default: []
-          description: List of found activities
-          items:
-            $ref: '#/components/schemas/Activity'
-      required:
-      - activities
-    SolanaFtAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - SOLANA_FT
-        address:
-          $ref: '#/components/schemas/ContractAddress'
-      required:
-      - '@type'
-      - address
-    MintActivity:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - MINT
+          - BURN
         owner:
           $ref: '#/components/schemas/UnionAddress'
         contract:
@@ -1051,12 +1423,6 @@ components:
           $ref: '#/components/schemas/ItemId'
         value:
           $ref: '#/components/schemas/BigInteger'
-        mintPrice:
-          $ref: '#/components/schemas/BigDecimal'
-        mintPayment:
-          $ref: '#/components/schemas/Asset'
-        mintPriceUsd:
-          $ref: '#/components/schemas/BigDecimal'
         transactionHash:
           type: string
         blockchainInfo:
@@ -1066,81 +1432,18 @@ components:
       - owner
       - value
       - transactionHash
-    Creator:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/UnionAddress'
-        value:
-          type: integer
-      required:
-      - account
-      - value
-    CollectionId:
-      type: string
-      description: Collection id
-      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8
-    NftAssetType:
+    TokenCurrencyAssetType:
       type: object
       properties:
         '@type':
           type: string
           enum:
-          - NFT
-        collectionId:
-          $ref: '#/components/schemas/CollectionId'
-        itemId:
-          $ref: '#/components/schemas/ItemId'
-        standard:
-          type: string
-          enum:
-          - SINGLE
-          - MULTIPLE
-      required:
-      - '@type'
-      - itemId
-      - collectionId
-    Royalty:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/UnionAddress'
-        value:
-          type: integer
-      required:
-      - account
-      - value
-    EthEthereumAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - ETH
-        blockchain:
-          $ref: '#/components/schemas/Blockchain'
-      required:
-      - '@type'
-    NativeCurrencyAssetType:
-      type: object
-      properties:
-        blockchain:
-          $ref: '#/components/schemas/Blockchain'
+          - CURRENCY_TOKEN
         contract:
           $ref: '#/components/schemas/ContractAddress'
-        '@type':
-          type: string
-          enum:
-          - CURRENCY_NATIVE
       required:
       - '@type'
-      - blockchain
-    ActivitySort:
-      description: Sorting by data update time
-      type: string
-      enum:
-      - LATEST_FIRST
-      - EARLIEST_FIRST
+      - contract
     ActivitiesByUsersRequest:
       type: object
       required:
@@ -1185,128 +1488,6 @@ components:
           type: integer
         sort:
           $ref: '#/components/schemas/ActivitySort'
-    BigDecimal:
-      type: string
-      example: 123456.789
-    EthCollectionAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - COLLECTION
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-      required:
-      - '@type'
-      - contract
-    FeesValue:
-      type: object
-      required:
-      - value
-      properties:
-        value:
-          $ref: '#/components/schemas/BigDecimal'
-          description: Fee amount in payment currency
-        valueUsd:
-          $ref: '#/components/schemas/BigDecimal'
-          description: Fee amount in USD
-    EthErc20AssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - ERC20
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-      required:
-      - '@type'
-      - contract
-    EthCryptoPunksAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - CRYPTO_PUNKS
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-        tokenId:
-          type: integer
-      required:
-      - '@type'
-      - contract
-      - tokenId
-    OrderCancelBidActivity:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - CANCEL_BID
-        orderId:
-          $ref: '#/components/schemas/OrderId'
-        hash:
-          type: string
-        maker:
-          $ref: '#/components/schemas/UnionAddress'
-        make:
-          $ref: '#/components/schemas/AssetType'
-        take:
-          $ref: '#/components/schemas/AssetType'
-        source:
-          $ref: '#/components/schemas/OrderActivitySource'
-        transactionHash:
-          type: string
-        blockchainInfo:
-          $ref: '#/components/schemas/ActivityBlockchainInfo'
-      required:
-      - '@type'
-      - hash
-      - maker
-      - make
-      - take
-      - transactionHash
-    SyncType:
-      type: string
-      enum:
-      - ORDER
-      - NFT
-    OrderListActivity:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - LIST
-        orderId:
-          $ref: '#/components/schemas/OrderId'
-        hash:
-          type: string
-        maker:
-          $ref: '#/components/schemas/UnionAddress'
-        make:
-          $ref: '#/components/schemas/Asset'
-        take:
-          $ref: '#/components/schemas/Asset'
-        price:
-          $ref: '#/components/schemas/BigDecimal'
-        priceUsd:
-          $ref: '#/components/schemas/BigDecimal'
-        source:
-          $ref: '#/components/schemas/OrderActivitySource'
-      required:
-      - '@type'
-      - hash
-      - maker
-      - make
-      - take
-      - price
     OrderActivitySource:
       type: string
       enum:
@@ -1323,187 +1504,6 @@ components:
       - FXHASH
       - BLUR
       - TOPAZ
-    UnionAddress:
-      type: string
-      description: Blockchain address in Union format `${blockchainGroup}:${token}`
-      example: ETHEREUM:0x4765273c477c2dc484da4f1984639e943adccfeb
-    EthGenerativeArtAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - GEN_ART
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-      required:
-      - '@type'
-      - contract
-    EthErc721AssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - ERC721
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-        tokenId:
-          $ref: '#/components/schemas/BigInteger'
-      required:
-      - '@type'
-      - contract
-      - tokenId
-    ItemId:
-      type: string
-      description: Item Id, has format `ETHEREUM:${token}:${tokenId}`
-      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8:32292934596187112148346015918544186536963932779440027682601542850818403729410
-    L2WithdrawalActivity:
-      type: object
-      required:
-      - '@type'
-      - user
-      - status
-      - itemId
-      properties:
-        '@type':
-          type: string
-          enum:
-          - L2_WITHDRAWAL
-        user:
-          $ref: '#/components/schemas/UnionAddress'
-        status:
-          type: string
-        itemId:
-          $ref: '#/components/schemas/ItemId'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-        value:
-          $ref: '#/components/schemas/BigInteger'
-    EthErc1155LazyAssetType:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - ERC1155_Lazy
-        contract:
-          $ref: '#/components/schemas/ContractAddress'
-        collection:
-          $ref: '#/components/schemas/CollectionId'
-        tokenId:
-          $ref: '#/components/schemas/BigInteger'
-        uri:
-          type: string
-        supply:
-          $ref: '#/components/schemas/BigInteger'
-        creators:
-          type: array
-          description: Creators of the target item
-          default: []
-          items:
-            $ref: '#/components/schemas/Creator'
-        royalties:
-          type: array
-          default: []
-          items:
-            $ref: '#/components/schemas/Royalty'
-        signatures:
-          type: array
-          default: []
-          items:
-            type: string
-      required:
-      - '@type'
-      - contract
-      - tokenId
-      - uri
-      - creators
-      - supply
-      - royalties
-      - signatures
-    OrderCancelListActivity:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - CANCEL_LIST
-        orderId:
-          $ref: '#/components/schemas/OrderId'
-        hash:
-          type: string
-        maker:
-          $ref: '#/components/schemas/UnionAddress'
-        make:
-          $ref: '#/components/schemas/AssetType'
-        take:
-          $ref: '#/components/schemas/AssetType'
-        source:
-          $ref: '#/components/schemas/OrderActivitySource'
-        transactionHash:
-          type: string
-        blockchainInfo:
-          $ref: '#/components/schemas/ActivityBlockchainInfo'
-      required:
-      - '@type'
-      - hash
-      - maker
-      - make
-      - take
-      - transactionHash
-    OrderMatchActivity:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - MATCH
-        orderId:
-          $ref: '#/components/schemas/OrderId'
-        source:
-          $ref: '#/components/schemas/OrderActivitySource'
-        transactionHash:
-          type: string
-        blockchainInfo:
-          $ref: '#/components/schemas/ActivityBlockchainInfo'
-      required:
-      - source
-      - transactionHash
-      oneOf:
-      - $ref: '#/components/schemas/OrderMatchSwap'
-      - $ref: '#/components/schemas/OrderMatchSell'
-    SalesChart:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Combined continuation token to paginate search result
-        dates:
-          type: array
-          items:
-            type: string
-            format: date-time
-        pricesNative:
-          type: array
-          items:
-            $ref: '#/components/schemas/BigDecimal'
-        itemIds:
-          type: array
-          items:
-            $ref: '#/components/schemas/ItemId'
-      required:
-      - dates
-      - pricesNative
-      - itemIds
-    CurrencyId:
-      type: string
-      description: Currency Id, has format `ETHEREUM:${token}` or `ETHEREUM:${token}:${tokenId}`
-      example: ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
   responses:
     BadRequest:
       description: Bad Request

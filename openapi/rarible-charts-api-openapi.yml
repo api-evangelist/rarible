@@ -139,47 +139,6 @@ paths:
                 $ref: '#/components/schemas/OlapError'
 components:
   schemas:
-    CollectionId:
-      type: string
-      description: Collection id
-      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8
-    OlapChartResponse:
-      type: object
-      properties:
-        dataPoints:
-          $ref: '#/components/schemas/OlapHistoryValuesByTimestamps'
-      required:
-      - dataPoints
-    OlapError:
-      required:
-      - code
-      - message
-      type: object
-      properties:
-        code:
-          type: string
-          description: Code
-          enum:
-          - INVALID_INPUT
-          - NOT_FOUND
-          - UNKNOWN
-        message:
-          type: string
-          description: Message
-    OlapPeriod:
-      type: string
-      enum:
-      - MIN5
-      - MIN30
-      - H1
-      - H6
-      - D1
-      - D7
-      - D30
-      - D180
-      - D365
-      - ALL
-      description: "Period:\n  * `MIN5` - Last 5 minutes\n  * `MIN30` - Last 30 minutes\n  * `H1` - Last 1 hour\n  * `H6` - Last 6 hours\n  * `D1` - Last 1 day\n  * `D7` - Last 7 days\n  * `D30` - Last 30 days\n  * `D180` - Last 180 days (roughly 6 months)\n  * `D365` - Last 365 days (roughly 1 year)\n  * `ALL` - For all time\n"
     OlapHistoryValuesByTimestamps:
       required:
       - timestamps
@@ -200,6 +159,47 @@ components:
             type: number
             description: Value of historical statistics
             format: bigdecimal
+    OlapChartResponse:
+      type: object
+      properties:
+        dataPoints:
+          $ref: '#/components/schemas/OlapHistoryValuesByTimestamps'
+      required:
+      - dataPoints
+    OlapPeriod:
+      type: string
+      enum:
+      - MIN5
+      - MIN30
+      - H1
+      - H6
+      - D1
+      - D7
+      - D30
+      - D180
+      - D365
+      - ALL
+      description: "Period:\n  * `MIN5` - Last 5 minutes\n  * `MIN30` - Last 30 minutes\n  * `H1` - Last 1 hour\n  * `H6` - Last 6 hours\n  * `D1` - Last 1 day\n  * `D7` - Last 7 days\n  * `D30` - Last 30 days\n  * `D180` - Last 180 days (roughly 6 months)\n  * `D365` - Last 365 days (roughly 1 year)\n  * `ALL` - For all time\n"
+    OlapError:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+          description: Code
+          enum:
+          - INVALID_INPUT
+          - NOT_FOUND
+          - UNKNOWN
+        message:
+          type: string
+          description: Message
+    CollectionId:
+      type: string
+      description: Collection id
+      example: ETHEREUM:0xb66a603f4cfe17e3d27b87a8bfcad319856518b8
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

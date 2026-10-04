@@ -657,102 +657,94 @@ paths:
                 $ref: '#/components/schemas/OlapError'
 components:
   schemas:
-    OlapBlockchain:
-      type: string
-      enum:
-      - ETHEREUM
-      - POLYGON
-      - SOLANA
-      - ARBITRUM
-      - CHILIZ
-      - LIGHTLINK
-      - ZKSYNC
-      - BASE
-      - RARI
-      - APTOS
-      - ZKLINK
-      - QUAI
-      - ECLIPSE
-      - ELECTRONEUM
-      - SAAKURU
-      - OASIS
-      - MATCH
-      - MOONBEAM
-      - ETHERLINK
-      - ZKCANDY
-      - BERACHAIN
-      - ABSTRACT
-      - SHAPE
-      - TELOS
-      - HEDERAEVM
-      - VICTION
-      - SETTLUS
-      - GOAT
-      - HYPEREVM
-      - MEGAETH
-      - MEGAETHTESTNET
-      - MEGAETHTESTNETV2
-      - BASECAMP
-      - CAMP
-      - SOMNIA
-      - ARENAZ
-      - INJECTIVE
-      - INJECTIVETESTNET
-      - APECHAIN
-      - BLOCKCHAINKEK
-      - STELLAR
-      - ZILLIQA
-      - FRAXTAL
-      - XLAYER
-      - MONAD
-    OlapCollectionStatisticsResponse:
-      required:
-      - highestSale
-      - items
-      - listed
-      - owners
-      - volume
-      - marketCap
-      - floorPrice
+    OlapCollectionVolumeRankingResponse:
       type: object
       properties:
-        highestSale:
-          description: Highest worth transaction in collection
+        continuation:
+          type: string
+        result:
           type: array
           items:
-            $ref: '#/components/schemas/OlapCurrencyAmount'
-        floorPrice:
-          description: Minimal price of nft in this collection available on rarible
-          type: array
-          items:
-            $ref: '#/components/schemas/OlapCurrencyAmount'
-        marketCap:
-          description: Market cap of collection (floor price * total item supply)
-          type: array
-          items:
-            $ref: '#/components/schemas/OlapCurrencyAmount'
-        volume:
-          description: Total worth of all transactions were made with nfts in this collection
-          type: array
-          items:
-            $ref: '#/components/schemas/OlapCurrencyAmount'
-        listed:
-          type: integer
-          description: Amount of currently listed items
-          format: int32
-        items:
-          type: integer
-          description: Total item supply of all nfts in the collection
-          format: int32
-        owners:
-          type: integer
-          description: Current amount of unique owners who hold nfts of this collection
-          format: int32
-    OlapPlatformSource:
+            $ref: '#/components/schemas/OlapCollectionLeaderboardEntry'
+    OlapCurrencyType:
+      type: string
+      default: USD
+      enum:
+      - USD
+      - ETH
+      - ETN
+      - XTZ
+      - MATIC
+      - POL
+      - SOL
+      - CHZ
+      - APT
+      - QUAI
+      - ROSE
+      - BNB
+      - GLMR
+      - BERA
+      - TLOS
+      - HBAR
+      - VIC
+      - BTC
+      - HYPE
+      - CAMP
+      - INJ
+      - APE
+      - XLM
+      - ZIL
+      - SOMNIA
+      - FRAX
+      - OAS
+      - OKB
+      - MON
+    OlapCurrencyAmountWithChange:
+      required:
+      - currency
+      - value
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/OlapCurrencyType'
+        value:
+          type: number
+          description: Amount of currency
+          format: bigdecimal
+        changePercent:
+          type: number
+          description: Change in percent. Calculated as <current period value> / <previous period value> - 1
+          format: bigdecimal
+    OlapTradesLeaderboardSourceGroup:
       type: string
       enum:
       - RARIBLE
-      - OPEN_SEA
+      - EXTERNAL
+      description: "Source group:\n  * `RARIBLE` - source group includes rarible sources (rarible.com + all communities)\n  * `EXTERNAL` - source group includes external marketplaces as sources\n"
+    OlapUserLeaderboardEntry:
+      required:
+      - id
+      - items
+      - transactions
+      - volumeNative
+      - volumeUsd
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identifier of user
+        volumeUsd:
+          $ref: '#/components/schemas/OlapCurrencyAmount'
+        volumeNative:
+          $ref: '#/components/schemas/OlapCurrencyAmount'
+        items:
+          type: integer
+          description: (non-unique) amount of traded items
+          format: int64
+        transactions:
+          type: integer
+          description: Amount of transactions were made
+          format: int64
     OlapTradesLeaderboardSort:
       type: string
       default: VOLUME_USD_DESC
@@ -785,91 +777,20 @@ components:
           type: number
           description: Current value
           format: bigdecimal
-    OlapCurrencyAmount:
-      required:
-      - currency
-      - value
-      type: object
-      properties:
-        currency:
-          $ref: '#/components/schemas/OlapCurrencyType'
-        value:
-          type: number
-          description: Amount of currency
-          format: bigdecimal
-    OlapUserVolumeRankingResponse:
-      type: object
-      properties:
-        result:
-          type: array
-          items:
-            $ref: '#/components/schemas/OlapUserLeaderboardEntry'
-    OlapUserLeaderboardEntry:
-      required:
-      - id
-      - items
-      - transactions
-      - volumeNative
-      - volumeUsd
-      type: object
-      properties:
-        id:
-          type: string
-          description: Identifier of user
-        volumeUsd:
-          $ref: '#/components/schemas/OlapCurrencyAmount'
-        volumeNative:
-          $ref: '#/components/schemas/OlapCurrencyAmount'
-        items:
-          type: integer
-          description: (non-unique) amount of traded items
-          format: int64
-        transactions:
-          type: integer
-          description: Amount of transactions were made
-          format: int64
-    OlapGeneralStatsResponse:
-      required:
-      - highestSale
-      - items
-      - listed
-      - owners
-      - volume
-      type: object
-      properties:
-        highestSale:
-          type: number
-          description: Highest worth transaction in collection
-          format: bigdecimal
-        floorPrice:
-          type: number
-          description: Minimal price of nft in this collection available on rarible
-          format: bigdecimal
-        marketCap:
-          type: number
-          description: Market cap of collection (floor price * total item supply)
-          format: bigdecimal
-        listed:
-          type: integer
-          description: Amount of currently listed items
-          format: int32
-        items:
-          type: integer
-          description: Total item supply of all nfts in the collection
-          format: int32
-        owners:
-          type: integer
-          description: Current amount of unique owners who hold nfts of this collection
-          format: int32
-        volume:
-          type: number
-          description: Total worth of all transactions were made with nfts in this collection
-          format: bigdecimal
-    OlapUserType:
+    OlapPeriod:
       type: string
       enum:
-      - sellers
-      - buyers
+      - MIN5
+      - MIN30
+      - H1
+      - H6
+      - D1
+      - D7
+      - D30
+      - D180
+      - D365
+      - ALL
+      description: "Period:\n  * `MIN5` - Last 5 minutes\n  * `MIN30` - Last 30 minutes\n  * `H1` - Last 1 hour\n  * `H6` - Last 6 hours\n  * `D1` - Last 1 day\n  * `D7` - Last 7 days\n  * `D30` - Last 30 days\n  * `D180` - Last 180 days (roughly 6 months)\n  * `D365` - Last 365 days (roughly 1 year)\n  * `ALL` - For all time\n"
     OlapCollectionLeaderboardEntry:
       required:
       - id
@@ -918,6 +839,18 @@ components:
         message:
           type: string
           description: Message
+    OlapUserType:
+      type: string
+      enum:
+      - sellers
+      - buyers
+    OlapUserVolumeRankingResponse:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/OlapUserLeaderboardEntry'
     OlapLeaderboardPeriod:
       type: string
       enum:
@@ -930,21 +863,92 @@ components:
       - D30
       - ALL
       description: "Period:\n  * `MIN5` - Last 5 minutes\n  * `MIN30` - Last 30 minutes\n  * `H1` - Last 1 hour\n  * `H6` - Last 6 hours\n  * `D1` - Last 1 day\n  * `D7` - Last 7 days\n  * `D30` - Last 30 days\n  * `ALL` - For all time\n"
-    OlapPeriod:
+    OlapBlockchain:
       type: string
       enum:
-      - MIN5
-      - MIN30
-      - H1
-      - H6
-      - D1
-      - D7
-      - D30
-      - D180
-      - D365
-      - ALL
-      description: "Period:\n  * `MIN5` - Last 5 minutes\n  * `MIN30` - Last 30 minutes\n  * `H1` - Last 1 hour\n  * `H6` - Last 6 hours\n  * `D1` - Last 1 day\n  * `D7` - Last 7 days\n  * `D30` - Last 30 days\n  * `D180` - Last 180 days (roughly 6 months)\n  * `D365` - Last 365 days (roughly 1 year)\n  * `ALL` - For all time\n"
-    OlapCurrencyAmountWithChange:
+      - ETHEREUM
+      - POLYGON
+      - SOLANA
+      - ARBITRUM
+      - CHILIZ
+      - LIGHTLINK
+      - ZKSYNC
+      - BASE
+      - RARI
+      - APTOS
+      - ZKLINK
+      - QUAI
+      - ECLIPSE
+      - ELECTRONEUM
+      - SAAKURU
+      - OASIS
+      - MATCH
+      - MOONBEAM
+      - ETHERLINK
+      - ZKCANDY
+      - BERACHAIN
+      - ABSTRACT
+      - SHAPE
+      - TELOS
+      - HEDERAEVM
+      - VICTION
+      - SETTLUS
+      - GOAT
+      - HYPEREVM
+      - MEGAETH
+      - MEGAETHTESTNET
+      - MEGAETHTESTNETV2
+      - BASECAMP
+      - CAMP
+      - SOMNIA
+      - ARENAZ
+      - INJECTIVE
+      - INJECTIVETESTNET
+      - APECHAIN
+      - BLOCKCHAINKEK
+      - STELLAR
+      - ZILLIQA
+      - FRAXTAL
+      - XLAYER
+      - MONAD
+    OlapGeneralStatsResponse:
+      required:
+      - highestSale
+      - items
+      - listed
+      - owners
+      - volume
+      type: object
+      properties:
+        highestSale:
+          type: number
+          description: Highest worth transaction in collection
+          format: bigdecimal
+        floorPrice:
+          type: number
+          description: Minimal price of nft in this collection available on rarible
+          format: bigdecimal
+        marketCap:
+          type: number
+          description: Market cap of collection (floor price * total item supply)
+          format: bigdecimal
+        listed:
+          type: integer
+          description: Amount of currently listed items
+          format: int32
+        items:
+          type: integer
+          description: Total item supply of all nfts in the collection
+          format: int32
+        owners:
+          type: integer
+          description: Current amount of unique owners who hold nfts of this collection
+          format: int32
+        volume:
+          type: number
+          description: Total worth of all transactions were made with nfts in this collection
+          format: bigdecimal
+    OlapCurrencyAmount:
       required:
       - currency
       - value
@@ -956,58 +960,54 @@ components:
           type: number
           description: Amount of currency
           format: bigdecimal
-        changePercent:
-          type: number
-          description: Change in percent. Calculated as <current period value> / <previous period value> - 1
-          format: bigdecimal
-    OlapTradesLeaderboardSourceGroup:
+    OlapPlatformSource:
       type: string
       enum:
       - RARIBLE
-      - EXTERNAL
-      description: "Source group:\n  * `RARIBLE` - source group includes rarible sources (rarible.com + all communities)\n  * `EXTERNAL` - source group includes external marketplaces as sources\n"
-    OlapCurrencyType:
-      type: string
-      default: USD
-      enum:
-      - USD
-      - ETH
-      - ETN
-      - XTZ
-      - MATIC
-      - POL
-      - SOL
-      - CHZ
-      - APT
-      - QUAI
-      - ROSE
-      - BNB
-      - GLMR
-      - BERA
-      - TLOS
-      - HBAR
-      - VIC
-      - BTC
-      - HYPE
-      - CAMP
-      - INJ
-      - APE
-      - XLM
-      - ZIL
-      - SOMNIA
-      - FRAX
-      - OAS
-      - OKB
-      - MON
-    OlapCollectionVolumeRankingResponse:
+      - OPEN_SEA
+    OlapCollectionStatisticsResponse:
+      required:
+      - highestSale
+      - items
+      - listed
+      - owners
+      - volume
+      - marketCap
+      - floorPrice
       type: object
       properties:
-        continuation:
-          type: string
-        result:
+        highestSale:
+          description: Highest worth transaction in collection
           type: array
           items:
-            $ref: '#/components/schemas/OlapCollectionLeaderboardEntry'
+            $ref: '#/components/schemas/OlapCurrencyAmount'
+        floorPrice:
+          description: Minimal price of nft in this collection available on rarible
+          type: array
+          items:
+            $ref: '#/components/schemas/OlapCurrencyAmount'
+        marketCap:
+          description: Market cap of collection (floor price * total item supply)
+          type: array
+          items:
+            $ref: '#/components/schemas/OlapCurrencyAmount'
+        volume:
+          description: Total worth of all transactions were made with nfts in this collection
+          type: array
+          items:
+            $ref: '#/components/schemas/OlapCurrencyAmount'
+        listed:
+          type: integer
+          description: Amount of currently listed items
+          format: int32
+        items:
+          type: integer
+          description: Total item supply of all nfts in the collection
+          format: int32
+        owners:
+          type: integer
+          description: Current amount of unique owners who hold nfts of this collection
+          format: int32
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

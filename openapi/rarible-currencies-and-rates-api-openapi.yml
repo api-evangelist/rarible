@@ -74,7 +74,7 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    UnionApiErrorServerError:
+    UnionApiErrorBadRequest:
       required:
       - code
       - message
@@ -83,20 +83,12 @@ components:
         code:
           type: string
           enum:
-          - UNKNOWN
-          default: UNKNOWN
+          - BAD_REQUEST
+          - VALIDATION
+          default: BAD_REQUEST
         message:
           type: string
           description: Error message
-    Currencies:
-      type: object
-      required:
-      - currencies
-      properties:
-        currencies:
-          type: array
-          items:
-            $ref: '#/components/schemas/Currency'
     Currency:
       type: object
       properties:
@@ -119,6 +111,15 @@ components:
       - currencyId
       - symbol
       - decimals
+    Currencies:
+      type: object
+      required:
+      - currencies
+      properties:
+        currencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Currency'
     CurrencyUsdRate:
       type: object
       required:
@@ -143,7 +144,11 @@ components:
           type: string
           format: date-time
           description: Date and time of currency USD rate
-    UnionApiErrorBadRequest:
+    CurrencyId:
+      type: string
+      description: Currency Id, has format `ETHEREUM:${token}` or `ETHEREUM:${token}:${tokenId}`
+      example: ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+    UnionApiErrorServerError:
       required:
       - code
       - message
@@ -152,19 +157,14 @@ components:
         code:
           type: string
           enum:
-          - BAD_REQUEST
-          - VALIDATION
-          default: BAD_REQUEST
+          - UNKNOWN
+          default: UNKNOWN
         message:
           type: string
           description: Error message
     BigDecimal:
       type: string
       example: 123456.789
-    CurrencyId:
-      type: string
-      description: Currency Id, has format `ETHEREUM:${token}` or `ETHEREUM:${token}:${tokenId}`
-      example: ETHEREUM:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
   responses:
     BadRequest:
       description: Bad Request
