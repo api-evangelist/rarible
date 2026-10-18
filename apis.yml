@@ -40,7 +40,6 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/rarible.png
 tags:
 - NFT
-- Non-Fungible Tokens
 - Marketplace
 - Aggregator
 - Multi-Chain
@@ -357,6 +356,8 @@ apis:
   humanURL: https://docs.rarible.org/docs/introduction
   baseURL: https://api.rarible.org/v0.1
   tags:
+  - SERP
+  tags_raw:
   - Search API
   properties:
   - type: OpenAPI
