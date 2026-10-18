@@ -27,5 +27,5 @@
     - connectors/applications/rarible
     vendor_link: https://rarible.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
